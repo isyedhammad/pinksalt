@@ -4,6 +4,8 @@
 > Developed as a Proposed Concept for the **Pakistan Mineral Investment Forum**  
 > Authored by an **Assistant Director, Mines & Minerals Sector, Punjab, Pakistan**
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/isyedhammad/pinksalt)
+
 ---
 
 ## 1. Executive Summary
