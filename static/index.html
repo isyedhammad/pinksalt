@@ -9,28 +9,14 @@
 </head>
 <body>
 
-  <!-- Top Strategic & Institutional Notice Banner -->
-  <div class="gov-banner">
-    <div class="container gov-banner-content">
-      <div class="gov-badge">
-        <span>🏛️ Concept Proposal for Pakistan Mineral Investment Forum</span>
-        <span style="opacity:0.6;">|</span>
-        <span>Mines & Minerals Sector, Punjab</span>
-      </div>
-      <div class="gov-notice">
-        ⚠️ Strategic Concept & Demonstration Platform (Not an official statutory licensing portal)
-      </div>
-    </div>
-  </div>
-
-  <!-- Header & Navigation -->
+  <!-- Header & Clean Navigation -->
   <header class="site-header">
     <div class="container header-wrapper">
       <div class="brand-logo" onclick="switchView('home')">
-        <div class="brand-symbol">🧂</div>
+        <img src="images/pinkSalt-logo.png" alt="Punjab Pink Salt" class="logo-img">
         <div class="brand-text">
-          <h1>PinkSalt Intelligence</h1>
-          <p>Investment & Value Addition Portal</p>
+          <h1>PinkSalt Portal</h1>
+          <p>Mines & Minerals Sector, Punjab</p>
         </div>
       </div>
 
@@ -61,52 +47,72 @@
     <!-- VIEW 1: HOME -->
     <!-- ============================================================ -->
     <section id="view-home" class="page-view">
-      <!-- Hero Section -->
+      <!-- Hero Section with Official Pink Salt Photography -->
       <div class="hero">
         <div class="container hero-grid">
           <div>
-            <div class="hero-tag">🌟 Strategic Mineral Transformation</div>
-            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Value-Addition Potential</h2>
+            <div class="hero-badge-pill">
+              <span>🌟 Minerals & Value Addition Directorate</span>
+            </div>
+            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Investment Potential</h2>
             <p class="lead">
-              Converting billions of tonnes of Punjab's high-purity geological Salt Range resources into 
-              high-value export manufacturing, certified food-grade packaging, and pharmaceutical-grade industries.
+              Empowering investors, mineral processors, and exporters with verified geological data, 
+              project economics, and institutional facilitation in Punjab's Salt Range.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Investment Opportunities →</button>
-              <button class="btn btn-outline" onclick="switchView('calculator')">Run Project Feasibility</button>
-              <button class="btn btn-navy" onclick="switchView('ai')">Ask PinkSalt AI Assistant</button>
+              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Opportunities →</button>
+              <button class="btn btn-outline" onclick="switchView('calculator')">Estimate Project Economics</button>
+              <button class="btn btn-navy" onclick="switchView('ai')">Ask PinkSalt AI</button>
             </div>
           </div>
           <div>
-            <div class="hero-stat-card">
-              <div class="hero-stat-header">
-                <span>Verified Sector Benchmarks</span>
-                <span>Punjab Geological Belt</span>
-              </div>
-              <div class="hero-stat-list">
-                <div class="stat-item">
-                  <div class="stat-val">10.0+ B</div>
-                  <div class="stat-lbl">Metric Tonnes Salt Range Resource Base</div>
+            <div class="hero-image-card">
+              <img src="images/landingPage-Image-lower.png" alt="Authentic Punjab Pink Salt Minerals" class="hero-main-photo">
+              <div class="hero-photo-badge">
+                <div>
+                  <strong>Authentic Punjab Pink Salt</strong>
+                  <span>Khewra & Warcha Mineral Seams</span>
                 </div>
-                <div class="stat-item">
-                  <div class="stat-val">98.8%+</div>
-                  <div class="stat-lbl">Average NaCl Natural Crystalline Purity</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-val">8x - 15x</div>
-                  <div class="stat-lbl">Value Accretion: Raw vs Packaging</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-val">HS 2501</div>
-                  <div class="stat-lbl">Protected Geographical Indication (GI)</div>
-                </div>
+                <div class="badge-tag">98.8%+ NaCl Purity</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="container" style="padding-top:48px; padding-bottom:64px;">
+      <div class="container" style="padding-top:40px; padding-bottom:64px;">
+
+        <!-- Quick Metrics Highlights -->
+        <div class="quick-metrics-row">
+          <div class="metric-pill-card">
+            <div class="metric-icon-circle">⛰️</div>
+            <div class="metric-text">
+              <strong>10.0+ Billion MT</strong>
+              <span>Documented Salt Range Resource</span>
+            </div>
+          </div>
+          <div class="metric-pill-card">
+            <div class="metric-icon-circle">💎</div>
+            <div class="metric-text">
+              <strong>98.8%+ Purity</strong>
+              <span>Natural Crystalline NaCl</span>
+            </div>
+          </div>
+          <div class="metric-pill-card">
+            <div class="metric-icon-circle">📈</div>
+            <div class="metric-text">
+              <strong>8x - 15x Value</strong>
+              <span>Processing Margin Accretion</span>
+            </div>
+          </div>
+          <div class="metric-pill-card">
+            <div class="metric-icon-circle">🛡️</div>
+            <div class="metric-text">
+              <strong>HS 2501 GI</strong>
+              <span>Protected Origin Provenance</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Value Chain Visualizer Overview -->
         <div class="section-header">
@@ -204,12 +210,13 @@
           </div>
         </div>
 
-        <!-- Official Sources & Disclaimers -->
-        <div class="notice-card" style="margin-top:48px;">
-          <strong>Data Governance & Methodology:</strong> Information within this portal is compiled from authoritative public publications of the 
-          <strong>Punjab Mines & Minerals Department</strong>, the <strong>Pakistan Mineral Development Corporation (PMDC)</strong>, 
-          the <strong>Geological Survey of Pakistan (GSP)</strong>, and the <strong>Trade Development Authority of Pakistan (TDAP)</strong>. 
-          Conceptual financial models are intended for preliminary evaluation and do not substitute a certified bankable feasibility study.
+        <div style="margin-top:40px; padding:18px 24px; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); font-size:13px; color:var(--slate-500); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            🏛️ <strong>Institutional Data Partners:</strong> Punjab Mines & Minerals Department | PMDC | Geological Survey of Pakistan | TDAP
+          </div>
+          <div>
+            📍 Salt Range Mining Concessions (Jhelum, Khushab, Mianwali)
+          </div>
         </div>
 
       </div>
