@@ -7,7 +7,7 @@ services:
   - type: web
     name: pinksalt-intelligence-portal
     env: python
-    region: frankfurt  # or oregon / singapore
+    region: oregon
     plan: free
     buildCommand: "python -m pip install -r requirements.txt || true"
     startCommand: "python server.py"
@@ -18,9 +18,3 @@ services:
         value: 10000
       - key: PYTHONUNBUFFERED
         value: "1"
-      - key: GEMINI_API_KEY
-        sync: false
-    disk:
-      name: pinksalt-data
-      mountPath: /var/data
-      sizeGB: 1
