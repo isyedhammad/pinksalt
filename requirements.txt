@@ -1,0 +1,12 @@
+# PinkSalt Portal Dependencies
+# The core application runs natively using Python 3.8+ standard library (zero required external wheels).
+# Optional packages for cloud production enhancements:
+
+# Google Gemini API SDK (Optional: For connected external LLM generation)
+# google-genai>=1.0.0
+
+# WSGI Production Server (Optional: If using Gunicorn instead of standard threaded server)
+# gunicorn>=21.2.0
+
+# Testing & Linting
+# pytest>=7.4.0
