@@ -13,7 +13,7 @@
   <header class="site-header">
     <div class="container header-wrapper">
       <div class="brand-logo" onclick="switchView('home')">
-        <img src="images/pinkSalt-logo.png" alt="Punjab Pink Salt" class="logo-img">
+        <img src="images/pinkSalt-logo.png" alt="Punjab Pink Salt Logo" class="logo-img">
         <div class="brand-text">
           <h1>PinkSalt Portal</h1>
           <p>Mines & Minerals Sector, Punjab</p>
@@ -34,9 +34,30 @@
       </nav>
 
       <div class="header-actions">
-        <button class="btn btn-primary btn-sm" onclick="switchView('enquiry')">Register Interest</button>
-        <button class="btn btn-navy btn-sm" onclick="switchView('admin')" title="Administrative Dashboard">Admin 🔒</button>
+        <button class="btn btn-primary btn-sm" onclick="switchView('enquiry')">Investor Enquiry</button>
+        <button class="btn btn-outline btn-sm" onclick="switchView('admin')" title="Administrative Dashboard">Admin 🔒</button>
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Drawer Menu (Full Responsiveness for Tablets and Mobile) -->
+    <div class="mobile-nav-drawer" id="mobile-drawer">
+      <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏛️ Home Overview</a>
+      <a class="nav-link" data-view="resources" onclick="switchView('resources'); toggleMobileNav()">🗺️ Resource Intelligence & Map</a>
+      <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">💼 Investment Opportunities</a>
+      <a class="nav-link" data-view="value-addition" onclick="switchView('value-addition'); toggleMobileNav()">📈 Value-Addition Economics</a>
+      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 Feasibility & Sensitivity Calculator</a>
+      <a class="nav-link" data-view="sites" onclick="switchView('sites'); toggleMobileNav()">📍 Processing Zone Selector</a>
+      <a class="nav-link" data-view="export" onclick="switchView('export'); toggleMobileNav()">🚢 Export & PSW Compliance</a>
+      <a class="nav-link" data-view="traceability" onclick="switchView('traceability'); toggleMobileNav()">🔍 Origin Traceability Simulator</a>
+      <a class="nav-link" data-view="knowledge" onclick="switchView('knowledge'); toggleMobileNav()">📚 Regulatory Knowledge Base</a>
+      <a class="nav-link" data-view="ai" onclick="switchView('ai'); toggleMobileNav()">🤖 PinkSalt AI Assistant</a>
+      <button class="btn btn-primary" style="margin-top:12px; width:100%;" onclick="switchView('enquiry'); toggleMobileNav()">Register Expression of Interest</button>
+      <button class="btn btn-outline" style="width:100%;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
     </div>
   </header>
 
@@ -52,28 +73,41 @@
         <div class="container hero-grid">
           <div>
             <div class="hero-badge-pill">
-              <span>🌟 Minerals & Value Addition Directorate</span>
+              <span>🇵🇰 Government of Punjab • Directorate General of Mines & Minerals</span>
             </div>
-            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Investment Potential</h2>
+            <h2>Pakistan Pink Salt <span class="highlight">Intelligence & Investment</span> Portal</h2>
             <p class="lead">
-              Empowering investors, mineral processors, and exporters with verified geological data, 
-              project economics, and institutional facilitation in Punjab's Salt Range.
+              A strategic mineral platform connecting Punjab's 10-billion-tonne Khewra & Warcha geological reserves 
+              with international processing capital, optical grading technology, and high-margin export manufacturing.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Opportunities →</button>
-              <button class="btn btn-outline" onclick="switchView('calculator')">Estimate Project Economics</button>
+              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore 8 Strategic Projects →</button>
+              <button class="btn btn-outline" onclick="switchView('calculator')">Run Feasibility Model</button>
               <button class="btn btn-navy" onclick="switchView('ai')">Ask PinkSalt AI</button>
+            </div>
+            <div class="hero-trust-proof">
+              <span>✓ GSP Geological Survey</span>
+              <span>•</span>
+              <span>✓ PMDC Concessions</span>
+              <span>•</span>
+              <span>✓ TDAP Export Protocol</span>
+              <span>•</span>
+              <span>✓ HS 2501 GI Tag</span>
             </div>
           </div>
           <div>
             <div class="hero-image-card">
-              <img src="images/landingPage-Image-lower.png" alt="Authentic Punjab Pink Salt Minerals" class="hero-main-photo">
-              <div class="hero-photo-badge">
+              <img src="images/landingPage-Image-lower.png" alt="Authentic Punjab Pink Salt Crystalline Minerals" class="hero-main-photo">
+              <div class="hero-float-badge-top">
+                <div class="pulse-dot"></div>
+                <span>98.8%+ Natural NaCl Purity</span>
+              </div>
+              <div class="hero-float-badge-bottom">
                 <div>
-                  <strong>Authentic Punjab Pink Salt</strong>
-                  <span>Khewra & Warcha Mineral Seams</span>
+                  <strong>Khewra & Warcha Mineral Seams</strong>
+                  <span>Salt Range Belt, Punjab, Pakistan</span>
                 </div>
-                <div class="badge-tag">98.8%+ NaCl Purity</div>
+                <div class="badge-status">Active Concession</div>
               </div>
             </div>
           </div>
@@ -94,7 +128,7 @@
           <div class="metric-pill-card">
             <div class="metric-icon-circle">💎</div>
             <div class="metric-text">
-              <strong>98.8%+ Purity</strong>
+              <strong>98.8% - 99.2%</strong>
               <span>Natural Crystalline NaCl</span>
             </div>
           </div>
@@ -109,7 +143,18 @@
             <div class="metric-icon-circle">🛡️</div>
             <div class="metric-text">
               <strong>HS 2501 GI</strong>
-              <span>Protected Origin Provenance</span>
+              <span>Protected National Provenance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panoramic Geological Formations Strip -->
+        <div class="geology-panorama-card">
+          <img src="images/landingPage-Image-upper.png" alt="Punjab Salt Range Geological Formations">
+          <div class="panorama-overlay">
+            <div>
+              <h3>Ancient Eocambrian Salt Range Formations</h3>
+              <p>Formed over 500 million years ago across Jhelum, Khushab, and Mianwali. Exceptional geological crystalline depth offering organic trace minerals, iron oxides, and international food & pharmaceutical grade compliance.</p>
             </div>
           </div>
         </div>
@@ -617,38 +662,42 @@
             <div class="calc-card" style="margin-bottom:24px;">
               <h3 style="font-size:16px; font-weight:700; color:var(--navy-900); margin-bottom:6px;">Sensitivity: Selling Price Variation</h3>
               <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Impact of FOB export market price shifts on annual EBITDA.</p>
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Shift</th>
-                    <th>FOB Price</th>
-                    <th>Annual EBITDA</th>
-                    <th>Operating Margin</th>
-                  </tr>
-                </thead>
-                <tbody id="sensitivity-price-tbody">
-                  <!-- Dynamically populated -->
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Shift</th>
+                      <th>FOB Price</th>
+                      <th>Annual EBITDA</th>
+                      <th>Operating Margin</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sensitivity-price-tbody">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <!-- Sensitivity Matrix: Capacity Utilization -->
             <div class="calc-card">
               <h3 style="font-size:16px; font-weight:700; color:var(--navy-900); margin-bottom:6px;">Sensitivity: Capacity Utilization</h3>
               <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Impact of plant operating run-time on production volume and revenue.</p>
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Utilization</th>
-                    <th>Finished Output</th>
-                    <th>Annual Sales</th>
-                    <th>Annual EBITDA</th>
-                  </tr>
-                </thead>
-                <tbody id="sensitivity-util-tbody">
-                  <!-- Dynamically populated -->
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Utilization</th>
+                      <th>Finished Output</th>
+                      <th>Annual Sales</th>
+                      <th>Annual EBITDA</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sensitivity-util-tbody">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -774,36 +823,38 @@
         <!-- Tariff and HS Classification -->
         <div class="card">
           <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:12px;">Harmonized System (HS) Classification & Value Benchmarks</h3>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>HS Code</th>
-                <th>Description</th>
-                <th>Standard Packaging</th>
-                <th>Indicative Realization (FOB)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>2501.00.10</code></td>
-                <td>Common salt and rock salt (unrefined bulk)</td>
-                <td>Loose bulk or 1-ton jumbo bags</td>
-                <td>$35 - $50 / MT</td>
-              </tr>
-              <tr>
-                <td><code>2501.00.20</code></td>
-                <td>Table salt (food-grade optical sorted & ground)</td>
-                <td>500g, 1kg retail stand-up zip pouches</td>
-                <td><strong style="color:var(--rose-600)">$320 - $650 / MT</strong></td>
-              </tr>
-              <tr>
-                <td><code>2501.00.90</code></td>
-                <td>Other salt (pure sodium chloride & specialty gourmet blends)</td>
-                <td>Glass table grinders, seasoning blends</td>
-                <td><strong style="color:var(--rose-600)">$1,800 - $3,500 / MT</strong></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>HS Code</th>
+                  <th>Description</th>
+                  <th>Standard Packaging</th>
+                  <th>Indicative Realization (FOB)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>2501.00.10</code></td>
+                  <td>Common salt and rock salt (unrefined bulk)</td>
+                  <td>Loose bulk or 1-ton jumbo bags</td>
+                  <td>$35 - $50 / MT</td>
+                </tr>
+                <tr>
+                  <td><code>2501.00.20</code></td>
+                  <td>Table salt (food-grade optical sorted & ground)</td>
+                  <td>500g, 1kg retail stand-up zip pouches</td>
+                  <td><strong style="color:var(--rose-600)">$320 - $650 / MT</strong></td>
+                </tr>
+                <tr>
+                  <td><code>2501.00.90</code></td>
+                  <td>Other salt (pure sodium chloride & specialty gourmet blends)</td>
+                  <td>Glass table grinders, seasoning blends</td>
+                  <td><strong style="color:var(--rose-600)">$1,800 - $3,500 / MT</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -1163,10 +1214,11 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span style="font-size:22px;">🧂</span>
-            <h4 style="margin:0; font-size:16px;">PinkSalt Intelligence & Investment Portal</h4>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+            <img src="images/headerLogo.png" alt="Government of Punjab" style="height:34px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.9;">
+            <img src="images/punjab-bop-pitb-headerLogo.png" alt="Punjab Partners" style="height:30px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.9;">
           </div>
+          <h4 style="margin:0 0 8px 0; font-size:15px; color:#ffffff;">PinkSalt Intelligence & Investment Portal</h4>
           <p style="font-size:13px; line-height:1.6; max-width:360px;">
             A proposed digital intelligence framework designed for discussion and presentation at the Pakistan Mineral Investment Forum.
             Promoting mineral value addition, verifiable origin traceability, and structured investment facilitation in Punjab.

@@ -287,11 +287,29 @@ function formatNumber(num) {
   return Number(num || 0).toLocaleString("en-US");
 }
 
+// Mobile navigation drawer toggle
+function toggleMobileNav() {
+  const toggle = document.getElementById("mobile-toggle");
+  const drawer = document.getElementById("mobile-drawer");
+  if (toggle && drawer) {
+    toggle.classList.toggle("open");
+    drawer.classList.toggle("open");
+  }
+}
+
 // View Routing
 function switchView(viewName) {
   state.currentView = viewName;
   document.querySelectorAll(".page-view").forEach(el => el.style.display = "none");
   document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+
+  // Ensure mobile drawer closes if open
+  const toggle = document.getElementById("mobile-toggle");
+  const drawer = document.getElementById("mobile-drawer");
+  if (toggle && drawer && drawer.classList.contains("open")) {
+    toggle.classList.remove("open");
+    drawer.classList.remove("open");
+  }
 
   const targetView = document.getElementById(`view-${viewName}`);
   if (targetView) {
@@ -299,8 +317,8 @@ function switchView(viewName) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  const activeNav = document.querySelector(`.nav-link[data-view="${viewName}"]`);
-  if (activeNav) activeNav.classList.add("active");
+  const activeNavs = document.querySelectorAll(`.nav-link[data-view="${viewName}"]`);
+  activeNavs.forEach(el => el.classList.add("active"));
 
   if (viewName === "resources") loadResources();
   if (viewName === "opportunities") loadOpportunities();
