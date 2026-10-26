@@ -21,12 +21,12 @@
         <a class="nav-link" data-view="resources">Resources</a>
         <a class="nav-link" data-view="opportunities">Opportunities</a>
         <a class="nav-link" data-view="value-addition">Value Addition</a>
-        <a class="nav-link" data-view="calculator">Feasibility Model</a>
+        <a class="nav-link" data-view="calculator">Feasibility</a>
         <a class="nav-link" data-view="sites">Site Selector</a>
         <a class="nav-link" data-view="export">Export Intel</a>
         <a class="nav-link" data-view="traceability">Traceability</a>
         <a class="nav-link" data-view="knowledge">Knowledge Base</a>
-        <a class="nav-link" data-view="ai">Investment Assistant</a>
+        <a class="nav-link" data-view="ai"><span style="margin-right:2px;">💼</span>Investment Assistant</a>
       </nav>
 
       <div class="header-actions">
@@ -51,7 +51,7 @@
       <a class="nav-link" data-view="export" onclick="switchView('export'); toggleMobileNav()">🚢 Export & PSW Compliance</a>
       <a class="nav-link" data-view="traceability" onclick="switchView('traceability'); toggleMobileNav()">🔍 Origin Traceability Simulator</a>
       <a class="nav-link" data-view="knowledge" onclick="switchView('knowledge'); toggleMobileNav()">📚 Regulatory Knowledge Base</a>
-      <a class="nav-link" data-view="ai" onclick="switchView('ai'); toggleMobileNav()">🤖 Investment Assistant</a>
+      <a class="nav-link" data-view="ai" onclick="switchView('ai'); toggleMobileNav()">💼 Investment Assistant</a>
       <button class="btn btn-primary" style="margin-top:12px; width:100%;" onclick="switchView('enquiry'); toggleMobileNav()">Register Expression of Interest</button>
       <button class="btn btn-outline" style="width:100%;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
     </div>
@@ -80,7 +80,7 @@
             <div class="hero-cta-group">
               <button class="btn btn-primary" onclick="switchView('opportunities')">Explore 8 Strategic Projects →</button>
               <button class="btn btn-outline-light" onclick="switchView('calculator')">Run Feasibility Model</button>
-              <button class="btn btn-gold" onclick="switchView('ai')">Investment Assistant ✨</button>
+              <button class="btn btn-gold" onclick="switchView('ai')">💼 Investment Assistant ✨</button>
             </div>
             <div class="hero-trust-proof">
               <span><i class="proof-icon">✓</i> GSP Geological Survey</span>
@@ -1117,16 +1117,23 @@
 
         <div class="chat-container">
           <div class="chat-header">
-            <div>
-              <strong style="font-size:15px;">Investment Assistant</strong>
-              <div style="font-size:11.5px; color:var(--rose-200);">Grounded with Punjab Mines Dept, PMDC & GSP Data</div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:24px;">💼</span>
+              <div>
+                <strong style="font-size:15px;">Investment Assistant</strong>
+                <div style="font-size:11.5px; color:var(--rose-200);">Grounded with Punjab Mines Dept, PMDC & GSP Data</div>
+              </div>
             </div>
-            <span class="opp-badge badge-verified" style="background:rgba(16, 185, 129, 0.2); color:#10b981; border:1px solid #10b981;">● RAG Active</span>
+            <span class="opp-badge badge-verified" style="background:rgba(16, 185, 129, 0.2); color:#10b981; border:1px solid #10b981;">● Active Advisory</span>
           </div>
 
           <div id="ai-chat-messages" class="chat-messages">
             <div class="message-bubble bubble-bot">
-              <strong>Welcome to the Investment Assistant.</strong> I am Punjab's specialized mineral investment advisory system.
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:20px;">💼</span>
+                <strong>Welcome to the Investment Assistant.</strong>
+              </div>
+              I am Punjab's specialized mineral investment and financial feasibility advisory system.
               <br><br>
               I can answer factual questions about Punjab's Salt Range resources, explain regulatory distinctions between mining leases and surface processing permits, run deterministic feasibility models, and outline export requirements under Pakistan Single Window (PSW).
               <br><br>
@@ -1241,7 +1248,7 @@
 
   <!-- Floating Investment Assistant Dock Button -->
   <div class="ai-dock-btn" onclick="switchView('ai')">
-    <span>🤖</span>
+    <span style="font-size:18px;">💼</span>
     <span>Investment Assistant</span>
   </div>
 
@@ -1290,7 +1297,7 @@
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
             <img src="images/headerLogo.png" alt="Government of Punjab" style="height:36px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.9;">
           </div>
-          <h4 style="margin:0 0 8px 0; font-size:15px; color:#ffffff;">Chief Minister Punjab - Pink Salt Value Addition</h4>
+          <h4 style="margin:0 0 8px 0; font-size:15px; color:#ffffff;">Pink Salt Intelligence & Investment Portal</h4>
           <p style="font-size:13px; line-height:1.6; max-width:360px;">
             Promoting mineral value addition, verifiable origin traceability, and structured investment facilitation in Punjab.
           </p>
@@ -1329,7 +1336,7 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 Chief Minister Punjab - Pink Salt Value Addition. Directorate General of Mines & Minerals, Government of Punjab.
+          © 2026 Pink Salt Intelligence & Investment Portal. Directorate General of Mines & Minerals, Government of Punjab.
         </div>
         <div>
           Verified with GSP, PMDC, TDAP & Directorate of Mines & Minerals Punjab Datasets.
