@@ -9,6 +9,23 @@
 </head>
 <body>
 
+  <!-- Official Sovereign Masthead / Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-bar-wrapper">
+      <div class="top-bar-left">
+        <span class="flag-icon">🇵🇰</span>
+        <span class="gov-title">Government of Punjab • Directorate General of Mines & Minerals</span>
+        <span class="bar-sep">•</span>
+        <span class="forum-badge">Pakistan Mineral Investment Forum 2026</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="live-pill"><span class="pulse-dot-green"></span> Concessions Desk Active</span>
+        <span class="bar-sep">•</span>
+        <span class="currency-tag">Standard Benchmark: <strong>USD ($) / Metric Ton</strong></span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header & Clean Navigation -->
   <header class="site-header">
     <div class="container header-wrapper">
@@ -34,7 +51,7 @@
       </nav>
 
       <div class="header-actions">
-        <button class="btn btn-primary btn-sm" onclick="switchView('enquiry')">Investor Enquiry</button>
+        <button class="btn btn-primary btn-sm" onclick="switchView('enquiry')">✨ Investor Enquiry</button>
         <button class="btn btn-outline btn-sm" onclick="switchView('admin')" title="Administrative Dashboard">Admin 🔒</button>
         <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()">
           <span></span>
@@ -73,26 +90,27 @@
         <div class="container hero-grid">
           <div>
             <div class="hero-badge-pill">
-              <span>🇵🇰 Government of Punjab • Directorate General of Mines & Minerals</span>
+              <span class="hero-badge-dot"></span>
+              <span>Strategic Mineral Concessions & Investment Intelligence</span>
             </div>
-            <h2>Pakistan Pink Salt <span class="highlight">Intelligence & Investment</span> Portal</h2>
+            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Reserves & Global Value Chain</h2>
             <p class="lead">
-              A strategic mineral platform connecting Punjab's 10-billion-tonne Khewra & Warcha geological reserves 
+              A high-level mineral investment portal connecting Punjab's 10-billion-tonne Khewra & Warcha geological reserves 
               with international processing capital, optical grading technology, and high-margin export manufacturing.
             </p>
             <div class="hero-cta-group">
               <button class="btn btn-primary" onclick="switchView('opportunities')">Explore 8 Strategic Projects →</button>
-              <button class="btn btn-outline" onclick="switchView('calculator')">Run Feasibility Model</button>
-              <button class="btn btn-navy" onclick="switchView('ai')">Ask PinkSalt AI</button>
+              <button class="btn btn-outline-light" onclick="switchView('calculator')">Run Feasibility Model</button>
+              <button class="btn btn-gold" onclick="switchView('ai')">Ask PinkSalt AI ✨</button>
             </div>
             <div class="hero-trust-proof">
-              <span>✓ GSP Geological Survey</span>
-              <span>•</span>
-              <span>✓ PMDC Concessions</span>
-              <span>•</span>
-              <span>✓ TDAP Export Protocol</span>
-              <span>•</span>
-              <span>✓ HS 2501 GI Tag</span>
+              <span><i class="proof-icon">✓</i> GSP Geological Survey</span>
+              <span class="proof-sep">•</span>
+              <span><i class="proof-icon">✓</i> PMDC Concessions</span>
+              <span class="proof-sep">•</span>
+              <span><i class="proof-icon">✓</i> TDAP Export Protocol</span>
+              <span class="proof-sep">•</span>
+              <span><i class="proof-icon">✓</i> HS 2501 Protected GI</span>
             </div>
           </div>
           <div>
@@ -100,23 +118,26 @@
               <img src="images/landingPage-Image-lower.png" alt="Authentic Punjab Pink Salt Crystalline Minerals" class="hero-main-photo">
               <div class="hero-float-badge-top">
                 <div class="pulse-dot"></div>
-                <span>98.8%+ Natural NaCl Purity</span>
+                <div>
+                  <strong>98.8% - 99.2% Pure</strong>
+                  <span>Natural Crystalline NaCl</span>
+                </div>
               </div>
               <div class="hero-float-badge-bottom">
                 <div>
                   <strong>Khewra & Warcha Mineral Seams</strong>
                   <span>Salt Range Belt, Punjab, Pakistan</span>
                 </div>
-                <div class="badge-status">Active Concession</div>
+                <div class="badge-status">Active Concessions</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="container" style="padding-top:40px; padding-bottom:64px;">
+      <div class="container" style="padding-top:20px; padding-bottom:64px;">
 
-        <!-- Quick Metrics Highlights -->
+        <!-- Quick Metrics Highlights (Floating Overlap) -->
         <div class="quick-metrics-row">
           <div class="metric-pill-card">
             <div class="metric-icon-circle">⛰️</div>
@@ -148,13 +169,20 @@
           </div>
         </div>
 
-        <!-- Panoramic Geological Formations Strip -->
+        <!-- Panoramic Geological Formations Strip with Interactive Hubs -->
         <div class="geology-panorama-card">
           <img src="images/landingPage-Image-upper.png" alt="Punjab Salt Range Geological Formations">
           <div class="panorama-overlay">
             <div>
+              <span class="section-badge" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.3); margin-bottom:8px;">500 Million Year Provenance</span>
               <h3>Ancient Eocambrian Salt Range Formations</h3>
-              <p>Formed over 500 million years ago across Jhelum, Khushab, and Mianwali. Exceptional geological crystalline depth offering organic trace minerals, iron oxides, and international food & pharmaceutical grade compliance.</p>
+              <p>Continuous subsurface evaporite seams spanning Jhelum, Khushab, and Mianwali. Exceptional geological crystalline depth offering organic trace minerals, iron oxides, and international food & pharmaceutical grade compliance.</p>
+              <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+                <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Jhelum')">🏛️ Khewra (Jhelum)</button>
+                <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Khushab')">⛏️ Warcha (Khushab)</button>
+                <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Mianwali')">🌊 Kalabagh (Mianwali)</button>
+                <button class="btn btn-sm btn-gold" onclick="switchView('sites')">🏭 Quaidabad SEZ Hub →</button>
+              </div>
             </div>
           </div>
         </div>
@@ -278,49 +306,81 @@
           <p class="section-subtitle">Documented geological deposits, natural crystalline purity grades, and mining lease statuses across northern Punjab.</p>
         </div>
 
-        <!-- Interactive GIS Map of Punjab Salt Range -->
-        <div class="card" style="margin-bottom:32px; padding:24px; background:#ffffff;">
-          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:8px;">Interactive Spatial Map: Punjab Salt Range Belt</h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Click on any mining hub or transportation corridor to inspect localized deposit records and logistics links.</p>
+        <!-- Interactive GIS Command Center of Punjab Salt Range -->
+        <div class="card" style="margin-bottom:32px; padding:28px; background:#040914; border:1px solid rgba(225,29,72,0.25); color:#ffffff; box-shadow:0 16px 40px rgba(4,9,20,0.5);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div>
+              <span class="section-badge" style="background:rgba(225,29,72,0.2); color:#fda4af; border-color:rgba(225,29,72,0.4);">Spatial GIS Telemetry</span>
+              <h3 style="font-size:22px; color:#ffffff; margin:4px 0;">Interactive Salt Range Mineral Corridor</h3>
+              <p style="font-size:13px; color:#94a3b8; margin:0;">Click any mining node to inspect localized geological formations, active concessions, and logistics sidings.</p>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Jhelum')">🏛️ Khewra</button>
+              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Khushab')">⛏️ Warcha</button>
+              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Mianwali')">🌊 Kalabagh</button>
+              <button class="btn btn-sm btn-gold" onclick="filterMapDistrict('Khushab')">🏭 Quaidabad SEZ</button>
+            </div>
+          </div>
           
-          <div style="position:relative; width:100%; height:320px; background:linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%); border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border);">
-            <svg viewBox="0 0 800 320" style="width:100%; height:100%;">
-              <!-- Background contours representing Salt Range escarpment -->
-              <path d="M 50,160 Q 200,120 400,150 T 750,140" fill="none" stroke="#cbd5e1" stroke-width="32" stroke-linecap="round" />
-              <path d="M 50,160 Q 200,120 400,150 T 750,140" fill="none" stroke="#fecdd3" stroke-width="12" stroke-linecap="round" />
+          <div style="position:relative; width:100%; height:340px; background:#07101e; border-radius:var(--radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+            <svg viewBox="0 0 800 340" style="width:100%; height:100%;">
+              <defs>
+                <linearGradient id="escarpmentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#be123c" stop-opacity="0.8"/>
+                  <stop offset="50%" stop-color="#f43f5e" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#fb7185" stop-opacity="0.8"/>
+                </linearGradient>
+                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#0284c7" stop-opacity="0.7"/>
+                </linearGradient>
+                <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                </pattern>
+              </defs>
               
-              <!-- M-2 Motorway Corridors -->
-              <line x1="300" y1="20" x2="520" y2="300" stroke="#94a3b8" stroke-width="4" stroke-dasharray="6,4" />
-              <text x="500" y="270" font-size="11" fill="#475569" font-weight="bold">M-2 Motorway (To Karachi/Dry Ports)</text>
+              <!-- Tactical Coordinate Grid -->
+              <rect width="800" height="340" fill="url(#gridPattern)" />
 
-              <!-- Indus River -->
-              <path d="M 80,20 Q 130,120 110,300" fill="none" stroke="#93c5fd" stroke-width="6" />
-              <text x="120" y="280" font-size="11" fill="#1e40af">Indus River</text>
+              <!-- Elevation Escarpment Belt -->
+              <path d="M 40,180 Q 200,130 400,165 T 760,150" fill="none" stroke="rgba(225,29,72,0.15)" stroke-width="48" stroke-linecap="round" />
+              <path d="M 40,180 Q 200,130 400,165 T 760,150" fill="none" stroke="url(#escarpmentGrad)" stroke-width="14" stroke-linecap="round" />
+              
+              <!-- M-2 Motorway Logistic Artery -->
+              <line x1="280" y1="20" x2="520" y2="320" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8,6" opacity="0.85" />
+              <text x="510" y="300" font-size="11" fill="#fcd34d" font-weight="bold">M-2 Industrial Corridor (To Karachi Sea Ports)</text>
 
-              <!-- Khewra Node -->
-              <circle cx="560" cy="145" r="16" fill="#be123c" cursor="pointer" onclick="filterMapDistrict('Jhelum')" />
-              <circle cx="560" cy="145" r="24" fill="none" stroke="#be123c" stroke-width="1.5" opacity="0.6" />
-              <text x="585" y="142" font-size="13" font-weight="bold" fill="#0b192c">Khewra (Jhelum)</text>
-              <text x="585" y="157" font-size="11" fill="#be123c">600M+ Tonnes | 98.8% NaCl</text>
+              <!-- Indus River System -->
+              <path d="M 70,20 Q 120,130 95,320" fill="none" stroke="url(#riverGrad)" stroke-width="7" />
+              <text x="105" y="300" font-size="11" fill="#7dd3fc" font-weight="bold">Indus River Basin</text>
 
-              <!-- Warcha Node -->
-              <circle cx="280" cy="155" r="14" fill="#e11d48" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
-              <circle cx="280" cy="155" r="22" fill="none" stroke="#e11d48" stroke-width="1.5" opacity="0.6" />
-              <text x="220" y="195" font-size="13" font-weight="bold" fill="#0b192c">Warcha (Khushab)</text>
-              <text x="220" y="210" font-size="11" fill="#be123c">400M+ Tonnes | 99.1% Purity</text>
+              <!-- Khewra Mega Deposit Node -->
+              <circle cx="580" cy="155" r="28" fill="rgba(225,29,72,0.2)" />
+              <circle cx="580" cy="155" r="16" fill="#e11d48" cursor="pointer" onclick="filterMapDistrict('Jhelum')" />
+              <circle cx="580" cy="155" r="6" fill="#ffffff" />
+              <text x="605" y="150" font-size="14" font-weight="800" fill="#ffffff">Khewra (Jhelum)</text>
+              <text x="605" y="168" font-size="11" fill="#fda4af">600M+ MT • 98.8% NaCl • PMDC</text>
 
-              <!-- Quaidabad Node -->
-              <rect x="250" y="105" width="22" height="22" rx="4" fill="#d97706" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
-              <text x="180" y="98" font-size="12" font-weight="bold" fill="#92400e">Quaidabad Value Cluster</text>
+              <!-- Warcha Crystal Seams Node -->
+              <circle cx="280" cy="165" r="24" fill="rgba(244,63,94,0.2)" />
+              <circle cx="280" cy="165" r="14" fill="#f43f5e" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
+              <circle cx="280" cy="165" r="5" fill="#ffffff" />
+              <text x="210" y="210" font-size="14" font-weight="800" fill="#ffffff">Warcha (Khushab)</text>
+              <text x="210" y="226" font-size="11" fill="#fda4af">400M+ MT • 99.1% High Purity</text>
 
-              <!-- Kalabagh Node -->
-              <circle cx="120" cy="120" r="12" fill="#be123c" cursor="pointer" onclick="filterMapDistrict('Mianwali')" />
-              <text x="70" y="100" font-size="13" font-weight="bold" fill="#0b192c">Kalabagh (Mianwali)</text>
-              <text x="70" y="114" font-size="11" fill="#be123c">250M+ Tonnes | 97.9%</text>
+              <!-- Quaidabad Processing SEZ Node -->
+              <rect x="260" y="110" width="24" height="24" rx="6" fill="#d97706" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
+              <text x="180" y="100" font-size="13" font-weight="800" fill="#fbbf24">🏭 Quaidabad SEZ Hub</text>
+              <text x="180" y="115" font-size="10.5" fill="#fde68a">Rail Siding • 10-Yr Tax Holiday</text>
+
+              <!-- Kalabagh Deposits Node -->
+              <circle cx="110" cy="130" r="12" fill="#be123c" cursor="pointer" onclick="filterMapDistrict('Mianwali')" />
+              <text x="60" y="110" font-size="13" font-weight="800" fill="#ffffff">Kalabagh (Mianwali)</text>
+              <text x="60" y="125" font-size="11" fill="#fda4af">250M+ MT • River Outcrops</text>
 
               <!-- Chakwal Node -->
-              <circle cx="430" cy="130" r="10" fill="#64748b" cursor="pointer" onclick="filterMapDistrict('Chakwal')" />
-              <text x="435" y="115" font-size="12" font-weight="bold" fill="#334155">Chakwal-Kallar Kahar</text>
+              <circle cx="440" cy="140" r="10" fill="#94a3b8" cursor="pointer" onclick="filterMapDistrict('Chakwal')" />
+              <text x="445" y="125" font-size="12" font-weight="700" fill="#cbd5e1">Chakwal-Kallar Kahar</text>
             </svg>
           </div>
         </div>
@@ -410,6 +470,54 @@
           <span class="section-badge">Economics of Transformation</span>
           <h2 class="section-title">Value-Addition Business Models</h2>
           <p class="section-subtitle">Comparing capital requirements, machinery profiles, and export realization across product tiers.</p>
+        </div>
+
+        <!-- Visual Gallery of High-Yield Transformation Tiers -->
+        <div class="grid-3" style="margin-bottom:32px;">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; position:relative;">
+              <img src="images/slider5.cd6dccfed10cc05d.jpg" alt="Retail Optical Sorted Salt" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">Codex CXS 150 Compliant</div>
+            </div>
+            <div style="padding:22px;">
+              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Optical Sorted Retail Pouches</h3>
+              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">High-speed optical grading separating dark rock inclusions. Standard 500g and 1kg stand-up zip pouches for EU & US supermarkets.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
+                <span style="font-size:12px; color:var(--navy-500);">FOB Realization:</span>
+                <strong style="color:var(--salt-600); font-size:16px;">$320 - $650 / MT</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; position:relative;">
+              <img src="images/img-auth-big.16a075058be12ab5.jpg" alt="Deep Seam Extraction" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">Underground Extraction</div>
+            </div>
+            <div style="padding:22px;">
+              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Khewra & Warcha Seam Selection</h3>
+              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">Direct underground selective mining targeting crystalline pink and transparent seams with natural 98.8% to 99.2% purity.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
+                <span style="font-size:12px; color:var(--navy-500);">Chemical Assay:</span>
+                <strong style="color:var(--emerald-600); font-size:16px;">99.1% Natural NaCl</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; position:relative;">
+              <img src="images/landingPage-Image-lower.png" alt="Gourmet Glass Grinders" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">High Margin Accretion</div>
+            </div>
+            <div style="padding:22px;">
+              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Gourmet Ceramic-Mill Grinders</h3>
+              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">Premium table seasoning grinders with adjustable ceramic rotors. Private-label co-manufacturing for organic food retailers.</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
+                <span style="font-size:12px; color:var(--navy-500);">FOB Realization:</span>
+                <strong style="color:var(--salt-600); font-size:16px;">$2,000 - $3,500 / MT</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Side-by-side Comparative Matrix -->
