@@ -1462,6 +1462,33 @@ button, input, select, textarea {
   gap: 16px;
 }
 
+/* Institutional Footer Action Button */
+.site-footer .btn-outline,
+.site-footer .btn-outline-light {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.site-footer .btn-outline:hover,
+.site-footer .btn-outline-light:hover {
+  background: linear-gradient(135deg, var(--salt-600) 0%, var(--salt-700) 100%);
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.45);
+}
+
 /* ==========================================================================
    12. Responsive Breakpoints
    ========================================================================== */
