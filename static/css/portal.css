@@ -235,7 +235,7 @@ button, input, select, textarea {
 }
 
 .brand-logo img.logo-img {
-  height: 44px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   transition: transform 0.25s ease;
@@ -337,7 +337,7 @@ button, input, select, textarea {
 .mobile-nav-drawer {
   display: none;
   position: fixed;
-  top: 110px;
+  top: 78px;
   left: 0;
   right: 0;
   bottom: 0;
