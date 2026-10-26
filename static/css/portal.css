@@ -235,9 +235,10 @@ button, input, select, textarea {
 }
 
 .brand-logo img.logo-img {
-  height: 52px;
+  height: 54px;
   width: auto;
   object-fit: contain;
+  border-radius: 4px;
   transition: transform 0.25s ease;
 }
 
