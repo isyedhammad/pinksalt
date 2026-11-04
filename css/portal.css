@@ -2768,3 +2768,52 @@ button, input, select, textarea {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Header Title in Pink Salt Color */
+.header-portal-title {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f43f5e;
+  cursor: pointer;
+  padding: 0 16px;
+  white-space: nowrap;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+}
+
+.header-portal-title:hover {
+  opacity: 0.92;
+  transform: scale(1.01);
+}
+
+@media (max-width: 1200px) {
+  .header-portal-title {
+    font-size: 16px;
+    letter-spacing: 0.8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-portal-title {
+    font-size: 13.5px;
+    letter-spacing: 0.5px;
+    white-space: normal;
+    line-height: 1.25;
+    text-align: left;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-portal-title {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+}
