@@ -739,65 +739,72 @@ function renderProcessingOptions() {
   const container = document.getElementById("machinery-grid-container");
   if (!container) return;
 
-  container.innerHTML = EMBEDDED_MACHINERY.map(m => `
-    <div class="machinery-card">
-      <div class="machinery-visual">
-        <img src="${m.photo}" alt="${m.title}">
-        <span class="machinery-tag ${m.is_optional ? 'optional' : ''}">${m.status_tag}</span>
-      </div>
-      <div class="machinery-info">
-        <h3>${m.title}</h3>
-        <p class="machinery-subtitle">${m.subtitle}</p>
-        <p class="machinery-desc">${m.purpose}</p>
+  container.innerHTML = EMBEDDED_MACHINERY.map(m => {
+    const badgeClass = m.id === 'turnkey_plants' ? 'turnkey' : (m.is_optional ? 'optional' : 'essential');
+    return `
+      <div class="machinery-card">
+        <div>
+          <div class="machinery-card-header">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:10px;">
+              <span class="machinery-badge ${badgeClass}">${m.status_tag}</span>
+            </div>
+            <h3>${m.title}</h3>
+            <p class="machinery-subtitle">${m.subtitle}</p>
+            <p class="machinery-desc">${m.purpose}</p>
+          </div>
 
-        <div style="margin-bottom:14px; font-size:13px; color:var(--navy-800);">
-          <strong>Finished Products Generated:</strong> ${m.products}
-        </div>
+          <div class="machinery-products-box">
+            <strong>Finished Products Generated</strong>
+            <span>${m.products}</span>
+          </div>
 
-        <div class="machinery-specs-grid">
-          <div class="spec-item">
-            <span>Capacity Range:</span>
-            <strong>${m.capacity_range}</strong>
+          <div class="machinery-specs-grid">
+            <div class="spec-item">
+              <span>Capacity Range:</span>
+              <strong>${m.capacity_range}</strong>
+            </div>
+            <div class="spec-item">
+              <span>Primary Tech:</span>
+              <strong title="${m.specs.equipment_type || m.specs.engineering || ''}">${m.specs.equipment_type || m.specs.engineering}</strong>
+            </div>
+            <div class="spec-item">
+              <span>Power Rating:</span>
+              <strong>${m.specs.power_rating || 'Per Layout'}</strong>
+            </div>
+            <div class="spec-item">
+              <span>Utility Hookup:</span>
+              <strong title="${m.utility}">${m.utility}</strong>
+            </div>
           </div>
-          <div class="spec-item">
-            <span>Primary Technology:</span>
-            <strong>${m.specs.equipment_type || m.specs.engineering}</strong>
-          </div>
-          <div class="spec-item">
-            <span>Power Rating:</span>
-            <strong>${m.specs.power_rating || 'Per Layout'}</strong>
-          </div>
-          <div class="spec-item">
-            <span>Utility Hookup:</span>
-            <strong>${m.utility}</strong>
-          </div>
-        </div>
 
-        <div style="margin-top:10px; margin-bottom:12px; font-size:12px;">
-          ${m.verified_source_url ? `
-            <span style="color:var(--text-muted);">Verified Manufacturer Source: </span>
-            <a href="${m.verified_source_url}" target="_blank" rel="noopener noreferrer" style="color:var(--rose-700); font-weight:700; text-decoration:underline;">
-              ${m.verified_source} ↗
-            </a>
-          ` : `
-            <span style="color:var(--text-muted);">Verified Source: Directorate Technical Concessions Benchmark</span>
-          `}
+          <div class="machinery-source-line">
+            ${m.verified_source_url ? `
+              <span style="color:var(--text-muted);">Verified Source: </span>
+              <a href="${m.verified_source_url}" target="_blank" rel="noopener noreferrer" style="color:var(--rose-700); font-weight:700; text-decoration:underline;">
+                ${m.verified_source} ↗
+              </a>
+            ` : `
+              <span style="color:var(--text-muted);">Verified Source: Directorate Technical Concessions Benchmark</span>
+            `}
+          </div>
         </div>
 
         <div class="machinery-card-footer">
           <div class="machinery-price-box">
             <span class="price-label">Indicative Equipment Price</span>
-            <span class="price-val">${m.indicative_price_pkr}</span>
-            <small style="color:var(--text-muted); font-size:11.5px; margin-left:6px;">(${m.indicative_price_usd})</small>
+            <div>
+              <span class="price-val">${m.indicative_price_pkr}</span>
+              <small style="color:var(--text-muted); font-size:11px; margin-left:4px;">(${m.indicative_price_usd})</small>
+            </div>
           </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn btn-outline btn-sm" onclick="openRFQModal('${m.title}', 25)">Generate RFQ 📋</button>
-            <button class="btn btn-primary btn-sm" onclick="configureMachineryInCalc(${m.default_capex_usd}, ${m.is_optional})">Configure in Calculator →</button>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <button class="btn btn-outline btn-sm" onclick="openRFQModal('${m.title}', 25)" style="padding:7px 8px; font-size:11.5px; text-align:center; justify-content:center;">Generate RFQ 📋</button>
+            <button class="btn btn-primary btn-sm" onclick="configureMachineryInCalc(${m.default_capex_usd}, ${m.is_optional})" style="padding:7px 8px; font-size:11.5px; text-align:center; justify-content:center;">Configure in Calc →</button>
           </div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 function configureMachineryInCalc(capexUSD, isOptional) {
