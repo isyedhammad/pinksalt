@@ -198,4 +198,4 @@ Ran 9 tests in 0.037s (OK)
 
 ## 8. Disclaimer & Institutional Status
 
-This software application was designed as an independent strategic concept by an Assistant Director in the Punjab Mines & Minerals sector for demonstration and policy dialogue at the **Pakistan Mineral Investment Forum**. It does not constitute a formal government electronic concession application portal or a certified banking underwriting document.
+This software application was designed as an independent strategic concept by Directorate General Mines & Minerals Punjab for demonstration and policy dialogue. It does not constitute a formal government electronic concession application portal or a certified banking underwriting document.
