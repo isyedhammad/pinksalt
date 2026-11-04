@@ -2817,3 +2817,37 @@ button, input, select, textarea {
     letter-spacing: 0.3px;
   }
 }
+
+/* DG Mines Admin Trigger in Header */
+.dg-admin-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--radius-full);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.dg-admin-trigger:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(225, 29, 72, 0.4));
+}
+
+.dg-admin-trigger img.dg-mines-logo {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .dg-admin-trigger img.dg-mines-logo {
+    height: 38px;
+    width: 38px;
+  }
+}

@@ -14,9 +14,8 @@
   <!-- Header & Clean Navigation -->
   <header class="site-header">
     <div class="container header-wrapper">
-      <div class="brand-logo" onclick="switchView('home')" title="Government of Punjab - Directorate General of Mines &amp; Minerals">
+      <div class="brand-logo" onclick="switchView('home')" title="Government of Punjab">
         <img src="images/govt-of-punjab-logo.png" alt="Government of Punjab" class="logo-img gov-crest-logo" title="Government of Punjab">
-        <img src="images/dg-mines-minerals-logo.png" alt="Directorate General of Mines &amp; Minerals Punjab" class="logo-img dg-mines-logo" title="Directorate General of Mines &amp; Minerals, Punjab">
         <div class="brand-divider"></div>
         <img src="images/cm-punjab-logo.jpg" alt="Chief Minister Punjab Maryam Nawaz" class="logo-img cm-badge-logo" title="Chief Minister Punjab Maryam Nawaz">
       </div>
@@ -26,8 +25,9 @@
       </div>
 
       <div class="header-actions">
-        <button class="btn btn-primary btn-sm" onclick="switchView('enquiry')">✨ Investor Enquiry</button>
-        <button class="btn btn-outline btn-sm" onclick="switchView('admin')" title="Administrative Dashboard">Admin 🔒</button>
+        <div class="dg-admin-trigger" onclick="switchView('admin')" title="Directorate General of Mines &amp; Minerals • Administrative Access">
+          <img src="images/dg-mines-minerals-logo.png" alt="Directorate General of Mines &amp; Minerals Punjab" class="logo-img dg-mines-logo">
+        </div>
         <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()">
           <span></span>
           <span></span>
@@ -71,9 +71,10 @@
               processing options, quality compliance benchmarks, and deterministic 5-year financial models for investors, exporters, and lenders.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Investment Opportunities →</button>
+              <button class="btn btn-primary" onclick="switchView('enquiry')">✨ Submit Investor Enquiry / EOI →</button>
               <button class="btn btn-outline-light" onclick="switchView('calculator')">Run 5-Year Feasibility Model</button>
               <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Processing &amp; Sites</button>
+              <button class="btn btn-secondary" style="background:rgba(255,255,255,0.15); color:#ffffff; border:1px solid rgba(255,255,255,0.3);" onclick="switchView('opportunities')">💼 Investment Opportunities</button>
             </div>
             <div class="hero-trust-proof">
               <span><i class="proof-icon">✓</i> GSP Geological Survey (30.0+ Bn MT)</span>
