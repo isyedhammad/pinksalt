@@ -812,6 +812,23 @@ function configureMachineryInCalc(capexUSD, isOptional) {
   }, 100);
 }
 
+function calibrateFeasibilityWithTurnkeyPlant() {
+  switchView("calculator");
+  setTimeout(() => {
+    // Select PKR 3.0 Crore preset (Turnkey 25 TPD Line)
+    const presetBtn = document.querySelector('.calc-preset-btn[data-capex="30000000"]') || 
+                      document.querySelectorAll('.calc-preset-btn')[2];
+    if (presetBtn) {
+      presetBtn.click();
+    }
+    const washToggle = document.getElementById("calc-washing-toggle");
+    if (washToggle && !washToggle.checked) {
+      washToggle.click();
+    }
+    showToast("⚙️ Calibrated 5-Year Feasibility with Engineerings.pk EPK-SALT1000 Turnkey Line (PKR 3.0 Cr CAPEX, 25 TPD)");
+  }, 120);
+}
+
 // -------------------------------------------------------------
 // 5. RFQ Modal Generator
 // -------------------------------------------------------------
