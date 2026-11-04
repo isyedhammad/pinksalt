@@ -420,11 +420,17 @@ const state = {
 function showToast(message) {
   const container = document.getElementById("toast-container");
   if (!container) return;
+  // Clear any existing toast so only 1 summarized notification displays
+  container.innerHTML = "";
   const toast = document.createElement("div");
   toast.className = "toast";
-  toast.innerText = message;
+  toast.innerHTML = `<span style="display:inline-flex; align-items:center; gap:6px;">${message}</span>`;
   container.appendChild(toast);
-  setTimeout(() => { toast.remove(); }, 4000);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 250);
+  }, 2200);
 }
 
 function formatUSD(num) {
@@ -830,8 +836,8 @@ function configureMachineryInCalc(capexUSD, isOptional) {
     if (isOptional) {
       toggleWashing(true);
     }
-    executeCalculation();
-    showToast(`Configured machinery into Feasibility Calculator (${formatUSD(capexUSD)})`);
+    executeCalculation(false);
+    showToast('✓ Successfully calculated');
   }, 100);
 }
 
@@ -848,7 +854,7 @@ function calibrateFeasibilityWithTurnkeyPlant() {
     if (washToggle && !washToggle.checked) {
       washToggle.click();
     }
-    showToast("⚙️ Calibrated 5-Year Feasibility with Engineerings.pk EPK-SALT1000 Turnkey Line (PKR 3.0 Cr CAPEX, 25 TPD)");
+    showToast('✓ Successfully calculated');
   }, 120);
 }
 
@@ -953,8 +959,8 @@ function applyTestingCostToFeasibility() {
     const complianceInput = document.getElementById("calc-compliance");
     if (complianceInput) {
       complianceInput.value = Math.round(annualUSD);
-      executeCalculation();
-      showToast(`Applied ${formatUSD(annualUSD)} annual testing budget to calculator.`);
+      executeCalculation(false);
+      showToast('✓ Successfully calculated');
     }
   }, 100);
 }
@@ -1110,7 +1116,7 @@ const SMEDA_BENCHMARK_CASE_STUDY = {
   npv_pkr: 49945487
 };
 
-function selectApplicantCategory(catId) {
+function selectApplicantCategory(catId, showNotification = false) {
   state.currentApplicantCategory = catId;
   const cat = APPLICANT_CATEGORIES[catId];
   if (!cat) return;
@@ -1180,12 +1186,14 @@ function selectApplicantCategory(catId) {
   if (elProd && cat.productKey) elProd.value = cat.productKey;
 
   toggleWashing(cat.washing);
-  executeCalculation();
-  showToast('Calibrated for: ' + cat.name + ' (' + cat.rangeBadge + ')');
+  executeCalculation(false);
+  if (showNotification) {
+    showToast('✓ Successfully calculated');
+  }
 }
 
 function loadSmedaCaseStudy() {
-  selectApplicantCategory('export_oriented');
+  selectApplicantCategory('export_oriented', false);
   state.smedaAssumptionsActive = true;
 
   // Table 24: Production Cost Assumptions
@@ -1201,9 +1209,9 @@ function loadSmedaCaseStudy() {
   const elEquity = document.getElementById('calc-equity-pct');
   if (elEquity) elEquity.value = 50.0; // 50% debt / 50% equity
 
-  executeCalculation();
+  executeCalculation(false);
   switchFiveYearTab('cashflow');
-  showToast('Loaded SMEDA Dec 2023 Study (PKR 94.99M), Table 23/24 unit rates & 5-Year Cash Flow');
+  showToast('✓ Successfully calculated');
 }
 
 // ==============================================================================
@@ -1345,7 +1353,8 @@ function selectPlanningRange(pkr) {
   document.getElementById("calc-compliance").value = p.compliance;
   document.getElementById("calc-selling-price").value = p.price;
 
-  executeCalculation();
+  executeCalculation(false);
+  showToast('✓ Successfully calculated');
 }
 
 function applyProductDefaults(productKey) {
@@ -1357,8 +1366,8 @@ function applyProductDefaults(productKey) {
   document.getElementById("calc-packaging").value = p.packaging;
 
   toggleWashing(p.wash);
-  executeCalculation();
-  showToast(`Updated parameters for ${productKey.replace(/_/g, ' ')}`);
+  executeCalculation(false);
+  showToast('✓ Successfully calculated');
 }
 
 function toggleWashing(isRequired) {
@@ -1369,14 +1378,14 @@ function toggleWashing(isRequired) {
     washYes.checked = isRequired;
     washNo.checked = !isRequired;
   }
-  executeCalculation();
+  executeCalculation(false);
 }
 
 function initCalculator() {
   if (!state.currentApplicantCategory) {
-    selectApplicantCategory('medium_manufacturing');
+    selectApplicantCategory('medium_manufacturing', false);
   } else {
-    executeCalculation();
+    executeCalculation(false);
   }
 }
 
@@ -1504,7 +1513,7 @@ function downloadFeasibilityCSV() {
   showToast("Feasibility assessment CSV downloaded successfully.");
 }
 
-function executeCalculation() {
+function executeCalculation(fromUser = false) {
   const machinery = parseFloat(document.getElementById("calc-machinery")?.value) || 0;
   const land = parseFloat(document.getElementById("calc-land-building")?.value) || 0;
   const install = parseFloat(document.getElementById("calc-installation")?.value) || 0;
@@ -1970,6 +1979,10 @@ function renderCalculationResults(c) {
   drawFinancialChart(c.five_year_projection);
   drawCashflowChart(c.five_year_projection, c.loan_amortization);
   drawDSCRChart(c.loan_amortization);
+
+  if (fromUser) {
+    showToast('✓ Successfully calculated');
+  }
 }
 
 // -------------------------------------------------------------
@@ -2556,7 +2569,7 @@ function renderAdminDashboard() {
 
 function selectCategoryAndSimulate(catId, capexVal) {
   if (typeof selectApplicantCategory === 'function') {
-    selectApplicantCategory(catId);
+    selectApplicantCategory(catId, false);
   }
   if (typeof setEngineCapex === 'function') {
     setEngineCapex(capexVal);
@@ -2565,14 +2578,8 @@ function selectCategoryAndSimulate(catId, capexVal) {
   if (target) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  const catNames = {
-    'small_packaging': 'Small-Scale Packaging Unit (PKR 7.5M)',
-    'medium_manufacturing': 'Medium-Scale Manufacturing Unit (PKR 25M)',
-    'value_added_products': 'Value-Added Crafts & Spa (PKR 15M)',
-    'export_oriented': 'Export-Oriented Enterprise (PKR 50M)'
-  };
   if (typeof showToast === 'function') {
-    showToast('Loaded ' + (catNames[catId] || 'Category') + ' — 5-Year Financial Forecast Recalibrated!');
+    showToast('✓ Successfully calculated');
   }
 }
 
