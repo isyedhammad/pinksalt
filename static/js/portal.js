@@ -2397,7 +2397,7 @@ function prefillEnquiryWithOpportunity(oppTitle, oppLocation) {
 }
 
 // -------------------------------------------------------------
-// 12. Investment Assistant (Grounded Chatbot)
+// 12. PinkSalt AI (Grounded Chatbot)
 // -------------------------------------------------------------
 function sendChatMessage(presetPrompt = null) {
   const inputEl = document.getElementById("ai-chat-input");
