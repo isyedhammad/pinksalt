@@ -2531,6 +2531,29 @@ function renderAdminDashboard() {
 // -------------------------------------------------------------
 // Interactive 5-Year Investment & Debt Feasibility Engine
 // -------------------------------------------------------------
+
+function selectCategoryAndSimulate(catId, capexVal) {
+  if (typeof selectApplicantCategory === 'function') {
+    selectApplicantCategory(catId);
+  }
+  if (typeof setEngineCapex === 'function') {
+    setEngineCapex(capexVal);
+  }
+  const target = document.getElementById('engine-card-showcase') || document.getElementById('engine-card-calculator');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  const catNames = {
+    'small_packaging': 'Small-Scale Packaging Unit (PKR 7.5M)',
+    'medium_manufacturing': 'Medium-Scale Manufacturing Unit (PKR 25M)',
+    'value_added_products': 'Value-Added Crafts & Spa (PKR 15M)',
+    'export_oriented': 'Export-Oriented Enterprise (PKR 50M)'
+  };
+  if (typeof showToast === 'function') {
+    showToast('Loaded ' + (catNames[catId] || 'Category') + ' — 5-Year Financial Forecast Recalibrated!');
+  }
+}
+
 function setEngineCapex(val) {
   const els = document.querySelectorAll('#input-capex');
   els.forEach(el => el.value = val);
