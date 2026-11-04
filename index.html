@@ -1189,7 +1189,169 @@
         <div class="section-header">
           <span class="section-badge">Five-Year Financial Model</span>
           <h2 class="section-title">Investment Feasibility Calculator &amp; 5-Year Model</h2>
-          <p class="section-subtitle">Calibrated financial model for pink salt processing in Punjab. Features PKR 50 Lakh to PKR 5 Crore planning range, washing toggle, 5-year loan amortization, and DSCR metrics.</p>
+          <p class="section-subtitle">Calibrated financial model for pink salt processing in Punjab. Features applicant business categories, SMEDA official case study benchmark, washing toggle, 5-year loan amortization, and automated bankability assessment.</p>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- STEP 1: APPLICANT BUSINESS CATEGORIES (LOAN FACILITATION) -->
+        <!-- ======================================================== -->
+        <div style="margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <div>
+              <span class="opp-badge badge-verified" style="margin-bottom:6px; display:inline-block;">⚡ Loan &amp; Investment Facilitation</span>
+              <h3 style="font-size:19px; font-weight:800; color:var(--navy-900); margin:0;">
+                Select Applicant Business Category &amp; Scale
+              </h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:4px 0 0 0;">
+                Not every loan applicant will establish a large industrial plant. Select your proposed enterprise scale to automatically calibrate capital costs, production equipment, staffing, and revenue model:
+              </p>
+            </div>
+          </div>
+
+          <div class="applicant-category-grid">
+            <!-- Category 1 -->
+            <div class="applicant-cat-card" id="cat-card-small_packaging" onclick="selectApplicantCategory('small_packaging')">
+              <div>
+                <div class="applicant-cat-header">
+                  <div class="applicant-cat-num">1</div>
+                  <span class="applicant-cat-range-pill">PKR 50L - 1.5Cr</span>
+                </div>
+                <h4 class="applicant-cat-title">Small-Scale Packaging Unit</h4>
+                <div class="applicant-cat-activities">Grinding, grading, packing and labelling in retail consumer pouches.</div>
+              </div>
+              <div>
+                <div class="applicant-cat-meta">
+                  <div class="applicant-cat-meta-row"><span>Production Scale:</span> <strong>8 TPD (2,240 MT/yr)</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Core Machinery:</span> <strong>Hammer mill &amp; Pouch FFS</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Staff Workforce:</span> <strong>12 Workers</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Equity / Loan:</span> <strong>30% / 70%</strong></div>
+                </div>
+                <button type="button" class="applicant-cat-select-btn">Select Category 1</button>
+              </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="applicant-cat-card active" id="cat-card-medium_manufacturing" onclick="selectApplicantCategory('medium_manufacturing')">
+              <div>
+                <div class="applicant-cat-header">
+                  <div class="applicant-cat-num">2</div>
+                  <span class="applicant-cat-range-pill">PKR 2.0Cr - 5.0Cr</span>
+                </div>
+                <h4 class="applicant-cat-title">Medium-Scale Manufacturing Unit</h4>
+                <div class="applicant-cat-activities">Washing, crushing, grinding, processing and bulk/retail packaging.</div>
+              </div>
+              <div>
+                <div class="applicant-cat-meta">
+                  <div class="applicant-cat-meta-row"><span>Production Scale:</span> <strong>30 TPD (8,400 MT/yr)</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Core Machinery:</span> <strong>Crusher, Washer &amp; Mill</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Staff Workforce:</span> <strong>28 Workers</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Equity / Loan:</span> <strong>35% / 65%</strong></div>
+                </div>
+                <button type="button" class="applicant-cat-select-btn">Select Category 2</button>
+              </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="applicant-cat-card" id="cat-card-value_added_products" onclick="selectApplicantCategory('value_added_products')">
+              <div>
+                <div class="applicant-cat-header">
+                  <div class="applicant-cat-num">3</div>
+                  <span class="applicant-cat-range-pill">PKR 75L - 2.5Cr</span>
+                </div>
+                <h4 class="applicant-cat-title">Value-Added Product Manufacturing</h4>
+                <div class="applicant-cat-activities">Salt lamps, tiles, bath salts, decorative products and finished goods.</div>
+              </div>
+              <div>
+                <div class="applicant-cat-meta">
+                  <div class="applicant-cat-meta-row"><span>Production Scale:</span> <strong>10 TPD (Artisan Crafts)</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Core Machinery:</span> <strong>Lathes, Cutters &amp; Drills</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Staff Workforce:</span> <strong>22 Artisans</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Equity / Loan:</span> <strong>40% / 60%</strong></div>
+                </div>
+                <button type="button" class="applicant-cat-select-btn">Select Category 3</button>
+              </div>
+            </div>
+
+            <!-- Category 4 -->
+            <div class="applicant-cat-card" id="cat-card-export_oriented" onclick="selectApplicantCategory('export_oriented')">
+              <div>
+                <div class="applicant-cat-header">
+                  <div class="applicant-cat-num">4</div>
+                  <span class="applicant-cat-range-pill">PKR 5.0Cr - 9.5+Cr</span>
+                </div>
+                <h4 class="applicant-cat-title">Export-Oriented Business</h4>
+                <div class="applicant-cat-activities">Bulk supply, private labelling, international distribution and direct exports.</div>
+              </div>
+              <div>
+                <div class="applicant-cat-meta">
+                  <div class="applicant-cat-meta-row"><span>Production Scale:</span> <strong>50 TPD (14,000 MT/yr)</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Core Machinery:</span> <strong>Turnkey SS304 Line</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Staff Workforce:</span> <strong>43 Personnel</strong></div>
+                  <div class="applicant-cat-meta-row"><span>Equity / Loan:</span> <strong>50% / 50%</strong></div>
+                </div>
+                <button type="button" class="applicant-cat-select-btn">Select Category 4</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- OFFICIAL SMEDA BENCHMARK CASE STUDY (DOC NO. 220, DEC 2023) -->
+        <!-- ======================================================== -->
+        <div class="smeda-benchmark-card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+            <div style="max-width:760px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span class="smeda-badge">🏛️ Official Government Case Study Benchmark</span>
+                <span style="font-size:12px; color:#94a3b8;">Document No. 220 | Ministry of Industries &amp; Production</span>
+              </div>
+              <h3 style="font-size:19px; font-weight:800; color:#ffffff; margin:0 0 6px 0;">
+                SMEDA Pre-Feasibility Study: Pink Salt Manufacturing &amp; Export Unit (Dec 2023)
+              </h3>
+              <p style="font-size:13px; color:#cbd5e1; margin:0; line-height:1.5;">
+                Audited benchmark prepared by the Small and Medium Enterprises Development Authority (SMEDA), Government of Pakistan. Modeled for an integrated 3.2 Kanal industrial facility in the Salt Range producing 14,000 tonnes of edible salt and 81,312 artisanal lamps annually.
+              </p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+              <button class="btn btn-primary" style="background:#f59e0b; border-color:#d97706; color:#0f172a; font-weight:800;" onclick="loadSmedaCaseStudy()">
+                ⚡ Load SMEDA Case Study into Calculator (PKR 94.99M)
+              </button>
+              <span style="font-size:11px; color:#94a3b8;">1-Click Automatic Model Population</span>
+            </div>
+          </div>
+
+          <div class="smeda-metric-grid">
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Total Project Cost</div>
+              <div class="smeda-metric-value">PKR 94.99 M</div>
+              <div class="smeda-metric-sub">Capex 86.1M + WC 8.86M</div>
+            </div>
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Plant &amp; Machinery</div>
+              <div class="smeda-metric-value">PKR 31.19 M</div>
+              <div class="smeda-metric-sub">SS 304 Line + Decors</div>
+            </div>
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Land &amp; Civil Works</div>
+              <div class="smeda-metric-value">PKR 40.12 M</div>
+              <div class="smeda-metric-sub">3.2 Kanal (14,400 sq.ft)</div>
+            </div>
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Internal Rate of Return (IRR)</div>
+              <div class="smeda-metric-value" style="color:#4ade80;">29% / 25%</div>
+              <div class="smeda-metric-sub">100% Equity / 50% Debt</div>
+            </div>
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Net Present Value (NPV)</div>
+              <div class="smeda-metric-value" style="color:#4ade80;">PKR 49.95 M</div>
+              <div class="smeda-metric-sub">At 20% discount factor</div>
+            </div>
+            <div class="smeda-metric-box">
+              <div class="smeda-metric-label">Audited Payback</div>
+              <div class="smeda-metric-value">4.10 Years</div>
+              <div class="smeda-metric-sub">Breakeven Y1: PKR 209M</div>
+            </div>
+          </div>
         </div>
 
         <!-- Planning Range Selector Bar (PKR 50 Lakh to PKR 5 Crore) -->
@@ -1368,9 +1530,14 @@
                 <input type="number" id="calc-compliance" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Loan Markup / Interest Rate:</label>
+                <label class="form-label">Loan Markup / Interest Rate (%):</label>
                 <input type="number" step="0.5" id="calc-interest-rate" class="form-control" value="14.5" onchange="executeCalculation()">
-                <small style="color:var(--text-muted)">14.5% Benchmark</small>
+                <small style="color:var(--text-muted)">14.5% Standard / 26% SMEDA</small>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Sponsor Equity Contribution (%):</label>
+                <input type="number" step="5" min="10" max="100" id="calc-equity-pct" class="form-control" value="35" onchange="executeCalculation()">
+                <small id="calc-equity-pkr" style="color:var(--text-muted)">Equity: PKR 0 | Loan: PKR 0</small>
               </div>
             </div>
 
@@ -1441,6 +1608,86 @@
                     <!-- Dynamically populated -->
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- AUTOMATED FEASIBILITY ASSESSMENT & BANKABILITY EVALUATION -->
+        <!-- ======================================================== -->
+        <div class="assessment-card" id="automated-feasibility-assessment">
+          <div class="assessment-header">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="badge badge-verified">Automated Financial Assessment</span>
+                <span id="assessment-category-badge" class="applicant-cat-range-pill">Category 2: Medium-Scale</span>
+              </div>
+              <h3 style="font-size:18px; font-weight:800; color:var(--navy-900); margin:6px 0 2px 0;">
+                Bankability, Debt Repayment &amp; Loan Approval Evaluation
+              </h3>
+              <p style="font-size:12.5px; color:var(--text-muted); margin:0;">
+                Automated credit underwriting evaluation benchmarked against State Bank of Pakistan (SBP) SME prudential regulations and commercial banking norms.
+              </p>
+            </div>
+
+            <div class="bankability-score-box">
+              <div id="assessment-bank-circle" class="bankability-circle">
+                <span id="assessment-bank-score" class="bankability-score-num">88</span>
+                <span class="bankability-score-lbl">SCORE</span>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Bank Underwriting Rating</div>
+                <div id="assessment-rating-tier" style="font-size:16px; font-weight:800; color:var(--navy-900);">Class A - Highly Bankable</div>
+                <div id="assessment-dscr-pill" class="dscr-indicator dscr-healthy" style="margin-top:4px; display:inline-block;">● Healthy DSCR: 1.84x</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-cols">
+            <div>
+              <h4 style="font-size:13px; font-weight:700; color:var(--navy-900); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">Key Underwriting Parameters</h4>
+              <div class="assessment-param-list">
+                <div class="assessment-param-item">
+                  <span>Proposed Total Project Cost:</span>
+                  <strong id="assessment-total-capex">,000 (PKR 3.78 Crore)</strong>
+                </div>
+                <div class="assessment-param-item">
+                  <span>Equity / Loan Structure:</span>
+                  <strong id="assessment-equity-loan-ratio">35% Equity / 65% Debt</strong>
+                </div>
+                <div class="assessment-param-item">
+                  <span>Estimated Loan Principal:</span>
+                  <strong id="assessment-loan-amount">,750 (PKR 2.46 Crore)</strong>
+                </div>
+                <div class="assessment-param-item">
+                  <span>Estimated Monthly EMI (P+I):</span>
+                  <strong id="assessment-monthly-emi" style="color:var(--rose-700)">PKR 578,000 / month</strong>
+                </div>
+                <div class="assessment-param-item">
+                  <span>5-Year Average Debt Service Coverage (DSCR):</span>
+                  <strong id="assessment-avg-dscr" style="color:var(--success)">1.84x (Min req: 1.30x)</strong>
+                </div>
+                <div class="assessment-param-item">
+                  <span>Projected Capital Payback Period:</span>
+                  <strong id="assessment-payback-years">3.4 Years</strong>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 style="font-size:13px; font-weight:700; color:var(--navy-900); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">Applicant Advisory &amp; Next Steps</h4>
+              <div id="assessment-advice-box" class="assessment-advice-box">
+                Standard industrial salt processing unit. Ensure proper wastewater sedimentation for the washing circuit and reliable 3-phase grid power (50-100 kVA transformer).
+              </div>
+              <div style="margin-top:12px; font-size:12px; color:var(--navy-800); background:#f1f5f9; padding:10px 12px; border-radius:6px;">
+                <strong>Recommended Lending Facilities:</strong>
+                <ul style="margin:6px 0 0 16px; padding:0; line-height:1.4;">
+                  <li>SBP Refinance Facility for Modernization of SMEs (SME-RFM)</li>
+                  <li>Bank of Punjab (BOP) Mineral Sector SME Credit Line</li>
+                  <li>SBP Export Refinance Facility (Part I &amp; II) for Export Units</li>
+                  <li>Punjab Small Industries Corporation (PSIC) Micro-Enterprise Credit</li>
+                </ul>
               </div>
             </div>
           </div>

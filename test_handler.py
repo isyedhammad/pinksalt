@@ -165,6 +165,19 @@ class TestServerHandlerDirect(unittest.TestCase):
         self.assertTrue(data["verified"])
         self.assertEqual(data["batch"]["origin_mine"], "Khewra Salt Mine (Level 6)")
 
+    def test_applicant_categories_endpoint(self):
+        status, data, _ = execute_mock_request("GET", "/api/feasibility/applicant-categories")
+        self.assertEqual(status, 200)
+        self.assertTrue(data["success"])
+        self.assertEqual(len(data["categories"]), 4)
+        self.assertIn("small_packaging", data["categories"])
+
+    def test_smeda_case_study_endpoint(self):
+        status, data, _ = execute_mock_request("GET", "/api/feasibility/smeda-case-study")
+        self.assertEqual(status, 200)
+        self.assertTrue(data["success"])
+        self.assertEqual(data["case_study"]["capital_costs_pkr"]["total_project_cost"], 94992710)
+
 
 if __name__ == "__main__":
     unittest.main()

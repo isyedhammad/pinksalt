@@ -297,6 +297,95 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
         "monthly_instalment_pkr": round(monthly_instalment * pkr_rate, 0)
     }
 
+    # Calculate Automated Bankability Score (0 - 100)
+    avg_dscr = sum(p["dscr"] for p in five_year_projection) / len(five_year_projection) if five_year_projection else 0.0
+    equity_pct = (equity_amount / total_capex * 100.0) if total_capex > 0 else 100.0
+    
+    # 1. DSCR Score (Max 40 pts)
+    if avg_dscr >= 2.0:
+        dscr_score = 40
+    elif avg_dscr >= 1.5:
+        dscr_score = 35
+    elif avg_dscr >= 1.3:
+        dscr_score = 30
+    elif avg_dscr >= 1.0:
+        dscr_score = 18
+    else:
+        dscr_score = 5
+
+    # 2. Payback Score (Max 25 pts)
+    if payback_years <= 3.0:
+        payback_score = 25
+    elif payback_years <= 4.5:
+        payback_score = 20
+    elif payback_years <= 6.0:
+        payback_score = 12
+    else:
+        payback_score = 5
+
+    # 3. Equity Contribution Score (Max 20 pts)
+    if equity_pct >= 40.0:
+        equity_score = 20
+    elif equity_pct >= 30.0:
+        equity_score = 16
+    elif equity_pct >= 20.0:
+        equity_score = 10
+    else:
+        equity_score = 4
+
+    # 4. Operating Margin Score (Max 15 pts)
+    if operating_margin_pct >= 35.0:
+        margin_score = 15
+    elif operating_margin_pct >= 20.0:
+        margin_score = 12
+    elif operating_margin_pct >= 10.0:
+        margin_score = 7
+    else:
+        margin_score = 2
+
+    bankability_score = min(100, max(10, dscr_score + payback_score + equity_score + margin_score))
+
+    if bankability_score >= 85:
+        rating_tier = "Class A - Highly Bankable"
+        rating_desc = "Optimal loan eligibility for State Bank of Pakistan (SBP) SME Refinancing and BOP Mineral Facilities. Strong debt coverage and rapid payback."
+    elif bankability_score >= 70:
+        rating_tier = "Class B - Bankable"
+        rating_desc = "Solid commercial feasibility meeting standard industrial bank underwriting criteria. Standard equipment hypothecation applicable."
+    elif bankability_score >= 55:
+        rating_tier = "Class C - Moderate Viability"
+        rating_desc = "Feasible operation; commercial lenders may require 35-40% sponsor equity or supplementary immovable collateral."
+    else:
+        rating_tier = "Class D - High Risk / Restructuring Needed"
+        rating_desc = "Debt service coverage or profit margins are tight. Recommend reducing initial CAPEX, increasing equity, or expanding sales price."
+
+    applicant_category_key = str(params.get("applicant_category", "medium_manufacturing"))
+    category_advice_map = {
+        "small_packaging": "Ideal for micro & small entrepreneurs. Focus on food-grade packaging hygiene (PSQCA 1669:2008) and retail barcode distribution. Low fixed overhead allows fast breakeven.",
+        "medium_manufacturing": "Standard industrial salt processing unit. Ensure proper wastewater sedimentation for the washing circuit and reliable 3-phase grid power (50-100 kVA transformer).",
+        "value_added_products": "High gross margin artisan production (lamps, tiles, spa salts). Prioritize skilled lathe craftsmanship, moisture-proof shrink wrapping, and CE/UL certified electrical fittings for export.",
+        "export_oriented": "Full-scale corporate exporter benchmarked against SMEDA Dec 2023 Study #220. Meets eligibility for SBP Export Refinance Scheme (ERF). Requires ISO 22000, HACCP, Halal, and FDA compliance."
+    }
+
+    automated_assessment = {
+        "bankability_score": bankability_score,
+        "rating_tier": rating_tier,
+        "rating_description": rating_desc,
+        "applicant_category": applicant_category_key,
+        "category_advice": category_advice_map.get(applicant_category_key, category_advice_map["medium_manufacturing"]),
+        "average_dscr": round(avg_dscr, 2),
+        "dscr_status": "Healthy" if avg_dscr >= 1.30 else ("Acceptable" if avg_dscr >= 1.0 else "Deficit Risk"),
+        "equity_percentage": round(equity_pct, 1),
+        "loan_percentage": round(100.0 - equity_pct, 1),
+        "estimated_payback_years": round(payback_years, 2) if payback_years < 50 else 99.0,
+        "monthly_emi_pkr": round(monthly_instalment * pkr_rate, 0),
+        "recommended_schemes": [
+            "SBP Refinance Facility for Modernization of SMEs (SME-RFM)",
+            "Bank of Punjab (BOP) Mineral Sector Financing Line",
+            "SBP Export Refinance Facility (Part I & II) for Export Units",
+            "Punjab Small Industries Corporation (PSIC) Micro-Enterprise Credit"
+        ]
+    }
+
     return {
         "capex": {
             "machinery_cost": machinery_cost,
@@ -353,12 +442,236 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "schedule": loan_schedule
         },
         "pkr_summary": pkr_summary,
+        "automated_assessment": automated_assessment,
         "disclaimer": (
             "NOTICE: This preliminary model provides computational estimates for project evaluation "
             "and does not constitute an officially certified Bankable Feasibility Study, geological reserve report, "
             "or guarantee of commercial profitability. Figures reflect user inputs and indicative market parameters."
         )
     }
+
+
+# ==============================================================================
+# OFFICIAL SMEDA BENCHMARK CASE STUDY (Document No. 220, December 2023)
+# ==============================================================================
+SMEDA_BENCHMARK_CASE_STUDY = {
+    "source_title": "Pre-Feasibility Study: Pink Salt Manufacturing and Export Unit",
+    "document_number": "SMEDA Pre-Feasibility Document No. 220",
+    "authority": "Small and Medium Enterprises Development Authority (SMEDA), Ministry of Industries & Production, Government of Pakistan",
+    "publication_date": "December 2023",
+    "legal_structure": "Private Limited Company",
+    "target_location": "Salt Range Mineral Corridor (Khewra, Warcha, Kalabagh)",
+    "operational_parameters": {
+        "operating_days_per_year": 280,
+        "shifts_per_day": 1,
+        "hours_per_shift": 8,
+        "workforce_headcount": 43,
+        "annual_installed_edible_salt_tonnes": 14000.0,
+        "annual_installed_decorative_lamps": 81312,
+        "annual_installed_decorative_tiles": 121968,
+        "annual_installed_soap_spa_bars": 813120,
+        "annual_installed_animal_lick_blocks": 203280
+    },
+    "capital_costs_pkr": {
+        "land_acquisition_3_2_kanal": 3840000,
+        "building_civil_works": 36283250,
+        "machinery_edible_salt_ss304": 25412000,
+        "machinery_decorative_products": 5776000,
+        "total_plant_machinery": 31188000,
+        "furniture_fixtures": 1852000,
+        "office_equipment_it": 2407000,
+        "vehicles": 4504600,
+        "pre_operating_costs": 6057164,
+        "total_capital_cost": 86132014,
+        "initial_working_capital": 8860696,
+        "total_project_cost": 94992710
+    },
+    "project_economics": {
+        "irr_100_percent_equity": 0.29,
+        "npv_100_percent_equity_pkr": 49945487,
+        "payback_years_100_percent_equity": 4.10,
+        "discount_rate": 0.20,
+        "irr_50_percent_debt": 0.25,
+        "npv_50_percent_debt_pkr": 130885496,
+        "payback_years_50_percent_debt": 4.63,
+        "debt_markup_rate": 0.26,
+        "year_1_breakeven_revenue_pkr": 209150000,
+        "year_1_margin_of_safety": 0.23,
+        "year_5_margin_of_safety": 0.45
+    }
+}
+
+
+# ==============================================================================
+# 4 APPLICANT BUSINESS CATEGORIES PRESETS
+# ==============================================================================
+APPLICANT_CATEGORIES = {
+    "small_packaging": {
+        "id": "small_packaging",
+        "name": "Small-Scale Packaging Unit",
+        "activities": "Grinding, grading, packing and labelling",
+        "target_applicant": "Micro and small entrepreneurs, local packagers, women-led enterprises, retail brands",
+        "typical_investment_range_pkr": "PKR 50 Lakh to PKR 1.5 Crore",
+        "indicative_total_capex_usd": 32500,  # ~PKR 9.1M
+        "machinery_cost_usd": 18000,
+        "land_building_cost_usd": 8000,
+        "installation_cost_usd": 1500,
+        "working_capital_usd": 5000,
+        "capacity_tpd": 8.0,
+        "operating_days": 280,
+        "capacity_utilization": 0.75,
+        "process_yield": 0.95,
+        "washing_required": False,
+        "raw_salt_cost_per_tonne": 40.0,
+        "energy_cost_per_tonne": 18.0,
+        "packaging_cost_per_tonne": 45.0,
+        "freight_per_tonne": 25.0,
+        "labor_cost_per_tonne": 18.0,
+        "annual_admin_salaries": 12000,
+        "annual_maintenance": 1200,
+        "annual_insurance": 1000,
+        "annual_compliance_marketing": 3500,
+        "selling_price_per_tonne": 340.0,
+        "default_equity_pct": 30.0,
+        "default_loan_pct": 70.0,
+        "key_machinery": [
+            "Hammer mill micro-pulverizer (SS 304)",
+            "Vibrating multi-deck grading sieve",
+            "Semi-automatic auger pouch filling & sealing machine",
+            "Continuous band sealer with batch coding & date embossing",
+            "Digital bench scale & carton tape dispenser"
+        ],
+        "products_manufactured": "Food-grade fine culinary salt (250g, 500g, 1kg pouches), coarse grinder pouches, branded shaker jars",
+        "regulatory_certifications": ["PSQCA 1669:2008 Standard", "Punjab Food Authority (PFA) Food Operator License", "FBR Sales Tax & NTN Registration"]
+    },
+    "medium_manufacturing": {
+        "id": "medium_manufacturing",
+        "name": "Medium-Scale Manufacturing Unit",
+        "activities": "Washing, crushing, grinding, processing and packaging",
+        "target_applicant": "Commercial mineral processors, regional wholesalers, salt millers, institutional contractors",
+        "typical_investment_range_pkr": "PKR 2.0 Crore to PKR 5.0 Crore",
+        "indicative_total_capex_usd": 135000,  # ~PKR 37.8M
+        "machinery_cost_usd": 75000,
+        "land_building_cost_usd": 35000,
+        "installation_cost_usd": 8000,
+        "working_capital_usd": 17000,
+        "capacity_tpd": 30.0,
+        "operating_days": 300,
+        "capacity_utilization": 0.80,
+        "process_yield": 0.92,
+        "washing_required": True,
+        "raw_salt_cost_per_tonne": 38.0,
+        "energy_cost_per_tonne": 32.0,
+        "packaging_cost_per_tonne": 42.0,
+        "freight_per_tonne": 30.0,
+        "labor_cost_per_tonne": 20.0,
+        "annual_admin_salaries": 28000,
+        "annual_maintenance": 3800,
+        "annual_insurance": 3000,
+        "annual_compliance_marketing": 7500,
+        "selling_price_per_tonne": 360.0,
+        "default_equity_pct": 35.0,
+        "default_loan_pct": 65.0,
+        "key_machinery": [
+            "Primary heavy jaw crusher",
+            "Rotary wet washing cylinder & hydro-cyclone",
+            "Continuous spin centrifuge & fluidized bed dryer",
+            "High-output roller mill / disintegrator",
+            "Double-deck high-mesh vibrating sifter",
+            "Automatic Form-Fill-Seal (FFS) packaging line"
+        ],
+        "products_manufactured": "Washed fine table salt, coarse gourmet salt, granular salt, 5kg/25kg bags",
+        "regulatory_certifications": ["PSQCA 1669:2008", "PFA Commercial License", "Punjab EPD Wastewater NOC", "ISO 9001:2015"]
+    },
+    "value_added_products": {
+        "id": "value_added_products",
+        "name": "Value-Added Product Manufacturing",
+        "activities": "Salt lamps, tiles, bath salts, decorative products and other finished goods",
+        "target_applicant": "Artisanal craft manufacturers, wellness/spa product exporters, interior decor brands",
+        "typical_investment_range_pkr": "PKR 75 Lakh to PKR 2.5 Crore",
+        "indicative_total_capex_usd": 65000,  # ~PKR 18.2M
+        "machinery_cost_usd": 32000,
+        "land_building_cost_usd": 20000,
+        "installation_cost_usd": 4000,
+        "working_capital_usd": 9000,
+        "capacity_tpd": 10.0,
+        "operating_days": 280,
+        "capacity_utilization": 0.70,
+        "process_yield": 0.85,
+        "washing_required": False,
+        "raw_salt_cost_per_tonne": 45.0,
+        "energy_cost_per_tonne": 24.0,
+        "packaging_cost_per_tonne": 95.0,
+        "freight_per_tonne": 35.0,
+        "labor_cost_per_tonne": 45.0,
+        "annual_admin_salaries": 18000,
+        "annual_maintenance": 2000,
+        "annual_insurance": 1800,
+        "annual_compliance_marketing": 5000,
+        "selling_price_per_tonne": 680.0,
+        "default_equity_pct": 40.0,
+        "default_loan_pct": 60.0,
+        "key_machinery": [
+            "Heavy-duty 6-foot lathe machines (2 units)",
+            "Diamond stone cutter saws 32-inch (3 units)",
+            "Vertical core drilling press (8-foot bed)",
+            "Polishing & buffing workstations",
+            "Aromatherapy salt blending ribbon mixer",
+            "Thermal shrink-wrap tunnel & packaging table"
+        ],
+        "products_manufactured": "Handcrafted pink salt lamps, precision sauna tiles, essential oil bath salts, massage stones, animal lick blocks",
+        "regulatory_certifications": ["CE / UL Electrical Certification for Lamps", "Halal Cosmetics / Spa Certification", "Handicrafts Export Registration"]
+    },
+    "export_oriented": {
+        "id": "export_oriented",
+        "name": "Export-Oriented Business (SMEDA Benchmark)",
+        "activities": "Bulk supply, private labelling, international distribution and direct exports",
+        "target_applicant": "Corporate export houses, international joint ventures, mineral processing consortia",
+        "typical_investment_range_pkr": "PKR 5.0 Crore to PKR 9.5+ Crore",
+        "indicative_total_capex_usd": 339260,  # ~PKR 94.99M (SMEDA Doc #220)
+        "machinery_cost_usd": 111385,          # PKR 31.19M
+        "land_building_cost_usd": 143297,      # PKR 40.12M (Land 3.84M + Bldg 36.28M)
+        "installation_cost_usd": 53000,        # PKR 14.84M (Office, vehicles, pre-op)
+        "working_capital_usd": 31645,          # PKR 8.86M
+        "capacity_tpd": 50.0,
+        "operating_days": 280,
+        "capacity_utilization": 0.75,
+        "process_yield": 0.92,
+        "washing_required": True,
+        "raw_salt_cost_per_tonne": 35.0,
+        "energy_cost_per_tonne": 28.0,
+        "packaging_cost_per_tonne": 48.0,
+        "freight_per_tonne": 32.0,
+        "labor_cost_per_tonne": 22.0,
+        "annual_admin_salaries": 42000,
+        "annual_maintenance": 6500,
+        "annual_insurance": 5500,
+        "annual_compliance_marketing": 14000,
+        "selling_price_per_tonne": 410.0,
+        "default_equity_pct": 50.0,
+        "default_loan_pct": 50.0,
+        "key_machinery": [
+            "Complete SS 304 automated refining & milling plant (EPK-SALT1000 grade)",
+            "Optical color sorter for quartz & foreign particle separation",
+            "Computerized multi-head weigher & vertical pouch packaging",
+            "Automated 1-tonne FIBC jumbo bag packing station",
+            "Artisanal decorative lathe, drill & tile-cutting workshop line",
+            "Forklift (2-tonne) & container loading dock"
+        ],
+        "products_manufactured": "FCL container direct export table salt, gourmet grinder salt, private label retail pouches, bulk FIBC jumbo bags, decorative lamps & tiles",
+        "regulatory_certifications": ["ISO 22000:2018 (Food Safety)", "HACCP Certification", "US FDA Food Facility Registration", "Halal Certification", "SBP Form-E Export Clearance"]
+    }
+}
+
+
+def get_applicant_categories() -> Dict[str, Dict[str, Any]]:
+    """Returns the 4 applicant categories with investment ranges and machinery."""
+    return APPLICANT_CATEGORIES
+
+
+def get_smeda_case_study() -> Dict[str, Any]:
+    """Returns official SMEDA pre-feasibility study metrics (Document No. 220)."""
+    return SMEDA_BENCHMARK_CASE_STUDY
 
 
 def get_scenario_presets() -> Dict[str, Dict[str, Any]]:

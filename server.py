@@ -19,7 +19,7 @@ from typing import Dict, Any, List, Optional
 
 # Local module imports
 from database import get_connection, verify_password, hash_password
-from financial_engine import calculate_feasibility, get_scenario_presets
+from financial_engine import calculate_feasibility, get_scenario_presets, get_applicant_categories, get_smeda_case_study
 from ai_assistant import handle_ai_query, generate_project_concept
 
 PORT = int(os.environ.get("PORT", 8080))
@@ -140,6 +140,18 @@ class PortalRequestHandler(BaseHTTPRequestHandler):
         if path == "/api/feasibility/scenarios":
             scenarios = get_scenario_presets()
             self.send_json({"success": True, "scenarios": scenarios})
+            return
+
+        # 4b. Applicant Business Categories
+        if path == "/api/feasibility/applicant-categories":
+            categories = get_applicant_categories()
+            self.send_json({"success": True, "categories": categories})
+            return
+
+        # 4c. SMEDA Official Case Study
+        if path == "/api/feasibility/smeda-case-study":
+            case_study = get_smeda_case_study()
+            self.send_json({"success": True, "case_study": case_study})
             return
 
         # 5. Knowledge Base Documents

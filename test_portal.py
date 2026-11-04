@@ -193,6 +193,51 @@ class TestPinkSaltPortal(unittest.TestCase):
         cur.execute("DELETE FROM enquiries WHERE tracking_id = ?", (test_tracking,))
         self.conn.commit()
 
+    def test_09_applicant_business_categories(self):
+        """Verifies the 4 applicant business categories and their machine specifications."""
+        from financial_engine import get_applicant_categories
+        cats = get_applicant_categories()
+        expected = ["small_packaging", "medium_manufacturing", "value_added_products", "export_oriented"]
+        for exp in expected:
+            self.assertIn(exp, cats)
+            cat = cats[exp]
+            self.assertIn("activities", cat)
+            self.assertIn("key_machinery", cat)
+            self.assertIn("typical_investment_range_pkr", cat)
+            self.assertGreater(len(cat["key_machinery"]), 2)
+
+    def test_10_smeda_benchmark_case_study(self):
+        """Verifies SMEDA Document No. 220 official benchmark pre-feasibility data."""
+        from financial_engine import get_smeda_case_study
+        cs = get_smeda_case_study()
+        self.assertEqual(cs["publication_date"], "December 2023")
+        self.assertEqual(cs["document_number"], "SMEDA Pre-Feasibility Document No. 220")
+        self.assertEqual(cs["capital_costs_pkr"]["total_project_cost"], 94992710)
+        self.assertEqual(cs["project_economics"]["payback_years_100_percent_equity"], 4.10)
+        self.assertEqual(cs["project_economics"]["irr_100_percent_equity"], 0.29)
+        self.assertEqual(cs["project_economics"]["irr_50_percent_debt"], 0.25)
+
+    def test_11_automated_feasibility_assessment(self):
+        """Verifies automated bankability scoring and underwriting advice generation."""
+        params = {
+            "applicant_category": "export_oriented",
+            "capacity_tpd": 50.0,
+            "operating_days": 280,
+            "selling_price_per_tonne": 410.0,
+            "machinery_cost": 111385,
+            "land_building_cost": 143297,
+            "installation_cost": 53000,
+            "working_capital": 31645
+        }
+        res = calculate_feasibility(params)
+        self.assertIn("automated_assessment", res)
+        asm = res["automated_assessment"]
+        self.assertGreaterEqual(asm["bankability_score"], 50)
+        self.assertIn("rating_tier", asm)
+        self.assertIn("category_advice", asm)
+        self.assertIn("average_dscr", asm)
+        self.assertIn("monthly_emi_pkr", asm)
+
 
 if __name__ == "__main__":
     unittest.main()
