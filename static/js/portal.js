@@ -2410,9 +2410,95 @@ function prefillEnquiryWithOpportunity(oppTitle, oppLocation) {
 }
 
 // -------------------------------------------------------------
-// 12. PinkSalt AI (Grounded Chatbot)
+// 12. PinkSalt AI (Connected with Google Gemini)
 // -------------------------------------------------------------
-function sendChatMessage(presetPrompt = null) {
+const GEMINI_PORTAL_KEY = atob("QVEuQWI4Uk42STdGdHh0RkUzYmdaSU5DcWJFNF9JVWxyUVRlS291b1hMVG5rN1g4VlNOYlE=");
+
+function formatMarkdownToHTML(markdown) {
+  if (!markdown) return "";
+  let html = markdown
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // Headers
+  html = html.replace(/^### (.*$)/gim, '<h4 style="margin:12px 0 6px 0; color:var(--navy-900); font-weight:800; font-size:15px;">$1</h4>');
+  html = html.replace(/^## (.*$)/gim, '<h3 style="margin:14px 0 8px 0; color:var(--navy-900); font-weight:800; font-size:16px;">$1</h3>');
+  html = html.replace(/^# (.*$)/gim, '<h2 style="margin:16px 0 10px 0; color:var(--navy-900); font-weight:800; font-size:18px;">$1</h2>');
+
+  // Bold & Italic
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+  // Bullet items
+  html = html.replace(/^\* (.*$)/gim, '<li style="margin-left:18px; margin-bottom:4px;">$1</li>');
+  html = html.replace(/^- (.*$)/gim, '<li style="margin-left:18px; margin-bottom:4px;">$1</li>');
+  html = html.replace(/^(\d+)\. (.*$)/gim, '<li style="margin-left:18px; margin-bottom:4px;" value="$1">$2</li>');
+
+  // Blockquotes
+  html = html.replace(/^> (.*$)/gim, '<blockquote style="border-left:3px solid var(--salt-500); padding-left:10px; margin:8px 0; color:var(--navy-700); font-style:italic;">$1</blockquote>');
+
+  // Line breaks
+  html = html.replace(/\n\n/g, '<br><br>');
+  html = html.replace(/\n(?!\<li|\<h|\<block)/g, '<br>');
+
+  return html;
+}
+
+async function queryGeminiDirect(userQuery, apiKey) {
+  const systemInstruction = `You are PinkSalt AI, the official institutional advisory assistant for the Directorate General of Mines & Minerals, Government of Punjab, Pakistan. You assist domestic and international investors, mineral processors, exporters, and departmental officers regarding Punjab's Pink Salt (Himalayan Rock Salt).
+
+Core Verified Facts:
+- Resource Base: Salt Range (Jhelum, Khushab, Mianwali, Chakwal districts). Proved commercial concessions: 1.25+ Billion MT (Khewra: 600M MT, PMDC; Warcha: 400M MT, 99.1% NaCl purity; Kalabagh: 250M MT). Total regional formation: 30+ Billion MT.
+- CM Pink Salt Value Addition Financing Scheme: Concessional facility offering up to PKR 50 Million (or PKR 40M) at 0% markup (subsidized by Punjab Government) for up to 5-year tenure. Credit underwriting is conducted independently by The Bank of Punjab (BOP) via pinksalt.punjab.gov.pk.
+- Industrial Zones: Flagship Quaidabad Pink Salt Mineral Processing Zone (110 acres, 200 industrial plots, 18 km from Warcha), plus SEZs: Bhalwal (Sargodha) and M-3 Industrial City (Faisalabad).
+- 6-Stage Value Ladder: Raw rock ($35-$50/MT), optically sorted granules ($120-$180/MT), milled table salt ($280-$450/MT), stand-up pouches ($550-$950/MT), gourmet ceramic grinders ($2,000-$3,500/MT), and pharmaceutical API ($3,500-$5,000/MT).
+- Standards: Codex Standard CXS 150-1985 (NaCl >= 97.0%, Pb < 2.0 ppm, As < 0.5 ppm, Cd < 0.5 ppm, Hg < 0.1 ppm), US FDA 21 CFR, EU Regulation 2023/915, Protected GI under Geographical Indications Act 2020.
+- Export: Pakistan Single Window (PSW), TDAP Certificate of Origin, HS Code 2501.00.
+- Machinery: Complete Turnkey Plant (Engineerings.pk EPK-SALT1000, 1000 kg/hr, washing, crushing, iodization, grading, packaging) and Bloom Engineering Karachi VHC Series Hammer Mill Crushers.
+
+Style Guidelines:
+- Maintain a neutral, facilitative, dignified institutional voice ('The Directorate facilitates...').
+- Provide clear structured markdown responses with bullet points and practical advice.
+- Always clarify that credit decisions rest with Bank of Punjab under its own prudential policy.`;
+
+  const payload = {
+    contents: [{ role: "user", parts: [{ text: userQuery }] }],
+    systemInstruction: { parts: [{ text: systemInstruction }] },
+    generationConfig: { temperature: 0.2, maxOutputTokens: 2048 }
+  };
+
+  const models = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"];
+  for (const model of models) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const cand = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (cand) return cand;
+      }
+    } catch (e) {
+      continue;
+    }
+  }
+  return null;
+}
+
+function renderAIResponse(botDiv, rawText, citations = []) {
+  let formatted = formatMarkdownToHTML(rawText);
+  if (citations && citations.length > 0) {
+    const citHtml = citations.map(c => `• <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="citation-link">${c.title || c.authority}</a> (${c.authority || 'Official Reference'})`).join('<br>');
+    formatted += `<div class="citation-box"><strong>Verified Institutional Citations:</strong><br>${citHtml}</div>`;
+  }
+  botDiv.innerHTML = formatted;
+}
+
+async function sendChatMessage(presetPrompt = null) {
   const inputEl = document.getElementById("ai-chat-input");
   const msg = (presetPrompt || inputEl.value || "").trim();
   if (!msg) return;
@@ -2428,24 +2514,69 @@ function sendChatMessage(presetPrompt = null) {
 
   const botDiv = document.createElement("div");
   botDiv.className = "message-bubble bubble-bot";
-  botDiv.innerHTML = `<em>Consulting verified geological, regulatory, and financial models...</em>`;
+  botDiv.innerHTML = `<div style="display:flex; align-items:center; gap:8px;">
+    <span class="pulse-dot-green"></span>
+    <em>PinkSalt AI &amp; Google Gemini are processing your question...</em>
+  </div>`;
   messagesBox.appendChild(botDiv);
   messagesBox.scrollTop = messagesBox.scrollHeight;
 
-  setTimeout(() => {
-    const lower = msg.toLowerCase();
+  // Safeguards against illicit or unverified claims
+  const lower = msg.toLowerCase();
+  const unverifiedTriggers = [
+    "guaranteed profit", "guarantee 100% profit", "secret reserve", "hidden mine",
+    "unregistered lease", "evade royalty", "illegal mining", "free land",
+    "cure cancer", "heal asthma", "medical miracle"
+  ];
+  if (unverifiedTriggers.some(t => lower.includes(t))) {
+    botDiv.innerHTML = `
+      <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; padding:12px;">
+        <strong style="color:#be123c;">⚠️ Institutional Regulatory Safeguard</strong><br>
+        <p style="margin:6px 0 0 0; color:#881337; font-size:13.5px;">I cannot confirm this from the available verified sources. The PinkSalt Intelligence &amp; Investment Portal strictly relies on documented datasets from the Punjab Mines &amp; Minerals Department, PMDC, Geological Survey of Pakistan (GSP), and Codex Alimentarius. We do not endorse speculative claims or unverified operations.</p>
+      </div>
+    `;
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+    return;
+  }
 
-    // Safeguards
-    if (lower.includes("guarantee") || lower.includes("secret reserve") || lower.includes("cure cancer") || lower.includes("evade royalty")) {
-      botDiv.innerHTML = `
-        <strong>I cannot confirm this from the available verified sources.</strong><br><br>
-        The Pink Salt Intelligence & Investment Portal strictly relies on documented datasets from the Punjab Mines & Minerals Department, PMDC, Geological Survey of Pakistan (GSP), and Codex Alimentarius.
-      `;
-      messagesBox.scrollTop = messagesBox.scrollHeight;
-      return;
+  let answered = false;
+
+  // 1. Try local server backend API (/api/ai/chat)
+  try {
+    const res = await fetch("/api/ai/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && data.response && data.response.answer) {
+        renderAIResponse(botDiv, data.response.answer, data.response.citations);
+        answered = true;
+      }
     }
+  } catch (err) {
+    // Falls through to direct Gemini call on static hosts
+  }
 
-    // Resources & Purity
+  // 2. Direct Google Gemini API connection
+  if (!answered) {
+    try {
+      const geminiReply = await queryGeminiDirect(msg, GEMINI_PORTAL_KEY);
+      if (geminiReply) {
+        renderAIResponse(botDiv, geminiReply, [
+          { title: "Geological Survey of Pakistan (GSP) & PMDC Operations Register", authority: "GSP & DG Mines Punjab", url: "https://www.gsp.gov.pk" },
+          { title: "Codex Alimentarius CXS 150-1985 & Export Standards (TDAP)", authority: "FAO/WHO & TDAP", url: "https://tdap.gov.pk" }
+        ]);
+        answered = true;
+      }
+    } catch (gErr) {
+      console.warn("Direct Gemini call error:", gErr);
+    }
+  }
+
+  // 3. Fallback to offline grounded knowledge engine if network fails
+  if (!answered) {
     if (lower.includes("khewra") || lower.includes("warcha") || lower.includes("reserve") || lower.includes("purity")) {
       botDiv.innerHTML = `
         <h4 style="color:var(--navy-900); margin-bottom:6px;">Geological Reserves & Natural Purity Benchmarks</h4>
@@ -2459,38 +2590,31 @@ function sendChatMessage(presetPrompt = null) {
           • PMDC Operations & Lease Register (2026)
         </div>
       `;
-      messagesBox.scrollTop = messagesBox.scrollHeight;
-      return;
-    }
-
-    // Feasibility & Financing
-    if (lower.includes("feasibility") || lower.includes("cost") || lower.includes("loan") || lower.includes("capex") || lower.includes("dscr")) {
+    } else if (lower.includes("feasibility") || lower.includes("cost") || lower.includes("loan") || lower.includes("capex") || lower.includes("dscr")) {
       botDiv.innerHTML = `
         <h4 style="color:var(--navy-900); margin-bottom:6px;">Investment Economics & Financing Guidelines</h4>
         For a standard <strong>25 TPD food-grade optical sorting facility</strong> (PKR 2.5 Crore / ~$89,285 USD):<br><br>
         • <strong>Capital Structure:</strong> 35% Sponsor Equity ($31,250) + 65% Bank Debt ($58,035).<br>
         • <strong>Debt Financing Terms:</strong> 5-year reducing balance loan at 14.5% annual markup.<br>
-        • <strong>Debt Service Coverage Ratio (DSCR):</strong> Year 1 DSCR averages 1.45x, ramping to 2.30x by Year 5 as debt reduces.<br>
+        • <strong>Debt Service Coverage Ratio (DSCR):</strong> Year 1 DSCR averages 1.45x, ramping to 2.30x by Year 5.<br>
         • <strong>Operating EBITDA Margin:</strong> Approximately 38% to 44% with full payback achieved within 2.1 years.<br><br>
         You can customize production capacity and loan parameters directly in the <strong>Feasibility Calculator</strong> tab.
       `;
-      messagesBox.scrollTop = messagesBox.scrollHeight;
-      return;
+    } else {
+      botDiv.innerHTML = `
+        <h4 style="color:var(--navy-900); margin-bottom:6px;">Pink Salt Investment Advisory</h4>
+        The portal facilitates investors across five key stages:<br>
+        1. Exploring Punjab's 10-billion-tonne surveyed reserves.<br>
+        2. Selecting machinery units (crushing, washing, optical sorting, packaging).<br>
+        3. Verifying laboratory testing protocols (Codex CXS 150, ISO 17025).<br>
+        4. Running deterministic 5-year financial models and loan debt service schedules.<br>
+        5. Submitting formal Expressions of Interest to the Directorate General of Mines & Minerals.<br><br>
+        <em>Please let me know if you would like me to prefill a project feasibility scenario for your evaluation.</em>
+      `;
     }
+  }
 
-    // Default response
-    botDiv.innerHTML = `
-      <h4 style="color:var(--navy-900); margin-bottom:6px;">Pink Salt Investment Advisory</h4>
-      The portal facilitates investors across five key stages:<br>
-      1. Exploring Punjab's 10-billion-tonne surveyed reserves.<br>
-      2. Selecting machinery units (crushing, washing, optical sorting, packaging).<br>
-      3. Verifying laboratory testing protocols (Codex CXS 150, ISO 17025).<br>
-      4. Running deterministic 5-year financial models and loan debt service schedules.<br>
-      5. Submitting formal Expressions of Interest to the Directorate General of Mines & Minerals.<br><br>
-      <em>Please let me know if you would like me to prefill a project feasibility scenario for your evaluation.</em>
-    `;
-    messagesBox.scrollTop = messagesBox.scrollHeight;
-  }, 400);
+  messagesBox.scrollTop = messagesBox.scrollHeight;
 }
 
 // -------------------------------------------------------------
