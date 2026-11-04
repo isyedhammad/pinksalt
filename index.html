@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.8">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.10">
 </head>
 <body>
 
@@ -531,7 +531,7 @@
                   <span>Total Capital Investment (PKR):</span>
                   <span id="display-capex" style="color:var(--rose-700); font-size:15px; font-weight:900;">15,000,000</span>
                 </div>
-                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineCapex(5000000)">50 Lakh</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineCapex(25000000)">2.5 Cr</button>
@@ -545,7 +545,7 @@
                   <span>Debt Ratio (% of Capex):</span>
                   <span id="display-debt-ratio" style="color:var(--rose-700); font-size:15px; font-weight:900;">60%</span>
                 </div>
-                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineDebt(0)">0% (All Equity)</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineDebt(50)">50%</button>
@@ -559,7 +559,7 @@
                   <span>Bank Mark-up Rate (% p.a.):</span>
                   <span id="display-interest" style="color:var(--rose-700); font-size:15px; font-weight:900;">14.0%</span>
                 </div>
-                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineRate(8.0)">8% (Subsidized)</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineRate(14.0)">14%</button>
@@ -574,7 +574,7 @@
               <!-- Checkbox: Scientific Washing Line -->
               <div style="padding-top:12px; border-top:1px solid var(--border);">
                 <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--navy-900); cursor:pointer;">
-                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine()" style="accent-color:var(--rose-600); width:16px; height:16px;">
+                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine(true)" style="accent-color:var(--rose-600); width:16px; height:16px;">
                   <span>Include Scientific Washing Line (+$12/ton Opex)</span>
                 </label>
               </div>
@@ -1664,7 +1664,7 @@
 
           <div class="epk-category-grid">
             <!-- 1. Small-scale packaging unit -->
-            <div class="epk-category-tile" id="tile-cat-small-packaging">
+            <div class="epk-category-tile" id="tile-cat-small-packaging" onclick="selectCategoryAndSimulate('small_packaging', 7500000)">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                   <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#f1f5f9; color:#475569; padding:3px 8px; border-radius:4px;">Starter Line</span>
@@ -1690,13 +1690,13 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-rose btn-sm" onclick="selectCategoryAndSimulate('small_packaging', 7500000)" style="width:100%; justify-content:center;">
+              <button class="btn btn-rose btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('small_packaging', 7500000)" style="width:100%; justify-content:center;">
                 🚀 Select &amp; Simulate (PKR 7.5M)
               </button>
             </div>
 
             <!-- 2. Medium-scale manufacturing unit -->
-            <div class="epk-category-tile" id="tile-cat-medium-manufacturing">
+            <div class="epk-category-tile" id="tile-cat-medium-manufacturing" onclick="selectCategoryAndSimulate('medium_manufacturing', 25000000)">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                   <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#eff6ff; color:#1e40af; padding:3px 8px; border-radius:4px;">Commercial Plant</span>
@@ -1722,13 +1722,13 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-navy btn-sm" onclick="selectCategoryAndSimulate('medium_manufacturing', 25000000)" style="width:100%; justify-content:center;">
+              <button class="btn btn-navy btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('medium_manufacturing', 25000000)" style="width:100%; justify-content:center;">
                 🚀 Select &amp; Simulate (PKR 25M)
               </button>
             </div>
 
             <!-- 3. Value-added product manufacturing -->
-            <div class="epk-category-tile" id="tile-cat-value-added">
+            <div class="epk-category-tile" id="tile-cat-value-added" onclick="selectCategoryAndSimulate('value_added_products', 15000000)">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                   <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#fef3c7; color:#92400e; padding:3px 8px; border-radius:4px;">Highest Margin</span>
@@ -1754,13 +1754,13 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-gold btn-sm" onclick="selectCategoryAndSimulate('value_added_products', 15000000)" style="width:100%; justify-content:center;">
+              <button class="btn btn-gold btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('value_added_products', 15000000)" style="width:100%; justify-content:center;">
                 🚀 Select &amp; Simulate (PKR 15M)
               </button>
             </div>
 
             <!-- 4. Export-oriented business -->
-            <div class="epk-category-tile" id="tile-cat-export-oriented">
+            <div class="epk-category-tile" id="tile-cat-export-oriented" onclick="selectCategoryAndSimulate('export_oriented', 50000000)">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                   <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#ecfdf5; color:#065f46; padding:3px 8px; border-radius:4px;">Global Trade</span>
@@ -1786,7 +1786,7 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-outline btn-sm" onclick="selectCategoryAndSimulate('export_oriented', 50000000)" style="width:100%; justify-content:center;">
+              <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('export_oriented', 50000000)" style="width:100%; justify-content:center;">
                 🚀 Select &amp; Simulate (PKR 50M)
               </button>
             </div>
@@ -1882,7 +1882,7 @@
                   <span>Total Capital Investment (PKR):</span>
                   <span id="display-capex" style="color:var(--rose-700); font-size:15px; font-weight:900;">15,000,000</span>
                 </div>
-                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineCapex(5000000)">50 Lakh</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineCapex(25000000)">2.5 Cr</button>
@@ -1896,7 +1896,7 @@
                   <span>Debt Ratio (% of Capex):</span>
                   <span id="display-debt-ratio" style="color:var(--rose-700); font-size:15px; font-weight:900;">60%</span>
                 </div>
-                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineDebt(0)">0% (All Equity)</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineDebt(50)">50%</button>
@@ -1910,7 +1910,7 @@
                   <span>Bank Mark-up Rate (% p.a.):</span>
                   <span id="display-interest" style="color:var(--rose-700); font-size:15px; font-weight:900;">14.0%</span>
                 </div>
-                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
                   <button type="button" class="btn-link-preset" onclick="setEngineRate(8.0)">8% (Subsidized)</button>
                   <button type="button" class="btn-link-preset" onclick="setEngineRate(14.0)">14%</button>
@@ -1925,7 +1925,7 @@
               <!-- Checkbox: Scientific Washing Line -->
               <div style="padding-top:12px; border-top:1px solid var(--border);">
                 <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--navy-900); cursor:pointer;">
-                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine()" style="accent-color:var(--rose-600); width:16px; height:16px;">
+                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine(true)" style="accent-color:var(--rose-600); width:16px; height:16px;">
                   <span>Include Scientific Washing Line (+$12/ton Opex)</span>
                 </label>
               </div>
@@ -2471,11 +2471,11 @@
               <label class="form-label" style="font-weight:700;">Washing &amp; Wet Cleaning Unit Required?</label>
               <div style="display:flex; gap:10px; align-items:center; height:38px;">
                 <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer;">
-                  <input type="radio" name="washing_toggle" id="wash-yes" value="yes" checked onchange="toggleWashing(true)">
+                  <input type="radio" name="washing_toggle" id="wash-yes" value="yes" checked onchange="toggleWashing(true, true)">
                   <strong>YES (Include water, effluent &amp; drying)</strong>
                 </label>
                 <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer; margin-left:14px;">
-                  <input type="radio" name="washing_toggle" id="wash-no" value="no" onchange="toggleWashing(false)">
+                  <input type="radio" name="washing_toggle" id="wash-no" value="no" onchange="toggleWashing(false, true)">
                   <span>NO (Dry screening only)</span>
                 </label>
               </div>
@@ -3502,6 +3502,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.8"></script>
+  <script src="js/portal.js?v=20261105.10"></script>
 </body>
 </html>

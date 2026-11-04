@@ -416,8 +416,13 @@ const state = {
   currentPlanningRangePKR: 25000000
 };
 
-// Formatting Utilities
+// Formatting Utilities & Toast System
+let isAppInitialized = false;
+
 function showToast(message) {
+  // Never show any notification during initial page load, stabilization, or reload
+  if (!isAppInitialized) return;
+
   const container = document.getElementById("toast-container");
   if (!container) return;
   // Clear any existing toast so only 1 summarized notification displays
@@ -1370,7 +1375,7 @@ function applyProductDefaults(productKey) {
   showToast('Successfully Calculated');
 }
 
-function toggleWashing(isRequired) {
+function toggleWashing(isRequired, fromUser = false) {
   state.washingRequired = isRequired;
   const washYes = document.getElementById("wash-yes");
   const washNo = document.getElementById("wash-no");
@@ -1379,6 +1384,9 @@ function toggleWashing(isRequired) {
     washNo.checked = !isRequired;
   }
   executeCalculation(false);
+  if (fromUser) {
+    showToast('Successfully Calculated');
+  }
 }
 
 function initCalculator() {
@@ -2696,7 +2704,7 @@ function selectCategoryAndSimulate(catId, capexVal) {
     selectApplicantCategory(catId, false);
   }
   if (typeof setEngineCapex === 'function') {
-    setEngineCapex(capexVal);
+    setEngineCapex(capexVal, false);
   }
   const target = document.getElementById('engine-card-showcase') || document.getElementById('engine-card-calculator');
   if (target) {
@@ -2707,25 +2715,25 @@ function selectCategoryAndSimulate(catId, capexVal) {
   }
 }
 
-function setEngineCapex(val) {
+function setEngineCapex(val, fromUser = true) {
   const els = document.querySelectorAll('#input-capex');
   els.forEach(el => el.value = val);
-  updateInteractiveFeasibilityEngine();
+  updateInteractiveFeasibilityEngine(fromUser);
 }
 
-function setEngineDebt(val) {
+function setEngineDebt(val, fromUser = true) {
   const els = document.querySelectorAll('#input-debt-ratio');
   els.forEach(el => el.value = val);
-  updateInteractiveFeasibilityEngine();
+  updateInteractiveFeasibilityEngine(fromUser);
 }
 
-function setEngineRate(val) {
+function setEngineRate(val, fromUser = true) {
   const els = document.querySelectorAll('#input-interest');
   els.forEach(el => el.value = val);
-  updateInteractiveFeasibilityEngine();
+  updateInteractiveFeasibilityEngine(fromUser);
 }
 
-function updateInteractiveFeasibilityEngine() {
+function updateInteractiveFeasibilityEngine(fromUser = false) {
   const elCapex = document.querySelector('#input-capex');
   const capex = elCapex ? parseFloat(elCapex.value) : 15000000;
 
@@ -2795,6 +2803,10 @@ function updateInteractiveFeasibilityEngine() {
 
   const dscrStr = (loan === 0 ? 'No Debt' : (minDscr.toFixed(2) + 'x'));
   document.querySelectorAll('#kpi-engine-dscr').forEach(el => el.innerText = dscrStr);
+
+  if (fromUser) {
+    showToast('Successfully Calculated');
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -2812,5 +2824,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderProcessingOptions();
   initCalculator();
-  updateInteractiveFeasibilityEngine();
+  updateInteractiveFeasibilityEngine(false);
+
+  // Allow toast notifications strictly after initial page setup and stabilization
+  setTimeout(() => {
+    isAppInitialized = true;
+  }, 400);
 });
