@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.5">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.6">
 </head>
 <body>
 
@@ -3468,17 +3468,28 @@
               <span style="font-size:24px;">💼</span>
               <div>
                 <strong style="font-size:15px;">PinkSalt AI</strong>
-                <div style="font-size:11.5px; color:var(--rose-200);">Grounded with Punjab Mines Dept, PMDC &amp; GSP Datasets</div>
+                <div style="font-size:11.5px; color:var(--rose-200);">Connected with Google Gemini 3.5 &bull; Grounded with Punjab Mines Dept, PMDC &amp; GSP Datasets</div>
               </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="pulse-dot-green"></span>
+              <span style="font-size:12px; color:#34d399; font-weight:700;">Gemini Connected</span>
             </div>
           </div>
           <div id="ai-chat-messages" class="chat-messages">
             <div class="message-bubble bubble-bot">
-              Welcome to <strong>PinkSalt AI</strong>. How may I assist your evaluation of Punjab's pink salt processing opportunities, machinery options, quality testing protocols, or 5-year financial models today?
+              Welcome to <strong>PinkSalt AI</strong>, powered by Google Gemini. How may I assist your evaluation of Punjab's pink salt processing opportunities, machinery options, quality testing protocols, or 5-year financial models today?
             </div>
           </div>
+          <div style="padding: 10px 24px; background: #f1f5f9; border-top: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Suggested Inquiries:</span>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What are the documented reserves and natural purity of Khewra and Warcha salt mines?')">🔍 Khewra &amp; Warcha Purity</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What export documentation and testing certificates are required under HS Code 2501.00?')">📜 Export Documentation</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What machinery is required for a 25 TPD food-grade optical sorting plant?')">⚙️ 25 TPD Machinery Line</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('How does the CM Punjab 0% markup pink salt financing facility work?')">🏛️ CM Punjab 0% Financing</button>
+          </div>
           <div class="chat-input-bar">
-            <input type="text" id="ai-chat-input" class="form-control" placeholder="Ask about resources, regulations, machinery, economics, or exports..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+            <input type="text" id="ai-chat-input" class="form-control" placeholder="Ask any question about resources, regulations, machinery, economics, or exports..." onkeydown="if(event.key==='Enter') sendChatMessage()">
             <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
           </div>
         </div>
@@ -3635,6 +3646,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.5"></script>
+  <script src="js/portal.js?v=20261105.6"></script>
 </body>
 </html>

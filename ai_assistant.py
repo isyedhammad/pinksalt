@@ -388,7 +388,7 @@ def call_gemini_api(user_message: str, relevant_docs: Optional[List[Dict[str, An
     }
 
     data_bytes = json.dumps(payload).encode("utf-8")
-    models = ["gemini-3.5-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"]
+    models = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
 
     for model in models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
