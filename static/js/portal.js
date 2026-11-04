@@ -585,7 +585,7 @@ function openOpportunityDetail(slug) {
 
     <div style="margin-top:24px; display:flex; gap:12px;">
       <button class="btn btn-primary" onclick="closeGenericModal(); prefillEnquiryWithOpportunity('${opp.title}', '${opp.location}')">Submit Expression of Interest</button>
-      <button class="btn btn-outline" onclick="closeGenericModal(); switchView('calculator')">Run 5-Year Feasibility</button>
+      <button class="btn btn-outline" onclick="closeGenericModal(); switchView('calculator')">Feasibility Calculator</button>
     </div>
   `;
   document.getElementById("modal-generic").style.display = "flex";

@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.4">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.5">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
       <div class="container hover-shelf-container">
         <a class="header-hover-tab" onclick="switchView('opportunities')">💼 Investment Opportunities</a>
         <a class="header-hover-tab" onclick="switchView('processing-options')">⚙️ Processing &amp; Machinery</a>
-        <a class="header-hover-tab" onclick="switchView('calculator')">🧮 5-Year Feasibility</a>
+        <a class="header-hover-tab" onclick="switchView('calculator')">🧮 Feasibility Calculator</a>
         <a class="header-hover-tab" onclick="switchView('enquiry')">✨ Investor Enquiry</a>
       </div>
     </div>
@@ -53,9 +53,9 @@
     <div class="mobile-nav-drawer" id="mobile-drawer">
       <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏠 Home</a>
       <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">💼 Investment Opportunities</a>
-      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing &amp; Site Selection</a>
+      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing &amp; Machinery</a>
       <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">🔬 Quality &amp; Laboratory Testing</a>
-      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 5-Year Feasibility Calculator</a>
+      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 Feasibility Calculator</a>
       <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">✨ Investor Enquiry / EOI</a>
       <button class="btn btn-outline" style="width:100%; margin-top:12px;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
     </div>
@@ -84,8 +84,8 @@
             </p>
             <div class="hero-cta-group">
               <button class="btn btn-primary" onclick="switchView('enquiry')">✨ Submit Investor Enquiry / EOI →</button>
-              <button class="btn btn-outline-light" onclick="switchView('calculator')">Run 5-Year Feasibility Model</button>
-              <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Turnkey Plants &amp; Machinery</button>
+              <button class="btn btn-outline-light" onclick="switchView('calculator')">Feasibility Calculator</button>
+              <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Processing &amp; Machinery</button>
               <a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" class="btn" style="background:#059669; color:#ffffff; font-weight:700; border:none; display:inline-flex; align-items:center; gap:6px;">
                 <span>🏛️</span> CM Punjab Financing Portal ↗
               </a>
@@ -959,7 +959,7 @@
                   ✨ Submit Investor Enquiry / EOI →
                 </button>
                 <button class="btn btn-outline-light" onclick="switchView('calculator')">
-                  Run 5-Year Feasibility Model
+                  Feasibility Calculator
                 </button>
               </div>
             </div>
@@ -3635,6 +3635,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.4"></script>
+  <script src="js/portal.js?v=20261105.5"></script>
 </body>
 </html>
