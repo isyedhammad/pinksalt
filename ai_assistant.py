@@ -9,9 +9,29 @@ feasibility invocation, structured concept generation, and unverified-query safe
 import os
 import json
 import re
+import urllib.request
 from typing import Dict, Any, List, Optional
 from database import get_connection
 from financial_engine import calculate_feasibility, get_scenario_presets
+
+def load_dotenv():
+    """Load key-value pairs from local .env if present and not already in environment."""
+    env_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(env_file):
+        try:
+            with open(env_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, v = line.split("=", 1)
+                        k = k.strip()
+                        v = v.strip().strip("'\"")
+                        if k and k not in os.environ:
+                            os.environ[k] = v
+        except Exception:
+            pass
+
+load_dotenv()
 
 # Curated, authoritative knowledge corpus embedded directly for high-speed grounded RAG
 AUTHORITATIVE_CORPUS = [
@@ -307,6 +327,86 @@ def generate_project_concept(concept_params: Dict[str, Any]) -> Dict[str, Any]:
     return concept
 
 
+def call_gemini_api(user_message: str, relevant_docs: Optional[List[Dict[str, Any]]] = None) -> Optional[str]:
+    """
+    Invokes Google Gemini API with authoritative domain grounding context and institutional tone.
+    Tries gemini-3.5-flash-lite, falling back to gemini-3.8-flash and gemini-flash-latest.
+    """
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        return None
+
+    docs = relevant_docs if relevant_docs else AUTHORITATIVE_CORPUS[:3]
+    grounding_context = "\n\n".join([
+        f"--- Document: {d['title']} (Authority: {d['authority']}) ---\n{d['content']}"
+        for d in docs
+    ])
+
+    system_instruction = (
+        "You are PinkSalt AI, the official institutional advisory assistant for the Directorate General of "
+        "Mines & Minerals, Government of Punjab, Pakistan. You assist domestic and international investors, "
+        "mineral processors, exporters, and departmental officers regarding Punjab's Pink Salt (Himalayan Rock Salt).\n\n"
+        "Core Verified Facts:\n"
+        "- Resource Base: Salt Range (Jhelum, Khushab, Mianwali, Chakwal districts). Proved commercial concessions: 1.25+ Billion MT "
+        "(Khewra: 600M MT, PMDC; Warcha: 400M MT, 99.1% NaCl purity; Kalabagh: 250M MT). Total regional formation: 30+ Billion MT.\n"
+        "- CM Pink Salt Value Addition Financing Scheme: Concessional facility offering up to PKR 50 Million (or PKR 40M) at 0% markup "
+        "(subsidized by Punjab Government) for up to 5-year tenure. Credit underwriting is conducted independently by The Bank of Punjab (BOP) "
+        "via pinksalt.punjab.gov.pk.\n"
+        "- Industrial Zones: Flagship Quaidabad Pink Salt Mineral Processing Zone (110 acres, 200 industrial plots, 18 km from Warcha), "
+        "plus SEZs: Bhalwal (Sargodha) and M-3 Industrial City (Faisalabad).\n"
+        "- 6-Stage Value Ladder: Raw rock ($35-$50/MT), optically sorted granules ($120-$180/MT), milled table salt ($280-$450/MT), "
+        "stand-up pouches ($550-$950/MT), gourmet ceramic grinders ($2,000-$3,500/MT), and pharmaceutical API ($3,500-$5,000/MT).\n"
+        "- Standards: Codex Standard CXS 150-1985 (NaCl >= 97.0%, Pb < 2.0 ppm, As < 0.5 ppm, Cd < 0.5 ppm, Hg < 0.1 ppm), US FDA 21 CFR, "
+        "EU Regulation 2023/915, Protected GI under Geographical Indications Act 2020.\n"
+        "- Export: Pakistan Single Window (PSW), TDAP Certificate of Origin, HS Code 2501.00.\n\n"
+        "Style Guidelines:\n"
+        "- Maintain a neutral, facilitative, dignified institutional voice ('The Directorate facilitates...').\n"
+        "- Provide well-formatted markdown responses with bullet points and clear sections.\n"
+        "- Always clarify that credit decisions rest with Bank of Punjab under its own prudential policy."
+    )
+
+    payload = {
+        "contents": [
+            {
+                "role": "user",
+                "parts": [
+                    {
+                        "text": f"Grounded Context Documents:\n{grounding_context}\n\nUser Question:\n{user_message}"
+                    }
+                ]
+            }
+        ],
+        "systemInstruction": {
+            "parts": [
+                {"text": system_instruction}
+            ]
+        },
+        "generationConfig": {
+            "temperature": 0.2,
+            "maxOutputTokens": 2048
+        }
+    }
+
+    data_bytes = json.dumps(payload).encode("utf-8")
+    models = ["gemini-3.5-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"]
+
+    for model in models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        req = urllib.request.Request(url, data=data_bytes, headers={"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=12) as response:
+                res_json = json.loads(response.read().decode("utf-8"))
+                candidates = res_json.get("candidates", [])
+                if candidates and "content" in candidates[0]:
+                    parts = candidates[0]["content"].get("parts", [])
+                    if parts and "text" in parts[0]:
+                        return parts[0]["text"]
+        except Exception:
+            continue
+
+    return None
+
+
 def handle_ai_query(user_message: str, session_context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Core entrypoint for PinkSalt AI.
@@ -415,7 +515,28 @@ def handle_ai_query(user_message: str, session_context: Optional[Dict[str, Any]]
         }
 
     # 4. Grounded RAG Retrieval for Informational Queries
-    relevant_docs = retrieve_relevant_corpus(clean_msg, limit=2)
+    relevant_docs = retrieve_relevant_corpus(clean_msg, limit=3)
+
+    # Invoke Google Gemini with grounded domain context if configured
+    gemini_answer = call_gemini_api(clean_msg, relevant_docs)
+    if gemini_answer:
+        docs_for_citation = relevant_docs if relevant_docs else AUTHORITATIVE_CORPUS[:2]
+        citations = [
+            {
+                "title": doc["title"],
+                "authority": doc["authority"],
+                "date": doc["date"],
+                "url": doc["source_url"]
+            }
+            for doc in docs_for_citation
+        ]
+        return {
+            "answer": gemini_answer,
+            "citations": citations,
+            "confidence": "high",
+            "model": "gemini-3.5-flash-lite",
+            "suggested_actions": ["Explore Related Business Models", "Open Site Selector Tool", "Generate Feasibility Outline"]
+        }
 
     if not relevant_docs:
         # Fallback check against SQLite database knowledge docs

@@ -814,27 +814,42 @@
   </footer>
 
   <!-- ========================================================================
-       CONCEPT DEMO ASSISTANT (FLOATING BUTTON & DIALOG)
+       PINKSALT AI ASSISTANT (POWERED BY GOOGLE GEMINI)
        ======================================================================== -->
-  <button type="button" class="assistant-floating-btn" id="assistant-open-btn" aria-label="Open Advisory Assistant Concept Demo">
-    <span>💬</span> Assistant (Concept Demo)
+  <button type="button" class="assistant-floating-btn" id="assistant-open-btn" aria-label="Open PinkSalt AI Assistant">
+    <span>✨</span> PinkSalt AI
   </button>
 
   <div class="assistant-modal" id="assistant-modal" role="dialog" aria-labelledby="assistant-title">
     <div class="assistant-modal-header">
       <div>
-        <h4 id="assistant-title">Advisory Assistant (Concept Demo)</h4>
-        <span style="font-size:10.5px; opacity:0.8;">Rule-Based Knowledge Retrieval</span>
+        <h4 id="assistant-title" style="display:flex; align-items:center; gap:6px;">
+          <span>✨</span> PinkSalt AI
+        </h4>
+        <span style="font-size:10.5px; opacity:0.85;">Powered by Google Gemini &amp; Directorate Knowledge Base</span>
       </div>
-      <button type="button" id="assistant-close-btn" style="background:transparent; border:none; color:#FFFFFF; font-size:18px; cursor:pointer;" aria-label="Close Assistant">✕</button>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button type="button" id="assistant-key-toggle-btn" title="Configure Cloud Gemini API Key" style="background:rgba(255,255,255,0.18); border:none; color:#FFFFFF; border-radius:4px; padding:3px 7px; font-size:11px; cursor:pointer;">🔑 Key</button>
+        <button type="button" id="assistant-close-btn" style="background:transparent; border:none; color:#FFFFFF; font-size:18px; cursor:pointer;" aria-label="Close Assistant">✕</button>
+      </div>
+    </div>
+    <div id="assistant-key-panel" style="display:none; background:#F4EFEA; padding:10px 14px; border-bottom:1px solid #DDD4C8; font-size:12px;">
+      <div style="font-weight:700; color:var(--punjab-dark); margin-bottom:4px;">Gemini API Configuration:</div>
+      <div style="font-size:11px; color:var(--stone-muted); margin-bottom:6px;">Running locally with <code>python3 server.py</code> automatically uses your secure <code>.env</code> key. On static web hosts (GitHub Pages), you can optionally save your key here:</div>
+      <div style="display:flex; gap:6px;">
+        <input type="password" id="assistant-client-key" class="form-control" style="font-size:11px; padding:4px 8px;" placeholder="Paste Gemini API Key (e.g. AQ... or AIza...)">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-save-key" style="font-size:11px; padding:4px 8px;">Save</button>
+      </div>
+      <div id="key-status-msg" style="font-size:10.5px; color:var(--punjab-green); margin-top:4px; display:none;"></div>
     </div>
     <div class="assistant-chat-body" id="assistant-body">
       <div class="chat-bubble chat-bubble-bot">
-        Welcome to the Directorate General of Mines &amp; Minerals advisory demo. Ask about geological reserves, processing zones, the CM Financing Scheme, or export standards.
+        <strong>Welcome to PinkSalt AI</strong><br>
+        I am your intelligent advisor powered by Google Gemini and the Directorate General of Mines &amp; Minerals. Ask me anything about Salt Range deposits, value-addition processing, Quaidabad Zone, export regulations (Codex/FDA), or the CM Financing Scheme.
       </div>
     </div>
     <div class="assistant-chat-input-bar">
-      <input type="text" id="assistant-input" class="form-control" style="font-size:12px; padding:6px 10px;" placeholder="Ask a question (e.g. reserves, financing, Quaidabad)...">
+      <input type="text" id="assistant-input" class="form-control" style="font-size:12px; padding:6px 10px;" placeholder="Ask anything about pink salt, value-addition, ROI...">
       <button type="button" class="btn btn-primary btn-sm" id="assistant-send-btn">Ask</button>
     </div>
   </div>
