@@ -2745,3 +2745,26 @@ button, input, select, textarea {
     break-inside: avoid;
   }
 }
+
+/* Interactive Feasibility Showcase Engine */
+.btn-link-preset {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 10.5px;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.btn-link-preset:hover {
+  color: var(--rose-600);
+}
+
+@media (max-width: 900px) {
+  #engine-card-showcase > div:last-child,
+  #engine-card-showcase-calc > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+}
