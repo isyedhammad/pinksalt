@@ -1663,94 +1663,123 @@ button, input, select, textarea {
    13. Processing Options & Visual Machinery Cards
    ========================================================================== */
 .machinery-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
   margin-top: 24px;
 }
 
+@media (max-width: 1100px) {
+  .machinery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .machinery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .machinery-card {
-  display: grid;
-  grid-template-columns: 340px 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  padding: 24px;
   box-shadow: 0 4px 18px rgba(10, 20, 38, 0.05);
   transition: all 0.25s ease;
+  position: relative;
 }
 
 .machinery-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(10, 20, 38, 0.1);
-  border-color: var(--navy-300);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(10, 20, 38, 0.1);
+  border-color: var(--rose-400);
 }
 
-.machinery-visual {
-  background: linear-gradient(135deg, #091326 0%, #16243e 100%);
-  color: #ffffff;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.machinery-icon-schematic {
-  width: 72px;
-  height: 72px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  margin-bottom: 16px;
-}
-
-.machinery-visual h4 {
-  font-size: 19px;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.machinery-visual .machinery-capacity-pill {
+.machinery-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 5px;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--gold-400);
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.3);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  margin-top: 10px;
+  letter-spacing: 0.02em;
 }
 
-.machinery-info {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.machinery-badge.essential {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.machinery-badge.optional {
+  background: rgba(245, 158, 11, 0.1);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.machinery-badge.turnkey {
+  background: rgba(225, 29, 72, 0.1);
+  color: #be123c;
+  border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+.machinery-card-header {
+  margin-bottom: 14px;
+}
+
+.machinery-card-header h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy-900);
+  margin: 0 0 5px 0;
+  line-height: 1.35;
+}
+
+.machinery-subtitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--rose-700);
+  margin: 0 0 10px 0;
 }
 
 .machinery-desc {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--navy-700);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+}
+
+.machinery-products-box {
+  margin-bottom: 14px;
+  font-size: 12.5px;
+  color: var(--navy-800);
+  background: var(--salt-50);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(225, 29, 72, 0.15);
+}
+
+.machinery-products-box strong {
+  color: var(--rose-800);
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .machinery-specs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 20px;
-  padding: 14px 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 12px;
   background: var(--bg-alt);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -1758,41 +1787,50 @@ button, input, select, textarea {
 
 .machinery-specs-grid .spec-item span {
   display: block;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .machinery-specs-grid .spec-item strong {
-  font-size: 13.5px;
+  font-size: 12.5px;
   color: var(--navy-900);
+  line-height: 1.3;
+  display: block;
+  word-break: break-word;
 }
 
 .machinery-card-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.machinery-price-box {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 4px;
 }
 
 .machinery-price-box .price-label {
-  font-size: 11px;
+  font-size: 10.5px;
   text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 700;
-  display: block;
 }
 
 .machinery-price-box .price-val {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--rose-700);
 }
+
 
 /* ==========================================================================
    14. Quality Standards & Laboratory Directory
@@ -1959,13 +1997,6 @@ button, input, select, textarea {
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
-  .machinery-card {
-    grid-template-columns: 1fr;
-  }
-  .machinery-visual {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
   .lab-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2849,5 +2880,162 @@ button, input, select, textarea {
   .dg-admin-trigger img.dg-mines-logo {
     height: 38px;
     width: 38px;
+  }
+}
+
+
+/* ==========================================================================
+   ENGINEERINGS.PK INSPIRED ULTRA-USERFRIENDLY UI/UX STYLES
+   ========================================================================== */
+.epk-banner-alert {
+  background: linear-gradient(90deg, rgba(244, 63, 94, 0.10) 0%, rgba(251, 191, 36, 0.08) 50%, rgba(244, 63, 94, 0.10) 100%);
+  border: 1px solid rgba(244, 63, 94, 0.28);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.epk-two-pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.epk-pillar-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.epk-pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  border-color: var(--rose-300);
+}
+
+.epk-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.epk-category-tile {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.epk-category-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(225, 29, 72, 0.12);
+  border-color: var(--rose-400);
+}
+
+.epk-category-tile.active {
+  border-color: var(--rose-600);
+  box-shadow: 0 0 0 2px var(--rose-200), 0 16px 36px rgba(225, 29, 72, 0.15);
+}
+
+.epk-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.epk-roadmap-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+}
+
+.epk-roadmap-step:hover {
+  transform: translateY(-3px);
+  border-color: var(--rose-300);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.epk-step-num {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 900;
+  color: #f43f5e;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.epk-bottom-cta-banner {
+  background: linear-gradient(135deg, #060d1a 0%, #0f172a 100%);
+  border: 1.5px solid rgba(244, 63, 94, 0.3);
+  border-radius: 24px;
+  padding: 44px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(4, 9, 20, 0.5);
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1024px) {
+  .epk-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .epk-two-pillar-grid {
+    grid-template-columns: 1fr;
+  }
+  .epk-roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .epk-category-grid {
+    grid-template-columns: 1fr;
+  }
+  .epk-banner-alert {
+    border-radius: 16px;
+    padding: 14px 16px;
+  }
+  .epk-bottom-cta-banner {
+    padding: 24px;
   }
 }
