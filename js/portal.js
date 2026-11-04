@@ -622,6 +622,85 @@ const siteData = {
   }
 };
 
+// -------------------------------------------------------------
+// Spatial GIS Mineral Corridor Telemetry
+// -------------------------------------------------------------
+const GIS_ZONES_DATA = {
+  khewra: {
+    title: "Khewra Salt Mine & Artisanal Corridor (Jhelum)",
+    badge: "🏛️ Primary Geological Reserve",
+    badgeBg: "#e11d48",
+    desc: "World's second largest salt deposit with 600M+ MT proven reserves and 98.8% natural NaCl purity. Direct connectivity via M-2 Lilla Interchange and home to multi-generational artisanal stonemasons.",
+    siteKey: "khewra"
+  },
+  warcha: {
+    title: "Warcha Crystalline Seams (Khushab)",
+    badge: "⛏️ High-Purity Extraction Reserve",
+    badgeBg: "#f43f5e",
+    desc: "400M+ MT high-purity crystalline evaporite seams yielding 99.1% pure translucent pink rock salt. Serves as primary feedstock supplier to Quaidabad processing cluster.",
+    siteKey: "quaidabad"
+  },
+  quaidabad: {
+    title: "Quaidabad Special Economic Zone (Khushab)",
+    badge: "🏭 Priority Processing SEZ Zone",
+    badgeBg: "#d97706",
+    desc: "Strategic mineral processing cluster located 35 km from Warcha extraction mines. Features dedicated railway freight siding, 132kV grid station, and 10-year income tax holiday under SEZ Act.",
+    siteKey: "quaidabad"
+  },
+  bhalwal: {
+    title: "Bhalwal Industrial Estate (Sargodha)",
+    badge: "🏭 Agro-Mineral Processing Hub",
+    badgeBg: "#0284c7",
+    desc: "Modern PIEDMC industrial estate located directly on M-2 Motorway (Bhalwal Interchange), 65 km from Salt Range. Equipped with 11kV underground power and 10-year SEZ exemption.",
+    siteKey: "bhalwal"
+  },
+  m3: {
+    title: "M-3 Industrial City (Faisalabad SEZ)",
+    badge: "🏭 Mega Export SEZ Corridor",
+    badgeBg: "#059669",
+    desc: "Pakistan's largest Special Economic Zone with direct motorway transit to Karachi ports. Features 0% customs duty on imported machinery, CETP effluent treatment, and dedicated container terminal.",
+    siteKey: "m3_faisalabad"
+  },
+  kalabagh: {
+    title: "Kalabagh Geological Outcrops (Mianwali)",
+    badge: "🌊 Natural Evaporite Formation",
+    badgeBg: "#be123c",
+    desc: "250M+ MT geological deposits exposed along the Indus River gorge. Renowned for high trace mineral content and rich red/salmon salt rock varieties.",
+    siteKey: "quaidabad"
+  },
+  chakwal: {
+    title: "Chakwal - Kallar Kahar Strike Belt",
+    badge: "⛰️ Regional Resource Strike",
+    badgeBg: "#64748b",
+    desc: "150M+ MT subsurface evaporite continuity connecting the eastern and central Salt Range, situated along the M-2 Kallar Kahar scenic escarpment.",
+    siteKey: "khewra"
+  }
+};
+
+let currentGisZone = "quaidabad";
+
+function selectGisZone(zoneKey) {
+  currentGisZone = zoneKey;
+  const z = GIS_ZONES_DATA[zoneKey] || GIS_ZONES_DATA.quaidabad;
+  const titleEl = document.getElementById("gis-zone-title");
+  const badgeEl = document.getElementById("gis-zone-badge");
+  const descEl = document.getElementById("gis-zone-desc");
+  const ctaBtn = document.getElementById("gis-zone-cta");
+  if (titleEl) titleEl.textContent = z.title;
+  if (badgeEl) {
+    badgeEl.textContent = z.badge;
+    badgeEl.style.background = z.badgeBg;
+  }
+  if (descEl) descEl.textContent = z.desc;
+  if (ctaBtn) {
+    ctaBtn.onclick = function() {
+      switchView("processing-options");
+      selectProcessingSite(z.siteKey);
+    };
+  }
+  showToast(`🎯 Selected: ${z.title}`);
+}
+
 function selectProcessingSite(siteKey) {
   document.querySelectorAll(".site-card-tab").forEach(t => t.classList.remove("active"));
   const tab = document.querySelector(`.site-card-tab[data-site="${siteKey}"]`);
