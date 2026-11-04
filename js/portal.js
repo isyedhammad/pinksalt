@@ -939,6 +939,238 @@ function applyTestingCostToFeasibility() {
 // -------------------------------------------------------------
 // 7. Financial Modeling Engine (5-Year Projections & Loan Amortization)
 // -------------------------------------------------------------
+// ==============================================================================
+// 4 APPLICANT BUSINESS CATEGORIES PRESETS & SMEDA CASE STUDY
+// ==============================================================================
+const APPLICANT_CATEGORIES = {
+  small_packaging: {
+    id: "small_packaging",
+    num: 1,
+    name: "Small-Scale Packaging Unit",
+    activities: "Grinding, grading, packing and labelling",
+    rangePKR: "PKR 50 Lakh to PKR 1.5 Crore",
+    rangeBadge: "PKR 50L - 1.5Cr",
+    capexUSD: 32500,
+    machinery: 18000,
+    land: 8000,
+    install: 1500,
+    wc: 5000,
+    capacityTPD: 8,
+    days: 280,
+    util: 0.75,
+    yield: 0.95,
+    washing: false,
+    rawCost: 40,
+    energy: 18,
+    packaging: 45,
+    labor: 18,
+    freight: 25,
+    admin: 12000,
+    maintenance: 1200,
+    compliance: 3500,
+    price: 340,
+    equityPct: 30,
+    interestRate: 14.5,
+    productKey: "fine_table_salt",
+    staff: "12 Workers",
+    advice: "Ideal for micro & small entrepreneurs. Focus on food-grade packaging hygiene (PSQCA 1669:2008) and retail barcode distribution. Low fixed overhead allows fast breakeven."
+  },
+  medium_manufacturing: {
+    id: "medium_manufacturing",
+    num: 2,
+    name: "Medium-Scale Manufacturing Unit",
+    activities: "Washing, crushing, grinding, processing and packaging",
+    rangePKR: "PKR 2.0 Crore to PKR 5.0 Crore",
+    rangeBadge: "PKR 2.0Cr - 5.0Cr",
+    capexUSD: 135000,
+    machinery: 75000,
+    land: 35000,
+    install: 8000,
+    wc: 17000,
+    capacityTPD: 30,
+    days: 300,
+    util: 0.80,
+    yield: 0.92,
+    washing: true,
+    rawCost: 38,
+    energy: 32,
+    packaging: 42,
+    labor: 20,
+    freight: 30,
+    admin: 28000,
+    maintenance: 3800,
+    compliance: 7500,
+    price: 360,
+    equityPct: 35,
+    interestRate: 14.5,
+    productKey: "fine_table_salt",
+    staff: "28 Workers",
+    advice: "Standard industrial salt processing unit. Ensure proper wastewater sedimentation for the washing circuit and reliable 3-phase grid power (50-100 kVA transformer)."
+  },
+  value_added_products: {
+    id: "value_added_products",
+    num: 3,
+    name: "Value-Added Product Manufacturing",
+    activities: "Salt lamps, tiles, bath salts, decorative products and other finished goods",
+    rangePKR: "PKR 75 Lakh to PKR 2.5 Crore",
+    rangeBadge: "PKR 75L - 2.5Cr",
+    capexUSD: 65000,
+    machinery: 32000,
+    land: 20000,
+    install: 4000,
+    wc: 9000,
+    capacityTPD: 10,
+    days: 280,
+    util: 0.70,
+    yield: 0.85,
+    washing: false,
+    rawCost: 45,
+    energy: 24,
+    packaging: 95,
+    labor: 45,
+    freight: 35,
+    admin: 18000,
+    maintenance: 2000,
+    compliance: 5000,
+    price: 680,
+    equityPct: 40,
+    interestRate: 14.5,
+    productKey: "decorative_salt_lamps",
+    staff: "22 Artisans",
+    advice: "High gross margin artisan production (lamps, tiles, spa salts). Prioritize skilled lathe craftsmanship, moisture-proof shrink wrapping, and CE/UL certified electrical fittings for export."
+  },
+  export_oriented: {
+    id: "export_oriented",
+    num: 4,
+    name: "Export-Oriented Business (SMEDA Benchmark)",
+    activities: "Bulk supply, private labelling, international distribution and direct exports",
+    rangePKR: "PKR 5.0 Crore to PKR 9.5+ Crore",
+    rangeBadge: "PKR 5.0Cr - 9.5+Cr",
+    capexUSD: 339260,
+    machinery: 111385,
+    land: 143297,
+    install: 53000,
+    wc: 31645,
+    capacityTPD: 50,
+    days: 280,
+    util: 0.75,
+    yield: 0.92,
+    washing: true,
+    rawCost: 35,
+    energy: 28,
+    packaging: 48,
+    labor: 22,
+    freight: 32,
+    admin: 42000,
+    maintenance: 6500,
+    compliance: 14000,
+    price: 410,
+    equityPct: 50,
+    interestRate: 26.0,
+    productKey: "fine_table_salt",
+    staff: "43 Personnel",
+    advice: "Full-scale corporate exporter benchmarked against SMEDA Dec 2023 Study #220. Meets eligibility for SBP Export Refinance Scheme (ERF). Requires ISO 22000, HACCP, Halal, and FDA compliance."
+  }
+};
+
+const SMEDA_BENCHMARK_CASE_STUDY = {
+  document: "SMEDA Pre-Feasibility Document No. 220",
+  title: "Pink Salt Manufacturing and Export Unit",
+  date: "December 2023",
+  authority: "Small and Medium Enterprises Development Authority, Ministry of Industries & Production, GoP",
+  project_cost_pkr: 94992710,
+  capex_pkr: 86132014,
+  wc_pkr: 8860696,
+  irr_equity: 0.29,
+  irr_debt: 0.25,
+  payback_years: 4.10,
+  npv_pkr: 49945487
+};
+
+function selectApplicantCategory(catId) {
+  state.currentApplicantCategory = catId;
+  const cat = APPLICANT_CATEGORIES[catId];
+  if (!cat) return;
+
+  document.querySelectorAll('.applicant-cat-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('cat-card-' + catId);
+  if (card) card.classList.add('active');
+
+  const elMach = document.getElementById('calc-machinery');
+  if (elMach) elMach.value = cat.machinery;
+
+  const elLand = document.getElementById('calc-land-building');
+  if (elLand) elLand.value = cat.land;
+
+  const elInstall = document.getElementById('calc-installation');
+  if (elInstall) elInstall.value = cat.install;
+
+  const elWc = document.getElementById('calc-working-capital');
+  if (elWc) elWc.value = cat.wc;
+
+  const elTpd = document.getElementById('calc-capacity-tpd');
+  if (elTpd) elTpd.value = cat.capacityTPD;
+
+  const elDays = document.getElementById('calc-operating-days');
+  if (elDays) elDays.value = cat.days;
+
+  const elUtil = document.getElementById('calc-utilization');
+  if (elUtil) elUtil.value = cat.util;
+
+  const elYield = document.getElementById('calc-yield');
+  if (elYield) elYield.value = cat.yield;
+
+  const elRaw = document.getElementById('calc-raw-salt');
+  if (elRaw) elRaw.value = cat.rawCost;
+
+  const elEnergy = document.getElementById('calc-energy');
+  if (elEnergy) elEnergy.value = cat.energy;
+
+  const elPkg = document.getElementById('calc-packaging');
+  if (elPkg) elPkg.value = cat.packaging;
+
+  const elLabor = document.getElementById('calc-labor');
+  if (elLabor) elLabor.value = cat.labor;
+
+  const elFreight = document.getElementById('calc-freight');
+  if (elFreight) elFreight.value = cat.freight;
+
+  const elAdmin = document.getElementById('calc-admin-salaries');
+  if (elAdmin) elAdmin.value = cat.admin;
+
+  const elMaint = document.getElementById('calc-maintenance');
+  if (elMaint) elMaint.value = cat.maintenance;
+
+  const elComp = document.getElementById('calc-compliance');
+  if (elComp) elComp.value = cat.compliance;
+
+  const elPrice = document.getElementById('calc-selling-price');
+  if (elPrice) elPrice.value = cat.price;
+
+  const elEquity = document.getElementById('calc-equity-pct');
+  if (elEquity) elEquity.value = cat.equityPct;
+
+  const elRate = document.getElementById('calc-interest-rate');
+  if (elRate) elRate.value = cat.interestRate || 14.5;
+
+  const elProd = document.getElementById('calc-product-select');
+  if (elProd && cat.productKey) elProd.value = cat.productKey;
+
+  toggleWashing(cat.washing);
+  executeCalculation();
+  showToast('Calibrated for: ' + cat.name + ' (' + cat.rangeBadge + ')');
+}
+
+function loadSmedaCaseStudy() {
+  selectApplicantCategory('export_oriented');
+  const elRate = document.getElementById('calc-interest-rate');
+  if (elRate) elRate.value = 26.0;
+  const elEquity = document.getElementById('calc-equity-pct');
+  if (elEquity) elEquity.value = 50.0;
+  executeCalculation();
+  showToast('Loaded official SMEDA Document No. 220 Case Study (PKR 94.99M)');
+}
+
 const planningPresets = {
   5000000: { // PKR 50 Lakh ($17,857 USD)
     pkr: 5000000,
@@ -1039,8 +1271,8 @@ function toggleWashing(isRequired) {
 }
 
 function initCalculator() {
-  if (!state.lastCalculation) {
-    selectPlanningRange(25000000);
+  if (!state.currentApplicantCategory) {
+    selectApplicantCategory('medium_manufacturing');
   } else {
     executeCalculation();
   }
@@ -1111,8 +1343,13 @@ function executeCalculation() {
   // Loan Repayment & Amortization Schedule (5 Years, 65% Debt)
   // -------------------------------------------------------------
   const interestRate = (parseFloat(document.getElementById("calc-interest-rate")?.value) || 14.5) / 100;
-  const loanPrincipal = totalCapex * 0.65;
-  const equityContribution = totalCapex * 0.35;
+  const equityPct = Math.max(5, Math.min(100, parseFloat(document.getElementById("calc-equity-pct")?.value) || 35.0));
+  const debtPct = 100 - equityPct;
+  const loanPrincipal = totalCapex * (debtPct / 100);
+  const equityContribution = totalCapex * (equityPct / 100);
+
+  const elEquityPKR = document.getElementById("calc-equity-pkr");
+  if (elEquityPKR) elEquityPKR.innerText = 'Equity: ' + formatPKR(equityContribution * USD_TO_PKR_RATE) + ' | Loan: ' + formatPKR(loanPrincipal * USD_TO_PKR_RATE);
 
   let balance = loanPrincipal;
   const annualPrincipalPayment = loanPrincipal / 5;
@@ -1313,6 +1550,84 @@ function renderCalculationResults(c) {
       `;
     }).join("");
   }
+
+  // -------------------------------------------------------------
+  // Automated Feasibility Assessment Card
+  // -------------------------------------------------------------
+  const catKey = state.currentApplicantCategory || "medium_manufacturing";
+  const catObj = APPLICANT_CATEGORIES[catKey] || APPLICANT_CATEGORIES.medium_manufacturing;
+
+  const avgDSCR = c.loan_amortization && c.loan_amortization.length > 0
+    ? (c.loan_amortization.reduce((acc, r) => acc + r.dscr, 0) / c.loan_amortization.length)
+    : 1.5;
+  const payback = c.financial_returns.estimated_payback_years;
+  const margin = c.financial_returns.operating_margin_pct;
+  const eqPct = (c.capex.equity / c.capex.total_capex) * 100 || 35;
+
+  let dscrScore = avgDSCR >= 2.0 ? 40 : (avgDSCR >= 1.5 ? 35 : (avgDSCR >= 1.3 ? 30 : (avgDSCR >= 1.0 ? 18 : 5)));
+  let paybackScore = payback <= 3.0 ? 25 : (payback <= 4.5 ? 20 : (payback <= 6.0 ? 12 : 5));
+  let eqScore = eqPct >= 40 ? 20 : (eqPct >= 30 ? 16 : (eqPct >= 20 ? 10 : 4));
+  let marginScore = margin >= 35 ? 15 : (margin >= 20 ? 12 : (margin >= 10 ? 7 : 2));
+  const bankabilityScore = Math.min(100, Math.max(10, dscrScore + paybackScore + eqScore + marginScore));
+
+  let tierLabel = "Class A - Highly Bankable";
+  let tierClass = "";
+  let tierDesc = "Optimal eligibility for State Bank of Pakistan (SBP) SME Refinancing & BOP Mineral Facilities. Strong debt coverage and fast payback.";
+
+  if (bankabilityScore < 55) {
+    tierLabel = "Class D - High Risk";
+    tierClass = "class-c";
+    tierDesc = "Coverage is tight. Recommend increasing sponsor equity, negotiating lower equipment pricing, or increasing selling price.";
+  } else if (bankabilityScore < 70) {
+    tierLabel = "Class C - Moderately Viable";
+    tierClass = "class-c";
+    tierDesc = "Commercial lenders may require 35-40% equity or supplementary immovable collateral.";
+  } else if (bankabilityScore < 85) {
+    tierLabel = "Class B - Bankable";
+    tierClass = "class-b";
+    tierDesc = "Solid commercial feasibility meeting standard industrial bank underwriting criteria.";
+  }
+
+  const elAssessmentBadge = document.getElementById("assessment-category-badge");
+  if (elAssessmentBadge) elAssessmentBadge.innerText = 'Category ' + catObj.num + ': ' + catObj.name;
+
+  const elBankScore = document.getElementById("assessment-bank-score");
+  if (elBankScore) elBankScore.innerText = bankabilityScore;
+
+  const elBankCircle = document.getElementById("assessment-bank-circle");
+  if (elBankCircle) elBankCircle.className = 'bankability-circle ' + tierClass;
+
+  const elRatingTier = document.getElementById("assessment-rating-tier");
+  if (elRatingTier) elRatingTier.innerText = tierLabel;
+
+  const elDscrPill = document.getElementById("assessment-dscr-pill");
+  if (elDscrPill) {
+    elDscrPill.className = 'dscr-indicator ' + (avgDSCR >= 1.30 ? 'dscr-healthy' : (avgDSCR >= 1.0 ? 'dscr-acceptable' : 'dscr-risk'));
+    elDscrPill.innerText = '● 5-Yr Avg DSCR: ' + avgDSCR.toFixed(2) + 'x';
+  }
+
+  const elTotalCapex = document.getElementById("assessment-total-capex");
+  if (elTotalCapex) elTotalCapex.innerText = formatUSD(c.capex.total_capex) + ' (' + formatPKR(c.pkr_summary.total_capex_pkr) + ')';
+
+  const elEquityRatio = document.getElementById("assessment-equity-loan-ratio");
+  if (elEquityRatio) elEquityRatio.innerText = eqPct.toFixed(0) + '% Equity / ' + (100 - eqPct).toFixed(0) + '% Debt';
+
+  const elLoanAmt = document.getElementById("assessment-loan-amount");
+  if (elLoanAmt) elLoanAmt.innerText = formatUSD(c.capex.debt) + ' (' + formatPKR(c.capex.debt * USD_TO_PKR_RATE) + ')';
+
+  const firstYearDebtService = c.loan_amortization && c.loan_amortization.length > 0 ? c.loan_amortization[0].total_debt_service : 0;
+  const monthlyEmiPKR = (firstYearDebtService * USD_TO_PKR_RATE) / 12;
+  const elMonthlyEmi = document.getElementById("assessment-monthly-emi");
+  if (elMonthlyEmi) elMonthlyEmi.innerText = formatPKR(monthlyEmiPKR) + ' / month (' + formatUSD(firstYearDebtService / 12) + ')';
+
+  const elAvgDscr = document.getElementById("assessment-avg-dscr");
+  if (elAvgDscr) elAvgDscr.innerText = avgDSCR.toFixed(2) + 'x (' + (avgDSCR >= 1.30 ? 'Meets Commercial Bank >= 1.30x requirement' : 'Requires structuring') + ')';
+
+  const elPayback = document.getElementById("assessment-payback-years");
+  if (elPayback) elPayback.innerText = c.financial_returns.estimated_payback_years + ' Years (Simple Payback)';
+
+  const elAdviceBox = document.getElementById("assessment-advice-box");
+  if (elAdviceBox) elAdviceBox.innerText = catObj.advice;
 
   // Draw 3 Interactive Canvas Charts
   drawFinancialChart(c.five_year_projection);
