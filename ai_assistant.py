@@ -162,6 +162,37 @@ AUTHORITATIVE_CORPUS = [
             "The portal provides real-time sensitivity analysis across Conservative, Base Case, and Optimistic operational scenarios."
         ),
         "source_url": "https://pinksalt.punjab.gov.pk/feasibility-calculator"
+    },
+    {
+        "id": "CORPUS-10",
+        "title": "Engineerings.pk Complete Salt Processing Plant (Model EPK-SALT1000)",
+        "authority": "Engineerings.pk (Verified Pakistani Turnkey Manufacturer)",
+        "date": "2026-04-10",
+        "topics": ["machinery", "turnkey", "epk-salt1000", "engineerings.pk", "washing", "iodization", "crushing", "grading", "packaging", "supplier"],
+        "content": (
+            "Engineerings.pk manufactures the EPK-SALT1000 Turnkey Salt Processing Plant, balanced at 1,000 kg/hr throughput "
+            "(scalable in 500 to 2,000 kg/hr configurations, equivalent to 12 to 48 TPD). The fully integrated production line includes: "
+            "(1) Raw salt washing & de-stoning; (2) Crushing & multi-grade screening (table, granular, coarse, industrial, and livestock grades); "
+            "(3) Fluidized/rotary drying; (4) Food-grade iodization dosing compliant with edible fortification standards; (5) Grading and automated conveying; "
+            "(6) Automatic weighing and packing across 1 kg to 50 kg retail pouches and bulk sacks. Features food-grade contact surfaces and corrosion-resistant "
+            "construction for aggressive salt environments, with full site layout and utility load sheets provided. Lead time is approximately 90 days."
+        ),
+        "source_url": "https://www.engineerings.pk/machines/salt-mineral-processing/complete-salt-processing-plant-epk-salt1000"
+    },
+    {
+        "id": "CORPUS-11",
+        "title": "Bloom Engineering Karachi Rock Salt & Mineral Hammer Mill Crusher (Model VHC Series)",
+        "authority": "Bloom Engineering Karachi (Verified Pakistani Manufacturer)",
+        "date": "2026-04-10",
+        "topics": ["hammer mill", "crusher", "bloom engineering", "vhc", "rock salt", "grinding", "motor", "mesh", "pulverizer"],
+        "content": (
+            "Bloom Engineering Karachi manufactures industrial rock salt and mineral hammer mill crushers (VHC Series). Available in Food-Grade SS316 "
+            "or heavy-duty Mild Steel. Models include: VHC-3000 (10 HP motor, 2,500 - 3,000 kg/hr, 16x22 inch shell), VHC-5000 (15 HP motor, 5,000 - 6,000 kg/hr, "
+            "20x26 inch shell), VHC-10000 (25 HP motor, 8,500 - 10,000 kg/hr, 26x34 inch shell), and VHC-20000 (35 HP motor, 18,000 - 20,000 kg/hr, 32x40 inch shell). "
+            "Features a 4-shaft inner rotor with 6mm thick x 50mm wide x 150mm hardened hammering blades, 6mm to 12mm bottom sizing discharge mesh, "
+            "3-phase motor connected via 4-belt pulleys, and an integrated VFD inverter frequency speed controller with emergency shut-off."
+        ),
+        "source_url": "https://blomeng.com/product/organic-waste-crusher-hammer-mill-vegetables-crusher-waste-shredder-hammer-mill-for-sale/"
     }
 ]
 

@@ -203,24 +203,26 @@ const EMBEDDED_OPPORTUNITIES = [
 const EMBEDDED_MACHINERY = [
   {
     id: "crushing_grinding",
-    title: "Crushing & Grinding Unit",
-    subtitle: "Primary & Fine Size Reduction",
+    title: "Crushing & Grinding Unit (Bloom Engineering VHC Series)",
+    subtitle: "Rock Salt & Mineral 4-Shaft Hammer Mill Crusher",
     photo: "images/landingPage-Image-upper.png",
-    purpose: "Converts raw rock salt lumps into coarse granules, fine table salt crystals, or fine powder.",
+    purpose: "Converts raw rock salt into coarse granules, table crystals, or fine powder. Engineered with a 4-shaft heavy-duty rotor and hardened hammers.",
     products: "Crushed salt, coarse granules (2-4mm), fine table salt (0.5-1.0mm), salt powder (<0.5mm)",
-    capacity_range: "5 to 50 Metric Tonnes / Day",
+    capacity_range: "2.5 to 20 Metric Tonnes / Hour (Models: VHC-3000 to VHC-20000)",
     specs: {
-      equipment_type: "Heavy Jaw Crusher + SS304 Pin/Hammer Mill",
-      power_rating: "35 kW - 55 kW (3-Phase 400V)",
-      mesh_control: "Interchangeable stainless steel sieves (10 - 100 mesh)",
-      wear_lining: "Hardened manganese steel & Food-grade SS304 contact"
+      equipment_type: "Bloom Engineering VHC Series 4-Shaft Hammer Mill (SS316 / Heavy MS)",
+      power_rating: "10 HP to 35 HP (3-Phase with 4-Belt Pulley Drive & VFD Inverter)",
+      mesh_control: "6mm - 12mm perforated bottom discharge screen (interchangeable)",
+      rotor_assembly: "4-Shaft rotor with 6mm thick x 50mm wide x 150mm hardened blades"
     },
-    utility: "Dedicated 60 kVA industrial electrical connection, dust collection hood",
+    utility: "Dedicated 30-60 kVA industrial electrical connection, dust collection hood",
     indicative_price_pkr: "PKR 15 - 35 Lakh",
     indicative_price_usd: "$5,350 - $12,500 USD",
-    status_tag: "Essential Core Unit",
+    status_tag: "Essential Core Unit • Verified Manufacturer",
     is_optional: false,
-    default_capex_usd: 9500
+    default_capex_usd: 9500,
+    verified_source: "Bloom Engineering Karachi",
+    verified_source_url: "https://blomeng.com/product/organic-waste-crusher-hammer-mill-vegetables-crusher-waste-shredder-hammer-mill-for-sale/"
   },
   {
     id: "washing_cleaning",
@@ -308,24 +310,27 @@ const EMBEDDED_MACHINERY = [
   },
   {
     id: "turnkey_plants",
-    title: "Complete Turnkey Processing Plants",
-    subtitle: "Fully Integrated Production Lines",
+    title: "Complete Turnkey Processing Plant (Engineerings.pk EPK-SALT1000)",
+    subtitle: "Balanced 1,000 kg/hr Turnkey Production Line",
     photo: "images/landingPage-Image.png",
-    purpose: "End-to-end engineered production lines from raw rock intake hopper to palletized export cartons.",
-    products: "Complete certified food-grade salt processing facility meeting HACCP / ISO 22000 / Codex standards",
-    capacity_range: "Turnkey Micro, Commercial, and Industrial Configurations",
+    purpose: "A fully integrated turnkey salt plant taking raw rock salt and delivering clean, graded, iodized, and packed retail product with automated material conveying.",
+    products: "Table salt (iodized retail pouches), granular & coarse salt, industrial salt, and compressed livestock blocks",
+    capacity_range: "1,000 kg/hr (Scalable 500 – 2,000 kg/hr / 12 – 48 TPD)",
     specs: {
-      micro_plant: "5 - 10 TPD: PKR 50 Lakh to PKR 1.0 Crore ($17,850 - $35,700 USD)",
-      commercial_plant: "15 - 25 TPD: PKR 1.8 to PKR 3.2 Crore ($64,200 - $114,200 USD)",
-      industrial_export: "30 - 50 TPD: PKR 3.5 to PKR 5.0 Crore ($125,000 - $178,500 USD)",
-      engineering: "Complete plant layout, civil foundation drawings, wiring looms, and commissioning"
+      line_stages: "Wash & de-stone -> Crush & multi-grade screen -> Dry -> Iodize -> Auto pack",
+      throughput: "Balanced 1,000 kg/hr eliminating bottleneck mismatches",
+      construction: "Food-grade contact surfaces, corrosion-resistant build for aggressive salt environments",
+      pack_range: "Automated weighing & packing from 1 kg to 50 kg retail/bulk packs",
+      engineering: "Full plant layout, utility load sheet, and ~90 days delivery lead time"
     },
-    utility: "75 kVA to 250 kVA 3-phase grid substation",
+    utility: "3-Phase industrial power supply (load sheet provided per layout)",
     indicative_price_pkr: "PKR 50 Lakh - 5.0 Crore",
     indicative_price_usd: "$17,850 - $178,500 USD",
-    status_tag: "Complete Turnkey Solution",
+    status_tag: "Turnkey Line • Verified Manufacturer",
     is_optional: false,
-    default_capex_usd: 85000
+    default_capex_usd: 85000,
+    verified_source: "Engineerings.pk",
+    verified_source_url: "https://www.engineerings.pk/machines/salt-mineral-processing/complete-salt-processing-plant-epk-salt1000"
   }
 ];
 
@@ -688,6 +693,17 @@ function renderProcessingOptions() {
           </div>
         </div>
 
+        <div style="margin-top:10px; margin-bottom:12px; font-size:12px;">
+          ${m.verified_source_url ? `
+            <span style="color:var(--text-muted);">Verified Manufacturer Source: </span>
+            <a href="${m.verified_source_url}" target="_blank" rel="noopener noreferrer" style="color:var(--rose-700); font-weight:700; text-decoration:underline;">
+              ${m.verified_source} ↗
+            </a>
+          ` : `
+            <span style="color:var(--text-muted);">Verified Source: Directorate Technical Concessions Benchmark</span>
+          `}
+        </div>
+
         <div class="machinery-card-footer">
           <div class="machinery-price-box">
             <span class="price-label">Indicative Equipment Price</span>
@@ -770,11 +786,12 @@ Specific Client Notes:   ${specs || 'Standard industrial configuration with spar
 
 3. RECOMMENDED REGIONAL FABRICATORS:
 --------------------------------------------------------------------------------
+- Engineerings.pk (Turnkey Line Model EPK-SALT1000 — https://www.engineerings.pk)
+- Bloom Engineering Karachi (VHC Series Hammer Mills — https://blomeng.com)
 - Heavy Mechanical Complex (HMC), Taxila
 - Millat Equipment / Agri-Industrial Ltd, Lahore
 - Pak Precision Engineering Works, Lahore
 - Star Engineering Works, Gujranwala
-- Precision Packaging Machinery, Karachi
 
 ================================================================================
 Notice: Generated via Punjab Pink Salt Intelligence & Investment Portal.
