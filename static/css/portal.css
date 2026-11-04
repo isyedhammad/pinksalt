@@ -1462,36 +1462,43 @@ button, input, select, textarea {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2.2fr 1fr 1fr 1fr;
-  gap: 52px;
-  margin-bottom: 52px;
+  grid-template-columns: 2fr 1fr 1.15fr 1.15fr;
+  gap: 48px;
+  margin-bottom: 48px;
 }
 
 .footer-col h4 {
   color: #ffffff;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
 
 .footer-links {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
-  margin-bottom: 12px;
+  margin-bottom: 11px;
 }
 
 .footer-links a {
-  font-size: 14px;
-  color: #94a3b8;
-  transition: color 0.2s ease;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
   color: #ffffff;
+  transform: translateX(3px);
 }
 
 .footer-bottom {
