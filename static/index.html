@@ -1352,6 +1352,104 @@
               <div class="smeda-metric-sub">Breakeven Y1: PKR 209M</div>
             </div>
           </div>
+          <!-- Collapsible Key Assumptions Toggle -->
+          <div style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.12); padding-top:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:12px; color:#cbd5e1;">
+              Includes full audit tables: <strong>Table 23 (Operating Costs)</strong>, <strong>Table 24 (Production Costs)</strong>, <strong>Table 25 (Revenue)</strong>, and <strong>Table 26 (Financial Assumptions)</strong>.
+            </div>
+            <button type="button" id="btn-toggle-smeda-assumptions" class="btn btn-outline btn-sm" style="color:#ffffff; border-color:rgba(255,255,255,0.3);" onclick="toggleSmedaAssumptions()">
+              📋 View Audited Key Assumptions (Tables 23, 24, 25 &amp; 26)
+            </button>
+          </div>
+
+          <!-- Audited Assumptions Accordion Content -->
+          <div id="smeda-assumptions-panel" style="display:none; margin-top:16px;">
+            <div class="smeda-assump-grid">
+              <!-- Table 23 -->
+              <div class="smeda-assump-card">
+                <div style="font-size:13px; font-weight:800; color:#38bdf8; margin-bottom:8px; display:flex; justify-content:space-between;">
+                  <span>Table 23: Operating Cost Assumptions</span>
+                  <span style="font-size:10px; color:#94a3b8;">SMEDA Dec 2023</span>
+                </div>
+                <table class="smeda-assump-table">
+                  <tbody>
+                    <tr><td>Operating Costs Growth Rate</td><td>10% p.a.</td></tr>
+                    <tr><td>Utilities – Direct (Processing)</td><td>59% of power</td></tr>
+                    <tr><td>Utilities – Indirect (Admin/Lighting)</td><td>41% of power</td></tr>
+                    <tr><td>Water Expenses</td><td>5% of admin exp</td></tr>
+                    <tr><td>Travelling Expenses</td><td>10% of admin exp</td></tr>
+                    <tr><td>Communication Expenses</td><td>2% of admin exp</td></tr>
+                    <tr><td>Office Vehicle Running</td><td>5% of admin exp</td></tr>
+                    <tr><td>Promotional Expense</td><td>0.50% of revenue</td></tr>
+                    <tr><td>Office Expenses (Stationery/Janitor)</td><td>10% of admin exp</td></tr>
+                    <tr><td>Professional Fees (Audit/Legal)</td><td>5% of admin exp</td></tr>
+                    <tr><td>Bad Debt Provision</td><td>0.50% of revenue</td></tr>
+                    <tr><td>Machinery &amp; Equipment Insurance</td><td>1.50% p.a.</td></tr>
+                    <tr><td>Office Vehicle Insurance</td><td>2.00% p.a.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table 24 -->
+              <div class="smeda-assump-card">
+                <div style="font-size:13px; font-weight:800; color:#38bdf8; margin-bottom:8px; display:flex; justify-content:space-between;">
+                  <span>Table 24: Production Cost Assumptions</span>
+                  <span style="font-size:10px; color:#94a3b8;">SMEDA Dec 2023</span>
+                </div>
+                <table class="smeda-assump-table">
+                  <tbody>
+                    <tr><td>Cost of Goods Sold Growth Rate</td><td>10% p.a.</td></tr>
+                    <tr><td>Raw Rock Salt (Edible Grade)</td><td>Rs. 16,000 / ton</td></tr>
+                    <tr><td>Packing Cost (Edible Salt)</td><td>Rs. 1,250 / ton</td></tr>
+                    <tr><td>Lamps &amp; Decorative Rock Salt</td><td>Rs. 230 / unit</td></tr>
+                    <tr><td>Lamps Other Materials (Bases/Bulbs/Cables)</td><td>Rs. 320 / unit</td></tr>
+                    <tr><td>Soap &amp; Spa Products Rock Salt</td><td>Rs. 6 / unit</td></tr>
+                    <tr><td>Precision Tiles Rock Salt</td><td>Rs. 90 / unit</td></tr>
+                    <tr><td>Animal Lick Salt Rock Salt</td><td>Rs. 150 / unit</td></tr>
+                    <tr><td>Animal Lick Other Materials (Rope/Box)</td><td>Rs. 15 / unit</td></tr>
+                    <tr><td>Packing Cost (Other Products)</td><td>Rs. 10 / unit</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table 25 -->
+              <div class="smeda-assump-card">
+                <div style="font-size:13px; font-weight:800; color:#4ade80; margin-bottom:8px; display:flex; justify-content:space-between;">
+                  <span>Table 25: Revenue Assumptions</span>
+                  <span style="font-size:10px; color:#94a3b8;">SMEDA Dec 2023</span>
+                </div>
+                <table class="smeda-assump-table">
+                  <tbody>
+                    <tr><td>Sale Price Growth Rate</td><td>10% p.a.</td></tr>
+                    <tr><td>Year 1 Capacity Utilization</td><td>50%</td></tr>
+                    <tr><td>Capacity Utilization Growth Rate</td><td>10% p.a.</td></tr>
+                    <tr><td>Maximum Capacity Utilization</td><td>90% (Year 5)</td></tr>
+                    <tr><td>5-Year Ramp Schedule</td><td>Y1: 50% | Y2: 60% | Y3: 70% | Y4: 80% | Y5: 90%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table 26 -->
+              <div class="smeda-assump-card">
+                <div style="font-size:13px; font-weight:800; color:#4ade80; margin-bottom:8px; display:flex; justify-content:space-between;">
+                  <span>Table 26: Financial &amp; Trade Assumptions</span>
+                  <span style="font-size:10px; color:#94a3b8;">SMEDA Dec 2023</span>
+                </div>
+                <table class="smeda-assump-table">
+                  <tbody>
+                    <tr><td>Domestic Sales Share</td><td>20% of total</td></tr>
+                    <tr><td>Export Sales Share</td><td>80% of total</td></tr>
+                    <tr><td>Export Sales Growth Rate</td><td>5% p.a.</td></tr>
+                    <tr><td>Export Re-financing Rate (SBP ERF)</td><td>3.00% p.a.</td></tr>
+                    <tr><td>Export Re-financing Payments / Year</td><td>12 monthly</td></tr>
+                    <tr><td>Project Lifetime</td><td>10 Years</td></tr>
+                    <tr><td>Debt-to-Equity Structure</td><td>0:100 (Equity) / 50:50 (Debt)</td></tr>
+                    <tr><td>Discount Rate for NPV</td><td>20.00%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Planning Range Selector Bar (PKR 50 Lakh to PKR 5 Crore) -->
@@ -1694,33 +1792,104 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- FIVE-YEAR FINANCIAL MODEL TABLE -->
+        <!-- FIVE-YEAR FINANCIAL MODEL & SMEDA CASH FLOW TABS -->
         <!-- ======================================================== -->
         <div class="five-year-card">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
             <div>
               <span class="opp-badge badge-verified">Comprehensive Projections</span>
-              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Five-Year Financial Model (Years 1 to 5)</h3>
+              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Five-Year Financial Model &amp; Cash Flow Statements</h3>
               <p style="font-size:13px; color:var(--text-muted); margin:0;">
-                Capacity ramp-up schedule: Year 1 (65%), Year 2 (75%), Year 3 (85%), Year 4 (90%), Year 5 (95%). Straight-line plant depreciation (10%) and corporate tax (20%).
+                Switch between the calibrated 5-year operating P&amp;L model, the audited SMEDA Cash Flow Statement (Doc #220), and the 5-year loan amortization schedule.
               </p>
             </div>
           </div>
 
-          <div style="overflow-x:auto;">
+          <!-- Tab Navigation for 5-Year Plan -->
+          <div class="five-year-tab-nav">
+            <button type="button" id="tab-btn-5yr-pnl" class="five-year-tab-btn active" onclick="switchFiveYearTab('pnl')">
+              📊 5-Year Operating Model &amp; EBITDA (P&amp;L)
+            </button>
+            <button type="button" id="tab-btn-5yr-cashflow" class="five-year-tab-btn" onclick="switchFiveYearTab('cashflow')">
+              💵 5-Year Audited Cash Flow Statement (SMEDA Table 12.3)
+            </button>
+            <button type="button" id="tab-btn-5yr-amortization" class="five-year-tab-btn" onclick="switchFiveYearTab('amortization')">
+              📑 5-Year Loan Amortization &amp; DSCR Schedule
+            </button>
+          </div>
+
+          <!-- VIEW 1: Operating P&L -->
+          <div id="five-year-pnl-view" style="overflow-x:auto;">
             <table class="data-table" id="five-year-table">
               <thead>
                 <tr>
-                  <th>Financial Metric ($ USD)</th>
-                  <th>Year 1 (65%)</th>
-                  <th>Year 2 (75%)</th>
-                  <th>Year 3 (85%)</th>
-                  <th>Year 4 (90%)</th>
-                  <th>Year 5 (95%)</th>
+                  <th>Financial Metric ($ USD / PKR)</th>
+                  <th>Year 1 (50-65%)</th>
+                  <th>Year 2 (60-75%)</th>
+                  <th>Year 3 (70-85%)</th>
+                  <th>Year 4 (80-90%)</th>
+                  <th>Year 5 (90-95%)</th>
                 </tr>
               </thead>
               <tbody id="five-year-tbody">
                 <!-- Dynamically populated via portal.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- VIEW 2: SMEDA Audited Cash Flow Statement (Table 12.3) -->
+          <div id="five-year-cashflow-view" style="display:none; overflow-x:auto;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span style="font-size:12px; font-weight:700; color:var(--navy-900);">
+                Official SMEDA Annexure 12.3: Cash Flow Statement (PKR Figures)
+              </span>
+              <span class="badge badge-verified" style="font-size:11px;">Audited SMEDA Benchmark</span>
+            </div>
+            <table class="smeda-cf-table">
+              <thead>
+                <tr>
+                  <th>Line Item / Cash Flow Category (PKR)</th>
+                  <th>Year 0</th>
+                  <th>Year 1</th>
+                  <th>Year 2</th>
+                  <th>Year 3</th>
+                  <th>Year 4</th>
+                  <th>Year 5</th>
+                </tr>
+              </thead>
+              <tbody id="smeda-cashflow-tbody">
+                <!-- Dynamically populated via portal.js renderSmedaCashFlowTable -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- VIEW 3: Loan Amortization & DSCR -->
+          <div id="five-year-amortization-view" style="display:none; overflow-x:auto;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span style="font-size:12px; font-weight:700; color:var(--navy-900);">
+                Commercial Bank Debt Service Schedule (Reducing Balance)
+              </span>
+              <div style="display:flex; gap:8px;">
+                <span class="dscr-indicator dscr-healthy">● Healthy &ge; 1.30</span>
+                <span class="dscr-indicator dscr-acceptable">● Acceptable 1.00–1.29</span>
+                <span class="dscr-indicator dscr-risk">● Risk &lt; 1.00</span>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Beginning Principal</th>
+                  <th>Principal Repaid</th>
+                  <th>Interest Paid</th>
+                  <th>Total Debt Service</th>
+                  <th>Ending Principal</th>
+                  <th>DSCR Ratio</th>
+                  <th>Coverage Status</th>
+                </tr>
+              </thead>
+              <tbody id="loan-amortization-tbody-inline">
+                <!-- Mirrored from loan-amortization-tbody -->
               </tbody>
             </table>
           </div>

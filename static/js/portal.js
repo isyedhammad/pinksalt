@@ -1163,13 +1163,92 @@ function selectApplicantCategory(catId) {
 
 function loadSmedaCaseStudy() {
   selectApplicantCategory('export_oriented');
+  state.smedaAssumptionsActive = true;
+
+  // Table 24: Production Cost Assumptions
+  const elRaw = document.getElementById('calc-raw-salt');
+  if (elRaw) elRaw.value = 57.14; // Rs. 16,000 / ton raw edible rock salt @ 280 PKR/USD
+
+  const elPkg = document.getElementById('calc-packaging');
+  if (elPkg) elPkg.value = 4.46; // Rs. 1,250 / ton edible salt packing @ 280 PKR/USD
+
   const elRate = document.getElementById('calc-interest-rate');
-  if (elRate) elRate.value = 26.0;
+  if (elRate) elRate.value = 26.0; // SMEDA Table 17 & 26: 26% markup
+
   const elEquity = document.getElementById('calc-equity-pct');
-  if (elEquity) elEquity.value = 50.0;
+  if (elEquity) elEquity.value = 50.0; // 50% debt / 50% equity
+
   executeCalculation();
-  showToast('Loaded official SMEDA Document No. 220 Case Study (PKR 94.99M)');
+  switchFiveYearTab('cashflow');
+  showToast('Loaded SMEDA Dec 2023 Study (PKR 94.99M), Table 23/24 unit rates & 5-Year Cash Flow');
 }
+
+// ==============================================================================
+// SMEDA AUDITED CASH FLOW STATEMENT (TABLE 12.3) & ASSUMPTIONS HANDLERS
+// ==============================================================================
+const SMEDA_CASH_FLOW_DATA = [
+  { metric: "Net Profit", y0: "-", y1: "10,219,520", y2: "11,606,340", y3: "24,171,419", y4: "38,988,245", y5: "54,118,877", isBold: true },
+  { metric: "Add: Depreciation Expense", y0: "-", y1: "9,621,065", y2: "9,621,065", y3: "9,621,065", y4: "9,621,065", y5: "9,621,065", isBold: false },
+  { metric: "Add: Amortization of Pre-Operating Costs", y0: "-", y1: "1,211,433", y2: "1,211,433", y3: "1,211,433", y4: "1,211,433", y5: "1,211,433", isBold: false },
+  { metric: "Accounts Receivable", y0: "-", y1: "(7,400,621)", y2: "(1,184,099)", y3: "(2,568,015)", y4: "(2,995,771)", y5: "(3,483,398)", isBold: false },
+  { metric: "Finished Goods Inventory", y0: "-", y1: "(8,953,163)", y2: "(2,551,801)", y3: "(2,981,750)", y4: "(3,473,663)", y5: "(4,035,953)", isBold: false },
+  { metric: "Equipment Spare Inventory", y0: "(220,915)", y1: "7,225", y2: "16,480", y3: "28,746", y4: "44,793", y5: "65,566", isBold: false },
+  { metric: "Raw Material Inventory", y0: "(7,081,869)", y1: "(3,201,005)", y2: "(4,233,117)", y3: "(5,557,551)", y4: "(7,251,567)", y5: "(5,738,273)", isBold: false },
+  { metric: "Advance Insurance Premium", y0: "(557,912)", y1: "83,687", y2: "83,687", y3: "83,687", y4: "83,687", y5: "83,687", isBold: false },
+  { metric: "Accounts Payable", y0: "6,210,734", y1: "1,903,888", y2: "2,238,587", y3: "2,625,198", y4: "2,971,088", y5: "1,709,527", isBold: false },
+  { metric: "Cash Provided by Operations", y0: "(7,860,696)", y1: "7,798,874", y2: "16,473,875", y3: "26,247,621", y4: "38,853,420", y5: "54,814,092", isHighlight: true, isBold: true },
+  { metric: "Issuance of Shares (Paid-Up Capital)", y0: "94,992,710", y1: "-", y2: "-", y3: "-", y4: "-", y5: "-", isBold: false },
+  { metric: "Cash Provided by Financing Activities", y0: "94,992,710", y1: "-", y2: "-", y3: "-", y4: "-", y5: "-", isBold: true },
+  { metric: "Capital Expenditure (CAPEX)", y0: "(86,132,014)", y1: "-", y2: "-", y3: "-", y4: "-", y5: "-", isBold: false },
+  { metric: "Cash Used in Investing Activities", y0: "(86,132,014)", y1: "-", y2: "-", y3: "-", y4: "-", y5: "-", isBold: true },
+  { metric: "NET CASH FLOW", y0: "1,000,000", y1: "7,798,874", y2: "16,473,875", y3: "26,247,621", y4: "38,853,420", y5: "54,814,092", isHighlight: true, isBold: true },
+  { metric: "Closing Cash & Bank Balance", y0: "1,000,000", y1: "3,689,114", y2: "11,804,940", y3: "21,787,827", y4: "33,014,757", y5: "46,956,166", isHighlight: true, isBold: true }
+];
+
+function toggleSmedaAssumptions() {
+  const panel = document.getElementById("smeda-assumptions-panel");
+  const btn = document.getElementById("btn-toggle-smeda-assumptions");
+  if (!panel) return;
+  const isHidden = panel.style.display === "none";
+  panel.style.display = isHidden ? "block" : "none";
+  if (btn) btn.innerHTML = isHidden ? "▲ Hide Audited Key Assumptions" : "📋 View Audited Key Assumptions (Tables 23, 24, 25 &amp; 26)";
+}
+
+function switchFiveYearTab(tabKey) {
+  state.currentFiveYearTab = tabKey;
+  document.querySelectorAll(".five-year-tab-btn").forEach(b => b.classList.remove("active"));
+  const btn = document.getElementById("tab-btn-5yr-" + tabKey);
+  if (btn) btn.classList.add("active");
+
+  const pnlView = document.getElementById("five-year-pnl-view");
+  const cfView = document.getElementById("five-year-cashflow-view");
+  const amortView = document.getElementById("five-year-amortization-view");
+
+  if (pnlView) pnlView.style.display = (tabKey === "pnl") ? "block" : "none";
+  if (cfView) cfView.style.display = (tabKey === "cashflow") ? "block" : "none";
+  if (amortView) amortView.style.display = (tabKey === "amortization") ? "block" : "none";
+
+  if (tabKey === "cashflow") {
+    renderSmedaCashFlowTable();
+  }
+}
+
+function renderSmedaCashFlowTable() {
+  const tbody = document.getElementById("smeda-cashflow-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = SMEDA_CASH_FLOW_DATA.map(r => `
+    <tr class="${r.isHighlight ? 'highlight' : ''}">
+      <td><strong style="${r.isBold ? 'color:var(--navy-900); font-weight:800;' : ''}">${r.metric}</strong></td>
+      <td style="color:${r.y0.startsWith('(') ? 'var(--rose-700)' : 'inherit'};">${r.y0}</td>
+      <td style="color:${r.y1.startsWith('(') ? 'var(--rose-700)' : 'inherit'};">${r.y1}</td>
+      <td style="color:${r.y2.startsWith('(') ? 'var(--rose-700)' : 'inherit'};">${r.y2}</td>
+      <td style="color:${r.y3.startsWith('(') ? 'var(--rose-700)' : 'inherit'};">${r.y3}</td>
+      <td style="color:${r.y4.startsWith('(') ? 'var(--rose-700)' : 'inherit'};">${r.y4}</td>
+      <td style="color:${r.y5.startsWith('(') ? 'var(--rose-700)' : 'inherit'}; font-weight:${r.isBold ? '800' : 'normal'};">${r.y5}</td>
+    </tr>
+  `).join("");
+}
+
 
 const planningPresets = {
   5000000: { // PKR 50 Lakh ($17,857 USD)
@@ -1379,9 +1458,12 @@ function executeCalculation() {
   }
 
   // -------------------------------------------------------------
-  // Five-Year Financial Projection (Capacity Ramp-up 65% to 95%)
+  // Five-Year Financial Projection (Capacity Ramp-up 50% to 95%)
   // -------------------------------------------------------------
-  const rampRatios = [0.65, 0.75, 0.85, 0.90, 0.95];
+  const isSmedaMode = state.currentApplicantCategory === "export_oriented" || state.smedaAssumptionsActive;
+  // SMEDA Table 25: 50% in Year 1 with 10% annual utilization growth up to 90% in Year 5
+  const rampRatios = isSmedaMode ? [0.50, 0.60, 0.70, 0.80, 0.90] : [0.65, 0.75, 0.85, 0.90, 0.95];
+  const escalationRate = isSmedaMode ? 0.10 : 0.05; // Table 23 & 24: 10% annual escalation
   const fiveYearProjection = [];
 
   for (let i = 0; i < 5; i++) {
@@ -1492,6 +1574,27 @@ function renderCalculationResults(c) {
 
   // Loan Amortization Table
   const tbodyLoan = document.getElementById("loan-amortization-tbody");
+  if (c.loan_amortization) {
+    const inlineAmortTbody = document.getElementById("loan-amortization-tbody-inline");
+    if (inlineAmortTbody) {
+      inlineAmortTbody.innerHTML = c.loan_amortization.map(row => `
+        <tr>
+          <td><strong>Year ${row.year}</strong></td>
+          <td>${formatUSD(row.beginning_balance)}</td>
+          <td>${formatUSD(row.principal_paid)}</td>
+          <td>${formatUSD(row.interest_paid)}</td>
+          <td><strong>${formatUSD(row.total_debt_service)}</strong></td>
+          <td>${formatUSD(row.ending_balance)}</td>
+          <td><strong style="color:var(--navy-900); font-size:14px;">${row.dscr}x</strong></td>
+          <td>
+            <span class="dscr-indicator ${row.status === 'Healthy' ? 'dscr-healthy' : (row.status === 'Acceptable' ? 'dscr-acceptable' : 'dscr-risk')}">
+              ● ${row.status}
+            </span>
+          </td>
+        </tr>
+      `).join("");
+    }
+  }
   if (tbodyLoan && c.loan_amortization) {
     tbodyLoan.innerHTML = c.loan_amortization.map(row => `
       <tr>
