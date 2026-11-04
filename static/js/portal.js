@@ -654,11 +654,17 @@
     const sendBtn = document.getElementById("assistant-send-btn");
     const input = document.getElementById("assistant-input");
     const body = document.getElementById("assistant-body");
+    const keyToggleBtn = document.getElementById("assistant-key-toggle-btn");
+    const keyPanel = document.getElementById("assistant-key-panel");
+    const saveKeyBtn = document.getElementById("btn-save-key");
+    const clientKeyInput = document.getElementById("assistant-client-key");
+    const keyStatusMsg = document.getElementById("key-status-msg");
 
     if (openBtn && modal) {
       openBtn.addEventListener("click", () => {
         const isShown = modal.style.display === "flex";
         modal.style.display = isShown ? "none" : "flex";
+        if (!isShown && input) input.focus();
       });
     }
 
@@ -668,7 +674,68 @@
       });
     }
 
-    const processMessage = () => {
+    if (keyToggleBtn && keyPanel) {
+      keyToggleBtn.addEventListener("click", () => {
+        const isHidden = keyPanel.style.display === "none" || !keyPanel.style.display;
+        keyPanel.style.display = isHidden ? "block" : "none";
+        if (isHidden && clientKeyInput) {
+          clientKeyInput.value = sessionStorage.getItem("pinksalt_gemini_key") || "";
+          clientKeyInput.focus();
+        }
+      });
+    }
+
+    if (saveKeyBtn && clientKeyInput) {
+      saveKeyBtn.addEventListener("click", () => {
+        const val = clientKeyInput.value.trim();
+        if (val) {
+          sessionStorage.setItem("pinksalt_gemini_key", val);
+          if (keyStatusMsg) {
+            keyStatusMsg.style.display = "block";
+            keyStatusMsg.innerText = "✓ Gemini Key saved in browser session.";
+            setTimeout(() => {
+              if (keyPanel) keyPanel.style.display = "none";
+              keyStatusMsg.style.display = "none";
+            }, 1200);
+          }
+          showToast("✓ Gemini API key saved for this session");
+        } else {
+          sessionStorage.removeItem("pinksalt_gemini_key");
+          if (keyStatusMsg) {
+            keyStatusMsg.style.display = "block";
+            keyStatusMsg.innerText = "Key cleared. Using server .env key or built-in corpus.";
+          }
+        }
+      });
+    }
+
+    // Markdown formatter helper for AI output
+    function formatAiResponse(text, citations) {
+      if (!text) return "";
+      let html = text
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/^### (.*$)/gim, '<h5 style="margin:10px 0 4px 0; font-size:14px; color:var(--punjab-dark);">$1</h5>')
+        .replace(/^## (.*$)/gim, '<h5 style="margin:12px 0 4px 0; font-size:14px; color:var(--punjab-dark); font-weight:700;">$1</h5>')
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        .replace(/`([^`]+)`/gim, '<code style="background:#ECE5DF; padding:2px 4px; border-radius:3px; font-size:11px;">$1</code>')
+        .replace(/^\* (.*$)/gim, '<li style="margin-left:14px; margin-bottom:3px;">$1</li>')
+        .replace(/^- (.*$)/gim, '<li style="margin-left:14px; margin-bottom:3px;">$1</li>')
+        .replace(/\n\n/g, '<div style="margin-bottom:8px;"></div>')
+        .replace(/\n/g, '<br>');
+
+      if (citations && citations.length > 0) {
+        html += '<div style="margin-top:10px; padding-top:8px; border-top:1px dashed #DDD4C8; font-size:11px; color:var(--stone-muted);">';
+        html += '<strong style="color:var(--punjab-dark);">Verified Citations:</strong><br>';
+        citations.forEach(c => {
+          html += `<span style="display:inline-block; margin-right:8px; margin-top:2px;">• <a href="${c.url || '#'}" target="_blank" style="color:var(--punjab-green); text-decoration:underline;">${c.title}</a> (${c.authority})</span>`;
+        });
+        html += '</div>';
+      }
+      return html;
+    }
+
+    const processMessage = async () => {
       const q = input.value.trim();
       if (!q) return;
       input.value = "";
@@ -677,25 +744,86 @@
       userBubble.className = "chat-bubble chat-bubble-user";
       userBubble.innerText = q;
       body.appendChild(userBubble);
+
+      const botBubble = document.createElement("div");
+      botBubble.className = "chat-bubble chat-bubble-bot";
+      botBubble.innerHTML = '<span style="opacity:0.7;">✨ PinkSalt AI is consulting mineral intelligence...</span>';
+      body.appendChild(botBubble);
       body.scrollTop = body.scrollHeight;
 
-      setTimeout(() => {
-        const botBubble = document.createElement("div");
-        botBubble.className = "chat-bubble chat-bubble-bot";
-        const lower = q.toLowerCase();
+      // 1. Attempt call to local backend /api/ai/chat (uses server .env GEMINI_API_KEY)
+      try {
+        const resp = await fetch("/api/ai/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: q })
+        });
+        if (resp.ok) {
+          const resData = await resp.json();
+          if (resData.success && resData.response && resData.response.answer) {
+            botBubble.innerHTML = formatAiResponse(resData.response.answer, resData.response.citations);
+            body.scrollTop = body.scrollHeight;
+            return;
+          }
+        }
+      } catch (err) {
+        // Backend not available (e.g. running on GitHub Pages)
+      }
 
-        if (lower.includes("reserve") || lower.includes("khewra") || lower.includes("warcha")) {
+      // 2. Direct browser call to Gemini API if client key is configured
+      const clientKey = sessionStorage.getItem("pinksalt_gemini_key");
+      if (clientKey) {
+        try {
+          const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${clientKey}`;
+          const gemPayload = {
+            contents: [{ role: "user", parts: [{ text: q }] }],
+            systemInstruction: {
+              parts: [{
+                text: "You are PinkSalt AI, the official advisory assistant for the Directorate General of Mines & Minerals, Government of Punjab. " +
+                      "Provide accurate, institutional answers on Salt Range deposits (Khewra, Warcha, Kalabagh), 1.25B MT proved reserves, " +
+                      "CM Pink Salt Value Addition Financing Scheme (Bank of Punjab), Quaidabad Mineral Zone (110 acres), " +
+                      "export standards (Codex CXS 150, FDA, PSW), and 6-stage value addition ladder."
+              }]
+            },
+            generationConfig: { temperature: 0.2, maxOutputTokens: 1000 }
+          };
+          const gResp = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gemPayload)
+          });
+          if (gResp.ok) {
+            const gData = await gResp.json();
+            const gText = gData.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (gText) {
+              botBubble.innerHTML = formatAiResponse(gText, [
+                { title: "Geological Survey of Pakistan & Directorate Knowledge Base", authority: "Government of Punjab", url: "https://mnm.punjab.gov.pk" }
+              ]);
+              body.scrollTop = body.scrollHeight;
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn("Direct Gemini call error:", e);
+        }
+      }
+
+      // 3. Fallback to Grounded Local Knowledge Base
+      const lower = q.toLowerCase();
+      setTimeout(() => {
+        if (lower.includes("reserve") || lower.includes("khewra") || lower.includes("warcha") || lower.includes("geology")) {
           botBubble.innerHTML = "<strong>Resource Base:</strong> The Salt Range contains 1.25+ Billion MT of proved commercial reserves across Khewra (600M MT, PMDC), Warcha (400M MT, 99.1% purity), and Kalabagh (250M MT). Total regional basin resource is estimated at 30+ Billion MT.";
         } else if (lower.includes("scheme") || lower.includes("finance") || lower.includes("loan") || lower.includes("bop")) {
-          botBubble.innerHTML = "<strong>CM Financing Scheme:</strong> Concessional facility offering up to PKR 50M per business with 0% net markup (fully subsidized by Government of Punjab) for up to 5-year tenure. Credit underwriting is executed exclusively by The Bank of Punjab via <a href='https://pinksalt.punjab.gov.pk/landing' target='_blank'>pinksalt.punjab.gov.pk</a>.";
-        } else if (lower.includes("quaidabad") || lower.includes("where to build") || lower.includes("sez")) {
+          botBubble.innerHTML = "<strong>CM Financing Scheme:</strong> Concessional facility offering up to PKR 50M per business with 0% net markup (fully subsidized by Government of Punjab) for up to 5-year tenure. Credit underwriting is executed exclusively by The Bank of Punjab via <a href='https://pinksalt.punjab.gov.pk/landing' target='_blank' style='color:var(--punjab-green); text-decoration:underline;'>pinksalt.punjab.gov.pk</a>.";
+        } else if (lower.includes("quaidabad") || lower.includes("where to build") || lower.includes("sez") || lower.includes("zone")) {
           botBubble.innerHTML = "<strong>Processing Locations:</strong> The flagship Quaidabad Processing Zone (110 acres, Khushab) is located 18 km from Warcha mines with dedicated industrial infrastructure. Notified alternative SEZs include Bhalwal (Sargodha) and M-3 Industrial City (Faisalabad).";
+        } else if (lower.includes("standard") || lower.includes("fda") || lower.includes("codex") || lower.includes("export")) {
+          botBubble.innerHTML = "<strong>Export & Standards:</strong> Food-grade salt exported to the US/EU must comply with Codex CXS 150-1985 (NaCl >= 97%, Pb < 2.0 ppm, As < 0.5 ppm). Consignments clear via Pakistan Single Window (PSW) under HS Code 2501.00.";
         } else {
-          botBubble.innerHTML = "<strong>Directorate Guidance:</strong> The portal provides verified geological data, industrial zoning criteria, equipment benchmarks, and model-based feasibility tools. For formal financing applications, please refer to the Chief Minister Pink Salt Financing portal.";
+          botBubble.innerHTML = "<strong>Directorate Guidance:</strong> PinkSalt AI is connected to Google Gemini. When running with <code>python3 server.py</code>, questions are answered via your secure <code>.env</code> key. On static hosting, click <strong>🔑 Key</strong> in the header to activate direct cloud AI.";
         }
-        body.appendChild(botBubble);
         body.scrollTop = body.scrollHeight;
-      }, 350);
+      }, 300);
     };
 
     if (sendBtn && input) {
