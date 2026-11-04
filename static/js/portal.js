@@ -739,13 +739,27 @@ function renderProcessingOptions() {
   const container = document.getElementById("machinery-grid-container");
   if (!container) return;
 
+  const modelCodes = {
+    crushing_grinding: "BLOOM-VHC4",
+    washing_cleaning: "TROM-WASH30",
+    screening_grading: "VIBRO-SIFT4",
+    industrial_drying: "FBD-DRY25",
+    automated_packaging: "VFFS-PACK30",
+    turnkey_plants: "EPK-SALT1000"
+  };
+
   container.innerHTML = EMBEDDED_MACHINERY.map(m => {
     const badgeClass = m.id === 'turnkey_plants' ? 'turnkey' : (m.is_optional ? 'optional' : 'essential');
+    const code = modelCodes[m.id] || "EPK-UNIT";
     return `
       <div class="machinery-card">
         <div>
           <div class="machinery-card-header">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:12px;">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#34d399; box-shadow:0 0 8px #34d399;"></span>
+                <span class="epk-tech-tag" style="background:#0f172a; color:#38bdf8; border:1px solid #1e293b; padding:2px 8px; border-radius:4px; font-family:monospace; font-size:10px; font-weight:700; letter-spacing:0.1em;">${code}</span>
+              </div>
               <span class="machinery-badge ${badgeClass}">${m.status_tag}</span>
             </div>
             <h3>${m.title}</h3>
@@ -760,46 +774,47 @@ function renderProcessingOptions() {
 
           <div class="machinery-specs-grid">
             <div class="spec-item">
-              <span>Capacity Range:</span>
+              <span>Capacity Range</span>
               <strong>${m.capacity_range}</strong>
             </div>
             <div class="spec-item">
-              <span>Primary Tech:</span>
+              <span>Primary Tech</span>
               <strong title="${m.specs.equipment_type || m.specs.engineering || ''}">${m.specs.equipment_type || m.specs.engineering}</strong>
             </div>
             <div class="spec-item">
-              <span>Power Rating:</span>
+              <span>Power Rating</span>
               <strong>${m.specs.power_rating || 'Per Layout'}</strong>
             </div>
             <div class="spec-item">
-              <span>Utility Hookup:</span>
+              <span>Utility Hookup</span>
               <strong title="${m.utility}">${m.utility}</strong>
             </div>
           </div>
 
-          <div class="machinery-source-line">
+          <div class="machinery-source-line" style="margin-bottom:14px; font-size:11.5px; min-height:20px;">
             ${m.verified_source_url ? `
-              <span style="color:var(--text-muted);">Verified Source: </span>
-              <a href="${m.verified_source_url}" target="_blank" rel="noopener noreferrer" style="color:var(--rose-700); font-weight:700; text-decoration:underline;">
+              <span style="color:#64748b; font-family:monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;">Verified Source: </span>
+              <a href="${m.verified_source_url}" target="_blank" rel="noopener noreferrer" style="color:#38bdf8; font-weight:700; text-decoration:underline;">
                 ${m.verified_source} ↗
               </a>
             ` : `
-              <span style="color:var(--text-muted);">Verified Source: Directorate Technical Concessions Benchmark</span>
+              <span style="color:#64748b; font-family:monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;">Verified Source: </span>
+              <span style="color:#94a3b8;">Directorate Technical Benchmark</span>
             `}
           </div>
         </div>
 
         <div class="machinery-card-footer">
           <div class="machinery-price-box">
-            <span class="price-label">Indicative Equipment Price</span>
+            <span class="price-label">Indicative CAPEX</span>
             <div>
               <span class="price-val">${m.indicative_price_pkr}</span>
-              <small style="color:var(--text-muted); font-size:11px; margin-left:4px;">(${m.indicative_price_usd})</small>
+              <small style="color:#94a3b8; font-size:11px; margin-left:4px;">(${m.indicative_price_usd})</small>
             </div>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            <button class="btn btn-outline btn-sm" onclick="openRFQModal('${m.title}', 25)" style="padding:7px 8px; font-size:11.5px; text-align:center; justify-content:center;">Generate RFQ 📋</button>
-            <button class="btn btn-primary btn-sm" onclick="configureMachineryInCalc(${m.default_capex_usd}, ${m.is_optional})" style="padding:7px 8px; font-size:11.5px; text-align:center; justify-content:center;">Configure in Calc →</button>
+            <button class="btn btn-sm" onclick="openRFQModal('${m.title}', 25)" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.22); color:#ffffff; border-radius:9999px; font-size:11.5px; font-weight:600; padding:7px 8px; text-align:center; justify-content:center; transition:all 0.25s ease;">Generate RFQ 📋</button>
+            <button class="btn btn-sm" onclick="configureMachineryInCalc(${m.default_capex_usd}, ${m.is_optional})" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%); border:none; color:#ffffff; border-radius:9999px; font-size:11.5px; font-weight:700; padding:7px 8px; text-align:center; justify-content:center; box-shadow:0 4px 14px rgba(225,29,72,0.35); transition:all 0.25s ease;">Configure in Calc →</button>
           </div>
         </div>
       </div>
@@ -879,7 +894,7 @@ Target Sector:           Pink Salt Processing & Value Addition, Punjab, Pakistan
 Contact Person:          ${name}
 Enterprise Name:         ${company}
 Email Address:           ${email}
-Phone / WhatsApp:        ${phone}
+Phone / Contact Number:  ${phone}
 
 2. EQUIPMENT SPECIFICATIONS REQUESTED:
 --------------------------------------------------------------------------------
