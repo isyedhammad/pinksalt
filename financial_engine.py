@@ -224,15 +224,22 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
     total_debt_service_overall = loan_amount + total_financing_cost
 
     # 11. Five-Year Comprehensive Financial Projection (Years 1 to 5)
-    # Ramp-up: Y1=65%, Y2=75%, Y3=85%, Y4=90%, Y5=95% (relative baseline)
-    ramp_multipliers = [
-        min(1.0, max(0.3, capacity_utilization * 0.85)),  # Y1 ramp-up
-        capacity_utilization,                              # Y2 base
-        min(1.0, capacity_utilization * 1.10),             # Y3 maturity
-        min(1.0, capacity_utilization * 1.15),             # Y4 peak
-        min(1.0, capacity_utilization * 1.18)              # Y5 steady
-    ]
-    inflation_rate = 0.05  # 5% annual escalation for selling price and cost
+    # Check if SMEDA official ramp & assumptions apply (Category 4 or explicit flag)
+    is_smeda_mode = bool(params.get("use_smeda_assumptions") or params.get("applicant_category") == "export_oriented")
+    if is_smeda_mode:
+        # Table 25: 50% in Year 1 with 10% annual utilization growth up to 90% in Year 5
+        ramp_multipliers = [0.50, 0.60, 0.70, 0.80, 0.90]
+        # Table 23 & 24: 10% annual escalation growth rate
+        inflation_rate = 0.10
+    else:
+        ramp_multipliers = [
+            min(1.0, max(0.3, capacity_utilization * 0.85)),  # Y1 ramp-up
+            capacity_utilization,                              # Y2 base
+            min(1.0, capacity_utilization * 1.10),             # Y3 maturity
+            min(1.0, capacity_utilization * 1.15),             # Y4 peak
+            min(1.0, capacity_utilization * 1.18)              # Y5 steady
+        ]
+        inflation_rate = 0.05
     tax_rate = 0.20        # 20% indicative corporate/SME tax on EBT
 
     five_year_projection = []
@@ -443,6 +450,8 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
         },
         "pkr_summary": pkr_summary,
         "automated_assessment": automated_assessment,
+        "smeda_key_assumptions": SMEDA_BENCHMARK_CASE_STUDY["key_assumptions"],
+        "smeda_cash_flow_statement": SMEDA_BENCHMARK_CASE_STUDY["audited_5_year_cash_flow"],
         "disclaimer": (
             "NOTICE: This preliminary model provides computational estimates for project evaluation "
             "and does not constitute an officially certified Bankable Feasibility Study, geological reserve report, "
@@ -498,7 +507,76 @@ SMEDA_BENCHMARK_CASE_STUDY = {
         "year_1_breakeven_revenue_pkr": 209150000,
         "year_1_margin_of_safety": 0.23,
         "year_5_margin_of_safety": 0.45
-    }
+    },
+    "key_assumptions": {
+        "table_23_operating_costs": {
+            "title": "Table 23: Operating Cost Assumptions",
+            "operating_costs_growth_rate": "10% of general inflation rate",
+            "admin_benefits_expense": "10% of administration expenses",
+            "utilities_direct": "59% of power consumption",
+            "utilities_indirect": "41% of power consumption",
+            "water_expenses": "5% of administration expenses",
+            "travel_expenses": "10% of administration expenses",
+            "communication_expenses": "2% of administration expenses",
+            "vehicle_running_expenses": "5% of administration expenses",
+            "promotional_expense": "0.50% of revenue",
+            "office_expenses": "10% of administration expenses",
+            "professional_fees": "5% of administration expenses",
+            "bad_debt_expense": "0.50% of revenue",
+            "machinery_insurance_rate": "1.50%",
+            "vehicle_insurance_rate": "2.00%"
+        },
+        "table_24_production_costs": {
+            "title": "Table 24: Production Cost Assumptions",
+            "cogs_growth_rate": "10% per annum",
+            "edible_salt_rock_raw_per_ton_pkr": 16000,
+            "lamps_decorative_rock_per_unit_pkr": 230,
+            "lamps_decorative_other_materials_per_unit_pkr": 320,
+            "soap_spa_rock_per_unit_pkr": 6,
+            "tiles_rock_per_unit_pkr": 90,
+            "animal_lick_rock_per_unit_pkr": 150,
+            "animal_lick_other_materials_per_unit_pkr": 15,
+            "packing_edible_per_ton_pkr": 1250,
+            "packing_other_per_unit_pkr": 10
+        },
+        "table_25_revenue_assumptions": {
+            "title": "Table 25: Revenue Assumptions",
+            "sale_price_growth_rate": "10% per annum",
+            "initial_capacity_utilization": "50% (Year 1)",
+            "capacity_utilization_growth_rate": "10% per annum",
+            "maximum_capacity_utilization": "90% (Year 5)",
+            "ramp_schedule": ["Year 1: 50%", "Year 2: 60%", "Year 3: 70%", "Year 4: 80%", "Year 5: 90%"]
+        },
+        "table_26_financial_assumptions": {
+            "title": "Table 26: Financial & Trade Assumptions",
+            "domestic_sales_proportion": "20%",
+            "export_sales_proportion": "80%",
+            "export_sales_growth_rate": "5% per annum",
+            "export_refinancing_rate": "3% per annum (SBP ERF)",
+            "export_refinancing_payments_per_year": 12,
+            "project_life_years": 10,
+            "debt_equity_ratio": "0:100 (Equity) or 50:50 (Financed)",
+            "discount_rate_for_npv": "20%"
+        }
+    },
+    "audited_5_year_cash_flow": [
+        {"metric": "Net Profit", "year_0": "-", "year_1": 10219520, "year_2": 11606340, "year_3": 24171419, "year_4": 38988245, "year_5": 54118877, "is_bold": True},
+        {"metric": "Add: Depreciation Expense", "year_0": "-", "year_1": 9621065, "year_2": 9621065, "year_3": 9621065, "year_4": 9621065, "year_5": 9621065, "is_bold": False},
+        {"metric": "Add: Amortization of Pre-Operating Costs", "year_0": "-", "year_1": 1211433, "year_2": 1211433, "year_3": 1211433, "year_4": 1211433, "year_5": 1211433, "is_bold": False},
+        {"metric": "Accounts Receivable", "year_0": "-", "year_1": -7400621, "year_2": -1184099, "year_3": -2568015, "year_4": -2995771, "year_5": -3483398, "is_bold": False},
+        {"metric": "Finished Goods Inventory", "year_0": "-", "year_1": -8953163, "year_2": -2551801, "year_3": -2981750, "year_4": -3473663, "year_5": -4035953, "is_bold": False},
+        {"metric": "Equipment Spare Inventory", "year_0": -220915, "year_1": 7225, "year_2": 16480, "year_3": 28746, "year_4": 44793, "year_5": 65566, "is_bold": False},
+        {"metric": "Raw Material Inventory", "year_0": -7081869, "year_1": -3201005, "year_2": -4233117, "year_3": -5557551, "year_4": -7251567, "year_5": -5738273, "is_bold": False},
+        {"metric": "Advance Insurance Premium", "year_0": -557912, "year_1": 83687, "year_2": 83687, "year_3": 83687, "year_4": 83687, "year_5": 83687, "is_bold": False},
+        {"metric": "Accounts Payable", "year_0": 6210734, "year_1": 1903888, "year_2": 2238587, "year_3": 2625198, "year_4": 2971088, "year_5": 1709527, "is_bold": False},
+        {"metric": "Cash Provided by Operations", "year_0": -7860696, "year_1": 7798874, "year_2": 16473875, "year_3": 26247621, "year_4": 38853420, "year_5": 54814092, "is_bold": True},
+        {"metric": "Issuance of Shares (Equity)", "year_0": 94992710, "year_1": "-", "year_2": "-", "year_3": "-", "year_4": "-", "year_5": "-", "is_bold": False},
+        {"metric": "Cash Provided by Financing", "year_0": 94992710, "year_1": "-", "year_2": "-", "year_3": "-", "year_4": "-", "year_5": "-", "is_bold": True},
+        {"metric": "Capital Expenditure (CAPEX)", "year_0": -86132014, "year_1": "-", "year_2": "-", "year_3": "-", "year_4": "-", "year_5": "-", "is_bold": False},
+        {"metric": "Cash Used in Investing Activities", "year_0": -86132014, "year_1": "-", "year_2": "-", "year_3": "-", "year_4": "-", "year_5": "-", "is_bold": True},
+        {"metric": "NET CASH FLOW", "year_0": 1000000, "year_1": 7798874, "year_2": 16473875, "year_3": 26247621, "year_4": 38853420, "year_5": 54814092, "is_bold": True},
+        {"metric": "Closing Cash & Bank Balance", "year_0": 1000000, "year_1": 3689114, "year_2": 11804940, "year_3": 21787827, "year_4": 33014757, "year_5": 46956166, "is_bold": True}
+    ]
 }
 
 

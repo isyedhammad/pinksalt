@@ -238,6 +238,25 @@ class TestPinkSaltPortal(unittest.TestCase):
         self.assertIn("average_dscr", asm)
         self.assertIn("monthly_emi_pkr", asm)
 
+    def test_12_smeda_key_assumptions_and_cash_flow(self):
+        """Verifies Tables 23-26 assumptions and audited 5-year cash flow in feasibility results."""
+        from financial_engine import get_smeda_case_study
+        cs = get_smeda_case_study()
+        self.assertIn("key_assumptions", cs)
+        assump = cs["key_assumptions"]
+        self.assertIn("table_23_operating_costs", assump)
+        self.assertIn("table_24_production_costs", assump)
+        self.assertIn("table_25_revenue_assumptions", assump)
+        self.assertIn("table_26_financial_assumptions", assump)
+        self.assertEqual(assump["table_24_production_costs"]["edible_salt_rock_raw_per_ton_pkr"], 16000)
+
+        self.assertIn("audited_5_year_cash_flow", cs)
+        self.assertEqual(len(cs["audited_5_year_cash_flow"]), 16)
+        net_profit_row = cs["audited_5_year_cash_flow"][0]
+        self.assertEqual(net_profit_row["metric"], "Net Profit")
+        self.assertEqual(net_profit_row["year_1"], 10219520)
+        self.assertEqual(net_profit_row["year_5"], 54118877)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2359,3 +2359,122 @@ button, input, select, textarea {
   line-height: 1.5;
   color: var(--navy-900);
 }
+
+/* ==========================================================================
+   SMEDA 5-YEAR CASH FLOW & AUDITED KEY ASSUMPTIONS TABS
+   ========================================================================== */
+.five-year-tab-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.five-year-tab-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--navy-800);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.five-year-tab-btn:hover {
+  background: var(--salt-50);
+  border-color: var(--rose-300);
+  color: var(--rose-700);
+}
+
+.five-year-tab-btn.active {
+  background: var(--rose-700);
+  color: #ffffff;
+  border-color: var(--rose-700);
+  box-shadow: 0 4px 10px rgba(189, 58, 65, 0.25);
+}
+
+.smeda-assump-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 860px) {
+  .smeda-assump-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.smeda-assump-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.smeda-assump-table {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.smeda-assump-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.smeda-assump-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.smeda-cf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.smeda-cf-table th {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 10px 12px;
+  text-align: right;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.smeda-cf-table th:first-child {
+  text-align: left;
+}
+
+.smeda-cf-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+
+.smeda-cf-table td:first-child {
+  text-align: left;
+}
+
+.smeda-cf-table tr.highlight {
+  background: #f0fdf4;
+  font-weight: 800;
+  color: var(--navy-900);
+}
+
+.smeda-cf-table tr.total-row {
+  background: #f8fafc;
+  font-weight: 700;
+  border-top: 2px solid var(--navy-800);
+}
