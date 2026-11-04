@@ -536,10 +536,10 @@ button, input, select, textarea {
    ========================================================================== */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, rgba(4, 9, 20, 0.95) 0%, rgba(10, 20, 38, 0.90) 50%, rgba(136, 19, 55, 0.78) 100%), 
-              url('../images/landingPage-bg.ed78472ae7d3a9a6.jpg') center/cover no-repeat;
+  background: linear-gradient(90deg, rgba(4, 9, 20, 0.95) 0%, rgba(10, 20, 38, 0.88) 45%, rgba(10, 20, 38, 0.65) 72%, rgba(136, 19, 55, 0.50) 100%), 
+              url('../images/khewra-salt-mine-hero.jpg') center right/cover no-repeat;
   color: #ffffff;
-  padding: 80px 0 100px 0;
+  padding: 85px 0 110px 0;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -552,17 +552,19 @@ button, input, select, textarea {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.28) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.22) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 56px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 2;
+}
+
+.hero-content {
+  max-width: 780px;
 }
 
 .hero-badge-pill {
@@ -1543,7 +1545,7 @@ button, input, select, textarea {
   .top-bar-wrapper { flex-direction: column; align-items: flex-start; }
   .main-nav { display: none; }
   .mobile-menu-toggle { display: flex; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-content { max-width: 100%; }
   .calc-container { grid-template-columns: 1fr; }
   .value-chain { grid-template-columns: repeat(3, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }

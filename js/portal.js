@@ -312,7 +312,7 @@ const EMBEDDED_MACHINERY = [
     id: "turnkey_plants",
     title: "Complete Turnkey Processing Plant (Engineerings.pk EPK-SALT1000)",
     subtitle: "Balanced 1,000 kg/hr Turnkey Production Line",
-    photo: "images/landingPage-Image.png",
+    photo: "images/landingPage-Image-lower.png",
     purpose: "A fully integrated turnkey salt plant taking raw rock salt and delivering clean, graded, iodized, and packed retail product with automated material conveying.",
     products: "Table salt (iodized retail pouches), granular & coarse salt, industrial salt, and compressed livestock blocks",
     capacity_range: "1,000 kg/hr (Scalable 500 – 2,000 kg/hr / 12 – 48 TPD)",
