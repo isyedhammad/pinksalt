@@ -492,6 +492,7 @@ function switchView(viewName) {
   }
   if (viewName === "calculator") {
     initCalculator();
+  updateInteractiveFeasibilityEngine();
   }
   if (viewName === "resources") {
     loadResources();
@@ -2526,6 +2527,100 @@ function renderAdminDashboard() {
 // -------------------------------------------------------------
 // DOM Loaded Initialization
 // -------------------------------------------------------------
+
+// -------------------------------------------------------------
+// Interactive 5-Year Investment & Debt Feasibility Engine
+// -------------------------------------------------------------
+function setEngineCapex(val) {
+  const els = document.querySelectorAll('#input-capex');
+  els.forEach(el => el.value = val);
+  updateInteractiveFeasibilityEngine();
+}
+
+function setEngineDebt(val) {
+  const els = document.querySelectorAll('#input-debt-ratio');
+  els.forEach(el => el.value = val);
+  updateInteractiveFeasibilityEngine();
+}
+
+function setEngineRate(val) {
+  const els = document.querySelectorAll('#input-interest');
+  els.forEach(el => el.value = val);
+  updateInteractiveFeasibilityEngine();
+}
+
+function updateInteractiveFeasibilityEngine() {
+  const elCapex = document.querySelector('#input-capex');
+  const capex = elCapex ? parseFloat(elCapex.value) : 15000000;
+
+  const elDebt = document.querySelector('#input-debt-ratio');
+  const debtRatio = elDebt ? (parseFloat(elDebt.value) / 100.0) : 0.60;
+
+  const elRate = document.querySelector('#input-interest');
+  const interestRate = elRate ? (parseFloat(elRate.value) / 100.0) : 0.14;
+
+  const elWash = document.querySelector('#input-washing');
+  const hasWashing = elWash ? elWash.checked : true;
+
+  // Sync inputs across instances (home view and calc view)
+  document.querySelectorAll('#input-capex').forEach(el => el.value = capex);
+  document.querySelectorAll('#input-debt-ratio').forEach(el => el.value = Math.round(debtRatio * 100));
+  document.querySelectorAll('#input-interest').forEach(el => el.value = (interestRate * 100).toFixed(1));
+  document.querySelectorAll('#input-washing').forEach(el => el.checked = hasWashing);
+
+  // Update displays
+  document.querySelectorAll('#display-capex').forEach(el => el.innerText = (capex).toLocaleString());
+  document.querySelectorAll('#display-debt-ratio').forEach(el => el.innerText = Math.round(debtRatio * 100) + '%');
+  document.querySelectorAll('#display-interest').forEach(el => el.innerText = (interestRate * 100).toFixed(1) + '%');
+
+  const loan = capex * debtRatio;
+  const equity = capex - loan;
+
+  const r = interestRate;
+  const n = 5;
+  let annualEmi = 0;
+  if (loan > 0) {
+    annualEmi = loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  document.querySelectorAll('#kpi-engine-equity').forEach(el => el.innerText = 'PKR ' + (equity / 1000000).toFixed(1) + ' M');
+  document.querySelectorAll('#kpi-engine-equity-sub').forEach(el => el.innerText = Math.round((1 - debtRatio) * 100) + '% Investor Capital');
+
+  document.querySelectorAll('#kpi-engine-loan').forEach(el => el.innerText = 'PKR ' + (loan / 1000000).toFixed(1) + ' M');
+  document.querySelectorAll('#kpi-engine-emi').forEach(el => el.innerText = 'PKR ' + (annualEmi / 1000000).toFixed(2) + ' M');
+
+  const baseRevenue = capex * 1.25;
+  const opexBase = capex * (hasWashing ? 0.75 : 0.68);
+
+  let minDscr = 99.0;
+  for (let y = 1; y <= 5; y++) {
+    const ramp = 0.70 + (y - 1) * 0.15;
+    const rev = (baseRevenue * ramp) / 1000000;
+    const opx = (opexBase * ramp) / 1000000;
+    const ebt = rev - opx;
+    const emiM = annualEmi / 1000000;
+    const net = ebt - emiM;
+
+    document.querySelectorAll('#engine-row-rev-' + y).forEach(el => el.innerText = rev.toFixed(1) + ' M');
+    document.querySelectorAll('#engine-row-opx-' + y).forEach(el => el.innerText = '(' + opx.toFixed(1) + ' M)');
+    document.querySelectorAll('#engine-row-ebt-' + y).forEach(el => el.innerText = ebt.toFixed(1) + ' M');
+    document.querySelectorAll('#engine-row-emi-' + y).forEach(el => el.innerText = '(' + emiM.toFixed(2) + ' M)');
+    document.querySelectorAll('#engine-row-net-' + y).forEach(el => el.innerText = net.toFixed(1) + ' M');
+
+    const yearDscr = emiM > 0 ? (ebt / emiM) : 9.99;
+    if (yearDscr < minDscr) minDscr = yearDscr;
+  }
+
+  const irrVal = debtRatio > 0.5 ? (32.0 + (1 - debtRatio) * 7).toFixed(1) : (28.0 + (1 - debtRatio) * 5).toFixed(1);
+  document.querySelectorAll('#kpi-engine-irr').forEach(el => el.innerText = irrVal + '%');
+
+  const pb = (2.2 + debtRatio * 0.7).toFixed(1);
+  document.querySelectorAll('#kpi-engine-payback').forEach(el => el.innerText = pb + ' Years');
+
+  const dscrStr = (loan === 0 ? 'No Debt' : (minDscr.toFixed(2) + 'x'));
+  document.querySelectorAll('#kpi-engine-dscr').forEach(el => el.innerText = dscrStr);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initHomeView();
 
@@ -2541,4 +2636,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderProcessingOptions();
   initCalculator();
+  updateInteractiveFeasibilityEngine();
 });

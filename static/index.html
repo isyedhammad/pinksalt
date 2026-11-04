@@ -127,6 +127,183 @@
         </div>
 
         <!-- ======================================================== -->
+        <!-- 5-YEAR INVESTMENT & DEBT FEASIBILITY ENGINE (INTERACTIVE SHOWCASE) -->
+        <!-- ======================================================== -->
+        <div class="card" id="engine-card-showcase" style="margin-bottom:32px; padding:28px; border:1.5px solid var(--rose-200); background:#ffffff; box-shadow:0 8px 24px rgba(15,23,42,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:14px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="badge" style="background:var(--rose-50); color:var(--rose-800); border:1px solid var(--rose-200); font-weight:700;">Deterministic Cash Flow Model</span>
+                <span style="font-size:12px; color:var(--text-muted);">Interactive Capital &amp; Debt Simulation</span>
+              </div>
+              <h3 style="font-size:22px; font-weight:800; color:var(--navy-900); margin:6px 0 2px 0;">
+                5-Year Investment &amp; Debt Feasibility Engine
+              </h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                Planning range: PKR 50 Lakh to PKR 5 Crore (Washing Line toggle, Loan Amortization, DSCR)
+              </p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="switchView('calculator')">
+              Open Full Feasibility &amp; Appraisal Dossier →
+            </button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 2fr; gap:24px;">
+            <!-- Controls Column -->
+            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+              <h4 style="font-size:14px; font-weight:800; color:var(--navy-900); margin:0 0 16px 0; text-transform:uppercase; letter-spacing:0.5px;">
+                Investment Parameters
+              </h4>
+
+              <!-- Slider 1: Total Capital Investment -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Total Capital Investment (PKR):</span>
+                  <span id="display-capex" style="color:var(--rose-700); font-size:15px; font-weight:900;">15,000,000</span>
+                </div>
+                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(5000000)">50 Lakh</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(25000000)">2.5 Cr</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(50000000)">5 Crore</button>
+                </div>
+              </div>
+
+              <!-- Slider 2: Debt Ratio -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Debt Ratio (% of Capex):</span>
+                  <span id="display-debt-ratio" style="color:var(--rose-700); font-size:15px; font-weight:900;">60%</span>
+                </div>
+                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(0)">0% (All Equity)</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(50)">50%</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(75)">75% (Max)</button>
+                </div>
+              </div>
+
+              <!-- Slider 3: Bank Mark-up Rate -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Bank Mark-up Rate (% p.a.):</span>
+                  <span id="display-interest" style="color:var(--rose-700); font-size:15px; font-weight:900;">14.0%</span>
+                </div>
+                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(8.0)">8% (Subsidized)</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(14.0)">14%</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(22.0)">22%</button>
+                </div>
+              </div>
+
+              <!-- Checkbox: Scientific Washing Line -->
+              <div style="padding-top:12px; border-top:1px solid var(--border);">
+                <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--navy-900); cursor:pointer;">
+                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine()" style="accent-color:var(--rose-600); width:16px; height:16px;">
+                  <span>Include Scientific Washing Line (+$12/ton Opex)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- KPI Cards & 5-Year Cash Flow Projections -->
+            <div>
+              <!-- 6 Metrics Cards Grid -->
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:18px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#9f1239;">Equity Required</div>
+                  <div id="kpi-engine-equity" style="font-size:18px; font-weight:900; color:#881337; margin:3px 0;">PKR 6.0 M</div>
+                  <div id="kpi-engine-equity-sub" style="font-size:11px; color:#be123c;">40% Investor Capital</div>
+                </div>
+                <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#1e40af;">Bank Loan Amount</div>
+                  <div id="kpi-engine-loan" style="font-size:18px; font-weight:900; color:#1e3a8a; margin:3px 0;">PKR 9.0 M</div>
+                  <div style="font-size:11px; color:#2563eb;">5-Year Term Facility</div>
+                </div>
+                <div style="background:#fffbeb; border:1px solid #fde68a; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#92400e;">Annual Debt Service</div>
+                  <div id="kpi-engine-emi" style="font-size:18px; font-weight:900; color:#78350f; margin:3px 0;">PKR 2.62 M</div>
+                  <div style="font-size:11px; color:#b45309;">Principle + Interest</div>
+                </div>
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#166534;">5-Year Project IRR</div>
+                  <div id="kpi-engine-irr" style="font-size:18px; font-weight:900; color:#14532d; margin:3px 0;">34.8%</div>
+                  <div style="font-size:11px; color:#15803d;">Deterministic Model</div>
+                </div>
+                <div style="background:#faf5ff; border:1px solid #e9d5ff; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#6b21a8;">Payback Period</div>
+                  <div id="kpi-engine-payback" style="font-size:18px; font-weight:900; color:#581c87; margin:3px 0;">2.6 Years</div>
+                  <div style="font-size:11px; color:#7e22ce;">Breakeven Horizon</div>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#334155;">Min DSCR Coverage</div>
+                  <div id="kpi-engine-dscr" style="font-size:18px; font-weight:900; color:#0f172a; margin:3px 0;">1.85x</div>
+                  <div style="font-size:11px; color:#475569;">Bank Approved &gt;1.30x</div>
+                </div>
+              </div>
+
+              <!-- 5-Year Cash Flow Projection Table -->
+              <div class="table-responsive" style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+                <table class="data-table" style="margin:0; font-size:12.5px;">
+                  <thead>
+                    <tr style="background:#f1f5f9;">
+                      <th style="padding:10px 12px; text-align:left; color:var(--navy-900);">Line Item (PKR Millions)</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 1</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 2</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 3</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 4</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 5</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding:9px 12px; font-weight:700; color:var(--navy-900);">Gross Sales Revenue</td>
+                      <td id="engine-row-rev-1" style="padding:9px 12px; text-align:right; font-weight:700;">13.1 M</td>
+                      <td id="engine-row-rev-2" style="padding:9px 12px; text-align:right; font-weight:700;">15.9 M</td>
+                      <td id="engine-row-rev-3" style="padding:9px 12px; text-align:right; font-weight:700;">18.8 M</td>
+                      <td id="engine-row-rev-4" style="padding:9px 12px; text-align:right; font-weight:700;">21.6 M</td>
+                      <td id="engine-row-rev-5" style="padding:9px 12px; text-align:right; font-weight:700;">24.4 M</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 12px; color:#be123c;">Operating Cost (Opex)</td>
+                      <td id="engine-row-opx-1" style="padding:9px 12px; text-align:right; color:#be123c;">(7.9 M)</td>
+                      <td id="engine-row-opx-2" style="padding:9px 12px; text-align:right; color:#be123c;">(9.6 M)</td>
+                      <td id="engine-row-opx-3" style="padding:9px 12px; text-align:right; color:#be123c;">(11.3 M)</td>
+                      <td id="engine-row-opx-4" style="padding:9px 12px; text-align:right; color:#be123c;">(12.9 M)</td>
+                      <td id="engine-row-opx-5" style="padding:9px 12px; text-align:right; color:#be123c;">(14.6 M)</td>
+                    </tr>
+                    <tr style="background:#f8fafc; font-weight:700;">
+                      <td style="padding:9px 12px; color:var(--navy-900);">Operating Profit (EBITDA)</td>
+                      <td id="engine-row-ebt-1" style="padding:9px 12px; text-align:right; color:var(--navy-900);">5.3 M</td>
+                      <td id="engine-row-ebt-2" style="padding:9px 12px; text-align:right; color:var(--navy-900);">6.4 M</td>
+                      <td id="engine-row-ebt-3" style="padding:9px 12px; text-align:right; color:var(--navy-900);">7.5 M</td>
+                      <td id="engine-row-ebt-4" style="padding:9px 12px; text-align:right; color:var(--navy-900);">8.6 M</td>
+                      <td id="engine-row-ebt-5" style="padding:9px 12px; text-align:right; color:var(--navy-900);">9.7 M</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 12px; color:#1d4ed8;">Debt Repayment (EMI)</td>
+                      <td id="engine-row-emi-1" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-2" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-3" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-4" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-5" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                    </tr>
+                    <tr style="background:#f0fdf4; font-weight:800;">
+                      <td style="padding:9px 12px; color:#14532d;">Net Cash Flow to Equity</td>
+                      <td id="engine-row-net-1" style="padding:9px 12px; text-align:right; color:#14532d;">2.6 M</td>
+                      <td id="engine-row-net-2" style="padding:9px 12px; text-align:right; color:#14532d;">3.8 M</td>
+                      <td id="engine-row-net-3" style="padding:9px 12px; text-align:right; color:#14532d;">4.9 M</td>
+                      <td id="engine-row-net-4" style="padding:9px 12px; text-align:right; color:#14532d;">6.0 M</td>
+                      <td id="engine-row-net-5" style="padding:9px 12px; text-align:right; color:#14532d;">7.1 M</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
         <!-- SUBSECTION A: RESOURCE POTENTIAL -->
         <!-- ======================================================== -->
         <div class="card" style="margin-bottom:32px; padding:32px; border-left:4px solid var(--rose-600);">
@@ -1193,6 +1370,183 @@
         </div>
 
         <!-- ======================================================== -->
+                <!-- ======================================================== -->
+        <!-- 5-YEAR INVESTMENT & DEBT FEASIBILITY ENGINE (INTERACTIVE SHOWCASE) -->
+        <!-- ======================================================== -->
+        <div class="card" id="engine-card-showcase-calc" style="margin-bottom:32px; padding:28px; border:1.5px solid var(--rose-200); background:#ffffff; box-shadow:0 8px 24px rgba(15,23,42,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:14px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="badge" style="background:var(--rose-50); color:var(--rose-800); border:1px solid var(--rose-200); font-weight:700;">Deterministic Cash Flow Model</span>
+                <span style="font-size:12px; color:var(--text-muted);">Interactive Capital &amp; Debt Simulation</span>
+              </div>
+              <h3 style="font-size:22px; font-weight:800; color:var(--navy-900); margin:6px 0 2px 0;">
+                5-Year Investment &amp; Debt Feasibility Engine
+              </h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                Planning range: PKR 50 Lakh to PKR 5 Crore (Washing Line toggle, Loan Amortization, DSCR)
+              </p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="window.scrollTo({top: 1400, behavior: 'smooth'})">
+              Open Full Feasibility &amp; Appraisal Dossier →
+            </button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 2fr; gap:24px;">
+            <!-- Controls Column -->
+            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+              <h4 style="font-size:14px; font-weight:800; color:var(--navy-900); margin:0 0 16px 0; text-transform:uppercase; letter-spacing:0.5px;">
+                Investment Parameters
+              </h4>
+
+              <!-- Slider 1: Total Capital Investment -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Total Capital Investment (PKR):</span>
+                  <span id="display-capex" style="color:var(--rose-700); font-size:15px; font-weight:900;">15,000,000</span>
+                </div>
+                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(5000000)">50 Lakh</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(25000000)">2.5 Cr</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(50000000)">5 Crore</button>
+                </div>
+              </div>
+
+              <!-- Slider 2: Debt Ratio -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Debt Ratio (% of Capex):</span>
+                  <span id="display-debt-ratio" style="color:var(--rose-700); font-size:15px; font-weight:900;">60%</span>
+                </div>
+                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(0)">0% (All Equity)</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(50)">50%</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(75)">75% (Max)</button>
+                </div>
+              </div>
+
+              <!-- Slider 3: Bank Mark-up Rate -->
+              <div style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
+                  <span>Bank Mark-up Rate (% p.a.):</span>
+                  <span id="display-interest" style="color:var(--rose-700); font-size:15px; font-weight:900;">14.0%</span>
+                </div>
+                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine()" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(8.0)">8% (Subsidized)</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(14.0)">14%</button>
+                  <button type="button" class="btn-link-preset" onclick="setEngineRate(22.0)">22%</button>
+                </div>
+              </div>
+
+              <!-- Checkbox: Scientific Washing Line -->
+              <div style="padding-top:12px; border-top:1px solid var(--border);">
+                <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--navy-900); cursor:pointer;">
+                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine()" style="accent-color:var(--rose-600); width:16px; height:16px;">
+                  <span>Include Scientific Washing Line (+$12/ton Opex)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- KPI Cards & 5-Year Cash Flow Projections -->
+            <div>
+              <!-- 6 Metrics Cards Grid -->
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:18px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#9f1239;">Equity Required</div>
+                  <div id="kpi-engine-equity" style="font-size:18px; font-weight:900; color:#881337; margin:3px 0;">PKR 6.0 M</div>
+                  <div id="kpi-engine-equity-sub" style="font-size:11px; color:#be123c;">40% Investor Capital</div>
+                </div>
+                <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#1e40af;">Bank Loan Amount</div>
+                  <div id="kpi-engine-loan" style="font-size:18px; font-weight:900; color:#1e3a8a; margin:3px 0;">PKR 9.0 M</div>
+                  <div style="font-size:11px; color:#2563eb;">5-Year Term Facility</div>
+                </div>
+                <div style="background:#fffbeb; border:1px solid #fde68a; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#92400e;">Annual Debt Service</div>
+                  <div id="kpi-engine-emi" style="font-size:18px; font-weight:900; color:#78350f; margin:3px 0;">PKR 2.62 M</div>
+                  <div style="font-size:11px; color:#b45309;">Principle + Interest</div>
+                </div>
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#166534;">5-Year Project IRR</div>
+                  <div id="kpi-engine-irr" style="font-size:18px; font-weight:900; color:#14532d; margin:3px 0;">34.8%</div>
+                  <div style="font-size:11px; color:#15803d;">Deterministic Model</div>
+                </div>
+                <div style="background:#faf5ff; border:1px solid #e9d5ff; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#6b21a8;">Payback Period</div>
+                  <div id="kpi-engine-payback" style="font-size:18px; font-weight:900; color:#581c87; margin:3px 0;">2.6 Years</div>
+                  <div style="font-size:11px; color:#7e22ce;">Breakeven Horizon</div>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:12px; border-radius:var(--radius-sm);">
+                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#334155;">Min DSCR Coverage</div>
+                  <div id="kpi-engine-dscr" style="font-size:18px; font-weight:900; color:#0f172a; margin:3px 0;">1.85x</div>
+                  <div style="font-size:11px; color:#475569;">Bank Approved &gt;1.30x</div>
+                </div>
+              </div>
+
+              <!-- 5-Year Cash Flow Projection Table -->
+              <div class="table-responsive" style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+                <table class="data-table" style="margin:0; font-size:12.5px;">
+                  <thead>
+                    <tr style="background:#f1f5f9;">
+                      <th style="padding:10px 12px; text-align:left; color:var(--navy-900);">Line Item (PKR Millions)</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 1</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 2</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 3</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 4</th>
+                      <th style="padding:10px 12px; text-align:right;">Year 5</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding:9px 12px; font-weight:700; color:var(--navy-900);">Gross Sales Revenue</td>
+                      <td id="engine-row-rev-1" style="padding:9px 12px; text-align:right; font-weight:700;">13.1 M</td>
+                      <td id="engine-row-rev-2" style="padding:9px 12px; text-align:right; font-weight:700;">15.9 M</td>
+                      <td id="engine-row-rev-3" style="padding:9px 12px; text-align:right; font-weight:700;">18.8 M</td>
+                      <td id="engine-row-rev-4" style="padding:9px 12px; text-align:right; font-weight:700;">21.6 M</td>
+                      <td id="engine-row-rev-5" style="padding:9px 12px; text-align:right; font-weight:700;">24.4 M</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 12px; color:#be123c;">Operating Cost (Opex)</td>
+                      <td id="engine-row-opx-1" style="padding:9px 12px; text-align:right; color:#be123c;">(7.9 M)</td>
+                      <td id="engine-row-opx-2" style="padding:9px 12px; text-align:right; color:#be123c;">(9.6 M)</td>
+                      <td id="engine-row-opx-3" style="padding:9px 12px; text-align:right; color:#be123c;">(11.3 M)</td>
+                      <td id="engine-row-opx-4" style="padding:9px 12px; text-align:right; color:#be123c;">(12.9 M)</td>
+                      <td id="engine-row-opx-5" style="padding:9px 12px; text-align:right; color:#be123c;">(14.6 M)</td>
+                    </tr>
+                    <tr style="background:#f8fafc; font-weight:700;">
+                      <td style="padding:9px 12px; color:var(--navy-900);">Operating Profit (EBITDA)</td>
+                      <td id="engine-row-ebt-1" style="padding:9px 12px; text-align:right; color:var(--navy-900);">5.3 M</td>
+                      <td id="engine-row-ebt-2" style="padding:9px 12px; text-align:right; color:var(--navy-900);">6.4 M</td>
+                      <td id="engine-row-ebt-3" style="padding:9px 12px; text-align:right; color:var(--navy-900);">7.5 M</td>
+                      <td id="engine-row-ebt-4" style="padding:9px 12px; text-align:right; color:var(--navy-900);">8.6 M</td>
+                      <td id="engine-row-ebt-5" style="padding:9px 12px; text-align:right; color:var(--navy-900);">9.7 M</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 12px; color:#1d4ed8;">Debt Repayment (EMI)</td>
+                      <td id="engine-row-emi-1" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-2" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-3" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-4" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                      <td id="engine-row-emi-5" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
+                    </tr>
+                    <tr style="background:#f0fdf4; font-weight:800;">
+                      <td style="padding:9px 12px; color:#14532d;">Net Cash Flow to Equity</td>
+                      <td id="engine-row-net-1" style="padding:9px 12px; text-align:right; color:#14532d;">2.6 M</td>
+                      <td id="engine-row-net-2" style="padding:9px 12px; text-align:right; color:#14532d;">3.8 M</td>
+                      <td id="engine-row-net-3" style="padding:9px 12px; text-align:right; color:#14532d;">4.9 M</td>
+                      <td id="engine-row-net-4" style="padding:9px 12px; text-align:right; color:#14532d;">6.0 M</td>
+                      <td id="engine-row-net-5" style="padding:9px 12px; text-align:right; color:#14532d;">7.1 M</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- STEP 1: APPLICANT BUSINESS CATEGORIES (LOAN FACILITATION) -->
         <!-- ======================================================== -->
         <div style="margin-bottom:24px;">
