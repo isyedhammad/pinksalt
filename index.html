@@ -2689,11 +2689,11 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
               <div class="form-group">
                 <label class="form-label">Enterprise / Applicant Name:</label>
-                <input type="text" id="calc-enterprise-name" class="form-control" value="Punjab Salt Mills Ltd" onchange="executeCalculation()">
+                <input type="text" id="calc-enterprise-name" class="form-control" value="Punjab Salt Mills Ltd" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Business Category:</label>
-                <select id="calc-biz-category" class="form-control" onchange="executeCalculation()">
+                <select id="calc-biz-category" class="form-control" onchange="executeCalculation(true)">
                   <option value="manufacturing" selected>Processing and manufacturing</option>
                   <option value="mining">Mining / raw salt supply</option>
                   <option value="packaging">Grinding, grading and packaging</option>
@@ -2705,11 +2705,11 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Project Location:</label>
-                <input type="text" id="calc-project-location" class="form-control" value="Quaidabad Processing Zone" onchange="executeCalculation()">
+                <input type="text" id="calc-project-location" class="form-control" value="Quaidabad Processing Zone" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Product / Product Mix:</label>
-                <input type="text" id="calc-product-mix" class="form-control" value="Pink salt consumer packs &amp; artisan items" onchange="executeCalculation()">
+                <input type="text" id="calc-product-mix" class="form-control" value="Pink salt consumer packs &amp; artisan items" onchange="executeCalculation(true)">
               </div>
             </div>
 
@@ -2719,50 +2719,50 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label class="form-label">Machinery &amp; Equipment ($):</label>
-                <input type="number" id="calc-machinery" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-machinery" class="form-control" onchange="executeCalculation(true)">
                 <small id="calc-machinery-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Land &amp; Covered Shed ($):</label>
-                <input type="number" id="calc-land-building" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-land-building" class="form-control" onchange="executeCalculation(true)">
                 <small id="calc-land-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Installation &amp; Utilities ($):</label>
-                <input type="number" id="calc-installation" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-installation" class="form-control" onchange="executeCalculation(true)">
                 <small id="calc-install-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Initial Working Capital ($):</label>
-                <input type="number" id="calc-working-capital" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-working-capital" class="form-control" onchange="executeCalculation(true)">
                 <small id="calc-wc-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Applicant Equity Contribution (%):</label>
-                <input type="number" step="5" min="5" max="100" id="calc-equity-pct" class="form-control" value="35" onchange="executeCalculation()">
+                <input type="number" step="5" min="5" max="100" id="calc-equity-pct" class="form-control" value="35" onchange="executeCalculation(true)">
                 <small id="calc-equity-pkr" style="color:var(--text-muted)">Equity: PKR 0 | Loan: PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Annual Loan Markup / Interest (%):</label>
-                <input type="number" step="0.5" id="calc-interest-rate" class="form-control" value="14.5" onchange="executeCalculation()">
+                <input type="number" step="0.5" id="calc-interest-rate" class="form-control" value="14.5" onchange="executeCalculation(true)">
                 <small style="color:var(--text-muted)">Enter 0 for interest-free government loan</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Loan Tenure (Years):</label>
-                <input type="number" step="0.5" min="0.5" max="15" id="calc-loan-tenure" class="form-control" value="5" onchange="executeCalculation()">
+                <input type="number" step="0.5" min="0.5" max="15" id="calc-loan-tenure" class="form-control" value="5" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Grace Period (Months):</label>
-                <input type="number" min="0" max="36" id="calc-grace-months" class="form-control" value="6" onchange="executeCalculation()">
+                <input type="number" min="0" max="36" id="calc-grace-months" class="form-control" value="6" onchange="executeCalculation(true)">
                 <small style="color:var(--text-muted)">Principal moratorium during construction</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Depreciable Asset Life (Years):</label>
-                <input type="number" min="1" max="25" id="calc-asset-life" class="form-control" value="10" onchange="executeCalculation()">
+                <input type="number" min="1" max="25" id="calc-asset-life" class="form-control" value="10" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Illustrative Income Tax Rate (%):</label>
-                <input type="number" min="0" max="50" id="calc-tax-rate" class="form-control" value="29" onchange="executeCalculation()">
+                <input type="number" min="0" max="50" id="calc-tax-rate" class="form-control" value="29" onchange="executeCalculation(true)">
               </div>
             </div>
 
@@ -2770,35 +2770,35 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label class="form-label">Processing Capacity (TPD):</label>
-                <input type="number" id="calc-capacity-tpd" class="form-control" min="5" max="50" onchange="executeCalculation()">
+                <input type="number" id="calc-capacity-tpd" class="form-control" min="5" max="50" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Operating Days / Year:</label>
-                <input type="number" id="calc-operating-days" class="form-control" min="200" max="350" onchange="executeCalculation()">
+                <input type="number" id="calc-operating-days" class="form-control" min="200" max="350" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Capacity Utilization (0.1 - 1.0):</label>
-                <input type="number" step="0.05" id="calc-utilization" class="form-control" onchange="executeCalculation()">
+                <input type="number" step="0.05" id="calc-utilization" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Process Yield (0.1 - 1.0):</label>
-                <input type="number" step="0.01" id="calc-yield" class="form-control" onchange="executeCalculation()">
+                <input type="number" step="0.01" id="calc-yield" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Export Share of Output (%):</label>
-                <input type="number" min="0" max="100" id="calc-export-share" class="form-control" value="70" onchange="executeCalculation()">
+                <input type="number" min="0" max="100" id="calc-export-share" class="form-control" value="70" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Domestic Selling Price (PKR/kg):</label>
-                <input type="number" id="calc-dom-price" class="form-control" value="180" onchange="executeCalculation()">
+                <input type="number" id="calc-dom-price" class="form-control" value="180" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Export Selling Price (USD/kg):</label>
-                <input type="number" step="0.05" id="calc-usd-price" class="form-control" value="1.50" onchange="executeCalculation()">
+                <input type="number" step="0.05" id="calc-usd-price" class="form-control" value="1.50" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Benchmark Selling Price FOB ($/MT):</label>
-                <input type="number" id="calc-selling-price" class="form-control" style="font-weight:700; color:var(--rose-600);" onchange="executeCalculation()">
+                <input type="number" id="calc-selling-price" class="form-control" style="font-weight:700; color:var(--rose-600);" onchange="executeCalculation(true)">
               </div>
             </div>
 
@@ -2806,27 +2806,27 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label class="form-label">Raw Rock Salt ($/MT):</label>
-                <input type="number" id="calc-raw-salt" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-raw-salt" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Electricity &amp; Power ($/MT):</label>
-                <input type="number" id="calc-energy" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-energy" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Packaging Materials ($/MT):</label>
-                <input type="number" id="calc-packaging" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-packaging" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Direct Labour ($/MT):</label>
-                <input type="number" id="calc-labor" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-labor" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Inland Freight to Port ($/MT):</label>
-                <input type="number" id="calc-freight" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-freight" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Other Variable / Consumables ($/MT):</label>
-                <input type="number" id="calc-other-var" class="form-control" value="18" onchange="executeCalculation()">
+                <input type="number" id="calc-other-var" class="form-control" value="18" onchange="executeCalculation(true)">
               </div>
             </div>
 
@@ -2834,19 +2834,19 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label class="form-label">Admin Salaries ($/Yr):</label>
-                <input type="number" id="calc-admin-salaries" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-admin-salaries" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Maintenance &amp; Spares ($/Yr):</label>
-                <input type="number" id="calc-maintenance" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-maintenance" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Lab Testing &amp; Cert ($/Yr):</label>
-                <input type="number" id="calc-compliance" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-compliance" class="form-control" onchange="executeCalculation(true)">
               </div>
               <div class="form-group">
                 <label class="form-label">Proposed Direct Jobs (Persons):</label>
-                <input type="number" min="1" id="calc-jobs" class="form-control" value="25" onchange="executeCalculation()">
+                <input type="number" min="1" id="calc-jobs" class="form-control" value="25" onchange="executeCalculation(true)">
               </div>
             </div>
 
@@ -2864,7 +2864,7 @@
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
                 <div class="form-group">
                   <label class="form-label">Technical Feasibility:</label>
-                  <select id="officer-technical" class="form-control" onchange="executeCalculation()">
+                  <select id="officer-technical" class="form-control" onchange="executeCalculation(true)">
                     <option value="0">Pending verification (0 pts)</option>
                     <option value="9">Partially verified (9 pts)</option>
                     <option value="15" selected>Verified (15 pts)</option>
@@ -2872,7 +2872,7 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Market Evidence:</label>
-                  <select id="officer-market" class="form-control" onchange="executeCalculation()">
+                  <select id="officer-market" class="form-control" onchange="executeCalculation(true)">
                     <option value="0">No buyer evidence (0 pts)</option>
                     <option value="6">Buyer interest only (6 pts)</option>
                     <option value="11" selected>Written buyer interest (11 pts)</option>
@@ -2881,7 +2881,7 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Environmental / Regulatory Status:</label>
-                  <select id="officer-environment" class="form-control" onchange="executeCalculation()">
+                  <select id="officer-environment" class="form-control" onchange="executeCalculation(true)">
                     <option value="0">Pending verification (0 pts)</option>
                     <option value="5">Application submitted (5 pts)</option>
                     <option value="10" selected>Compliant / approved (10 pts)</option>
@@ -2889,7 +2889,7 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Supporting Documents:</label>
-                  <select id="officer-documents" class="form-control" onchange="executeCalculation()">
+                  <select id="officer-documents" class="form-control" onchange="executeCalculation(true)">
                     <option value="0">Incomplete (0 pts)</option>
                     <option value="5">Under review (5 pts)</option>
                     <option value="10" selected>Complete and verified (10 pts)</option>
@@ -2897,7 +2897,7 @@
                 </div>
                 <div class="form-group" style="grid-column:1/-1;">
                   <label class="form-label">Officer's Review Notes &amp; Conditions:</label>
-                  <input type="text" id="officer-notes" class="form-control" placeholder="Record verification, conditions, site observations and underwriting notes..." oninput="executeCalculation()">
+                  <input type="text" id="officer-notes" class="form-control" placeholder="Record verification, conditions, site observations and underwriting notes..." oninput="executeCalculation(true)">
                 </div>
               </div>
 
@@ -3635,6 +3635,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js"></script>
+  <script src="js/portal.js?v=20261105.2"></script>
 </body>
 </html>

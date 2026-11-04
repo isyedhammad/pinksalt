@@ -837,7 +837,7 @@ function configureMachineryInCalc(capexUSD, isOptional) {
       toggleWashing(true);
     }
     executeCalculation(false);
-    showToast('✓ Successfully calculated');
+    showToast('✓ Successfully Calculated');
   }, 100);
 }
 
@@ -854,7 +854,7 @@ function calibrateFeasibilityWithTurnkeyPlant() {
     if (washToggle && !washToggle.checked) {
       washToggle.click();
     }
-    showToast('✓ Successfully calculated');
+    showToast('✓ Successfully Calculated');
   }, 120);
 }
 
@@ -960,7 +960,7 @@ function applyTestingCostToFeasibility() {
     if (complianceInput) {
       complianceInput.value = Math.round(annualUSD);
       executeCalculation(false);
-      showToast('✓ Successfully calculated');
+      showToast('✓ Successfully Calculated');
     }
   }, 100);
 }
@@ -1188,7 +1188,7 @@ function selectApplicantCategory(catId, showNotification = false) {
   toggleWashing(cat.washing);
   executeCalculation(false);
   if (showNotification) {
-    showToast('✓ Successfully calculated');
+    showToast('✓ Successfully Calculated');
   }
 }
 
@@ -1211,7 +1211,7 @@ function loadSmedaCaseStudy() {
 
   executeCalculation(false);
   switchFiveYearTab('cashflow');
-  showToast('✓ Successfully calculated');
+  showToast('✓ Successfully Calculated');
 }
 
 // ==============================================================================
@@ -1354,7 +1354,7 @@ function selectPlanningRange(pkr) {
   document.getElementById("calc-selling-price").value = p.price;
 
   executeCalculation(false);
-  showToast('✓ Successfully calculated');
+  showToast('✓ Successfully Calculated');
 }
 
 function applyProductDefaults(productKey) {
@@ -1367,7 +1367,7 @@ function applyProductDefaults(productKey) {
 
   toggleWashing(p.wash);
   executeCalculation(false);
-  showToast('✓ Successfully calculated');
+  showToast('✓ Successfully Calculated');
 }
 
 function toggleWashing(isRequired) {
@@ -1981,7 +1981,7 @@ function renderCalculationResults(c) {
   drawDSCRChart(c.loan_amortization);
 
   if (fromUser) {
-    showToast('✓ Successfully calculated');
+    showToast('✓ Successfully Calculated');
   }
 }
 
@@ -2579,7 +2579,7 @@ function selectCategoryAndSimulate(catId, capexVal) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   if (typeof showToast === 'function') {
-    showToast('✓ Successfully calculated');
+    showToast('✓ Successfully Calculated');
   }
 }
 
