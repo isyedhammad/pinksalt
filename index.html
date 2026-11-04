@@ -60,9 +60,11 @@
     <!-- VIEW 1: INTRODUCTION -->
     <!-- ============================================================ -->
     <section id="view-home" class="page-view">
-      <!-- Hero Section with Pink Salt Mine Subterranean Panorama Background -->
-      <div class="hero">
-        <div class="container hero-grid">
+      <!-- Hero Section with Pink Salt Mine Subterranean Panorama Background (50% Transparency) -->
+      <div class="hero" style="position:relative; background-color:#060d1a;">
+        <div class="hero-bg-layer" style="position:absolute; inset:0; background:url('images/khewra-salt-mine-hero.jpg') center right/cover no-repeat; opacity:0.50; pointer-events:none; z-index:1;"></div>
+        <div class="hero-tint-layer" style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(4, 9, 20, 0.65) 0%, rgba(10, 20, 38, 0.35) 50%, rgba(4, 9, 20, 0.50) 100%); pointer-events:none; z-index:2;"></div>
+        <div class="container hero-grid" style="position:relative; z-index:3;">
           <div class="hero-content">
             <div class="hero-badge-pill">
               <span class="hero-badge-dot"></span>

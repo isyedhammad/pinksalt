@@ -536,31 +536,43 @@ button, input, select, textarea {
    ========================================================================== */
 .hero {
   position: relative;
-  background: linear-gradient(90deg, rgba(4, 9, 20, 0.95) 0%, rgba(10, 20, 38, 0.88) 45%, rgba(10, 20, 38, 0.65) 72%, rgba(136, 19, 55, 0.50) 100%), 
-              url('../images/khewra-salt-mine-hero.jpg') center right/cover no-repeat;
+  background-color: #060d1a;
   color: #ffffff;
   padding: 85px 0 110px 0;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../images/khewra-salt-mine-hero.jpg') center right/cover no-repeat;
+  opacity: 0.50; /* 50% transparency */
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero::before {
   content: '';
   position: absolute;
-  top: -150px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.22) 0%, transparent 70%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(4, 9, 20, 0.65) 0%, rgba(10, 20, 38, 0.35) 50%, rgba(4, 9, 20, 0.50) 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-grid {
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero-content {
