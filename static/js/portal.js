@@ -1357,6 +1357,130 @@ function initCalculator() {
   }
 }
 
+
+// -------------------------------------------------------------
+// Feasibility Mode, Indicators Guide, CSV & Print Functions
+// -------------------------------------------------------------
+function setFeasibilityMode(mode) {
+  const isOfficer = (mode === 'officer');
+  document.getElementById('tab-mode-applicant')?.classList.toggle('active', !isOfficer);
+  document.getElementById('tab-mode-officer')?.classList.toggle('active', isOfficer);
+  const officerPanel = document.getElementById('officer-review-panel');
+  if (officerPanel) {
+    officerPanel.style.display = isOfficer ? 'block' : 'none';
+  }
+  executeCalculation();
+  if (isOfficer) {
+    showToast("Officer review mode activated. Verification scorecard and compliance checks are now enabled.");
+  }
+}
+
+function toggleFinancialIndicatorsGuide() {
+  const panel = document.getElementById("financial-indicators-guide-panel");
+  if (!panel) return;
+  const isHidden = (panel.style.display === "none" || !panel.style.display);
+  panel.style.display = isHidden ? "block" : "none";
+  if (isHidden) {
+    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+}
+
+function triggerBankablePrint() {
+  window.print();
+}
+
+function downloadFeasibilityCSV() {
+  if (!state.lastCalculation) {
+    executeCalculation();
+  }
+  const c = state.lastCalculation;
+  const applicantName = document.getElementById("calc-enterprise-name")?.value || "Applicant Enterprise";
+  const category = document.getElementById("calc-biz-category")?.value || "Processing and manufacturing";
+  const location = document.getElementById("calc-project-location")?.value || "Quaidabad Processing Zone";
+  const productMix = document.getElementById("calc-product-mix")?.value || "Pink Salt Consumer Packs";
+
+  const rows = [
+    ["PAKISTAN PINK SALT FEASIBILITY APPRAISAL DOSSIER"],
+    ["Generated On", new Date().toISOString()],
+    ["Enterprise / Applicant", applicantName],
+    ["Business Category", category],
+    ["Project Location", location],
+    ["Target Product Mix", productMix],
+    [],
+    ["1. CAPITAL EXPENDITURE & FINANCING PLAN (PKR / USD)"],
+    ["Machinery & Setup CAPEX (USD)", c.capex.machinery_cost],
+    ["Land & Building (USD)", c.capex.land_building_cost],
+    ["Civil Works & Installation (USD)", c.capex.installation_cost],
+    ["Initial Working Capital (USD)", c.capex.working_capital],
+    ["Total Project CAPEX (USD)", c.capex.total_capex],
+    ["Total Project CAPEX (PKR)", c.pkr_summary.total_capex_pkr],
+    ["Applicant Equity (PKR)", c.capex.equity * USD_TO_PKR_RATE],
+    ["Debt Financing / Loan (PKR)", c.capex.debt * USD_TO_PKR_RATE],
+    ["Equity / Debt Ratio", `${c.additional_metrics.equity_pct}% Equity / ${(100 - c.additional_metrics.equity_pct)}% Debt`],
+    ["Funding Gap / (Surplus) (PKR)", c.additional_metrics.funding_gap_pkr],
+    [],
+    ["2. PRODUCTION & MARKET ASSUMPTIONS"],
+    ["Nameplate Capacity (TPD)", c.production.nameplate_capacity_tpd],
+    ["Annual Operating Days", c.production.operating_days],
+    ["Capacity Utilization (%)", `${c.production.capacity_utilization_pct}%`],
+    ["Process Yield / Recovery (%)", `${c.production.process_yield_pct}%`],
+    ["Annual Finished Output (MT)", c.production.annual_finished_production_tonnes],
+    ["Annual Finished Output (kg)", c.production.annual_finished_production_tonnes * 1000],
+    ["Export Share (%)", `${c.additional_metrics.export_share}%`],
+    ["Domestic Sales Revenue (PKR)", c.additional_metrics.dom_rev_pkr],
+    ["Export Sales Revenue (PKR)", c.additional_metrics.exp_rev_pkr],
+    ["Export Receipts (USD)", c.additional_metrics.exp_receipts_usd],
+    ["Total Annual Gross Revenue (PKR)", c.pkr_summary.annual_revenue_pkr],
+    ["Total Annual Gross Revenue (USD)", c.financial_returns.annual_revenue],
+    [],
+    ["3. OPERATING EXPENDITURE & COST BREAKDOWN"],
+    ["Raw Rock Salt Cost / MT ($)", c.opex.effective_raw_material_cost_per_tonne],
+    ["Electricity & Energy / MT ($)", c.opex.energy_cost_per_tonne],
+    ["Packaging Materials / MT ($)", c.opex.packaging_cost_per_tonne],
+    ["Direct Plant Labour / MT ($)", c.opex.labor_cost_per_tonne],
+    ["Inland Freight Logistics / MT ($)", c.opex.freight_per_tonne],
+    ["Total Variable OPEX / MT ($)", c.opex.variable_cost_per_tonne],
+    ["Annual Fixed Costs & Overheads ($)", c.opex.annual_fixed_costs],
+    ["Total Annual OPEX ($)", c.opex.total_annual_opex],
+    ["Total Annual OPEX (PKR)", c.pkr_summary.total_annual_opex_pkr],
+    ["Unit Production Cost / kg (PKR)", c.additional_metrics.cost_per_kg_pkr],
+    [],
+    ["4. PROFITABILITY, DEBT SERVICE & MACRO METRICS"],
+    ["Gross Profit (PKR)", c.additional_metrics.gross_profit_pkr],
+    ["Operating EBITDA (USD)", c.financial_returns.annual_operating_profit],
+    ["Operating EBITDA (PKR)", c.pkr_summary.annual_operating_profit_pkr],
+    ["EBITDA Margin (%)", `${c.financial_returns.operating_margin_pct}%`],
+    ["Indicative Net Profit After Tax (PKR)", c.additional_metrics.net_profit_pkr],
+    ["Monthly Loan Installment (EMI) (PKR)", c.additional_metrics.monthly_installment_pkr],
+    ["Annual Scheduled Debt Service (PKR)", c.additional_metrics.annual_debt_service_pkr],
+    ["Debt Service Coverage Ratio (DSCR)", `${c.additional_metrics.dscr}x`],
+    ["Break-Even Output (MT)", c.financial_returns.breakeven_volume_tonnes],
+    ["Break-Even Utilization (%)", `${c.additional_metrics.breakeven_util_pct}%`],
+    ["Project Payback Period (Years)", c.financial_returns.estimated_payback_years],
+    ["Proposed Direct Jobs", c.additional_metrics.jobs],
+    ["Net Foreign Exchange Earnings (USD/yr)", c.additional_metrics.net_fx_usd],
+    ["Domestic Value Added / GDP Contribution (PKR/yr)", c.additional_metrics.domestic_value_added_pkr],
+    [],
+    ["5. DEPARTMENTAL OFFICER VERIFICATION & SCORECARD"],
+    ["Total Departmental Score (/100)", c.officer_score.total_score],
+    ["Financial Viability (/30)", c.officer_score.financial],
+    ["Export Orientation (/20)", c.officer_score.export],
+    ["Technical Verification (/15)", c.officer_score.technical],
+    ["Market Evidence (/15)", c.officer_score.market],
+    ["Environmental Compliance (/10)", c.officer_score.environment],
+    ["Documentary Completeness (/10)", c.officer_score.documents],
+    ["Officer Review Notes", document.getElementById("officer-notes")?.value || "N/A"]
+  ];
+
+  const csvContent = rows.map(r => r.map(cell => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `PinkSalt_Feasibility_Assessment_${Date.now()}.csv`;
+  a.click();
+  showToast("Feasibility assessment CSV downloaded successfully.");
+}
+
 function executeCalculation() {
   const machinery = parseFloat(document.getElementById("calc-machinery")?.value) || 0;
   const land = parseFloat(document.getElementById("calc-land-building")?.value) || 0;
@@ -1381,6 +1505,19 @@ function executeCalculation() {
 
   const rawSaltTonnes = tpd * days * util;
   const finishedTonnes = rawSaltTonnes * yieldPct;
+  const finishedKg = finishedTonnes * 1000;
+
+  const exportShare = Math.min(100, Math.max(0, parseFloat(document.getElementById("calc-export-share")?.value) || 70));
+  const domPriceKg = parseFloat(document.getElementById("calc-dom-price")?.value) || 180;
+  const exportPriceKg = parseFloat(document.getElementById("calc-usd-price")?.value) || 1.50;
+
+  const exportKg = finishedKg * (exportShare / 100);
+  const domKg = finishedKg - exportKg;
+  const domRevPKR = domKg * domPriceKg;
+  const expReceiptsUSD = exportKg * exportPriceKg;
+  const expRevPKR = expReceiptsUSD * USD_TO_PKR_RATE;
+  const totalRevPKR = domRevPKR + expRevPKR;
+  const annualRevenue = totalRevPKR / USD_TO_PKR_RATE;
 
   const rawCost = parseFloat(document.getElementById("calc-raw-salt")?.value) || 42;
   const effectiveRawCost = yieldPct > 0 ? (rawCost / yieldPct) : rawCost;
@@ -1388,47 +1525,97 @@ function executeCalculation() {
   const packagingCost = parseFloat(document.getElementById("calc-packaging")?.value) || 42;
   const freightCost = parseFloat(document.getElementById("calc-freight")?.value) || 34;
   const laborCost = parseFloat(document.getElementById("calc-labor")?.value) || 24;
+  const otherVarCost = parseFloat(document.getElementById("calc-other-var")?.value) || 18;
 
   // Washing trade-off calculations
   const isWashing = state.washingRequired;
-  const washingWaterCost = isWashing ? (1.5 * 180 / USD_TO_PKR_RATE) : 0; // ~$0.96/MT
-  const washingEffluentCost = isWashing ? (120 / USD_TO_PKR_RATE) : 0;    // ~$0.43/MT
-  const dryingEnergyCost = isWashing ? (18 * 35 / USD_TO_PKR_RATE) : 0;   // ~$2.25/MT
+  const washingWaterCost = isWashing ? (1.5 * 180 / USD_TO_PKR_RATE) : 0;
+  const washingEffluentCost = isWashing ? (120 / USD_TO_PKR_RATE) : 0;
+  const dryingEnergyCost = isWashing ? (18 * 35 / USD_TO_PKR_RATE) : 0;
   const totalEnergyCost = baseEnergyCost + dryingEnergyCost;
 
-  const variableCostPerTonne = effectiveRawCost + totalEnergyCost + packagingCost + freightCost + laborCost + washingWaterCost + washingEffluentCost;
+  const variableCostPerTonne = effectiveRawCost + totalEnergyCost + packagingCost + freightCost + laborCost + washingWaterCost + washingEffluentCost + otherVarCost;
   const annualVariableCosts = variableCostPerTonne * finishedTonnes;
+  const variableCostPKR = annualVariableCosts * USD_TO_PKR_RATE;
 
   const adminSalaries = parseFloat(document.getElementById("calc-admin-salaries")?.value) || 36000;
   const maintenance = parseFloat(document.getElementById("calc-maintenance")?.value) || (machinery * 0.03);
   const compliance = parseFloat(document.getElementById("calc-compliance")?.value) || 11500;
-  const depreciation = machinery * 0.10; // 10% straight line
+  const assetLife = Math.max(1, parseFloat(document.getElementById("calc-asset-life")?.value) || 10);
+  const depreciation = machinery / assetLife;
   const annualFixedCosts = adminSalaries + maintenance + compliance + depreciation;
+  const fixedCostPKR = annualFixedCosts * USD_TO_PKR_RATE;
 
   const totalAnnualOpex = annualVariableCosts + annualFixedCosts;
   const costPerTonneFinished = finishedTonnes > 0 ? (totalAnnualOpex / finishedTonnes) : 0;
+  const costPerKgPKR = finishedKg > 0 ? ((totalAnnualOpex * USD_TO_PKR_RATE) / finishedKg) : 0;
 
-  const sellingPrice = parseFloat(document.getElementById("calc-selling-price")?.value) || 350;
-  const annualRevenue = finishedTonnes * sellingPrice;
+  const sellingPrice = finishedTonnes > 0 ? (annualRevenue / finishedTonnes) : 350;
+  const elFob = document.getElementById("calc-selling-price");
+  if (elFob) elFob.value = Math.round(sellingPrice);
+
+  const grossProfitPKR = totalRevPKR - variableCostPKR;
   const operatingProfit = annualRevenue - totalAnnualOpex; // EBITDA
+  const operatingProfitPKR = operatingProfit * USD_TO_PKR_RATE;
   const marginPct = annualRevenue > 0 ? ((operatingProfit / annualRevenue) * 100) : 0;
 
   const unitContribution = sellingPrice - variableCostPerTonne;
   const breakevenVol = unitContribution > 0 ? (annualFixedCosts / unitContribution) : 0;
+  const breakevenUtilPct = (tpd * days * yieldPct) > 0 ? (breakevenVol / (tpd * days * yieldPct) * 100) : 0;
   const breakevenPrice = costPerTonneFinished;
   const paybackYears = (operatingProfit + depreciation) > 0 ? (totalCapex / (operatingProfit + depreciation)) : 99;
 
   // -------------------------------------------------------------
-  // Loan Repayment & Amortization Schedule (5 Years, 65% Debt)
+  // Loan Repayment & Amortization Schedule (Tenure & Grace Period)
   // -------------------------------------------------------------
   const interestRate = (parseFloat(document.getElementById("calc-interest-rate")?.value) || 14.5) / 100;
   const equityPct = Math.max(5, Math.min(100, parseFloat(document.getElementById("calc-equity-pct")?.value) || 35.0));
   const debtPct = 100 - equityPct;
   const loanPrincipal = totalCapex * (debtPct / 100);
   const equityContribution = totalCapex * (equityPct / 100);
+  const loanTenure = Math.max(0.5, parseFloat(document.getElementById("calc-loan-tenure")?.value) || 5);
+  const graceMonths = Math.max(0, parseInt(document.getElementById("calc-grace-months")?.value, 10) || 0);
+  const taxRate = (parseFloat(document.getElementById("calc-tax-rate")?.value) || 29) / 100;
+  const jobs = Math.max(1, parseInt(document.getElementById("calc-jobs")?.value, 10) || 25);
 
   const elEquityPKR = document.getElementById("calc-equity-pkr");
   if (elEquityPKR) elEquityPKR.innerText = 'Equity: ' + formatPKR(equityContribution * USD_TO_PKR_RATE) + ' | Loan: ' + formatPKR(loanPrincipal * USD_TO_PKR_RATE);
+
+  // Amortization calculation
+  const totalMonths = Math.max(1, Math.round(loanTenure * 12));
+  const repayMonths = Math.max(1, totalMonths - graceMonths);
+  const monthlyRate = interestRate / 12;
+  const monthlyInstallmentUSD = loanPrincipal === 0 ? 0 : (monthlyRate === 0 ? (loanPrincipal / repayMonths) : (loanPrincipal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -repayMonths))));
+  const monthlyInstallmentPKR = monthlyInstallmentUSD * USD_TO_PKR_RATE;
+  const annualDebtServiceUSD = monthlyInstallmentUSD * 12;
+  const annualDebtServicePKR = annualDebtServiceUSD * USD_TO_PKR_RATE;
+
+  // Net Profit & Cash Flow Available for Debt Service
+  const ebit = operatingProfit - depreciation;
+  const annualInterestUSD = loanPrincipal * interestRate;
+  const taxableIncomeUSD = Math.max(0, ebit - annualInterestUSD);
+  const taxUSD = taxableIncomeUSD * taxRate;
+  const netProfitUSD = ebit - annualInterestUSD - taxUSD;
+  const netProfitPKR = netProfitUSD * USD_TO_PKR_RATE;
+
+  const cashFlowDebtServiceUSD = operatingProfit - taxUSD - (machinery * 0.02);
+  const dscr = annualDebtServiceUSD > 0 ? (cashFlowDebtServiceUSD / annualDebtServiceUSD) : 9.99;
+
+  const fundingGapUSD = totalCapex - (equityContribution + loanPrincipal);
+  const fundingGapPKR = fundingGapUSD * USD_TO_PKR_RATE;
+
+  // Macro Metrics: Net Foreign Exchange & Domestic Value Added
+  const netFxUSD = expReceiptsUSD - (machinery * 0.15 / 5) - (totalAnnualOpex * 0.05);
+  const domesticValueAddedPKR = totalRevPKR - ((rawCost * rawSaltTonnes + (totalEnergyCost + packagingCost) * finishedTonnes * 0.3) * USD_TO_PKR_RATE);
+
+  // Officer Verification Scorecard
+  const scoreFinancial = dscr >= 1.5 ? 30 : (dscr >= 1.25 ? 25 : (dscr >= 1.0 ? 17 : (dscr > 0 ? 8 : 0)));
+  const scoreExport = exportShare >= 70 ? 20 : (exportShare >= 40 ? 16 : (exportShare >= 20 ? 12 : 6));
+  const scoreTechnical = parseInt(document.getElementById("officer-technical")?.value, 10) || 15;
+  const scoreMarket = parseInt(document.getElementById("officer-market")?.value, 10) || 11;
+  const scoreEnvironment = parseInt(document.getElementById("officer-environment")?.value, 10) || 10;
+  const scoreDocuments = parseInt(document.getElementById("officer-documents")?.value, 10) || 10;
+  const totalOfficerScore = Math.min(100, scoreFinancial + scoreExport + scoreTechnical + scoreMarket + scoreEnvironment + scoreDocuments);
 
   let balance = loanPrincipal;
   const annualPrincipalPayment = loanPrincipal / 5;
@@ -1439,9 +1626,7 @@ function executeCalculation() {
     const principalPaid = Math.min(balance, annualPrincipalPayment);
     const totalDebtService = principalPaid + interestPaid;
     const endingBalance = Math.max(0, balance - principalPaid);
-
-    // DSCR calculation
-    const dscr = totalDebtService > 0 ? (operatingProfit / totalDebtService) : 9.99;
+    const yearDscr = totalDebtService > 0 ? (operatingProfit / totalDebtService) : 9.99;
 
     amortizationSchedule.push({
       year: y,
@@ -1450,8 +1635,8 @@ function executeCalculation() {
       interest_paid: interestPaid,
       total_debt_service: totalDebtService,
       ending_balance: endingBalance,
-      dscr: Number(dscr.toFixed(2)),
-      status: dscr >= 1.30 ? "Healthy" : (dscr >= 1.00 ? "Acceptable" : "Risk")
+      dscr: Number(yearDscr.toFixed(2)),
+      status: yearDscr >= 1.30 ? "Healthy" : (yearDscr >= 1.00 ? "Acceptable" : "Risk")
     });
 
     balance = endingBalance;
@@ -1461,9 +1646,7 @@ function executeCalculation() {
   // Five-Year Financial Projection (Capacity Ramp-up 50% to 95%)
   // -------------------------------------------------------------
   const isSmedaMode = state.currentApplicantCategory === "export_oriented" || state.smedaAssumptionsActive;
-  // SMEDA Table 25: 50% in Year 1 with 10% annual utilization growth up to 90% in Year 5
   const rampRatios = isSmedaMode ? [0.50, 0.60, 0.70, 0.80, 0.90] : [0.65, 0.75, 0.85, 0.90, 0.95];
-  const escalationRate = isSmedaMode ? 0.10 : 0.05; // Table 23 & 24: 10% annual escalation
   const fiveYearProjection = [];
 
   for (let i = 0; i < 5; i++) {
@@ -1477,7 +1660,7 @@ function executeCalculation() {
     const yEbit = yEbitda - depreciation;
     const yInterest = amortizationSchedule[i].interest_paid;
     const yTaxable = Math.max(0, yEbit - yInterest);
-    const yTax = yTaxable * 0.20; // 20% statutory corporate rate
+    const yTax = yTaxable * taxRate;
     const yNetProfit = yEbit - yInterest - yTax;
     const yFreeCashFlow = yNetProfit + depreciation - amortizationSchedule[i].principal_paid;
 
@@ -1507,7 +1690,35 @@ function executeCalculation() {
     monthly_summary: { production_tonnes: Number((finishedTonnes / 12).toFixed(1)), revenue_usd: Number((annualRevenue / 12).toFixed(2)), total_opex_usd: Number((totalAnnualOpex / 12).toFixed(2)), operating_profit_usd: Number((operatingProfit / 12).toFixed(2)) },
     loan_amortization: amortizationSchedule,
     five_year_projection: fiveYearProjection,
-    pkr_summary: { total_capex_pkr: totalCapex * USD_TO_PKR_RATE, annual_revenue_pkr: annualRevenue * USD_TO_PKR_RATE, total_annual_opex_pkr: totalAnnualOpex * USD_TO_PKR_RATE, annual_operating_profit_pkr: operatingProfit * USD_TO_PKR_RATE }
+    pkr_summary: { total_capex_pkr: totalCapex * USD_TO_PKR_RATE, annual_revenue_pkr: totalRevPKR, total_annual_opex_pkr: totalAnnualOpex * USD_TO_PKR_RATE, annual_operating_profit_pkr: operatingProfitPKR },
+    additional_metrics: {
+      export_share: exportShare,
+      dom_rev_pkr: domRevPKR,
+      exp_rev_pkr: expRevPKR,
+      exp_receipts_usd: expReceiptsUSD,
+      gross_profit_pkr: grossProfitPKR,
+      net_profit_pkr: netProfitPKR,
+      net_profit_usd: netProfitUSD,
+      monthly_installment_pkr: monthlyInstallmentPKR,
+      annual_debt_service_pkr: annualDebtServicePKR,
+      dscr: Number(dscr.toFixed(2)),
+      breakeven_util_pct: Number(breakevenUtilPct.toFixed(1)),
+      funding_gap_pkr: fundingGapPKR,
+      equity_pct: equityPct,
+      jobs: jobs,
+      cost_per_kg_pkr: Number(costPerKgPKR.toFixed(1)),
+      net_fx_usd: netFxUSD,
+      domestic_value_added_pkr: domesticValueAddedPKR
+    },
+    officer_score: {
+      total_score: totalOfficerScore,
+      financial: scoreFinancial,
+      export: scoreExport,
+      technical: scoreTechnical,
+      market: scoreMarket,
+      environment: scoreEnvironment,
+      documents: scoreDocuments
+    }
   };
 
   state.lastCalculation = result;

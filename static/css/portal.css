@@ -2478,3 +2478,270 @@ button, input, select, textarea {
   font-weight: 700;
   border-top: 2px solid var(--navy-800);
 }
+
+/* ========================================================
+   FEASIBILITY CALCULATOR ENHANCEMENTS & OFFICER SCORING
+   ======================================================== */
+.feasibility-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.feasibility-mode-tabs {
+  display: flex;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 8px;
+  gap: 4px;
+}
+
+.feasibility-mode-tab {
+  border: 0;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-800);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feasibility-mode-tab.active {
+  background: #ffffff;
+  color: var(--navy-900);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.feasibility-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-feasibility-action {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: #ffffff;
+  color: var(--navy-900);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-feasibility-action:hover {
+  background: var(--bg-alt);
+  border-color: var(--navy-700);
+}
+
+.btn-feasibility-action.btn-accent {
+  background: var(--rose-600);
+  color: #ffffff;
+  border-color: var(--rose-700);
+}
+
+.btn-feasibility-action.btn-accent:hover {
+  background: var(--rose-700);
+}
+
+.feasibility-disclaimer {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  font-size: 12.5px;
+  color: #78350f;
+  line-height: 1.5;
+}
+
+.indicator-guide-card {
+  background: #0f172a;
+  color: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+}
+
+.indicator-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+.indicator-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.indicator-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+
+.indicator-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.indicator-name {
+  font-weight: 700;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+.indicator-purpose {
+  color: #e2e8f0;
+}
+
+.indicator-cat-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.officer-review-card {
+  background: #ffffff;
+  border: 1.5px solid #0284c7;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.officer-score-display {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.officer-score-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0369a1;
+}
+
+.officer-score-bar {
+  height: 10px;
+  background: #e0f2fe;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.officer-score-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0284c7, #10b981);
+  transition: width 0.3s ease;
+}
+
+.officer-table {
+  width: 100%;
+  font-size: 12.5px;
+  border-collapse: collapse;
+}
+
+.officer-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.officer-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.calc-alert {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.calc-alert.alert-good {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.calc-alert.alert-warn {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+.calc-alert.alert-bad {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.indicators-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.indicators-summary-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.indicators-summary-table td:first-child {
+  color: var(--navy-800);
+  font-weight: 500;
+}
+
+.indicators-summary-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: var(--navy-900);
+  font-variant-numeric: tabular-nums;
+}
+
+@media print {
+  .site-header, .site-nav, .feasibility-toolbar, .no-print, .btn, .chat-panel {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .card, .calc-card, .five-year-card, .assessment-card {
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}
