@@ -24,7 +24,7 @@
       <nav class="main-nav">
         <a class="nav-link active" data-view="home">Introduction</a>
         <a class="nav-link" data-view="opportunities">Investment Opportunities</a>
-        <a class="nav-link" data-view="processing-options">Processing Options</a>
+        <a class="nav-link" data-view="processing-options">Processing &amp; Site Selection</a>
         <a class="nav-link" data-view="quality-testing">Quality &amp; Testing</a>
         <a class="nav-link" data-view="calculator">Feasibility Calculator</a>
         <a class="nav-link" data-view="enquiry">Investor Enquiry</a>
@@ -45,7 +45,7 @@
     <div class="mobile-nav-drawer" id="mobile-drawer">
       <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏛️ Introduction &amp; Overview</a>
       <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">💼 Investment Opportunities</a>
-      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing Options &amp; Machinery</a>
+      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing &amp; Site Selection</a>
       <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">🔬 Quality &amp; Laboratory Testing</a>
       <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 5-Year Feasibility Calculator</a>
       <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">✨ Investor Enquiry / EOI</a>
@@ -76,10 +76,10 @@
             <div class="hero-cta-group">
               <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Investment Opportunities →</button>
               <button class="btn btn-outline-light" onclick="switchView('calculator')">Run 5-Year Feasibility Model</button>
-              <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Processing Options</button>
+              <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Processing &amp; Sites</button>
             </div>
             <div class="hero-trust-proof">
-              <span><i class="proof-icon">✓</i> GSP Geological Survey 2024</span>
+              <span><i class="proof-icon">✓</i> GSP Geological Survey (30.0+ Bn MT)</span>
               <span class="proof-sep">•</span>
               <span><i class="proof-icon">✓</i> PMDC Concessions 2026</span>
               <span class="proof-sep">•</span>
@@ -98,8 +98,8 @@
           <div class="metric-pill-card">
             <div class="metric-icon-circle">⛰️</div>
             <div class="metric-text">
-              <strong>10.0+ Billion MT</strong>
-              <span>Surveyed Salt Range Reserves</span>
+              <strong>30.0+ Billion MT</strong>
+              <span>Documented Salt Range Reserves</span>
             </div>
           </div>
           <div class="metric-pill-card">
@@ -143,18 +143,18 @@
 
           <div class="notice-card" style="margin-bottom:20px;">
             <strong>Rigorous Classification Note on Regional Figures:</strong><br>
-            While an indicative regional resource claim of more than <strong>25 billion tonnes</strong> has historically been proposed for the wider Salt Range evaporite belt, responsible mineral economics requires clear scientific distinction between categories:
+            While an authoritative regional resource estimate of over <strong>30.0+ billion tonnes</strong> has historically been proposed for the wider Salt Range evaporite belt, responsible mineral economics requires clear scientific distinction between categories:
           </div>
 
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:20px;">
             <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--navy-500);">
               <span style="font-size:11px; text-transform:uppercase; font-weight:700; color:var(--navy-600); display:block;">1. Geological Resources</span>
-              <strong style="font-size:15px; color:var(--navy-900);">25.0+ Billion MT (Indicative)</strong>
+              <strong style="font-size:15px; color:var(--navy-900);">30.0+ Billion MT (Indicative Resource)</strong>
               <p style="font-size:12.5px; color:var(--text-muted); margin-top:6px; line-height:1.5;">Total estimated in-situ sedimentary evaporite mineralisation across the entire 300-km Salt Range strike, based on regional stratigraphic extrapolation.</p>
             </div>
             <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--rose-500);">
               <span style="font-size:11px; text-transform:uppercase; font-weight:700; color:var(--navy-600); display:block;">2. Surveyed Reserves</span>
-              <strong style="font-size:15px; color:var(--navy-900);">10.0+ Billion MT (Documented)</strong>
+              <strong style="font-size:15px; color:var(--navy-900);">10.0+ Billion MT (Surveyed Reserves)</strong>
               <p style="font-size:12.5px; color:var(--text-muted); margin-top:6px; line-height:1.5;">Documented deposits confirmed through detailed borehole telemetry and mine development surveys by the Geological Survey of Pakistan (GSP, 2024).</p>
             </div>
             <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--emerald-500);">
@@ -375,6 +375,148 @@
           <!-- Dynamically populated via portal.js -->
         </div>
 
+        <div class="card" style="padding:24px 28px; background:var(--bg-alt); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border:1px solid var(--border);">
+          <div>
+            <h4 style="font-size:16px; color:var(--navy-900); margin:0 0 4px 0;">Ready to configure machinery and evaluate site economics?</h4>
+            <p style="font-size:13px; color:var(--text-muted); margin:0;">Explore our consolidated processing configurations, equipment supplier database, and candidate industrial zones.</p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button class="btn btn-primary" onclick="switchView('processing-options')">Explore Processing &amp; Site Selection →</button>
+            <button class="btn btn-outline" onclick="switchView('calculator')">Launch 5-Year Feasibility →</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 3: PROCESSING & SITE SELECTION (CONSOLIDATED) -->
+    <!-- ============================================================ -->
+    <section id="view-processing-options" class="page-view" style="display:none;">
+      <div class="container" style="padding-top:40px; padding-bottom:60px;">
+        <div class="section-header">
+          <span class="section-badge">Integrated Value Chain &amp; Sites</span>
+          <h2 class="section-title">Processing &amp; Site Selection</h2>
+          <p class="section-subtitle">Configure your value-addition processing line, evaluate candidate industrial locations in Punjab, review machinery units, and request fabricator quotations.</p>
+        </div>
+
+        <!-- 6-Stage Value-Addition Journey -->
+        <div class="card" style="margin-bottom:36px; padding:28px;">
+          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:6px;">The 6-Stage Pink Salt Value-Addition Journey</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">Moving from low-yield raw extraction to high-margin global consumer and pharmaceutical channels.</p>
+
+          <div class="value-chain">
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 01</div>
+              <div class="chain-step-title">Raw Rock Mining</div>
+              <div class="chain-step-desc">Underground extraction in Khewra &amp; Warcha seams.</div>
+              <div class="chain-step-value"> -  / MT</div>
+            </div>
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 02</div>
+              <div class="chain-step-title">Optical Sorting</div>
+              <div class="chain-step-desc">High-speed color grading isolating deep-pink crystals.</div>
+              <div class="chain-step-value"> -  / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 03</div>
+              <div class="chain-step-title">Food-Grade Milling</div>
+              <div class="chain-step-desc">Multi-mesh sizing (0.5mm - 2mm) under Codex CXS 150.</div>
+              <div class="chain-step-value"> -  / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 04</div>
+              <div class="chain-step-title">Retail Stand-Up Pouches</div>
+              <div class="chain-step-desc">Automated packaging with nitrogen flush for international retail.</div>
+              <div class="chain-step-value"> -  / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 05</div>
+              <div class="chain-step-title">Ceramic-Mill Grinders</div>
+              <div class="chain-step-desc">Premium glass table grinders &amp; gourmet infused seasonings.</div>
+              <div class="chain-step-value">,000 - ,500 / MT</div>
+            </div>
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 06</div>
+              <div class="chain-step-title">Pharma &amp; Chemical API</div>
+              <div class="chain-step-desc">99.8% pure NaCl for hemodialysis &amp; intravenous solutions.</div>
+              <div class="chain-step-value">,500 - ,000 / MT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Header for Machinery Units -->
+        <div style="margin-bottom:20px;">
+          <span class="section-badge">Core Processing Machinery</span>
+          <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0 0 0;">6 Core Processing Units</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin:4px 0 0 0;">Select machinery units to automatically populate utility requirements and financial estimates in the Feasibility Model.</p>
+        </div>
+
+        <!-- Machinery Grid Container -->
+        <div class="machinery-grid" id="machinery-grid-container">
+          <!-- Dynamically populated via portal.js -->
+        </div>
+
+        <!-- Verified Pakistani Machinery Manufacturers Showcase -->
+        <div class="card" style="margin-top:36px; padding:28px; border-left:4px solid var(--rose-600); background:#ffffff;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div>
+              <span class="section-badge">Verified Manufacturing Sources</span>
+              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Pakistani Machinery Fabricator Case Studies</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:0;">Direct technical specifications from verified domestic industrial manufacturers.</p>
+            </div>
+            <span class="opp-badge badge-verified">Direct Technical Verification</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <!-- Engineerings.pk Showcase Card -->
+            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span class="opp-badge" style="background:#e0f2fe; color:#0369a1; font-weight:700;">Model: EPK-SALT1000</span>
+                <span style="font-size:11.5px; color:var(--navy-600); font-weight:700;">Turnkey Plant</span>
+              </div>
+              <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:6px;">Engineerings.pk — Complete Salt Processing Plant</h4>
+              <p style="font-size:12.5px; color:var(--text-main); line-height:1.6; margin-bottom:12px;">
+                Balanced 1,000 kg/hr turnkey line (scalable 500–2,000 kg/hr, 12–48 TPD) delivering clean, graded, iodized, and packed retail product from raw rock salt.
+              </p>
+              <div style="font-size:12px; line-height:1.6; color:var(--navy-800); margin-bottom:14px; background:#ffffff; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
+                • <strong>6 Integrated Stages:</strong> Washing &amp; de-stoning &rarr; Crushing &amp; grading &rarr; Drying &rarr; Food-grade iodization &rarr; Automated weighing &amp; packing (1–50 kg)<br>
+                • <strong>Build:</strong> Food-grade contact surfaces, corrosion-resistant build for salt environments<br>
+                • <strong>Delivery Lead Time:</strong> ~90 days with complete factory site layout &amp; utility load sheet
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <a href="https://www.engineerings.pk/machines/salt-mineral-processing/complete-salt-processing-plant-epk-salt1000" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">
+                  Visit Verified Source (Engineerings.pk) ↗
+                </a>
+                <button class="btn btn-outline btn-sm" onclick="openRFQModal('Complete Salt Processing Plant (EPK-SALT1000)', 25)">Request Quote</button>
+              </div>
+            </div>
+
+            <!-- Bloom Engineering Showcase Card -->
+            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span class="opp-badge" style="background:#fef3c7; color:#92400e; font-weight:700;">Model: VHC Series</span>
+                <span style="font-size:11.5px; color:var(--navy-600); font-weight:700;">Hammer Mill Crusher</span>
+              </div>
+              <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:6px;">Bloom Engineering Karachi — Rock Salt Hammer Mill</h4>
+              <p style="font-size:12.5px; color:var(--text-main); line-height:1.6; margin-bottom:12px;">
+                Industrial rock salt and ore hammer mill crushers manufactured in Karachi, Pakistan. Available in Food-Grade SS316 or heavy-duty Mild Steel.
+              </p>
+              <div style="font-size:12px; line-height:1.6; color:var(--navy-800); margin-bottom:14px; background:#ffffff; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
+                • <strong>Capacities &amp; Motors:</strong> VHC-3000 (10 HP, 2.5–3 T/hr), VHC-5000 (15 HP, 5–6 T/hr), VHC-10000 (25 HP, 8.5–10 T/hr), VHC-20000 (35 HP, 18–20 T/hr)<br>
+                • <strong>Inner Rotor:</strong> 4-Shaft rotor with 6mm thick &times; 50mm wide &times; 150mm hardened hammer blades &amp; 6–12mm perforated discharge mesh<br>
+                • <strong>Drive &amp; Control:</strong> 4-Belt pulley drive with VFD inverter frequency controller
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <a href="https://blomeng.com/product/organic-waste-crusher-hammer-mill-vegetables-crusher-waste-shredder-hammer-mill-for-sale/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">
+                  Visit Verified Source (Bloom Engineering) ↗
+                </a>
+                <button class="btn btn-outline btn-sm" onclick="openRFQModal('Rock Salt Hammer Mill (Bloom Engineering VHC)', 25)">Request Quote</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Processing Zone & Site Selector -->
         <div class="section-header" style="margin-top:20px;">
           <span class="section-badge">Infrastructure &amp; Spatial Planning</span>
@@ -441,85 +583,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 3: PROCESSING OPTIONS & MACHINERY -->
-    <!-- ============================================================ -->
-    <section id="view-processing-options" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Core Processing Technology</span>
-          <h2 class="section-title">Processing Unit Options &amp; Machinery</h2>
-          <p class="section-subtitle">Explore technical units, production capacities, utility requirements, indicative pricing, and turnkey plant configurations.</p>
-        </div>
-
-        <!-- Machinery Grid Container -->
-        <div class="machinery-grid" id="machinery-grid-container">
-          <!-- Dynamically populated via portal.js -->
-        </div>
-
-        <!-- Verified Pakistani Machinery Manufacturers Showcase -->
-        <div class="card" style="margin-top:36px; padding:28px; border-left:4px solid var(--rose-600); background:#ffffff;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
-            <div>
-              <span class="section-badge">Verified Manufacturing Sources</span>
-              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Pakistani Machinery Fabricator Case Studies</h3>
-              <p style="font-size:13px; color:var(--text-muted); margin:0;">Direct technical specifications from verified domestic industrial manufacturers.</p>
-            </div>
-            <span class="opp-badge badge-verified">Direct Technical Verification</span>
-          </div>
-
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-            <!-- Engineerings.pk Showcase Card -->
-            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <span class="opp-badge" style="background:#e0f2fe; color:#0369a1; font-weight:700;">Model: EPK-SALT1000</span>
-                <span style="font-size:11.5px; color:var(--navy-600); font-weight:700;">Turnkey Plant</span>
-              </div>
-              <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:6px;">Engineerings.pk — Complete Salt Processing Plant</h4>
-              <p style="font-size:12.5px; color:var(--text-main); line-height:1.6; margin-bottom:12px;">
-                Balanced 1,000 kg/hr turnkey line (scalable 500–2,000 kg/hr, 12–48 TPD) delivering clean, graded, iodized, and packed retail product from raw rock salt.
-              </p>
-              <div style="font-size:12px; line-height:1.6; color:var(--navy-800); margin-bottom:14px; background:#ffffff; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
-                • <strong>6 Integrated Stages:</strong> Washing &amp; de-stoning &rarr; Crushing &amp; grading &rarr; Drying &rarr; Food-grade iodization &rarr; Automated weighing &amp; packing (1–50 kg)<br>
-                • <strong>Build:</strong> Food-grade contact surfaces, corrosion-resistant build for salt environments<br>
-                • <strong>Delivery Lead Time:</strong> ~90 days with complete factory site layout &amp; utility load sheet
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <a href="https://www.engineerings.pk/machines/salt-mineral-processing/complete-salt-processing-plant-epk-salt1000" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">
-                  Visit Verified Source (Engineerings.pk) ↗
-                </a>
-                <button class="btn btn-outline btn-sm" onclick="openRFQModal('Complete Salt Processing Plant (EPK-SALT1000)', 25)">Request Quote</button>
-              </div>
-            </div>
-
-            <!-- Bloom Engineering Showcase Card -->
-            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <span class="opp-badge" style="background:#fef3c7; color:#92400e; font-weight:700;">Model: VHC Series</span>
-                <span style="font-size:11.5px; color:var(--navy-600); font-weight:700;">Hammer Mill Crusher</span>
-              </div>
-              <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:6px;">Bloom Engineering Karachi — Rock Salt Hammer Mill</h4>
-              <p style="font-size:12.5px; color:var(--text-main); line-height:1.6; margin-bottom:12px;">
-                Industrial rock salt and ore hammer mill crushers manufactured in Karachi, Pakistan. Available in Food-Grade SS316 or heavy-duty Mild Steel.
-              </p>
-              <div style="font-size:12px; line-height:1.6; color:var(--navy-800); margin-bottom:14px; background:#ffffff; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-card);">
-                • <strong>Capacities &amp; Motors:</strong> VHC-3000 (10 HP, 2.5–3 T/hr), VHC-5000 (15 HP, 5–6 T/hr), VHC-10000 (25 HP, 8.5–10 T/hr), VHC-20000 (35 HP, 18–20 T/hr)<br>
-                • <strong>Inner Rotor:</strong> 4-Shaft rotor with 6mm thick &times; 50mm wide &times; 150mm hardened hammer blades &amp; 6–12mm perforated discharge mesh<br>
-                • <strong>Drive &amp; Control:</strong> 4-Belt pulley drive with VFD inverter frequency controller
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <a href="https://blomeng.com/product/organic-waste-crusher-hammer-mill-vegetables-crusher-waste-shredder-hammer-mill-for-sale/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">
-                  Visit Verified Source (Bloom Engineering) ↗
-                </a>
-                <button class="btn btn-outline btn-sm" onclick="openRFQModal('Rock Salt Hammer Mill (Bloom Engineering VHC)', 25)">Request Quote</button>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Supplier Discovery & RFQ Generator -->
@@ -1485,7 +1548,7 @@
           <ul class="footer-links">
             <li><a href="javascript:void(0)" onclick="switchView('home')">Introduction</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('opportunities')">Investment Opportunities</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Processing Options</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Processing &amp; Site Selection</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Quality &amp; Testing</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('calculator')">Feasibility Calculator</a></li>
           </ul>
@@ -1517,7 +1580,7 @@
           &copy; 2026 Pink Salt Intelligence &amp; Investment Portal. Directorate General of Mines &amp; Minerals, Government of Punjab.
         </div>
         <div>
-          Calibrated with Geological Survey of Pakistan (GSP 2024), PMDC (2026) &amp; TDAP Datasets.
+          Calibrated with Geological Survey of Pakistan (GSP 2024, 30.0+ Billion MT Reserves), PMDC (2026) &amp; TDAP Datasets.
         </div>
       </div>
     </div>

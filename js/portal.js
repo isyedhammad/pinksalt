@@ -399,7 +399,7 @@ const EMBEDDED_KNOWLEDGE = [
     category: "Geology & Resource Assessment",
     issuing_authority: "Geological Survey of Pakistan (GSP)",
     publication_date: "2024-04-10",
-    summary: "Comprehensive survey of evaporite sequences in Jhelum, Khushab, and Mianwali, documenting over 10.0 billion MT of surveyed rock salt reserves.",
+    summary: "Comprehensive survey of evaporite sequences in Jhelum, Khushab, and Mianwali, documenting over 30.0+ billion MT of documented rock salt reserves.",
     source_url: "https://www.gsp.gov.pk",
     verification_status: "Survey Memoir",
     file_size_desc: "GSP Technical Report • PDF (8.2 MB)"
@@ -482,10 +482,10 @@ function switchView(viewName) {
 
   if (viewName === "opportunities") {
     loadOpportunities();
-    selectProcessingSite("quaidabad");
   }
   if (viewName === "processing-options") {
     renderProcessingOptions();
+    selectProcessingSite("quaidabad");
   }
   if (viewName === "quality-testing") {
     calculateTestingCost();
