@@ -43,12 +43,23 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
     freight_to_port_per_tonne = max(0.0, float(params.get("freight_per_tonne", 35.0)))  # Inland logistics to Karachi Port/Qasim
     direct_labor_per_tonne = max(0.0, float(params.get("labor_cost_per_tonne", 22.0)))  # Operational plant workforce
 
+    # Washing and Cleaning processing parameters
+    washing_required = bool(params.get("washing_required", False))
+    washing_water_cost_per_tonne = max(0.0, float(params.get("washing_water_cost_per_tonne", 6.5))) if washing_required else 0.0
+    washing_effluent_cost_per_tonne = max(0.0, float(params.get("washing_effluent_cost_per_tonne", 3.0))) if washing_required else 0.0
+    drying_energy_cost_per_tonne = max(0.0, float(params.get("drying_energy_cost_per_tonne", 12.0))) if washing_required else 0.0
+    total_washing_cost_per_tonne = washing_water_cost_per_tonne + washing_effluent_cost_per_tonne + drying_energy_cost_per_tonne
+
+    # Testing & Quality Control parameters
+    annual_lab_testing_cost = max(0.0, float(params.get("annual_lab_testing_cost", 6000.0)))
+
     variable_cost_per_tonne = (
         effective_raw_material_cost_per_tonne +
         energy_cost_per_tonne +
         packaging_cost_per_tonne +
         freight_to_port_per_tonne +
-        direct_labor_per_tonne
+        direct_labor_per_tonne +
+        total_washing_cost_per_tonne
     )
     annual_variable_costs = variable_cost_per_tonne * annual_finished_production_tonnes
 
@@ -64,7 +75,8 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
         maintenance_spares +
         insurance_and_security +
         marketing_regulatory_compliance +
-        depreciation_machinery
+        depreciation_machinery +
+        annual_lab_testing_cost
     )
 
     # 5. Total Annual Operating Expenditure (OPEX)
@@ -110,11 +122,6 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
     }
 
     # 9. Sensitivity Analysis Matrix
-    # Computes operating profit impact across variations in:
-    # A) Selling Price (-20%, -10%, Base, +10%, +20%)
-    # B) Raw Salt Price (-20%, -10%, Base, +10%, +20%)
-    # C) Energy Cost (-20%, -10%, Base, +10%, +20%)
-    # D) Capacity Utilization (50%, 65%, 75%, 85%, 95%)
     variations = [-0.20, -0.10, 0.0, 0.10, 0.20]
     sensitivity = {
         "selling_price": [],
@@ -124,7 +131,6 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
     }
 
     for v in variations:
-        # Price sensitivity
         adj_price = selling_price_fob_per_tonne * (1.0 + v)
         adj_rev = annual_finished_production_tonnes * adj_price
         sensitivity["selling_price"].append({
@@ -134,11 +140,10 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "margin_pct": round(((adj_rev - total_annual_opex) / adj_rev * 100.0) if adj_rev > 0 else 0.0, 1)
         })
 
-        # Raw material sensitivity
         adj_raw_cost = raw_salt_cost_per_tonne * (1.0 + v)
         adj_var_cost = (
             (adj_raw_cost / process_yield if process_yield > 0 else adj_raw_cost) +
-            energy_cost_per_tonne + packaging_cost_per_tonne + freight_to_port_per_tonne + direct_labor_per_tonne
+            energy_cost_per_tonne + packaging_cost_per_tonne + freight_to_port_per_tonne + direct_labor_per_tonne + total_washing_cost_per_tonne
         )
         adj_opex = (adj_var_cost * annual_finished_production_tonnes) + annual_fixed_costs
         sensitivity["raw_salt_cost"].append({
@@ -148,11 +153,10 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "margin_pct": round(((annual_revenue - adj_opex) / annual_revenue * 100.0) if annual_revenue > 0 else 0.0, 1)
         })
 
-        # Energy sensitivity
         adj_energy_cost = energy_cost_per_tonne * (1.0 + v)
         adj_var_cost_e = (
             effective_raw_material_cost_per_tonne +
-            adj_energy_cost + packaging_cost_per_tonne + freight_to_port_per_tonne + direct_labor_per_tonne
+            adj_energy_cost + packaging_cost_per_tonne + freight_to_port_per_tonne + direct_labor_per_tonne + total_washing_cost_per_tonne
         )
         adj_opex_e = (adj_var_cost_e * annual_finished_production_tonnes) + annual_fixed_costs
         sensitivity["energy_cost"].append({
@@ -162,7 +166,6 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "margin_pct": round(((annual_revenue - adj_opex_e) / annual_revenue * 100.0) if annual_revenue > 0 else 0.0, 1)
         })
 
-    # Utilization sensitivity: 50%, 65%, 75%, 85%, 95%
     util_levels = [0.50, 0.65, 0.75, 0.85, 0.95]
     for u in util_levels:
         prod_u = (nameplate_capacity_tpd * operating_days * u) * process_yield
@@ -176,6 +179,123 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "annual_operating_profit": round(profit_u, 2),
             "margin_pct": round((profit_u / rev_u * 100.0) if rev_u > 0 else 0.0, 1)
         })
+
+    # 10. Five-Year Loan Amortization Schedule (Reducing Balance)
+    equity_ratio = max(0.10, min(1.0, float(params.get("equity_ratio", 0.40))))  # 40% equity default
+    loan_amount = float(params.get("loan_amount", total_capex * (1.0 - equity_ratio)))
+    loan_amount = max(0.0, loan_amount)
+    equity_amount = total_capex - loan_amount
+    annual_markup_rate = max(0.01, min(0.40, float(params.get("annual_markup_rate", 0.145))))  # 14.5% annual markup
+    loan_tenure_years = 5
+    monthly_markup_rate = annual_markup_rate / 12.0
+    total_months = loan_tenure_years * 12
+
+    if loan_amount > 0 and monthly_markup_rate > 0:
+        monthly_instalment = loan_amount * (monthly_markup_rate * (1.0 + monthly_markup_rate) ** total_months) / (((1.0 + monthly_markup_rate) ** total_months) - 1.0)
+    else:
+        monthly_instalment = 0.0
+
+    # Build 5-Year Loan Amortization table
+    loan_schedule = []
+    current_balance = loan_amount
+    for y in range(1, loan_tenure_years + 1):
+        year_interest = 0.0
+        year_principal = 0.0
+        for m in range(12):
+            if current_balance <= 0:
+                break
+            interest_m = current_balance * monthly_markup_rate
+            principal_m = min(current_balance, monthly_instalment - interest_m)
+            year_interest += interest_m
+            year_principal += principal_m
+            current_balance -= principal_m
+
+        year_debt_service = year_principal + year_interest
+        loan_schedule.append({
+            "year": y,
+            "opening_balance": round(current_balance + year_principal, 2),
+            "principal_repayment": round(year_principal, 2),
+            "interest_payment": round(year_interest, 2),
+            "total_debt_service": round(year_debt_service, 2),
+            "closing_balance": round(max(0.0, current_balance), 2)
+        })
+
+    total_financing_cost = sum(item["interest_payment"] for item in loan_schedule)
+    total_debt_service_overall = loan_amount + total_financing_cost
+
+    # 11. Five-Year Comprehensive Financial Projection (Years 1 to 5)
+    # Ramp-up: Y1=65%, Y2=75%, Y3=85%, Y4=90%, Y5=95% (relative baseline)
+    ramp_multipliers = [
+        min(1.0, max(0.3, capacity_utilization * 0.85)),  # Y1 ramp-up
+        capacity_utilization,                              # Y2 base
+        min(1.0, capacity_utilization * 1.10),             # Y3 maturity
+        min(1.0, capacity_utilization * 1.15),             # Y4 peak
+        min(1.0, capacity_utilization * 1.18)              # Y5 steady
+    ]
+    inflation_rate = 0.05  # 5% annual escalation for selling price and cost
+    tax_rate = 0.20        # 20% indicative corporate/SME tax on EBT
+
+    five_year_projection = []
+    for idx, util_rate in enumerate(ramp_multipliers):
+        year_num = idx + 1
+        escalation = (1.0 + inflation_rate) ** idx
+        y_price = selling_price_fob_per_tonne * escalation
+        y_var_cost = variable_cost_per_tonne * escalation
+        y_fixed_cost = annual_fixed_costs * escalation
+
+        y_raw_salt_tonnes = nameplate_capacity_tpd * operating_days * util_rate
+        y_prod_tonnes = y_raw_salt_tonnes * process_yield
+        y_revenue = y_prod_tonnes * y_price
+        y_opex = (y_var_cost * y_prod_tonnes) + y_fixed_cost
+        y_ebitda = y_revenue - y_opex
+        y_depreciation = depreciation_machinery
+        y_ebit = y_ebitda - y_depreciation
+
+        y_interest = loan_schedule[idx]["interest_payment"] if idx < len(loan_schedule) else 0.0
+        y_principal = loan_schedule[idx]["principal_repayment"] if idx < len(loan_schedule) else 0.0
+        y_debt_service = y_interest + y_principal
+
+        y_ebt = max(0.0, y_ebit - y_interest)
+        y_tax = y_ebt * tax_rate
+        y_net_profit = y_ebt - y_tax
+        y_free_cash_flow = (y_ebitda - y_interest - y_tax) - y_principal
+
+        # DSCR = EBITDA / Total Debt Service
+        dscr = (y_ebitda / y_debt_service) if y_debt_service > 0 else 99.0
+
+        five_year_projection.append({
+            "year": year_num,
+            "capacity_utilization_pct": round(util_rate * 100.0, 1),
+            "production_tonnes": round(y_prod_tonnes, 1),
+            "revenue": round(y_revenue, 2),
+            "operating_costs": round(y_opex, 2),
+            "ebitda": round(y_ebitda, 2),
+            "depreciation": round(y_depreciation, 2),
+            "ebit": round(y_ebit, 2),
+            "interest_expense": round(y_interest, 2),
+            "profit_before_tax": round(y_ebt, 2),
+            "tax": round(y_tax, 2),
+            "net_profit": round(y_net_profit, 2),
+            "principal_repayment": round(y_principal, 2),
+            "total_debt_service": round(y_debt_service, 2),
+            "free_cash_flow": round(y_free_cash_flow, 2),
+            "dscr": round(dscr, 2),
+            "dscr_status": "Healthy" if dscr >= 1.30 else ("Acceptable" if dscr >= 1.0 else "Deficit Risk")
+        })
+
+    # PKR Currency Equivalent (USD to PKR benchmark = 280.0)
+    pkr_rate = float(params.get("pkr_usd_rate", 280.0))
+    pkr_summary = {
+        "pkr_rate": pkr_rate,
+        "total_capex_pkr": round(total_capex * pkr_rate, 0),
+        "machinery_cost_pkr": round(machinery_cost * pkr_rate, 0),
+        "annual_revenue_pkr": round(annual_revenue * pkr_rate, 0),
+        "annual_opex_pkr": round(total_annual_opex * pkr_rate, 0),
+        "annual_operating_profit_pkr": round(operating_profit * pkr_rate, 0),
+        "loan_amount_pkr": round(loan_amount * pkr_rate, 0),
+        "equity_amount_pkr": round(equity_amount * pkr_rate, 0),
+        "monthly_instalment_pkr": round(monthly_instalment * pkr_rate, 0)
+    }
 
     return {
         "capex": {
@@ -200,6 +320,7 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
             "packaging_cost_per_tonne": packaging_cost_per_tonne,
             "freight_per_tonne": freight_to_port_per_tonne,
             "labor_cost_per_tonne": direct_labor_per_tonne,
+            "washing_cost_per_tonne": round(total_washing_cost_per_tonne, 2),
             "variable_cost_per_tonne": round(variable_cost_per_tonne, 2),
             "annual_variable_costs": round(annual_variable_costs, 2),
             "annual_fixed_costs": round(annual_fixed_costs, 2),
@@ -219,6 +340,19 @@ def calculate_feasibility(params: Dict[str, Any]) -> Dict[str, Any]:
         },
         "monthly_summary": monthly_summary,
         "sensitivity": sensitivity,
+        "five_year_projection": five_year_projection,
+        "loan_amortization": {
+            "loan_amount": round(loan_amount, 2),
+            "equity_amount": round(equity_amount, 2),
+            "annual_markup_rate_pct": round(annual_markup_rate * 100.0, 2),
+            "tenure_years": loan_tenure_years,
+            "monthly_instalment": round(monthly_instalment, 2),
+            "annual_debt_service": round(monthly_instalment * 12.0, 2),
+            "total_financing_cost": round(total_financing_cost, 2),
+            "total_debt_service_overall": round(total_debt_service_overall, 2),
+            "schedule": loan_schedule
+        },
+        "pkr_summary": pkr_summary,
         "disclaimer": (
             "NOTICE: This preliminary model provides computational estimates for project evaluation "
             "and does not constitute an officially certified Bankable Feasibility Study, geological reserve report, "

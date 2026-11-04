@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pink Salt - Value Addition Financing | Government of Punjab</title>
-  <meta name="description" content="Pakistan Pink Salt Mineral Intelligence, Feasibility Modeling, Value Addition & Investor Facilitation Portal.">
+  <title>Pink Salt Intelligence & Investment Portal | Government of Punjab</title>
+  <meta name="description" content="Investor Facilitation and Pink Salt Processing Feasibility Platform. Directorate General of Mines & Minerals, Government of Punjab.">
   <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
@@ -12,21 +12,17 @@
   <!-- Header & Clean Navigation -->
   <header class="site-header">
     <div class="container header-wrapper">
-      <div class="brand-logo" onclick="switchView('home')">
+      <div class="brand-logo" onclick="switchView('home')" title="Government of Punjab - Mines & Minerals Sector">
         <img src="images/cm-punjab-logo.jpg" alt="Chief Minister Punjab Maryam Nawaz" class="logo-img">
       </div>
 
       <nav class="main-nav">
-        <a class="nav-link active" data-view="home">Home</a>
-        <a class="nav-link" data-view="resources">Resources</a>
-        <a class="nav-link" data-view="opportunities">Opportunities</a>
-        <a class="nav-link" data-view="value-addition">Value Addition</a>
-        <a class="nav-link" data-view="calculator">Feasibility</a>
-        <a class="nav-link" data-view="sites">Site Selector</a>
-        <a class="nav-link" data-view="export">Export Intel</a>
-        <a class="nav-link" data-view="traceability">Traceability</a>
-        <a class="nav-link" data-view="knowledge">Knowledge Base</a>
-        <a class="nav-link" data-view="ai"><span style="margin-right:2px;">💼</span>Investment Assistant</a>
+        <a class="nav-link active" data-view="home">Introduction</a>
+        <a class="nav-link" data-view="opportunities">Investment Opportunities</a>
+        <a class="nav-link" data-view="processing-options">Processing Options</a>
+        <a class="nav-link" data-view="quality-testing">Quality &amp; Testing</a>
+        <a class="nav-link" data-view="calculator">Feasibility Calculator</a>
+        <a class="nav-link" data-view="enquiry">Investor Enquiry</a>
       </nav>
 
       <div class="header-actions">
@@ -40,20 +36,15 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu (Full Responsiveness for Tablets and Mobile) -->
+    <!-- Mobile Drawer Menu -->
     <div class="mobile-nav-drawer" id="mobile-drawer">
-      <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏛️ Home Overview</a>
-      <a class="nav-link" data-view="resources" onclick="switchView('resources'); toggleMobileNav()">🗺️ Resource Intelligence & Map</a>
+      <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏛️ Introduction &amp; Overview</a>
       <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">💼 Investment Opportunities</a>
-      <a class="nav-link" data-view="value-addition" onclick="switchView('value-addition'); toggleMobileNav()">📈 Value-Addition Economics</a>
-      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 Feasibility & Sensitivity Calculator</a>
-      <a class="nav-link" data-view="sites" onclick="switchView('sites'); toggleMobileNav()">📍 Processing Zone Selector</a>
-      <a class="nav-link" data-view="export" onclick="switchView('export'); toggleMobileNav()">🚢 Export & PSW Compliance</a>
-      <a class="nav-link" data-view="traceability" onclick="switchView('traceability'); toggleMobileNav()">🔍 Origin Traceability Simulator</a>
-      <a class="nav-link" data-view="knowledge" onclick="switchView('knowledge'); toggleMobileNav()">📚 Regulatory Knowledge Base</a>
-      <a class="nav-link" data-view="ai" onclick="switchView('ai'); toggleMobileNav()">💼 Investment Assistant</a>
-      <button class="btn btn-primary" style="margin-top:12px; width:100%;" onclick="switchView('enquiry'); toggleMobileNav()">Register Expression of Interest</button>
-      <button class="btn btn-outline" style="width:100%;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
+      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing Options &amp; Machinery</a>
+      <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">🔬 Quality &amp; Laboratory Testing</a>
+      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 5-Year Feasibility Calculator</a>
+      <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">✨ Investor Enquiry / EOI</a>
+      <button class="btn btn-outline" style="width:100%; margin-top:12px;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
     </div>
   </header>
 
@@ -61,40 +52,40 @@
   <main style="flex-grow:1;">
 
     <!-- ============================================================ -->
-    <!-- VIEW 1: HOME -->
+    <!-- VIEW 1: INTRODUCTION -->
     <!-- ============================================================ -->
     <section id="view-home" class="page-view">
-      <!-- Hero Section with Official CM Punjab Digital Image -->
+      <!-- Hero Section with Official CM Punjab Digital Oversight Image -->
       <div class="hero">
         <div class="container hero-grid">
           <div>
             <div class="hero-badge-pill">
               <span class="hero-badge-dot"></span>
-              <span>Strategic Mineral Concessions & Investment Intelligence</span>
+              <span>Investor Facilitation &amp; Feasibility Platform</span>
             </div>
-            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Reserves & Global Value Chain</h2>
+            <h2>Unlocking Pakistan's <span class="highlight">Pink Salt</span> Reserves &amp; Global Value Chain</h2>
             <p class="lead">
-              A high-level mineral investment portal connecting Punjab's 10-billion-tonne Khewra & Warcha geological reserves 
-              with international processing capital, optical grading technology, and high-margin export manufacturing.
+              A high-level mineral facilitation and investment platform presenting Punjab's world-class salt deposits, 
+              processing options, quality compliance benchmarks, and deterministic 5-year financial models for investors, exporters, and lenders.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore 8 Strategic Projects →</button>
-              <button class="btn btn-outline-light" onclick="switchView('calculator')">Run Feasibility Model</button>
-              <button class="btn btn-gold" onclick="switchView('ai')">💼 Investment Assistant ✨</button>
+              <button class="btn btn-primary" onclick="switchView('opportunities')">Explore Investment Opportunities →</button>
+              <button class="btn btn-outline-light" onclick="switchView('calculator')">Run 5-Year Feasibility Model</button>
+              <button class="btn btn-gold" onclick="switchView('processing-options')">⚙️ Processing Options</button>
             </div>
             <div class="hero-trust-proof">
-              <span><i class="proof-icon">✓</i> GSP Geological Survey</span>
+              <span><i class="proof-icon">✓</i> GSP Geological Survey 2024</span>
               <span class="proof-sep">•</span>
-              <span><i class="proof-icon">✓</i> PMDC Concessions</span>
+              <span><i class="proof-icon">✓</i> PMDC Concessions 2026</span>
               <span class="proof-sep">•</span>
-              <span><i class="proof-icon">✓</i> TDAP Export Protocol</span>
+              <span><i class="proof-icon">✓</i> Codex CXS 150 Food-Grade</span>
               <span class="proof-sep">•</span>
               <span><i class="proof-icon">✓</i> HS 2501 Protected GI</span>
             </div>
           </div>
           <div>
             <div class="hero-image-card" style="background:#ffffff; border-radius:var(--radius-xl); overflow:hidden; box-shadow:0 24px 64px -12px rgba(4,9,20,0.6); border:3px solid rgba(255,255,255,0.25);">
-              <img src="images/landingPage-Image.png" alt="Monitoring & Performance Chief Minister Punjab - Digital Oversight" class="hero-main-photo" style="width:100%; height:auto; display:block;">
+              <img src="images/landingPage-Image.png" alt="Monitoring &amp; Performance Chief Minister Punjab - Digital Oversight" class="hero-main-photo" style="width:100%; height:auto; display:block;">
             </div>
           </div>
         </div>
@@ -102,27 +93,27 @@
 
       <div class="container" style="padding-top:20px; padding-bottom:64px;">
 
-        <!-- Quick Metrics Highlights (Floating Overlap) -->
+        <!-- Quick Metrics Highlights -->
         <div class="quick-metrics-row">
           <div class="metric-pill-card">
             <div class="metric-icon-circle">⛰️</div>
             <div class="metric-text">
               <strong>10.0+ Billion MT</strong>
-              <span>Documented Salt Range Resource</span>
+              <span>Surveyed Salt Range Reserves</span>
             </div>
           </div>
           <div class="metric-pill-card">
             <div class="metric-icon-circle">💎</div>
             <div class="metric-text">
               <strong>98.8% - 99.2%</strong>
-              <span>Natural Crystalline NaCl</span>
+              <span>Natural Crystalline NaCl Purity</span>
             </div>
           </div>
           <div class="metric-pill-card">
             <div class="metric-icon-circle">📈</div>
             <div class="metric-text">
               <strong>8x - 15x Value</strong>
-              <span>Processing Margin Accretion</span>
+              <span>Finished Goods Margin Accretion</span>
             </div>
           </div>
           <div class="metric-pill-card">
@@ -134,125 +125,161 @@
           </div>
         </div>
 
-        <!-- Geological Formations District Showcase Container Card -->
-        <div class="geology-panorama-card">
-          <div class="panorama-content">
-            <span class="section-badge" style="background:rgba(225,29,72,0.18); color:var(--salt-300); border-color:rgba(225,29,72,0.35); margin-bottom:12px;">500 Million Year Provenance</span>
-            <h3>Ancient Eocambrian Salt Range Formations</h3>
-            <p>
-              Continuous subsurface evaporite seams spanning Jhelum, Khushab, and Mianwali. Exceptional geological crystalline depth offering organic trace minerals, iron oxides, and international food & pharmaceutical grade compliance.
-            </p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Jhelum')">🏛️ Khewra (Jhelum)</button>
-              <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Khushab')">⛏️ Warcha (Khushab)</button>
-              <button class="btn btn-sm btn-outline-light" onclick="switchView('resources'); filterMapDistrict('Mianwali')">🌊 Kalabagh (Mianwali)</button>
-              <button class="btn btn-sm btn-gold" onclick="switchView('sites')">🏭 Quaidabad SEZ Hub →</button>
+        <!-- ======================================================== -->
+        <!-- SUBSECTION A: RESOURCE POTENTIAL -->
+        <!-- ======================================================== -->
+        <div class="card" style="margin-bottom:32px; padding:32px; border-left:4px solid var(--rose-600);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div>
+              <span class="section-badge">Section 1.A • Geological Intelligence</span>
+              <h3 style="font-size:22px; color:var(--navy-900); margin:8px 0;">Pakistan's Pink Salt Resource Potential</h3>
+            </div>
+            <span class="opp-badge badge-verified">Sources: GSP (2024) &amp; PMDC Operations Register (2026)</span>
+          </div>
+
+          <p style="font-size:14.5px; line-height:1.7; color:var(--text-main); margin-bottom:18px;">
+            Pakistan's Salt Range represents one of the world's most significant and ancient evaporite formations, originating in the Eocambrian era over 500 million years ago. Continuous subsurface seams span northern Punjab across Jhelum, Khushab, Chakwal, and Mianwali districts.
+          </p>
+
+          <div class="notice-card" style="margin-bottom:20px;">
+            <strong>Rigorous Classification Note on Regional Figures:</strong><br>
+            While an indicative regional resource claim of more than <strong>25 billion tonnes</strong> has historically been proposed for the wider Salt Range evaporite belt, responsible mineral economics requires clear scientific distinction between categories:
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:20px;">
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--navy-500);">
+              <span style="font-size:11px; text-transform:uppercase; font-weight:700; color:var(--navy-600); display:block;">1. Geological Resources</span>
+              <strong style="font-size:15px; color:var(--navy-900);">25.0+ Billion MT (Indicative)</strong>
+              <p style="font-size:12.5px; color:var(--text-muted); margin-top:6px; line-height:1.5;">Total estimated in-situ sedimentary evaporite mineralisation across the entire 300-km Salt Range strike, based on regional stratigraphic extrapolation.</p>
+            </div>
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--rose-500);">
+              <span style="font-size:11px; text-transform:uppercase; font-weight:700; color:var(--navy-600); display:block;">2. Surveyed Reserves</span>
+              <strong style="font-size:15px; color:var(--navy-900);">10.0+ Billion MT (Documented)</strong>
+              <p style="font-size:12.5px; color:var(--text-muted); margin-top:6px; line-height:1.5;">Documented deposits confirmed through detailed borehole telemetry and mine development surveys by the Geological Survey of Pakistan (GSP, 2024).</p>
+            </div>
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); border-top:3px solid var(--emerald-500);">
+              <span style="font-size:11px; text-transform:uppercase; font-weight:700; color:var(--navy-600); display:block;">3. Economically Recoverable</span>
+              <strong style="font-size:15px; color:var(--emerald-700);">1.5+ Billion MT (Active Leases)</strong>
+              <p style="font-size:12.5px; color:var(--text-muted); margin-top:6px; line-height:1.5;">Directly accessible via established underground room-and-pillar mining operations at Khewra (600M+ MT) and Warcha (400M+ MT) under PMDC concession management.</p>
             </div>
           </div>
-        </div>
-
-        <!-- Value Chain Visualizer Overview -->
-        <div class="section-header">
-          <span class="section-badge">Industrial Progression</span>
-          <h2 class="section-title">The Pink Salt Value-Addition Journey</h2>
-          <p class="section-subtitle">Transitioning from low-yield raw rock extraction to premium retail, industrial, and pharmaceutical export channels.</p>
-        </div>
-
-        <div class="value-chain">
-          <div class="chain-step">
-            <div class="chain-step-num">STAGE 01</div>
-            <div class="chain-step-title">Raw Rock Mining</div>
-            <div class="chain-step-desc">Underground extraction in Khewra & Warcha seams.</div>
-            <div class="chain-step-value">$35 - $50 / MT</div>
-          </div>
-          <div class="chain-step">
-            <div class="chain-step-num">STAGE 02</div>
-            <div class="chain-step-title">Optical Sorting</div>
-            <div class="chain-step-desc">High-speed color grading to isolate deep-pink crystals.</div>
-            <div class="chain-step-value">$120 - $180 / MT</div>
-          </div>
-          <div class="chain-step highlight">
-            <div class="chain-step-num">STAGE 03</div>
-            <div class="chain-step-title">Food-Grade Milling</div>
-            <div class="chain-step-desc">Multi-mesh sizing (0.5mm - 2mm) under Codex CXS 150.</div>
-            <div class="chain-step-value">$280 - $450 / MT</div>
-          </div>
-          <div class="chain-step highlight">
-            <div class="chain-step-num">STAGE 04</div>
-            <div class="chain-step-title">Retail Stand-Up Pouches</div>
-            <div class="chain-step-desc">Automated packaging with nitrogen flush for international retail.</div>
-            <div class="chain-step-value">$550 - $950 / MT</div>
-          </div>
-          <div class="chain-step highlight">
-            <div class="chain-step-num">STAGE 05</div>
-            <div class="chain-step-title">Ceramic-Mill Grinders</div>
-            <div class="chain-step-desc">Premium glass table grinders & gourmet infused seasonings.</div>
-            <div class="chain-step-value">$2,000 - $3,500 / MT</div>
-          </div>
-          <div class="chain-step">
-            <div class="chain-step-num">STAGE 06</div>
-            <div class="chain-step-title">Pharma & Chemical API</div>
-            <div class="chain-step-desc">99.8% pure NaCl for hemodialysis & intravenous solutions.</div>
-            <div class="chain-step-value">$3,500 - $5,000 / MT</div>
+          <div style="font-size:12px; color:var(--text-muted);">
+            Official Reference: Geological Survey of Pakistan (GSP) Salt Range Stratigraphic Memoir (Published: 2024) | Pakistan Mineral Development Corporation (PMDC) Concessions Register (Audited: January 2026).
           </div>
         </div>
 
-        <!-- Featured Opportunities Grid -->
-        <div class="section-header" style="margin-top:48px;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
-            <div>
-              <span class="section-badge">Investment Pipeline</span>
-              <h2 class="section-title">Featured Value-Addition Opportunities</h2>
-              <p class="section-subtitle">Curated industrial proposals and public-private joint venture concepts.</p>
+        <!-- ======================================================== -->
+        <!-- SUBSECTION B: DISTINCTIVE CHARACTERISTICS -->
+        <!-- ======================================================== -->
+        <div class="card" style="margin-bottom:32px; padding:32px; border-left:4px solid var(--navy-700);">
+          <span class="section-badge">Section 1.B • Mineral Composition &amp; Compliance</span>
+          <h3 style="font-size:22px; color:var(--navy-900); margin:8px 0 16px 0;">Distinctive Characteristics &amp; Scientific Integrity</h3>
+
+          <p style="font-size:14.5px; line-height:1.7; color:var(--text-main); margin-bottom:16px;">
+            Pakistani Himalayan Pink Salt is characterized by its unrefined crystalline structure and distinct aesthetic hue. Commercial and scientific assessment reveals:
+          </p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+            <div style="background:#ffffff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:18px;">
+              <h4 style="font-size:15px; color:var(--navy-900); margin-bottom:8px;">Natural Chemical Composition</h4>
+              <ul style="font-size:13.5px; line-height:1.7; color:var(--text-main); padding-left:18px; margin:0;">
+                <li><strong>Sodium Chloride (NaCl):</strong> 98.8% to 99.2% dry basis purity across primary seams.</li>
+                <li><strong>Naturally Occurring Trace Elements:</strong> Micro-concentrations of iron oxides (Fe₂O₃, 20–50 ppm), giving signature peach, rose, and ruby hues, alongside trace calcium (Ca), magnesium (Mg), and potassium (K).</li>
+                <li><strong>Color Spectrum Variations:</strong> Transparent crystal white, pale pink, deep rose, and dark red—varying naturally across geological strata.</li>
+                <li><strong>Multi-Industry Applications:</strong> Food-grade table seasonings, animal nutrition lick blocks, artisanal decor, and cosmetic spa formulations.</li>
+              </ul>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="switchView('opportunities')">View All Opportunities (8) →</button>
-          </div>
-        </div>
 
-        <div id="home-featured-opps" class="grid-3">
-          <!-- Dynamically populated -->
-        </div>
-
-        <!-- Interactive Calculator Teaser -->
-        <div class="card" style="margin-top:48px; background:linear-gradient(135deg, #ffffff, var(--rose-50)); border:1px solid var(--rose-200); padding:36px;">
-          <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px; align-items:center;">
-            <div>
-              <span class="opp-badge badge-concept">Interactive Financial Tool</span>
-              <h3 style="font-size:24px; color:var(--navy-900); font-weight:800; margin:10px 0;">Estimate Project Economics & Sensitivity</h3>
-              <p style="color:var(--text-main); font-size:14.5px; line-height:1.6; margin-bottom:20px;">
-                Calculate Capital Expenditure (CAPEX), Operational Costs (OPEX), Annual EBITDA, and Break-Even Selling Prices. 
-                Test how electricity rates, freight volatility, and raw material pricing impact your investment margin.
+            <div style="background:var(--rose-50); border:1px solid var(--rose-200); border-radius:var(--radius-sm); padding:18px;">
+              <h4 style="font-size:15px; color:var(--rose-900); margin-bottom:8px;">🛡️ Mandatory Regulatory &amp; Scientific Disclaimer</h4>
+              <p style="font-size:13px; line-height:1.6; color:var(--rose-900); margin:0;">
+                <strong>No Unsupported Medical Claims:</strong> Claims that pink salt contains 5% of clinically beneficial minerals or that it treats disease, reduces hypertension, or physiologically detoxifies the body are not supported by clinical evidence and must not be published. 
+                Trace minerals impart distinct culinary flavor, aesthetic coloration, and textural properties, but the salt is predominantly sodium chloride and must comply with dietary sodium guidelines and Codex Alimentarius standards.
               </p>
-              <button class="btn btn-primary" onclick="switchView('calculator')">Launch Feasibility Calculator →</button>
-            </div>
-            <div style="background:#ffffff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; box-shadow:var(--shadow-md);">
-              <h4 style="font-size:13px; color:var(--text-muted); text-transform:uppercase; margin-bottom:12px;">Base Case Preview (25 TPD Plant)</h4>
-              <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13.5px;">
-                <span>Estimated CAPEX:</span>
-                <strong>$350,000</strong>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13.5px;">
-                <span>Annual Output:</span>
-                <strong>5,175 MT</strong>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13.5px;">
-                <span>Projected Revenue:</span>
-                <strong style="color:var(--navy-900);">$1,656,000</strong>
-              </div>
-              <div style="display:flex; justify-content:space-between; font-size:13.5px;">
-                <span>Operating Profit (EBITDA):</span>
-                <strong style="color:var(--rose-600);">$680,890 (41%)</strong>
-              </div>
             </div>
           </div>
         </div>
 
-        <div style="margin-top:40px; padding:18px 24px; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); font-size:13px; color:var(--slate-500); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-          <div>
-            🏛️ <strong>Institutional Data Partners:</strong> Punjab Mines & Minerals Department | PMDC | Geological Survey of Pakistan | TDAP
+        <!-- ======================================================== -->
+        <!-- SUBSECTION C: THE INVESTMENT OPPORTUNITY -->
+        <!-- ======================================================== -->
+        <div class="card" style="margin-bottom:32px; padding:32px; border-left:4px solid var(--emerald-600);">
+          <span class="section-badge">Section 1.C • Strategic Opportunity</span>
+          <h3 style="font-size:22px; color:var(--navy-900); margin:8px 0 16px 0;">The Value-Addition Investment Opportunity</h3>
+
+          <p style="font-size:14.5px; line-height:1.7; color:var(--text-main); margin-bottom:20px;">
+            For decades, Pakistan's pink salt was exported primarily as unrefined raw rocks at <strong>$35 to $50 per metric tonne</strong>, leaving secondary foreign processors to capture over 85% of retail value. The Government of Punjab's strategic priority is to attract private capital to modernise processing inside the province:
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); text-align:center;">
+              <div style="font-size:28px; margin-bottom:8px;">🔬</div>
+              <strong style="font-size:14px; color:var(--navy-900); display:block; margin-bottom:4px;">Scientific Processing</strong>
+              <span style="font-size:12.5px; color:var(--text-muted);">Optical color sorting &amp; high-precision stainless steel size classification.</span>
+            </div>
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); text-align:center;">
+              <div style="font-size:28px; margin-bottom:8px;">🚿</div>
+              <strong style="font-size:14px; color:var(--navy-900); display:block; margin-bottom:4px;">Washing &amp; Cleaning</strong>
+              <span style="font-size:12.5px; color:var(--text-muted);">Removing extraction dust, mine handling residues, and insoluble impurities.</span>
+            </div>
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); text-align:center;">
+              <div style="font-size:28px; margin-bottom:8px;">📦</div>
+              <strong style="font-size:14px; color:var(--navy-900); display:block; margin-bottom:4px;">Retail Packaging</strong>
+              <span style="font-size:12.5px; color:var(--text-muted);">Automated stand-up pouches, nitrogen flush, and ceramic-mill table grinders.</span>
+            </div>
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-sm); text-align:center;">
+              <div style="font-size:28px; margin-bottom:8px;">🌐</div>
+              <strong style="font-size:14px; color:var(--navy-900); display:block; margin-bottom:4px;">Export Realization</strong>
+              <span style="font-size:12.5px; color:var(--text-muted);">Elevating export value from $40/MT to $320–$800+/MT under Protected GI.</span>
+            </div>
           </div>
-          <div>
-            📍 Salt Range Mining Concessions (Jhelum, Khushab, Mianwali)
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- SUBSECTION D: QUALITY CHALLENGES & PROPER PROCESSING -->
+        <!-- ======================================================== -->
+        <div class="card" style="margin-bottom:32px; padding:32px; border-left:4px solid var(--amber-500);">
+          <span class="section-badge">Section 1.D • Technical Quality Control</span>
+          <h3 style="font-size:22px; color:var(--navy-900); margin:8px 0 16px 0;">Quality Challenges and the Importance of Proper Processing</h3>
+
+          <p style="font-size:14.5px; line-height:1.7; color:var(--text-main); margin-bottom:18px;">
+            Raw mined salt cannot enter high-value consumer markets directly. Investors must recognize and design systems to overcome key industrial quality challenges:
+          </p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+            <div style="border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px;">
+              <h4 style="font-size:14px; color:var(--navy-900); margin-bottom:8px;">Critical Quality Challenges:</h4>
+              <ol style="font-size:13px; line-height:1.7; color:var(--text-main); padding-left:20px; margin:0;">
+                <li><strong>Inconsistent Raw Feed Quality:</strong> Seam-to-seam variations in color, hardness, and natural impurities.</li>
+                <li><strong>Mine Handling Contamination:</strong> Dust, transport silt, and floor contact during extraction and haulage.</li>
+                <li><strong>Blasting &amp; Extraction Residues:</strong> Must be analytical assessed through accredited testing (blasting residues do not affect all salt, but must be verified).</li>
+                <li><strong>Inconsistent Particle Sizing:</strong> Irregular granules causing caking and customer dissatisfaction.</li>
+                <li><strong>Lack of Toxic Metal Screening:</strong> Failure to test for Lead, Arsenic, Cadmium, and Mercury limits.</li>
+                <li><strong>Inadequate Barrier Packaging:</strong> Moisture ingress causing recrystallization and hardness.</li>
+              </ol>
+            </div>
+
+            <div style="border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px; background:#fffbeb;">
+              <h4 style="font-size:14px; color:#92400e; margin-bottom:8px;">🚿 The Washing Process: Trade-Offs &amp; Operational Costs</h4>
+              <p style="font-size:13px; line-height:1.6; color:#92400e; margin-bottom:10px;">
+                <strong>Washing is a conditional processing option, not universally mandatory.</strong> It is essential for food-grade retail salt with surface dirt or elevated insoluble matter, but unnecessary for decorative lamps, de-icing salt, or dry-screened animal licks.
+              </p>
+              <div style="font-size:12.5px; line-height:1.6; color:#78350f;">
+                <strong>Associated Washing Costs in Feasibility Model:</strong><br>
+                • Water consumption (~1.5 m³ per tonne @ PKR 180/m³)<br>
+                • Effluent handling &amp; settling ponds (~PKR 120/tonne)<br>
+                • Post-wash drying energy (18 kWh/tonne thermal/electric)<br>
+                • Specialized SS304 rotary trommel equipment (~PKR 14–28 Lakh)
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--border); padding-top:18px;">
+            <span style="font-size:13.5px; font-weight:700; color:var(--navy-800);">Ready to evaluate plant configurations and economics?</span>
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-navy btn-sm" onclick="switchView('processing-options')">Explore Machinery Options →</button>
+              <button class="btn btn-primary btn-sm" onclick="switchView('calculator')">Launch 5-Year Feasibility Calculator →</button>
+            </div>
           </div>
         </div>
 
@@ -260,139 +287,64 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- VIEW 2: RESOURCE INTELLIGENCE -->
-    <!-- ============================================================ -->
-    <section id="view-resources" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Geological Reserves</span>
-          <h2 class="section-title">Punjab Salt Range Resource Intelligence</h2>
-          <p class="section-subtitle">Documented geological deposits, natural crystalline purity grades, and mining lease statuses across northern Punjab.</p>
-        </div>
-
-        <!-- Interactive GIS Command Center of Punjab Salt Range -->
-        <div class="card" style="margin-bottom:32px; padding:28px; background:#040914; border:1px solid rgba(225,29,72,0.25); color:#ffffff; box-shadow:0 16px 40px rgba(4,9,20,0.5);">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
-            <div>
-              <span class="section-badge" style="background:rgba(225,29,72,0.2); color:#fda4af; border-color:rgba(225,29,72,0.4);">Spatial GIS Telemetry</span>
-              <h3 style="font-size:22px; color:#ffffff; margin:4px 0;">Interactive Salt Range Mineral Corridor</h3>
-              <p style="font-size:13px; color:#94a3b8; margin:0;">Click any mining node to inspect localized geological formations, active concessions, and logistics sidings.</p>
-            </div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Jhelum')">🏛️ Khewra</button>
-              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Khushab')">⛏️ Warcha</button>
-              <button class="btn btn-sm btn-outline-light" onclick="filterMapDistrict('Mianwali')">🌊 Kalabagh</button>
-              <button class="btn btn-sm btn-gold" onclick="filterMapDistrict('Khushab')">🏭 Quaidabad SEZ</button>
-            </div>
-          </div>
-          
-          <div style="position:relative; width:100%; height:340px; background:#07101e; border-radius:var(--radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
-            <svg viewBox="0 0 800 340" style="width:100%; height:100%;">
-              <defs>
-                <linearGradient id="escarpmentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#be123c" stop-opacity="0.8"/>
-                  <stop offset="50%" stop-color="#f43f5e" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#fb7185" stop-opacity="0.8"/>
-                </linearGradient>
-                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#0284c7" stop-opacity="0.7"/>
-                </linearGradient>
-                <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              
-              <!-- Tactical Coordinate Grid -->
-              <rect width="800" height="340" fill="url(#gridPattern)" />
-
-              <!-- Elevation Escarpment Belt -->
-              <path d="M 40,180 Q 200,130 400,165 T 760,150" fill="none" stroke="rgba(225,29,72,0.15)" stroke-width="48" stroke-linecap="round" />
-              <path d="M 40,180 Q 200,130 400,165 T 760,150" fill="none" stroke="url(#escarpmentGrad)" stroke-width="14" stroke-linecap="round" />
-              
-              <!-- M-2 Motorway Logistic Artery -->
-              <line x1="280" y1="20" x2="520" y2="320" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8,6" opacity="0.85" />
-              <text x="510" y="300" font-size="11" fill="#fcd34d" font-weight="bold">M-2 Industrial Corridor (To Karachi Sea Ports)</text>
-
-              <!-- Indus River System -->
-              <path d="M 70,20 Q 120,130 95,320" fill="none" stroke="url(#riverGrad)" stroke-width="7" />
-              <text x="105" y="300" font-size="11" fill="#7dd3fc" font-weight="bold">Indus River Basin</text>
-
-              <!-- Khewra Mega Deposit Node -->
-              <circle cx="580" cy="155" r="28" fill="rgba(225,29,72,0.2)" />
-              <circle cx="580" cy="155" r="16" fill="#e11d48" cursor="pointer" onclick="filterMapDistrict('Jhelum')" />
-              <circle cx="580" cy="155" r="6" fill="#ffffff" />
-              <text x="605" y="150" font-size="14" font-weight="800" fill="#ffffff">Khewra (Jhelum)</text>
-              <text x="605" y="168" font-size="11" fill="#fda4af">600M+ MT • 98.8% NaCl • PMDC</text>
-
-              <!-- Warcha Crystal Seams Node -->
-              <circle cx="280" cy="165" r="24" fill="rgba(244,63,94,0.2)" />
-              <circle cx="280" cy="165" r="14" fill="#f43f5e" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
-              <circle cx="280" cy="165" r="5" fill="#ffffff" />
-              <text x="210" y="210" font-size="14" font-weight="800" fill="#ffffff">Warcha (Khushab)</text>
-              <text x="210" y="226" font-size="11" fill="#fda4af">400M+ MT • 99.1% High Purity</text>
-
-              <!-- Quaidabad Processing SEZ Node -->
-              <rect x="260" y="110" width="24" height="24" rx="6" fill="#d97706" cursor="pointer" onclick="filterMapDistrict('Khushab')" />
-              <text x="180" y="100" font-size="13" font-weight="800" fill="#fbbf24">🏭 Quaidabad SEZ Hub</text>
-              <text x="180" y="115" font-size="10.5" fill="#fde68a">Rail Siding • 10-Yr Tax Holiday</text>
-
-              <!-- Kalabagh Deposits Node -->
-              <circle cx="110" cy="130" r="12" fill="#be123c" cursor="pointer" onclick="filterMapDistrict('Mianwali')" />
-              <text x="60" y="110" font-size="13" font-weight="800" fill="#ffffff">Kalabagh (Mianwali)</text>
-              <text x="60" y="125" font-size="11" fill="#fda4af">250M+ MT • River Outcrops</text>
-
-              <!-- Chakwal Node -->
-              <circle cx="440" cy="140" r="10" fill="#94a3b8" cursor="pointer" onclick="filterMapDistrict('Chakwal')" />
-              <text x="445" y="125" font-size="12" font-weight="700" fill="#cbd5e1">Chakwal-Kallar Kahar</text>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Filter Controls -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
-          <div style="display:flex; gap:12px; align-items:center;">
-            <label style="font-weight:600; font-size:13.5px;">Filter by District:</label>
-            <select id="resource-district-select" class="form-control" style="width:200px;" onchange="loadResources(this.value)">
-              <option value="">All Districts</option>
-              <option value="Jhelum">Jhelum (Khewra)</option>
-              <option value="Khushab">Khushab (Warcha / Quaidabad)</option>
-              <option value="Mianwali">Mianwali (Kalabagh)</option>
-              <option value="Chakwal">Chakwal Belt</option>
-            </select>
-          </div>
-          <span style="font-size:13px; color:var(--text-muted);">Source: GSP Geological Memoirs & PMDC Official Production Registers</span>
-        </div>
-
-        <!-- Resource Records Table -->
-        <div class="card" style="padding:0; overflow-x:auto;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Mineral Seam / Deposit</th>
-                <th>District</th>
-                <th>Formation Type</th>
-                <th>NaCl Purity</th>
-                <th>Lease / Administrative Status</th>
-                <th>Managing Authority</th>
-              </tr>
-            </thead>
-            <tbody id="resource-records-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 3: INVESTMENT OPPORTUNITIES MARKETPLACE -->
+    <!-- VIEW 2: PROCESSING & INVESTMENT OPPORTUNITIES (COMBINED) -->
     <!-- ============================================================ -->
     <section id="view-opportunities" class="page-view" style="display:none;">
       <div class="container" style="padding-top:40px; padding-bottom:60px;">
         <div class="section-header">
-          <span class="section-badge">Opportunities Marketplace</span>
-          <h2 class="section-title">Pink Salt Investment Opportunities</h2>
+          <span class="section-badge">Integrated Value Chain &amp; Sites</span>
+          <h2 class="section-title">Processing &amp; Investment Opportunities</h2>
+          <p class="section-subtitle">Comprehensive value-addition pipeline, industrial processing zones, and curated project opportunities in Punjab.</p>
+        </div>
+
+        <!-- 6-Stage Value-Addition Journey -->
+        <div class="card" style="margin-bottom:36px; padding:28px;">
+          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:6px;">The 6-Stage Pink Salt Value-Addition Journey</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">Moving from low-yield raw extraction to high-margin global consumer and pharmaceutical channels.</p>
+
+          <div class="value-chain">
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 01</div>
+              <div class="chain-step-title">Raw Rock Mining</div>
+              <div class="chain-step-desc">Underground extraction in Khewra &amp; Warcha seams.</div>
+              <div class="chain-step-value">$35 - $50 / MT</div>
+            </div>
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 02</div>
+              <div class="chain-step-title">Optical Sorting</div>
+              <div class="chain-step-desc">High-speed color grading isolating deep-pink crystals.</div>
+              <div class="chain-step-value">$120 - $180 / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 03</div>
+              <div class="chain-step-title">Food-Grade Milling</div>
+              <div class="chain-step-desc">Multi-mesh sizing (0.5mm - 2mm) under Codex CXS 150.</div>
+              <div class="chain-step-value">$280 - $450 / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 04</div>
+              <div class="chain-step-title">Retail Stand-Up Pouches</div>
+              <div class="chain-step-desc">Automated packaging with nitrogen flush for international retail.</div>
+              <div class="chain-step-value">$550 - $950 / MT</div>
+            </div>
+            <div class="chain-step highlight">
+              <div class="chain-step-num">STAGE 05</div>
+              <div class="chain-step-title">Ceramic-Mill Grinders</div>
+              <div class="chain-step-desc">Premium glass table grinders &amp; gourmet infused seasonings.</div>
+              <div class="chain-step-value">$2,000 - $3,500 / MT</div>
+            </div>
+            <div class="chain-step">
+              <div class="chain-step-num">STAGE 06</div>
+              <div class="chain-step-title">Pharma &amp; Chemical API</div>
+              <div class="chain-step-desc">99.8% pure NaCl for hemodialysis &amp; intravenous solutions.</div>
+              <div class="chain-step-value">$3,500 - $5,000 / MT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curated 8 Strategic Investment Opportunities -->
+        <div class="section-header" style="margin-top:20px;">
+          <h2 class="section-title">8 Curated Strategic Projects</h2>
           <p class="section-subtitle">Structured industrial proposals, joint ventures, and value-addition clusters in Punjab.</p>
         </div>
 
@@ -405,9 +357,9 @@
                 <option value="All">All Categories</option>
                 <option value="Food-Grade Packaging">Food-Grade Packaging</option>
                 <option value="Gourmet Retail Products">Gourmet Retail Products</option>
-                <option value="Industrial & Pharmaceutical">Industrial & Pharmaceutical</option>
-                <option value="Artisanal & Wellness">Artisanal & Wellness</option>
-                <option value="Agricultural & Livestock">Agricultural & Livestock</option>
+                <option value="Industrial &amp; Pharmaceutical">Industrial &amp; Pharmaceutical</option>
+                <option value="Artisanal &amp; Wellness">Artisanal &amp; Wellness</option>
+                <option value="Agricultural &amp; Livestock">Agricultural &amp; Livestock</option>
                 <option value="Processing Facility / Joint Venture">Processing Facility / Joint Venture</option>
               </select>
             </div>
@@ -419,141 +371,382 @@
         </div>
 
         <!-- Opportunities Grid -->
-        <div id="opportunities-grid" class="grid-3">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 4: VALUE-ADDITION EXPLORER -->
-    <!-- ============================================================ -->
-    <section id="view-value-addition" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Economics of Transformation</span>
-          <h2 class="section-title">Value-Addition Business Models</h2>
-          <p class="section-subtitle">Comparing capital requirements, machinery profiles, and export realization across product tiers.</p>
+        <div id="opportunities-grid" class="grid-3" style="margin-bottom:48px;">
+          <!-- Dynamically populated via portal.js -->
         </div>
 
-        <!-- Visual Gallery of High-Yield Transformation Tiers -->
-        <div class="grid-3" style="margin-bottom:32px;">
-          <div class="card" style="padding:0; overflow:hidden;">
-            <div style="height:180px; overflow:hidden; position:relative;">
-              <img src="images/slider5.cd6dccfed10cc05d.jpg" alt="Retail Optical Sorted Salt" style="width:100%; height:100%; object-fit:cover;">
-              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">Codex CXS 150 Compliant</div>
-            </div>
-            <div style="padding:22px;">
-              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Optical Sorted Retail Pouches</h3>
-              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">High-speed optical grading separating dark rock inclusions. Standard 500g and 1kg stand-up zip pouches for EU & US supermarkets.</p>
-              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
-                <span style="font-size:12px; color:var(--navy-500);">FOB Realization:</span>
-                <strong style="color:var(--salt-600); font-size:16px;">$320 - $650 / MT</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="padding:0; overflow:hidden;">
-            <div style="height:180px; overflow:hidden; position:relative;">
-              <img src="images/img-auth-big.16a075058be12ab5.jpg" alt="Deep Seam Extraction" style="width:100%; height:100%; object-fit:cover;">
-              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">Underground Extraction</div>
-            </div>
-            <div style="padding:22px;">
-              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Khewra & Warcha Seam Selection</h3>
-              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">Direct underground selective mining targeting crystalline pink and transparent seams with natural 98.8% to 99.2% purity.</p>
-              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
-                <span style="font-size:12px; color:var(--navy-500);">Chemical Assay:</span>
-                <strong style="color:var(--emerald-600); font-size:16px;">99.1% Natural NaCl</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="padding:0; overflow:hidden;">
-            <div style="height:180px; overflow:hidden; position:relative;">
-              <img src="images/landingPage-Image-lower.png" alt="Gourmet Glass Grinders" style="width:100%; height:100%; object-fit:cover;">
-              <div style="position:absolute; top:12px; right:12px; background:rgba(10,20,38,0.85); color:#ffffff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:var(--radius-full); backdrop-filter:blur(8px);">High Margin Accretion</div>
-            </div>
-            <div style="padding:22px;">
-              <h3 style="font-size:17px; font-weight:800; color:var(--navy-900); margin-bottom:6px;">Gourmet Ceramic-Mill Grinders</h3>
-              <p style="font-size:13px; color:var(--navy-500); line-height:1.5; margin-bottom:14px;">Premium table seasoning grinders with adjustable ceramic rotors. Private-label co-manufacturing for organic food retailers.</p>
-              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-card); padding-top:12px;">
-                <span style="font-size:12px; color:var(--navy-500);">FOB Realization:</span>
-                <strong style="color:var(--salt-600); font-size:16px;">$2,000 - $3,500 / MT</strong>
-              </div>
-            </div>
-          </div>
+        <!-- Processing Zone & Site Selector -->
+        <div class="section-header" style="margin-top:20px;">
+          <span class="section-badge">Infrastructure &amp; Spatial Planning</span>
+          <h2 class="section-title">Processing Zone &amp; Site Selector</h2>
+          <p class="section-subtitle">Evaluate candidate industrial locations in Punjab for raw mine proximity, utility availability, and export corridors.</p>
         </div>
 
-        <!-- Side-by-side Comparative Matrix -->
+        <div class="calc-preset-bar" style="margin-bottom:24px;">
+          <button class="calc-preset-btn site-card-tab active" data-site="quaidabad" onclick="selectProcessingSite('quaidabad')">Quaidabad Cluster (Khushab)</button>
+          <button class="calc-preset-btn site-card-tab" data-site="bhalwal" onclick="selectProcessingSite('bhalwal')">Bhalwal Industrial Estate (Sargodha)</button>
+          <button class="calc-preset-btn site-card-tab" data-site="khewra" onclick="selectProcessingSite('khewra')">Khewra Artisan Corridor (Jhelum)</button>
+          <button class="calc-preset-btn site-card-tab" data-site="m3_faisalabad" onclick="selectProcessingSite('m3_faisalabad')">M-3 Industrial City (Faisalabad SEZ)</button>
+        </div>
+
+        <div id="site-detail-display" style="margin-bottom:32px;">
+          <!-- Dynamically populated via selectProcessingSite -->
+        </div>
+
+        <!-- Spatial Comparison Matrix -->
         <div class="card" style="padding:0; overflow-x:auto;">
           <table class="data-table">
             <thead>
               <tr>
-                <th>Product Category</th>
-                <th>FOB Export Price</th>
-                <th>Indicative CAPEX</th>
-                <th>Core Machinery</th>
-                <th>Quality Benchmarks</th>
-                <th>Key Target Markets</th>
+                <th>Location / Zone</th>
+                <th>Distance to Raw Mine</th>
+                <th>3-Phase Power</th>
+                <th>Motorway Access</th>
+                <th>SEZ Tax Holiday</th>
+                <th>Optimal Project Match</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Raw Rock Salt (Unrefined Bulk)</strong></td>
-                <td>$35 - $50 / MT</td>
-                <td>Low ($20k - $40k)</td>
-                <td>Excavators, dump trucks, coarse jaw crusher</td>
-                <td>Visual inspection, unwashed</td>
-                <td>Bulk transshipment (India, UAE)</td>
-              </tr>
-              <tr style="background:#fff1f2;">
-                <td><strong>Optical Sorted Food-Grade Salt</strong></td>
-                <td><strong style="color:var(--rose-600)">$300 - $450 / MT</strong></td>
-                <td>Medium ($250k - $400k)</td>
-                <td>SS316 Optical sorter, vibrating sieves, metal detector</td>
-                <td>Codex CXS 150, Lead < 0.5 ppm, ISO 22000</td>
-                <td>European retail, USA, UK supermarkets</td>
-              </tr>
-              <tr style="background:#fff1f2;">
-                <td><strong>Gourmet Ceramic-Mill Grinders</strong></td>
-                <td><strong style="color:var(--rose-600)">$2,000 - $3,500 / MT</strong></td>
-                <td>Medium-High ($400k - $650k)</td>
-                <td>Rotary filler, torque capper, shrink labeler</td>
-                <td>Food contact glass & ceramic grinder blades, BRCGS</td>
-                <td>Gourmet grocery, organic retailers, Gulf region</td>
+                <td><strong>Quaidabad Cluster (Khushab)</strong></td>
+                <td><strong style="color:var(--success)">15 - 25 km</strong></td>
+                <td>132 kV Grid Station</td>
+                <td>Direct Arterial to M-2</td>
+                <td>Provincial Cluster</td>
+                <td>Primary crushing, optical sorting, bulk packaging</td>
               </tr>
               <tr>
-                <td><strong>Artisanal Tiles & Wellness Lamps</strong></td>
-                <td>$1,000 - $1,800 / MT</td>
-                <td>Low-Medium ($120k - $200k)</td>
-                <td>Bridge saws, diamond lathes, UL-certified wiring</td>
-                <td>CE/UL electrical compliance, moisture shrink-wrap</td>
-                <td>Interior designers, spa clinics, gift importers</td>
+                <td><strong>Bhalwal Industrial Estate</strong></td>
+                <td>65 km</td>
+                <td>11 kV Underground</td>
+                <td><strong style="color:var(--success)">Direct on M-2 Motorway</strong></td>
+                <td><strong style="color:var(--success)">10-Year SEZ Exemption</strong></td>
+                <td>Glass grinders, private-label retail pouches</td>
               </tr>
               <tr>
-                <td><strong>Agricultural Mineral Lick Blocks</strong></td>
-                <td>$180 - $280 / MT</td>
-                <td>Low-Medium ($150k - $250k)</td>
-                <td>500-ton hydraulic press, ribbon blender, doser</td>
-                <td>Calibrated trace minerals (Zn, Se, Co, I)</td>
-                <td>Livestock ranches in Australia, USA, GCC</td>
+                <td><strong>Khewra Corridor (Jhelum)</strong></td>
+                <td><strong style="color:var(--success)">0 - 10 km</strong></td>
+                <td>Established Grid</td>
+                <td>Via Lilla Interchange</td>
+                <td>PSIC Artisan Hub</td>
+                <td>Precision salt tiles, artisanal wellness lamps</td>
               </tr>
-              <tr style="background:#eff6ff;">
-                <td><strong>Pharmaceutical-Grade API NaCl</strong></td>
-                <td><strong style="color:#1d4ed8">$3,500 - $5,500 / MT</strong></td>
-                <td>High ($1.5M - $3.0M)</td>
-                <td>Vacuum crystallizer, multi-stage centrifuge, cGMP cleanroom</td>
-                <td>USP / BP / EP pharmacopeia (99.8%+ purity)</td>
-                <td>Hemodialysis fluids, IV infusion manufacturers</td>
+              <tr>
+                <td><strong>M-3 Industrial City (Faisalabad)</strong></td>
+                <td>140 km</td>
+                <td>Heavy Industrial Dual Feed</td>
+                <td>M-3 / Dry Port Link</td>
+                <td><strong style="color:var(--success)">Federal SEZ Duty-Free</strong></td>
+                <td>Pharma API sodium chloride, chemical refinery</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="notice-card" style="margin-top:28px;">
-          <strong>Strategic Rationale:</strong> While exporting raw rock salt yields marginal economic rent and depletes finite geological reserves, 
-          in-country value addition retains manufacturing margins, creates skilled technical employment, and maximizes foreign exchange realization.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 3: PROCESSING OPTIONS & MACHINERY -->
+    <!-- ============================================================ -->
+    <section id="view-processing-options" class="page-view" style="display:none;">
+      <div class="container" style="padding-top:40px; padding-bottom:60px;">
+        <div class="section-header">
+          <span class="section-badge">Core Processing Technology</span>
+          <h2 class="section-title">Processing Unit Options &amp; Machinery</h2>
+          <p class="section-subtitle">Explore technical units, production capacities, utility requirements, indicative pricing, and turnkey plant configurations.</p>
         </div>
+
+        <!-- Machinery Grid Container -->
+        <div class="machinery-grid" id="machinery-grid-container">
+          <!-- Dynamically populated via portal.js -->
+        </div>
+
+        <!-- Supplier Discovery & RFQ Generator -->
+        <div class="card" style="margin-top:40px; padding:32px; background:linear-gradient(135deg, #ffffff 0%, var(--salt-50) 100%); border:1px solid var(--rose-200);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+            <div>
+              <span class="opp-badge badge-verified">Direct Fabricator Linkage</span>
+              <h3 style="font-size:22px; color:var(--navy-900); margin:8px 0;">Pakistani Machinery Fabricator Directory &amp; RFQ Generator</h3>
+              <p style="font-size:14px; color:var(--text-main); max-width:650px; line-height:1.6; margin:0;">
+                Connect with verified domestic and regional machinery manufacturers including Heavy Mechanical Complex (HMC) Taxila, Millat Equipment, Pak Precision Engineering Lahore, and Star Engineering Gujranwala.
+              </p>
+            </div>
+            <button class="btn btn-primary" onclick="openRFQModal('Complete Turnkey Plant', 25)">Generate Custom Machinery RFQ 📋</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 4: QUALITY & LABORATORY TESTING -->
+    <!-- ============================================================ -->
+    <section id="view-quality-testing" class="page-view" style="display:none;">
+      <div class="container" style="padding-top:40px; padding-bottom:60px;">
+        <div class="section-header">
+          <span class="section-badge">Quality Assurance &amp; Standards</span>
+          <h2 class="section-title">Quality &amp; Laboratory Testing Directory</h2>
+          <p class="section-subtitle">Authoritative standards (Codex, ISO, PSQCA), analytical testing methods, accredited laboratory directory for Lahore &amp; Pakistan, and testing cost calculator.</p>
+        </div>
+
+        <!-- Standards Comparison Table -->
+        <div class="standards-table-wrapper">
+          <div style="padding:18px 24px; border-bottom:1px solid var(--border); background:#ffffff;">
+            <h3 style="font-size:17px; color:var(--navy-900); margin:0;">Relevant International &amp; National Standards</h3>
+          </div>
+          <table class="standards-table">
+            <thead>
+              <tr>
+                <th>Standard</th>
+                <th>Title / Scope</th>
+                <th>Key Requirements &amp; Limits</th>
+                <th>Relevance to Investor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Codex CXS 150-1985</strong></td>
+                <td>Standard for Food Grade Salt</td>
+                <td>Min 97.0% NaCl dry basis; Arsenic &le; 0.5 mg/kg, Cadmium &le; 0.5 mg/kg, Lead &le; 2.0 mg/kg, Mercury &le; 0.1 mg/kg, Copper &le; 2.0 mg/kg</td>
+                <td>Mandatory baseline for all food-grade exports to EU, US, and GCC retail.</td>
+              </tr>
+              <tr>
+                <td><strong>Codex CXS 192-1995</strong></td>
+                <td>General Standard for Food Additives</td>
+                <td>Permissible anti-caking agents: Potassium ferrocyanide max 10 mg/kg (or strictly additive-free for organic certification).</td>
+                <td>Required for consumer table salt packaging formulations.</td>
+              </tr>
+              <tr>
+                <td><strong>Codex CXS 193-1995</strong></td>
+                <td>Contaminants &amp; Toxins in Food</td>
+                <td>Strict maximum limits for environmental contaminants, heavy metals, and radionuclide screening.</td>
+                <td>Required for customs clearance under foreign food inspection protocols.</td>
+              </tr>
+              <tr>
+                <td><strong>ISO 17025:2017</strong></td>
+                <td>Testing &amp; Calibration Laboratories</td>
+                <td>Competence requirements for chemical assay, traceability of measurement, and certified reference standards.</td>
+                <td>All export test reports must originate from ISO 17025 accredited labs.</td>
+              </tr>
+              <tr>
+                <td><strong>ISO 9297 / ISO 2483</strong></td>
+                <td>Chemical Assay &amp; Moisture Determination</td>
+                <td>Argentometric titration for chloride (NaCl content); loss of mass at 110&deg;C (moisture &le; 0.5% dry basis).</td>
+                <td>Standard test protocols executed on every export batch.</td>
+              </tr>
+              <tr>
+                <td><strong>PSQCA 166:2008</strong></td>
+                <td>Pakistan Edible Salt Standard</td>
+                <td>Compulsory national certification mark for edible salt manufactured or packaged within Pakistan.</td>
+                <td>Mandatory for domestic distribution and export licensing in Punjab.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Analytical Techniques Overview -->
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-bottom:40px;">
+          <div class="card" style="padding:22px; border-top:3px solid var(--rose-600);">
+            <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:8px;">ICP-OES Spectroscopy</h4>
+            <span style="font-size:11.5px; color:var(--navy-500); display:block; margin-bottom:10px;">Inductively Coupled Plasma Optical Emission</span>
+            <p style="font-size:13px; line-height:1.6; color:var(--text-main); margin:0;">
+              Simultaneously quantifies multi-element trace minerals (Iron, Calcium, Magnesium, Potassium) down to parts-per-million (ppm) levels to establish authentic geological provenance.
+            </p>
+          </div>
+          <div class="card" style="padding:22px; border-top:3px solid var(--emerald-600);">
+            <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:8px;">ICP-MS Ultra-Trace Analysis</h4>
+            <span style="font-size:11.5px; color:var(--navy-500); display:block; margin-bottom:10px;">Inductively Coupled Plasma Mass Spectrometry</span>
+            <p style="font-size:13px; line-height:1.6; color:var(--text-main); margin:0;">
+              High-sensitivity detection of toxic heavy metals (Lead, Arsenic, Cadmium, Mercury) down to parts-per-billion (ppb) levels. Required for US FDA and EU EFSA compliance.
+            </p>
+          </div>
+          <div class="card" style="padding:22px; border-top:3px solid var(--navy-600);">
+            <h4 style="font-size:16px; color:var(--navy-900); margin-bottom:8px;">AAS Elemental Assay</h4>
+            <span style="font-size:11.5px; color:var(--navy-500); display:block; margin-bottom:10px;">Atomic Absorption Spectroscopy</span>
+            <p style="font-size:13px; line-height:1.6; color:var(--text-main); margin:0;">
+              Cost-effective routine method for individual metal assays (e.g. Iron, Copper) suitable for high-frequency internal quality control and daily shift batch verification.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accredited Laboratory Directory -->
+        <div class="section-header" style="margin-top:20px;">
+          <span class="section-badge">Verified Testing Facilities</span>
+          <h2 class="section-title">Accredited Laboratory Directory</h2>
+          <p class="section-subtitle">Verified facilities in Lahore and other key Pakistani cities providing certified testing for pink salt exports.</p>
+        </div>
+
+        <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:16px;">📍 Lahore Testing Facilities</h3>
+        <div class="lab-grid" style="margin-bottom:36px;">
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • Federal Institute</span>
+              <h4>PCSIR Laboratories Complex Lahore</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Ferozepur Road, Lahore</p>
+              <div class="lab-services-list">
+                • ISO 17025 accredited chemical assay<br>
+                • ICP-OES trace mineral profiling<br>
+                • Codex CXS 150 heavy metals panel<br>
+                • Official export certificate issuance
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 3 - 5 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • Specialized Centre</span>
+              <h4>PCSIR Food &amp; Biotechnology Research Centre (FBRC)</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">PCSIR Campus, Lahore</p>
+              <div class="lab-services-list">
+                • Food-grade microbiological testing<br>
+                • Halal compliance verification<br>
+                • Anti-caking additive assay<br>
+                • Nutrition facts panel generation
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 3 - 4 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • International</span>
+              <h4>SGS Pakistan (Pvt) Ltd Lahore</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Gulberg III / Industrial Area, Lahore</p>
+              <div class="lab-services-list">
+                • Internationally accepted pre-shipment inspection<br>
+                • Full ICP-MS heavy metals screen<br>
+                • Container stuffing &amp; sealing audit<br>
+                • Global supermarket vendor compliance
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 4 - 6 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • Provincial Authority</span>
+              <h4>Punjab Agriculture, Food &amp; Drug Authority (PAFDA)</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Thokar Niaz Baig, Lahore</p>
+              <div class="lab-services-list">
+                • Ultra-trace forensic level analysis<br>
+                • Blasting residue &amp; organic contaminant screens<br>
+                • State-of-the-art analytical equipment<br>
+                • Statutory compliance certification
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 5 - 7 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • Private Accredited</span>
+              <h4>TTI Testing Laboratories Lahore</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Raiwind Road, Lahore</p>
+              <div class="lab-services-list">
+                • Rapid routine moisture &amp; purity assay<br>
+                • Particle size sieve distribution<br>
+                • Food safety chemical screening<br>
+                • Commercial batch certificates
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 2 - 3 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Lahore • National Regulator</span>
+              <h4>PSQCA Quality Control Centre</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Gulberg, Lahore</p>
+              <div class="lab-services-list">
+                • PSQCA 166:2008 license audits<br>
+                • Pakistan Standards certification mark<br>
+                • Factory batch sampling &amp; testing<br>
+                • Official export conformance records
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 4 - 5 Days</div>
+          </div>
+        </div>
+
+        <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:16px;">📍 Facilities in Other Major Cities</h3>
+        <div class="lab-grid" style="margin-bottom:36px;">
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Karachi • Port Proximity</span>
+              <h4>PCSIR Laboratories Complex Karachi</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">University Road, Karachi</p>
+              <div class="lab-services-list">
+                • Port-side export clearance testing<br>
+                • Marine cargo contamination verification<br>
+                • Codex CXS 150 full chemical assay
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 3 - 4 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Karachi • Port Inspection</span>
+              <h4>SGS Pakistan (Pvt) Ltd Karachi</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Korangi Creek / Port Qasim, Karachi</p>
+              <div class="lab-services-list">
+                • FOB vessel loading inspection<br>
+                • Cleanliness of dry bulk containers<br>
+                • Global trade certificate of inspection
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 2 - 3 Days</div>
+          </div>
+
+          <div class="lab-card">
+            <div>
+              <span class="lab-city-badge">Islamabad • National Metrology</span>
+              <h4>National Physical &amp; Standards Laboratory (NPSL/NMIP)</h4>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">Sector H-9, Islamabad</p>
+              <div class="lab-services-list">
+                • Primary measurement standards calibration<br>
+                • Reference materials characterization<br>
+                • High-precision elemental mass spectrometry
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--navy-600); font-weight:700;">Turnaround: 5 - 8 Days</div>
+          </div>
+        </div>
+
+        <!-- Interactive Testing Cost Calculator -->
+        <div class="card" style="padding:28px; background:var(--bg-alt); border:1px solid var(--border);">
+          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:8px;">🧮 Interactive Testing Cost Calculator</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
+            Estimate monthly and annual quality control testing expenditure based on your planned production runs and export volume.
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-bottom:20px;">
+            <div class="form-group">
+              <label class="form-label">Routine Purity Tests / Mo:</label>
+              <input type="number" id="test-calc-routine" class="form-control" value="4" min="0" onchange="calculateTestingCost()">
+              <small style="color:var(--text-muted)">PKR 12,000 / test</small>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Heavy Metals Panels / Mo:</label>
+              <input type="number" id="test-calc-metals" class="form-control" value="2" min="0" onchange="calculateTestingCost()">
+              <small style="color:var(--text-muted)">PKR 35,000 / test (ICP-MS)</small>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Full Export Certificates / Mo:</label>
+              <input type="number" id="test-calc-export" class="form-control" value="2" min="0" onchange="calculateTestingCost()">
+              <small style="color:var(--text-muted)">PKR 75,000 / shipment</small>
+            </div>
+            <div style="background:#ffffff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; text-align:center;">
+              <span style="font-size:11px; text-transform:uppercase; color:var(--text-muted); font-weight:700; display:block;">Estimated Annual Lab OPEX:</span>
+              <strong id="test-calc-annual-pkr" style="font-size:18px; color:var(--rose-700); display:block; margin:4px 0;">PKR 3,216,000</strong>
+              <small id="test-calc-annual-usd" style="color:var(--navy-600); font-weight:600;">$11,485 USD</small>
+            </div>
+          </div>
+          <button class="btn btn-navy btn-sm" onclick="applyTestingCostToFeasibility()">Apply Testing Budget to Feasibility Calculator →</button>
+        </div>
+
       </div>
     </section>
 
@@ -563,18 +756,57 @@
     <section id="view-calculator" class="page-view" style="display:none;">
       <div class="container" style="padding-top:40px; padding-bottom:60px;">
         <div class="section-header">
-          <span class="section-badge">Deterministic Modeling</span>
-          <h2 class="section-title">Investment Feasibility & Sensitivity Calculator</h2>
-          <p class="section-subtitle">Calibrated financial model for pink salt processing and value addition in Punjab.</p>
+          <span class="section-badge">Five-Year Financial Model</span>
+          <h2 class="section-title">Investment Feasibility Calculator &amp; 5-Year Model</h2>
+          <p class="section-subtitle">Calibrated financial model for pink salt processing in Punjab. Features PKR 50 Lakh to PKR 5 Crore planning range, washing toggle, 5-year loan amortization, and DSCR metrics.</p>
         </div>
 
-        <!-- Scenario Preset Buttons -->
-        <div class="calc-preset-bar">
-          <span style="font-size:13px; font-weight:700; align-self:center; margin-right:8px;">Load Preset Scenario:</span>
-          <button class="calc-preset-btn" data-preset="conservative" onclick="loadScenario('conservative')">Conservative (Coarse Bulk)</button>
-          <button class="calc-preset-btn active" data-preset="base_case" onclick="loadScenario('base_case')">Base Case (25 TPD Optical Pouches)</button>
-          <button class="calc-preset-btn" data-preset="optimistic" onclick="loadScenario('optimistic')">Optimistic (Gourmet Grinders)</button>
-          <button class="btn btn-outline btn-sm" style="margin-left:auto;" onclick="exportFeasibilityReport()">📥 Export Feasibility Summary</button>
+        <!-- Planning Range Selector Bar (PKR 50 Lakh to PKR 5 Crore) -->
+        <div class="card" style="margin-bottom:24px; padding:20px; background:linear-gradient(135deg, #ffffff 0%, var(--salt-50) 100%); border:1.5px solid var(--rose-200);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+            <div>
+              <span class="pkr-planning-pill">💼 Planning Range: PKR 50 Lakh to PKR 5 Crore</span>
+              <span style="font-size:13px; color:var(--text-muted); margin-left:10px;">(Dual currency benchmark: 1 USD = 280 PKR)</span>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="exportFeasibilityReport()">📥 Export Feasibility PDF / Print Report</button>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+            <button class="calc-preset-btn active" data-range="5000000" onclick="selectPlanningRange(5000000)">PKR 50 Lakh ($17,857)</button>
+            <button class="calc-preset-btn" data-range="10000000" onclick="selectPlanningRange(10000000)">PKR 1.0 Crore ($35,714)</button>
+            <button class="calc-preset-btn" data-range="25000000" onclick="selectPlanningRange(25000000)">PKR 2.5 Crore ($89,285)</button>
+            <button class="calc-preset-btn" data-range="50000000" onclick="selectPlanningRange(50000000)">PKR 5.0 Crore ($178,571)</button>
+          </div>
+
+          <!-- Product Type Selector -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div>
+              <label class="form-label" style="font-weight:700;">Target Finished Product:</label>
+              <select id="calc-product-select" class="form-control" onchange="applyProductDefaults(this.value)">
+                <option value="fine_table_salt">Fine Table Salt (Food-Grade Stand-Up Pouches)</option>
+                <option value="coarse_gourmet_salt">Coarse Gourmet Salt (Re-closable Bags)</option>
+                <option value="granular_salt">Granular Salt (Medium Mesh)</option>
+                <option value="salt_powder">Salt Powder (Fine Flour Grade)</option>
+                <option value="ceramic_mill_grinders">Gourmet Ceramic-Mill Glass Grinders</option>
+                <option value="decorative_salt_lamps">Handcrafted Artisanal Salt Lamps</option>
+                <option value="spa_bath_salts">Specialty Spa &amp; Bath Salts</option>
+                <option value="industrial_bulk_salt">Industrial Bulk Salt (Unwashed / Coarse)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" style="font-weight:700;">Washing &amp; Wet Cleaning Unit Required?</label>
+              <div style="display:flex; gap:10px; align-items:center; height:38px;">
+                <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer;">
+                  <input type="radio" name="washing_toggle" id="wash-yes" value="yes" checked onchange="toggleWashing(true)">
+                  <strong>YES (Include water, effluent &amp; drying)</strong>
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer; margin-left:14px;">
+                  <input type="radio" name="washing_toggle" id="wash-no" value="no" onchange="toggleWashing(false)">
+                  <span>NO (Dry screening only)</span>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- KPI Board -->
@@ -582,22 +814,22 @@
           <div class="kpi-card">
             <div class="kpi-lbl">Total Estimated CAPEX</div>
             <div id="kpi-capex" class="kpi-val">$0.00</div>
-            <div class="kpi-sub">Plant, Civil & Working Capital</div>
+            <div id="kpi-capex-pkr" class="kpi-sub">PKR 0</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-lbl">Annual Finished Output</div>
             <div id="kpi-production" class="kpi-val">0 MT</div>
-            <div class="kpi-sub">Factoring yield & utilization</div>
+            <div class="kpi-sub">Factoring yield &amp; utilization</div>
           </div>
           <div class="kpi-card highlight">
             <div class="kpi-lbl">Annual Projected Revenue</div>
             <div id="kpi-revenue" class="kpi-val" style="color:var(--rose-700)">$0.00</div>
-            <div class="kpi-sub">FOB Karachi Port realization</div>
+            <div id="kpi-revenue-pkr" class="kpi-sub">PKR 0</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-lbl">Total Annual OPEX</div>
             <div id="kpi-opex" class="kpi-val">$0.00</div>
-            <div class="kpi-sub">Variable + Fixed Overheads</div>
+            <div id="kpi-opex-pkr" class="kpi-sub">PKR 0</div>
           </div>
           <div class="kpi-card highlight">
             <div class="kpi-lbl">Operating Profit (EBITDA)</div>
@@ -611,42 +843,46 @@
           </div>
         </div>
 
-        <!-- Calculator Input & Sensitivity Layout -->
+        <!-- Calculator Inputs & Controls Layout -->
         <div class="calc-container">
           <!-- Input Form Column -->
           <div class="calc-card">
             <h3 style="font-size:16px; font-weight:700; color:var(--navy-900); margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:8px;">
-              1. Capital & Operational Assumptions
+              1. Capital Expenditure (CAPEX)
             </h3>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
-                <label class="form-label">Machinery & Equipment ($):</label>
+                <label class="form-label">Machinery &amp; Equipment ($):</label>
                 <input type="number" id="calc-machinery" class="form-control" onchange="executeCalculation()">
+                <small id="calc-machinery-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
-                <label class="form-label">Land & Building ($):</label>
+                <label class="form-label">Land &amp; Covered Shed ($):</label>
                 <input type="number" id="calc-land-building" class="form-control" onchange="executeCalculation()">
+                <small id="calc-land-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
-                <label class="form-label">Installation & Utilities ($):</label>
+                <label class="form-label">Installation &amp; Utilities ($):</label>
                 <input type="number" id="calc-installation" class="form-control" onchange="executeCalculation()">
+                <small id="calc-install-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
               <div class="form-group">
                 <label class="form-label">Initial Working Capital ($):</label>
                 <input type="number" id="calc-working-capital" class="form-control" onchange="executeCalculation()">
+                <small id="calc-wc-pkr" style="color:var(--text-muted)">PKR 0</small>
               </div>
             </div>
 
-            <h4 style="font-size:14px; font-weight:700; color:var(--navy-900); margin:16px 0 10px 0;">2. Capacity & Production Rates</h4>
+            <h4 style="font-size:14px; font-weight:700; color:var(--navy-900); margin:16px 0 10px 0;">2. Capacity &amp; Production Parameters</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
-                <label class="form-label">Nameplate Capacity (TPD):</label>
-                <input type="number" id="calc-capacity-tpd" class="form-control" onchange="executeCalculation()">
+                <label class="form-label">Processing Capacity (TPD):</label>
+                <input type="number" id="calc-capacity-tpd" class="form-control" min="5" max="50" onchange="executeCalculation()">
               </div>
               <div class="form-group">
                 <label class="form-label">Operating Days / Year:</label>
-                <input type="number" id="calc-operating-days" class="form-control" onchange="executeCalculation()">
+                <input type="number" id="calc-operating-days" class="form-control" min="200" max="350" onchange="executeCalculation()">
               </div>
               <div class="form-group">
                 <label class="form-label">Capacity Utilization (0.1 - 1.0):</label>
@@ -661,11 +897,11 @@
             <h4 style="font-size:14px; font-weight:700; color:var(--navy-900); margin:16px 0 10px 0;">3. Variable Costs ($ / Finished Tonne)</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
-                <label class="form-label">Raw Salt Cost ($/MT):</label>
+                <label class="form-label">Raw Rock Salt ($/MT):</label>
                 <input type="number" id="calc-raw-salt" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Energy & Power ($/MT):</label>
+                <label class="form-label">Electricity &amp; Power ($/MT):</label>
                 <input type="number" id="calc-energy" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
@@ -673,12 +909,12 @@
                 <input type="number" id="calc-packaging" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Inland Freight to Port ($/MT):</label>
-                <input type="number" id="calc-freight" class="form-control" onchange="executeCalculation()">
+                <label class="form-label">Direct Labour ($/MT):</label>
+                <input type="number" id="calc-labor" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Direct Labor ($/MT):</label>
-                <input type="number" id="calc-labor" class="form-control" onchange="executeCalculation()">
+                <label class="form-label">Inland Freight to Port ($/MT):</label>
+                <input type="number" id="calc-freight" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
                 <label class="form-label">Selling Price FOB ($/MT):</label>
@@ -686,30 +922,35 @@
               </div>
             </div>
 
-            <h4 style="font-size:14px; font-weight:700; color:var(--navy-900); margin:16px 0 10px 0;">4. Annual Overheads ($)</h4>
+            <h4 style="font-size:14px; font-weight:700; color:var(--navy-900); margin:16px 0 10px 0;">4. Annual Overheads &amp; Fixed Costs ($)</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label class="form-label">Admin Salaries ($/Yr):</label>
                 <input type="number" id="calc-admin-salaries" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Maintenance & Spares ($/Yr):</label>
+                <label class="form-label">Maintenance &amp; Spares ($/Yr):</label>
                 <input type="number" id="calc-maintenance" class="form-control" onchange="executeCalculation()">
               </div>
               <div class="form-group">
-                <label class="form-label">Compliance & ISO ($/Yr):</label>
+                <label class="form-label">Lab Testing &amp; Cert ($/Yr):</label>
                 <input type="number" id="calc-compliance" class="form-control" onchange="executeCalculation()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Loan Markup / Interest Rate:</label>
+                <input type="number" step="0.5" id="calc-interest-rate" class="form-control" value="14.5" onchange="executeCalculation()">
+                <small style="color:var(--text-muted)">14.5% Benchmark</small>
               </div>
             </div>
 
-            <button class="btn btn-primary" style="width:100%; margin-top:8px;" onclick="executeCalculation()">Recalculate Economics</button>
+            <button class="btn btn-primary" style="width:100%; margin-top:8px;" onclick="executeCalculation()">Recalculate 5-Year Economics</button>
           </div>
 
-          <!-- Sensitivity & Monthly Breakdown Column -->
+          <!-- Monthly Breakdown & Sensitivity Column -->
           <div>
             <!-- Monthly Summary Card -->
             <div class="calc-card" style="margin-bottom:24px;">
-              <h3 style="font-size:16px; font-weight:700; color:var(--navy-900); margin-bottom:12px;">Monthly Operational Performance</h3>
+              <h3 style="font-size:16px; font-weight:700; color:var(--navy-900); margin-bottom:12px;">Monthly Operational Performance (Year 1)</h3>
               <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; font-size:13.5px;">
                 <div style="background:var(--bg-alt); padding:12px; border-radius:var(--radius-sm);">
                   <span>Monthly Output:</span><br>
@@ -774,243 +1015,112 @@
           </div>
         </div>
 
-        <div class="notice-card" style="margin-top:28px;">
-          <strong>Financial Model Methodology:</strong> All calculations in this tool are generated deterministically using standard industrial cost accounting. 
-          They are intended to guide preliminary evaluation and do not represent a guarantee of market pricing or banking underwriting.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 6: PROCESSING ZONE & SITE SELECTOR -->
-    <!-- ============================================================ -->
-    <section id="view-sites" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Infrastructure & Spatial Planning</span>
-          <h2 class="section-title">Processing Zone & Site Selector</h2>
-          <p class="section-subtitle">Evaluating candidate industrial zones in Punjab for salt processing, optical grading, and export logistics.</p>
-        </div>
-
-        <!-- Site Tabs -->
-        <div class="calc-preset-bar" style="margin-bottom:24px;">
-          <button class="calc-preset-btn site-card-tab active" data-site="quaidabad" onclick="selectProcessingSite('quaidabad')">Quaidabad Cluster (Khushab)</button>
-          <button class="calc-preset-btn site-card-tab" data-site="bhalwal" onclick="selectProcessingSite('bhalwal')">Bhalwal Industrial Estate (Sargodha)</button>
-          <button class="calc-preset-btn site-card-tab" data-site="khewra" onclick="selectProcessingSite('khewra')">Khewra Artisan Corridor (Jhelum)</button>
-          <button class="calc-preset-btn site-card-tab" data-site="m3_faisalabad" onclick="selectProcessingSite('m3_faisalabad')">M-3 Industrial City (Faisalabad SEZ)</button>
-        </div>
-
-        <!-- Selected Site Display -->
-        <div id="site-detail-display">
-          <!-- Dynamically populated via selectProcessingSite -->
-        </div>
-
-        <!-- Spatial Comparison Matrix -->
-        <div class="card" style="margin-top:32px; padding:0; overflow-x:auto;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Location / Zone</th>
-                <th>Distance to Raw Mine</th>
-                <th>3-Phase Power</th>
-                <th>Motorway Access</th>
-                <th>SEZ Tax Holiday</th>
-                <th>Optimal Project Match</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Quaidabad Cluster (Khushab)</strong></td>
-                <td><strong style="color:var(--success)">15 - 25 km</strong></td>
-                <td>132 kV Grid Station</td>
-                <td>Direct Arterial to M-2</td>
-                <td>Provincial Cluster</td>
-                <td>Primary crushing, optical sorting, bulk packaging</td>
-              </tr>
-              <tr>
-                <td><strong>Bhalwal Industrial Estate</strong></td>
-                <td>65 km</td>
-                <td>11 kV Underground</td>
-                <td><strong style="color:var(--success)">Direct on M-2 Motorway</strong></td>
-                <td><strong style="color:var(--success)">10-Year SEZ Exemption</strong></td>
-                <td>Glass grinders, private-label retail pouches</td>
-              </tr>
-              <tr>
-                <td><strong>Khewra Corridor (Jhelum)</strong></td>
-                <td><strong style="color:var(--success)">0 - 10 km</strong></td>
-                <td>Established Grid</td>
-                <td>Via Lilla Interchange</td>
-                <td>PSIC Artisan Hub</td>
-                <td>Precision salt tiles, artisanal wellness lamps</td>
-              </tr>
-              <tr>
-                <td><strong>M-3 Industrial City (Faisalabad)</strong></td>
-                <td>140 km</td>
-                <td>Heavy Industrial Dual Feed</td>
-                <td>M-3 / Dry Port Link</td>
-                <td><strong style="color:var(--success)">Federal SEZ Duty-Free</strong></td>
-                <td>Pharma API sodium chloride, chemical refinery</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 7: EXPORT & MARKET INTELLIGENCE -->
-    <!-- ============================================================ -->
-    <section id="view-export" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">International Trade & Standards</span>
-          <h2 class="section-title">Export Intelligence & Compliance</h2>
-          <p class="section-subtitle">Customs procedures, Pakistan Single Window (PSW), tariff codes, and global food safety standards.</p>
-        </div>
-
-        <div class="grid-2" style="margin-bottom:32px;">
-          <!-- PSW 4-Step Export Readiness -->
-          <div class="card">
-            <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:12px;">Pakistan Single Window (PSW) Export Journey</h3>
-            <ol style="padding-left:20px; line-height:1.7; font-size:13.5px; color:var(--text-main);">
-              <li><strong>Trader Profile Registration:</strong> Register corporate NTN and digital identity on the Pakistan Single Window portal (psw.gov.pk).</li>
-              <li><strong>Electronic E-Form Filing:</strong> Issue computerized financial E-Form via commercial authorized dealer bank for export proceeds tracking.</li>
-              <li><strong>Goods Declaration (GD):</strong> File electronic GD under HS Code 2501.00. Attach packing list, commercial invoice, and Bill of Lading.</li>
-              <li><strong>Mandatory Certifications:</strong> Obtain Certificate of Origin from TDAP and Phytosanitary Certificate for wooden pallets.</li>
-            </ol>
-          </div>
-
-          <!-- Destination Market Food Safety Standards -->
-          <div class="card">
-            <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:12px;">Key Destination Import Standards</h3>
-            <div style="font-size:13.5px; line-height:1.6; color:var(--text-main);">
-              <p><strong>United States (US FDA):</strong> 21 CFR compliance. Requires Foreign Supplier Verification Program (FSVP) and heavy metal compliance (Pb < 0.5 ppm).</p>
-              <p style="margin-top:8px;"><strong>European Union (EFSA):</strong> Regulation (EC) No 178/2002. Traceability from mine to distributor, food-grade contact materials.</p>
-              <p style="margin-top:8px;"><strong>Codex Alimentarius (CXS 150-1985):</strong> Global baseline: Minimum 97.0% NaCl, Cadmium < 0.5 ppm, Mercury < 0.1 ppm.</p>
-              <p style="margin-top:8px;"><strong>Gulf Standards (GSO):</strong> Halal certification and tamper-evident packaging.</p>
+        <!-- ======================================================== -->
+        <!-- FIVE-YEAR FINANCIAL MODEL TABLE -->
+        <!-- ======================================================== -->
+        <div class="five-year-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div>
+              <span class="opp-badge badge-verified">Comprehensive Projections</span>
+              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Five-Year Financial Model (Years 1 to 5)</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                Capacity ramp-up schedule: Year 1 (65%), Year 2 (75%), Year 3 (85%), Year 4 (90%), Year 5 (95%). Straight-line plant depreciation (10%) and corporate tax (20%).
+              </p>
             </div>
           </div>
-        </div>
 
-        <!-- Tariff and HS Classification -->
-        <div class="card">
-          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:12px;">Harmonized System (HS) Classification & Value Benchmarks</h3>
-          <div class="table-responsive">
-            <table class="data-table">
+          <div style="overflow-x:auto;">
+            <table class="data-table" id="five-year-table">
               <thead>
                 <tr>
-                  <th>HS Code</th>
-                  <th>Description</th>
-                  <th>Standard Packaging</th>
-                  <th>Indicative Realization (FOB)</th>
+                  <th>Financial Metric ($ USD)</th>
+                  <th>Year 1 (65%)</th>
+                  <th>Year 2 (75%)</th>
+                  <th>Year 3 (85%)</th>
+                  <th>Year 4 (90%)</th>
+                  <th>Year 5 (95%)</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><code>2501.00.10</code></td>
-                  <td>Common salt and rock salt (unrefined bulk)</td>
-                  <td>Loose bulk or 1-ton jumbo bags</td>
-                  <td>$35 - $50 / MT</td>
-                </tr>
-                <tr>
-                  <td><code>2501.00.20</code></td>
-                  <td>Table salt (food-grade optical sorted & ground)</td>
-                  <td>500g, 1kg retail stand-up zip pouches</td>
-                  <td><strong style="color:var(--rose-600)">$320 - $650 / MT</strong></td>
-                </tr>
-                <tr>
-                  <td><code>2501.00.90</code></td>
-                  <td>Other salt (pure sodium chloride & specialty gourmet blends)</td>
-                  <td>Glass table grinders, seasoning blends</td>
-                  <td><strong style="color:var(--rose-600)">$1,800 - $3,500 / MT</strong></td>
-                </tr>
+              <tbody id="five-year-tbody">
+                <!-- Dynamically populated via portal.js -->
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============================================================ -->
-    <!-- VIEW 8: QUALITY, ORIGIN & TRACEABILITY -->
-    <!-- ============================================================ -->
-    <section id="view-traceability" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Provenance Integrity</span>
-          <h2 class="section-title">Origin & Batch Traceability Verification</h2>
-          <p class="section-subtitle">Verify authentic Pakistani Himalayan Pink Salt origin and laboratory assay credentials under the GI Act 2020.</p>
-        </div>
-
-        <!-- Verification Search Card -->
-        <div class="card" style="margin-bottom:32px; padding:28px;">
-          <h3 style="font-size:18px; color:var(--navy-900); margin-bottom:8px;">Verify Authenticated Production Run</h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
-            Enter the batch identifier printed on the export container or packaging to view verifiable extraction date, source mine, and ISO-17025 laboratory assay results.
-          </p>
-
-          <div style="display:flex; gap:12px; max-width:600px; margin-bottom:12px;">
-            <input type="text" id="traceability-input" class="form-control" placeholder="e.g. PK-SALT-2026-KHW-001" value="PK-SALT-2026-KHW-001">
-            <button class="btn btn-primary" onclick="verifyTraceabilityBatch()">Verify Batch</button>
-          </div>
-
-          <div style="font-size:12px; color:var(--text-muted);">
-            Sample Verified Batches to Test: 
-            <a href="javascript:void(0)" onclick="verifyTraceabilityBatch('PK-SALT-2026-KHW-001')" style="color:var(--navy-700); font-weight:600; text-decoration:underline;">PK-SALT-2026-KHW-001 (Khewra)</a> | 
-            <a href="javascript:void(0)" onclick="verifyTraceabilityBatch('PK-SALT-2026-WCH-042')" style="color:var(--navy-700); font-weight:600; text-decoration:underline;">PK-SALT-2026-WCH-042 (Warcha)</a> | 
-            <a href="javascript:void(0)" onclick="verifyTraceabilityBatch('PK-SALT-2026-KLB-108')" style="color:var(--navy-700); font-weight:600; text-decoration:underline;">PK-SALT-2026-KLB-108 (Kalabagh)</a>
-          </div>
-        </div>
-
-        <!-- Result Container -->
-        <div id="traceability-result-container">
-          <!-- Populated via verifyTraceabilityBatch -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 9: KNOWLEDGE CENTRE -->
-    <!-- ============================================================ -->
-    <section id="view-knowledge" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div class="section-header">
-          <span class="section-badge">Repository of Public Records</span>
-          <h2 class="section-title">Knowledge Centre & Regulatory Archive</h2>
-          <p class="section-subtitle">Official laws, concession rules, export policies, geological memoirs, and quality standards.</p>
-        </div>
-
-        <!-- Filter Bar -->
-        <div class="card" style="margin-bottom:24px; padding:16px;">
-          <div style="display:grid; grid-template-columns:1fr 2fr; gap:16px;">
+        <!-- ======================================================== -->
+        <!-- FIVE-YEAR LOAN REPAYMENT & AMORTIZATION SCHEDULE -->
+        <!-- ======================================================== -->
+        <div class="five-year-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
             <div>
-              <label class="form-label">Category:</label>
-              <select id="knowledge-category-select" class="form-control" onchange="loadKnowledgeDocs()">
-                <option value="All">All Categories</option>
-                <option value="Legislation & Regulations">Legislation & Regulations</option>
-                <option value="Policy & Technical Guidance">Policy & Technical Guidance</option>
-                <option value="Export & Trade Intelligence">Export & Trade Intelligence</option>
-                <option value="Intellectual Property & Origin">Intellectual Property & Origin</option>
-                <option value="International Quality Standards">International Quality Standards</option>
-                <option value="Geology & Resource Assessment">Geology & Resource Assessment</option>
-              </select>
+              <span class="opp-badge badge-concept">Banking &amp; Debt Service</span>
+              <h3 style="font-size:20px; color:var(--navy-900); margin:6px 0;">Five-Year Loan Repayment &amp; Debt Service Coverage (DSCR)</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                Calculated on 65% debt financing at 14.5% annual reducing balance markup over a 5-year term.
+              </p>
             </div>
-            <div>
-              <label class="form-label">Search Knowledge Base:</label>
-              <input type="text" id="knowledge-search-input" class="form-control" placeholder="Search keywords (e.g. royalty, mining lease, codex, PSW)..." onkeyup="loadKnowledgeDocs()">
+            <div style="display:flex; gap:8px;">
+              <span class="dscr-indicator dscr-healthy">● Healthy &ge; 1.30</span>
+              <span class="dscr-indicator dscr-acceptable">● Acceptable 1.00–1.29</span>
+              <span class="dscr-indicator dscr-risk">● Risk &lt; 1.00</span>
             </div>
           </div>
+
+          <div style="overflow-x:auto;">
+            <table class="data-table" id="loan-amortization-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Beginning Principal</th>
+                  <th>Principal Repaid</th>
+                  <th>Interest Paid</th>
+                  <th>Total Debt Service</th>
+                  <th>Ending Principal</th>
+                  <th>DSCR Ratio</th>
+                  <th>Coverage Status</th>
+                </tr>
+              </thead>
+              <tbody id="loan-amortization-tbody">
+                <!-- Dynamically populated via portal.js -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <!-- Documents List -->
-        <div id="knowledge-docs-list">
-          <!-- Dynamically populated -->
+        <!-- ======================================================== -->
+        <!-- THREE INTERACTIVE CANVAS CHARTS -->
+        <!-- ======================================================== -->
+        <div class="charts-container">
+          <div class="chart-card">
+            <h4 style="font-size:15px; color:var(--navy-900); margin-bottom:4px;">5-Year Revenue, OPEX &amp; Operating Profit (EBITDA)</h4>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Projected progression across 5 years with capacity ramp-up.</p>
+            <canvas id="chart-financial" class="chart-canvas" height="260"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h4 style="font-size:15px; color:var(--navy-900); margin-bottom:4px;">Free Cash Flow vs. Outstanding Loan Balance</h4>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Accumulated cash generation vs reducing debt obligation.</p>
+            <canvas id="chart-cashflow" class="chart-canvas" height="260"></canvas>
+          </div>
         </div>
+
+        <div class="chart-card" style="margin-bottom:32px;">
+          <h4 style="font-size:15px; color:var(--navy-900); margin-bottom:4px;">Debt Service Coverage Ratio (DSCR) Trajectory</h4>
+          <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Bankability benchmark: values above 1.30x represent healthy lender coverage.</p>
+          <canvas id="chart-dscr" class="chart-canvas" height="200"></canvas>
+        </div>
+
+        <div class="notice-card">
+          <strong>Methodological Note:</strong> All computational models in this platform are executed deterministically using standard industrial cost accounting. 
+          They provide calibrated preliminary planning benchmarks for the Directorate General of Mines &amp; Minerals and prospective sponsors.
+        </div>
+
       </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- VIEW 10: INVESTOR ENQUIRY & CONCEPT GENERATOR -->
+    <!-- VIEW 6: INVESTOR ENQUIRY / EOI -->
     <!-- ============================================================ -->
     <section id="view-enquiry" class="page-view" style="display:none;">
       <div class="container" style="padding-top:40px; padding-bottom:60px;">
@@ -1038,21 +1148,21 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Phone / WhatsApp</label>
-                  <input type="text" id="enq-phone" class="form-control" placeholder="+45 32 88 19 00">
+                  <input type="text" id="enq-phone" class="form-control" placeholder="+92 300 1234567">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Country / Region *</label>
-                  <input type="text" id="enq-country" class="form-control" required placeholder="e.g. Denmark / European Union">
+                  <input type="text" id="enq-country" class="form-control" required placeholder="e.g. Pakistan / United Kingdom / UAE">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Target Business Model *</label>
                   <select id="enq-model" class="form-control" required>
-                    <option value="Food-Grade Optical Sorting & Stand-Up Pouch Retail Plant">Food-Grade Optical Sorting & Retail Packaging</option>
-                    <option value="Gourmet Ceramic-Mill Table Grinders & Seasoning Blends Facility">Gourmet Table Grinders & Seasoning Blends</option>
+                    <option value="Food-Grade Optical Sorting &amp; Stand-Up Pouch Retail Plant">Food-Grade Optical Sorting &amp; Retail Packaging</option>
+                    <option value="Gourmet Ceramic-Mill Table Grinders &amp; Seasoning Blends Facility">Gourmet Table Grinders &amp; Seasoning Blends</option>
                     <option value="High-Purity Pharmaceutical Grade Sodium Chloride Refinery">Pharmaceutical-Grade API Sodium Chloride</option>
-                    <option value="Compressed Mineral Salt Licks & Veterinary Nutrition Blocks">Livestock Salt Licks & Nutrition Blocks</option>
-                    <option value="Precision-Cut Salt Tiles, Wellness Bricks & Ionizing Lamps">Artisanal Salt Lamps & Wellness Tiles</option>
-                    <option value="Quaidabad Common Facility & Central Optical Sorting Center">Quaidabad Central Sorting Joint Venture</option>
+                    <option value="Compressed Mineral Salt Licks &amp; Veterinary Nutrition Blocks">Livestock Salt Licks &amp; Nutrition Blocks</option>
+                    <option value="Precision-Cut Salt Tiles, Wellness Bricks &amp; Ionizing Lamps">Artisanal Salt Lamps &amp; Wellness Tiles</option>
+                    <option value="Quaidabad Common Facility &amp; Central Optical Sorting Center">Quaidabad Central Sorting Joint Venture</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -1066,8 +1176,9 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Indicative Investment Budget (USD)</label>
-                  <input type="number" id="enq-budget" class="form-control" placeholder="e.g. 350000" value="350000">
+                  <label class="form-label">Indicative Investment Budget (PKR or USD equivalent)</label>
+                  <input type="text" id="enq-budget-display" class="form-control" placeholder="e.g. PKR 2.5 Crore ($89,285 USD)" value="PKR 2.5 Crore ($89,285 USD)">
+                  <input type="hidden" id="enq-budget" value="89285">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Planned Capacity (Tonnes / Day)</label>
@@ -1075,12 +1186,12 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Primary Target Market</label>
-                  <input type="text" id="enq-market" class="form-control" placeholder="e.g. EU Supermarkets / North America">
+                  <input type="text" id="enq-market" class="form-control" placeholder="e.g. EU Supermarkets / North America / Domestic">
                 </div>
               </div>
 
               <div class="form-group" style="margin-top:12px;">
-                <label class="form-label">Project Scope & Strategic Description *</label>
+                <label class="form-label">Project Scope &amp; Strategic Description *</label>
                 <textarea id="enq-desc" class="form-control" rows="4" required placeholder="Describe your intended processing workflow, technology partners, or commercial off-take commitments..."></textarea>
               </div>
 
@@ -1092,153 +1203,111 @@
               <div class="form-group" style="display:flex; align-items:center; gap:8px;">
                 <input type="checkbox" id="enq-consent" required checked>
                 <label for="enq-consent" style="font-size:12.5px; color:var(--text-muted);">
-                  I consent to the processing of this expression of interest by the Directorate General of Mines & Minerals Punjab under project evaluation guidelines.
+                  I consent to the processing of this expression of interest by the Directorate General of Mines &amp; Minerals Punjab under project evaluation guidelines.
                 </label>
               </div>
 
-              <button type="submit" class="btn btn-primary" style="padding:12px 28px; font-size:15px;">Submit Expression & Generate Feasibility Concept →</button>
+              <button type="submit" class="btn btn-primary" style="padding:12px 28px; font-size:15px;">Submit Expression &amp; Generate Feasibility Concept →</button>
             </form>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- VIEW 11: PINKSALT AI ASSISTANT -->
-    <!-- ============================================================ -->
+    <!-- Background Support Views for Full Backward Compatibility -->
+    <section id="view-resources" class="page-view" style="display:none;">
+      <div class="container" style="padding-top:40px; padding-bottom:60px;">
+        <div class="section-header">
+          <span class="section-badge">Geological Reserves</span>
+          <h2 class="section-title">Punjab Salt Range Resource Intelligence</h2>
+        </div>
+        <div class="card" style="padding:0; overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Mineral Seam / Deposit</th>
+                <th>District</th>
+                <th>Formation Type</th>
+                <th>NaCl Purity</th>
+                <th>Lease / Administrative Status</th>
+                <th>Managing Authority</th>
+              </tr>
+            </thead>
+            <tbody id="resource-records-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-admin" class="page-view" style="display:none;">
+      <div class="container" style="padding-top:40px; padding-bottom:60px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <div>
+            <span class="section-badge">Departmental Back-Office</span>
+            <h2 class="section-title">Investor Enquiry Pipeline &amp; Administration</h2>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="adminLogout()">Log Out Administrator</button>
+        </div>
+        <div class="kpi-board" style="margin-bottom:28px;">
+          <div class="kpi-card">
+            <div class="kpi-lbl">Total Registered Enquiries</div>
+            <div id="admin-total-enquiries" class="kpi-val">0</div>
+          </div>
+          <div class="kpi-card highlight">
+            <div class="kpi-lbl">Potential Pipeline Capital</div>
+            <div id="admin-pipeline-capex" class="kpi-val" style="color:var(--rose-700)">$0.00</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-lbl">Active Catalog Opportunities</div>
+            <div id="admin-active-opps" class="kpi-val">8</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-lbl">Knowledge Documents</div>
+            <div id="admin-docs-count" class="kpi-val">9</div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:32px; padding:0; overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tracking ID &amp; Date</th>
+                <th>Investor &amp; Company</th>
+                <th>Proposed Business Model</th>
+                <th>Pipeline Stage</th>
+                <th>Internal Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-enquiries-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <section id="view-ai" class="page-view" style="display:none;">
       <div class="container" style="padding-top:40px; padding-bottom:60px;">
         <div class="section-header">
-          <span class="section-badge">Grounded RAG Assistant</span>
+          <span class="section-badge">Grounded Advisory Assistant</span>
           <h2 class="section-title">Investment Assistant — Mineral Sector Advisory</h2>
-          <p class="section-subtitle">Query documented geological resources, regulatory procedures, deterministic project economics, and international standards.</p>
         </div>
-
         <div class="chat-container">
           <div class="chat-header">
             <div style="display:flex; align-items:center; gap:10px;">
               <span style="font-size:24px;">💼</span>
               <div>
                 <strong style="font-size:15px;">Investment Assistant</strong>
-                <div style="font-size:11.5px; color:var(--rose-200);">Grounded with Punjab Mines Dept, PMDC & GSP Data</div>
+                <div style="font-size:11.5px; color:var(--rose-200);">Grounded with Punjab Mines Dept, PMDC &amp; GSP Datasets</div>
               </div>
             </div>
-            <span class="opp-badge badge-verified" style="background:rgba(16, 185, 129, 0.2); color:#10b981; border:1px solid #10b981;">● Active Advisory</span>
           </div>
-
           <div id="ai-chat-messages" class="chat-messages">
             <div class="message-bubble bubble-bot">
-              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                <span style="font-size:20px;">💼</span>
-                <strong>Welcome to the Investment Assistant.</strong>
-              </div>
-              I am Punjab's specialized mineral investment and financial feasibility advisory system.
-              <br><br>
-              I can answer factual questions about Punjab's Salt Range resources, explain regulatory distinctions between mining leases and surface processing permits, run deterministic feasibility models, and outline export requirements under Pakistan Single Window (PSW).
-              <br><br>
-              <em>How may I assist your investment evaluation today?</em>
+              Welcome to the <strong>Investment Assistant</strong>. How may I assist your evaluation of Punjab's pink salt processing opportunities, machinery options, quality testing protocols, or 5-year financial models today?
             </div>
           </div>
-
-          <!-- Quick Suggested Prompts -->
-          <div style="padding:8px 16px; background:#f8fafc; border-top:1px solid var(--border); display:flex; gap:8px; overflow-x:auto;">
-            <button class="btn btn-outline btn-sm" onclick="sendChatMessage('Compare Khewra vs Warcha geological reserves and purity')">Khewra vs Warcha Resources</button>
-            <button class="btn btn-outline btn-sm" onclick="sendChatMessage('Do I need a mining lease to build an optical sorting plant?')">Mining Lease vs Processing Permit</button>
-            <button class="btn btn-outline btn-sm" onclick="sendChatMessage('Calculate feasibility and break-even for a 25 TPD food-grade plant')">Calculate 25 TPD Feasibility</button>
-            <button class="btn btn-outline btn-sm" onclick="sendChatMessage('Generate complete project concept for retail packaging in Quaidabad')">Generate Project Concept</button>
-          </div>
-
           <div class="chat-input-bar">
             <input type="text" id="ai-chat-input" class="form-control" placeholder="Ask about resources, regulations, machinery, economics, or exports..." onkeydown="if(event.key==='Enter') sendChatMessage()">
             <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
           </div>
-        </div>
-
-        <div class="notice-card" style="margin-top:20px;">
-          <strong>Grounding Guarantee:</strong> The Investment Assistant strictly adheres to published government and academic sources. 
-          If a query involves unverified rumours or unconfirmed claims, the assistant will explicitly respond: 
-          <em>“I cannot confirm this from the available verified sources.”</em>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- VIEW 12: ADMINISTRATIVE DASHBOARD (PROTECTED) -->
-    <!-- ============================================================ -->
-    <section id="view-admin" class="page-view" style="display:none;">
-      <div class="container" style="padding-top:40px; padding-bottom:60px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
-          <div>
-            <span class="section-badge">Departmental Back-Office</span>
-            <h2 class="section-title">Investor Enquiry Pipeline & Administration</h2>
-          </div>
-          <button class="btn btn-outline btn-sm" onclick="adminLogout()">Log Out Administrator</button>
-        </div>
-
-        <!-- Real-Time Metrics -->
-        <div class="kpi-board" style="margin-bottom:28px;">
-          <div class="kpi-card">
-            <div class="kpi-lbl">Total Registered Enquiries</div>
-            <div id="admin-total-enquiries" class="kpi-val">0</div>
-            <div class="kpi-sub">Across all pipeline stages</div>
-          </div>
-          <div class="kpi-card highlight">
-            <div class="kpi-lbl">Potential Pipeline Capital</div>
-            <div id="admin-pipeline-capex" class="kpi-val" style="color:var(--rose-700)">$0.00</div>
-            <div class="kpi-sub">Cumulative indicated budgets</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-lbl">Active Catalog Opportunities</div>
-            <div id="admin-active-opps" class="kpi-val">0</div>
-            <div class="kpi-sub">Published for investors</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-lbl">Knowledge Documents</div>
-            <div id="admin-docs-count" class="kpi-val">0</div>
-            <div class="kpi-sub">In verified RAG repository</div>
-          </div>
-        </div>
-
-        <!-- Enquiries Pipeline Table -->
-        <div class="card" style="margin-bottom:32px; padding:0; overflow-x:auto;">
-          <div style="padding:16px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="font-size:16px; color:var(--navy-900);">Investor Submissions Management</h3>
-            <span style="font-size:12px; color:var(--text-muted);">Stages: New → Qualified → Meeting Scheduled → Proposal Received → Referred → Closed</span>
-          </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Tracking ID & Date</th>
-                <th>Investor & Company</th>
-                <th>Proposed Business Model</th>
-                <th>Pipeline Stage</th>
-                <th>Internal Actions</th>
-              </tr>
-            </thead>
-            <tbody id="admin-enquiries-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Audit Log -->
-        <div class="card" style="padding:0; overflow-x:auto;">
-          <div style="padding:16px 20px; border-bottom:1px solid var(--border);">
-            <h3 style="font-size:16px; color:var(--navy-900);">Security & Governance Audit Trail</h3>
-          </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>Actor</th>
-                <th>Action</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody id="admin-audit-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -1254,11 +1323,59 @@
   <!-- Toast Container -->
   <div id="toast-container" class="toast-container"></div>
 
-  <!-- Generic Reusable Modal -->
+  <!-- Opportunity Detail Modal -->
   <div id="modal-generic" class="modal-overlay" style="display:none;">
     <div class="modal-content">
       <button class="modal-close" onclick="closeGenericModal()">✕</button>
       <div id="modal-generic-body"></div>
+    </div>
+  </div>
+
+  <!-- Equipment RFQ Generator Modal -->
+  <div id="modal-rfq" class="modal-overlay" style="display:none;">
+    <div class="modal-content" style="max-width:680px;">
+      <button class="modal-close" onclick="closeRFQModal()">✕</button>
+      <div id="modal-rfq-body">
+        <h3 style="font-size:20px; color:var(--navy-900); margin-bottom:6px;">Generate Equipment Request for Quotation (RFQ)</h3>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Create a standardized technical specification inquiry for Pakistani &amp; international machinery manufacturers.</p>
+        
+        <form onsubmit="submitEquipmentRFQ(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div class="form-group">
+              <label class="form-label">Machinery Type / Configuration *</label>
+              <input type="text" id="rfq-machinery-type" class="form-control" required value="Complete Turnkey Plant">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Target Capacity (Tonnes / Day) *</label>
+              <input type="number" id="rfq-capacity" class="form-control" required value="25">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Person Name *</label>
+              <input type="text" id="rfq-contact-name" class="form-control" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company / Sponsoring Entity *</label>
+              <input type="text" id="rfq-company" class="form-control" required placeholder="Company Name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Corporate Email *</label>
+              <input type="email" id="rfq-email" class="form-control" required placeholder="email@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone / WhatsApp</label>
+              <input type="text" id="rfq-phone" class="form-control" placeholder="+92 300 1234567">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Specific Technical Requirements / Material Grades</label>
+            <textarea id="rfq-specs" class="form-control" rows="3" placeholder="e.g. SS304 food contact parts, vibrating screen mesh sizes (0.5mm, 1mm, 2mm), multi-head pouch packer..."></textarea>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-outline" onclick="closeRFQModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Generate &amp; Download Official RFQ 📄</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -1267,7 +1384,7 @@
     <div class="modal-content" style="max-width:440px;">
       <h3 style="font-size:20px; color:var(--navy-900); margin-bottom:8px;">Administrator Authentication</h3>
       <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
-        Restricted to Directorate General of Mines & Minerals Punjab authorized personnel.
+        Restricted to Directorate General of Mines &amp; Minerals Punjab authorized personnel.
       </p>
 
       <form onsubmit="submitAdminLogin(event)">
@@ -1296,35 +1413,35 @@
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
             <img src="images/headerLogo.png" alt="Government of Punjab" style="height:36px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.9;">
           </div>
-          <h4 style="margin:0 0 8px 0; font-size:15px; color:#ffffff;">Pink Salt Intelligence & Investment Portal</h4>
+          <h4 style="margin:0 0 8px 0; font-size:15px; color:#ffffff;">Pink Salt Intelligence &amp; Investment Portal</h4>
           <p style="font-size:13px; line-height:1.6; max-width:360px;">
-            Promoting mineral value addition, verifiable origin traceability, and structured investment facilitation in Punjab.
+            Investor Facilitation and Pink Salt Processing Feasibility Platform. Directorate General of Mines &amp; Minerals, Government of Punjab.
           </p>
         </div>
         <div class="footer-col">
           <h4>Portal Modules</h4>
           <ul class="footer-links">
-            <li><a href="javascript:void(0)" onclick="switchView('resources')">Resource Intelligence</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('home')">Introduction</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('opportunities')">Investment Opportunities</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('value-addition')">Value-Addition Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Processing Options</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Quality &amp; Testing</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('calculator')">Feasibility Calculator</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('sites')">Site Selector</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Compliance & Trade</h4>
+          <h4>Compliance &amp; Standards</h4>
           <ul class="footer-links">
-            <li><a href="javascript:void(0)" onclick="switchView('export')">Pakistan Single Window (PSW)</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('traceability')">Traceability & GI Act 2020</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('knowledge')">Mining Concession Rules 2022</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('knowledge')">Codex Standard CXS 150-1985</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Codex Standard CXS 150-1985</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">ISO 17025 Accredited Labs</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">PSQCA 166:2008 Standard</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('opportunities')">Processing Zones (Quaidabad SEZ)</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Author & Sector</h4>
+          <h4>Institutional Oversight</h4>
           <p style="font-size:13px; line-height:1.6;">
-            Assistant Director<br>
-            Mines & Minerals Sector<br>
+            Directorate General of Mines &amp; Minerals<br>
+            Mines &amp; Minerals Department<br>
             Government of Punjab, Pakistan
           </p>
           <div style="margin-top:14px;">
@@ -1335,10 +1452,10 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 Pink Salt Intelligence & Investment Portal. Directorate General of Mines & Minerals, Government of Punjab.
+          &copy; 2026 Pink Salt Intelligence &amp; Investment Portal. Directorate General of Mines &amp; Minerals, Government of Punjab.
         </div>
         <div>
-          Verified with GSP, PMDC, TDAP & Directorate of Mines & Minerals Punjab Datasets.
+          Calibrated with Geological Survey of Pakistan (GSP 2024), PMDC (2026) &amp; TDAP Datasets.
         </div>
       </div>
     </div>

@@ -110,6 +110,58 @@ AUTHORITATIVE_CORPUS = [
             "ideal for high-capital pharmaceutical and chemical grade salt refineries requiring sophisticated water treatment and heavy utilities."
         ),
         "source_url": "https://mnm.punjab.gov.pk/investment_and_business_promotion"
+    },
+    {
+        "id": "CORPUS-07",
+        "title": "Pink Salt Processing Machinery Configurations & Sourcing Guide",
+        "authority": "Directorate General of Mines & Minerals, Punjab & Equipment Engineering Advisory",
+        "date": "2026-03-01",
+        "topics": ["machinery", "processing", "crushing", "washing", "screening", "drying", "packaging", "rfq", "suppliers", "equipment"],
+        "content": (
+            "Standard pink salt processing involves 5 core equipment modules: (1) Crushing & Grinding (Jaw crushers for primary breakdown "
+            "down to 25mm, followed by hammer/pin mills for fine table salt and powder); (2) Washing & Cleaning (SS304 rotary trommel washer; "
+            "conditionally required depending on incoming mine rock contamination and target food-grade specifications; requires 1.5 m³ water/tonne, "
+            "effluent settling, and post-wash drying); (3) Screening & Grading (Multi-deck vibrating screens with food-grade meshes for separation into "
+            "fine <1mm, medium 1-3mm, and coarse 3-5mm); (4) Drying (Fluidized bed or rotary dryers to reduce moisture to <0.2%); "
+            "(5) Packaging (Automated Vertical Form-Fill-Seal VFFS for 250g, 500g, 1kg stand-up pouches and 25kg/50kg bulk sacks). "
+            "Turnkey production configurations scale from Micro Units (PKR 50L - 1Cr, 5-10 TPD) to Commercial Export Plants (PKR 2Cr - 5Cr, 25-50 TPD). "
+            "Investors can generate official Requests for Quotation (RFQs) for Pakistani fabricators (HMC Taxila, Millat Equipment Lahore, Pak Precision Gujranwala)."
+        ),
+        "source_url": "https://pinksalt.punjab.gov.pk/processing-options"
+    },
+    {
+        "id": "CORPUS-08",
+        "title": "Quality Testing Standards, Analytical Techniques & Accredited Laboratory Directory",
+        "authority": "PSQCA, PCSIR & Codex Alimentarius",
+        "date": "2026-03-15",
+        "topics": ["standards", "testing", "laboratory", "codex", "iso", "icp-oes", "icp-ms", "aas", "pcsir", "sgs", "pafda", "tti", "psqca", "heavy metals"],
+        "content": (
+            "Export and food-grade compliance requires adherence to Codex CXS 150-1985 (min 97% NaCl dry basis), CXS 192-1995 (additives), "
+            "and CXS 193-1995 (contaminants: Lead <2 ppm, Arsenic <0.5 ppm, Cadmium <0.5 ppm, Mercury <0.1 ppm). Key analytical methods include: "
+            "ISO 9297 (Mohr chloride titration), ISO 2483 (loss on drying 110°C), ISO 2482 (calcium/magnesium EDTA), and ISO 2480 (sulfate). "
+            "Elemental analysis utilizes ICP-OES for multi-cation screening (Ca, Mg, K, Fe), ICP-MS for parts-per-billion ultra-trace toxic metals, "
+            "and AAS for specific minerals. Accredited testing facilities in Lahore include PCSIR Laboratories Complex (Ferozepur Rd), PCSIR FBRC, "
+            "SGS Pakistan, PAFDA, TTI Laboratories, PSQCA, and Qarshi Research; additional labs operate in Karachi (PCSIR, SGS), Peshawar (PCSIR), "
+            "and Islamabad (National Metrology Institute NMIP). Testing costs must be budgeted both for initial facility audit and recurring batch quality control."
+        ),
+        "source_url": "https://pinksalt.punjab.gov.pk/quality-testing"
+    },
+    {
+        "id": "CORPUS-09",
+        "title": "Investment Planning Range (PKR 50 Lakh - 5 Crore) & Five-Year Loan Amortization",
+        "authority": "Directorate General of Mines & Minerals, Punjab / Financial Advisory",
+        "date": "2026-04-01",
+        "topics": ["feasibility", "loan", "amortization", "pkr", "dscr", "five year", "repayment", "financing", "capex", "opex"],
+        "content": (
+            "The portal's financial model assists investors planning within a PKR 50 Lakh to PKR 5 Crore total project cost envelope. "
+            "Typical capital structuring assumes 30% to 50% equity with the balance financed via commercial or SME concessionary bank facilities "
+            "over a 5-year tenure (60 monthly reducing-balance instalments). The 5-Year Financial Model projects production ramp-up (65% in Y1 to "
+            "95% in Y5), revenue growth, OPEX escalation, EBITDA, depreciation (10% straight line), financing markup, corporate tax (20%), net profit, "
+            "and free cash flow. Debt Service Coverage Ratio (DSCR = Net Operating Income / Annual Debt Service) benchmarks project health: "
+            "DSCR >= 1.30 denotes healthy debt servicing capability, 1.00-1.29 is acceptable, while DSCR < 1.00 flags potential debt service deficit. "
+            "The portal provides real-time sensitivity analysis across Conservative, Base Case, and Optimistic operational scenarios."
+        ),
+        "source_url": "https://pinksalt.punjab.gov.pk/feasibility-calculator"
     }
 ]
 
