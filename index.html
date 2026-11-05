@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.13">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.15">
 </head>
 <body>
 
@@ -39,15 +39,16 @@
       </div>
     </div>
 
-    <!-- Quick Navigation Tabs (Revealed on Cursor Hover Over Header) -->
+    <!-- Quick Navigation Tabs (Executive Sub-Header) -->
     <div class="header-hover-shelf" id="header-hover-shelf">
       <div class="container hover-shelf-container">
-        <a class="header-hover-tab" onclick="switchView('home')">Home</a>
-        <a class="header-hover-tab" onclick="switchView('opportunities')">Investment Opportunities</a>
-        <a class="header-hover-tab" onclick="switchView('processing-options')">Processing &amp; Machinery</a>
-        <a class="header-hover-tab" onclick="switchView('quality-testing')">Quality &amp; Laboratory Testing</a>
-        <a class="header-hover-tab" onclick="switchView('calculator')">Feasibility Calculator</a>
-        <a class="header-hover-tab" onclick="switchView('enquiry')">Investor Enquiry</a>
+        <a class="header-hover-tab active" data-view="home" onclick="switchView('home')">Home</a>
+        <a class="header-hover-tab" data-view="opportunities" onclick="switchView('opportunities')">Investment Opportunities</a>
+        <a class="header-hover-tab" data-view="processing-options" onclick="switchView('processing-options')">Processing &amp; Machinery</a>
+        <a class="header-hover-tab" data-view="quality-testing" onclick="switchView('quality-testing')">Quality &amp; Laboratory Testing</a>
+        <a class="header-hover-tab" data-view="calculator" onclick="switchView('calculator')">Feasibility Calculator</a>
+        <a class="header-hover-tab" data-view="ai" onclick="switchView('ai')">PinkSalt AI Advisory</a>
+        <a class="header-hover-tab" data-view="enquiry" onclick="switchView('enquiry')">Investor Enquiry</a>
       </div>
     </div>
 
@@ -58,6 +59,7 @@
       <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">Processing &amp; Machinery</a>
       <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">Quality &amp; Laboratory Testing</a>
       <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">Feasibility Calculator</a>
+      <a class="nav-link" data-view="ai" onclick="switchView('ai'); toggleMobileNav()">PinkSalt AI Advisory</a>
       <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">Investor Enquiry / EOI</a>
       <button class="btn btn-outline" style="width:100%; margin-top:12px;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office</button>
     </div>
@@ -297,6 +299,81 @@
         </div>
 
         <!-- ======================================================== -->
+        <!-- ADVISE, THEN BUILD (FIRST WE HELP YOU CHOOSE. THEN WE MAP YOUR FACTORY.) -->
+        <!-- ======================================================== -->
+        <div id="advise-then-build-section" style="margin-bottom:36px; background:linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); border-radius:18px; padding:32px; border:1px solid rgba(244,63,94,0.3); box-shadow:0 12px 32px rgba(15,23,42,0.18); position:relative; overflow:hidden;">
+          <div style="max-width:760px; margin-bottom:24px;">
+            <span class="badge" style="background:rgba(244,63,94,0.2); color:#fda4af; border:1px solid rgba(244,63,94,0.4); font-size:11px; font-weight:800; letter-spacing:0.08em; margin-bottom:10px; display:inline-block;">
+              ADVISE, THEN BUILD
+            </span>
+            <h3 style="font-size:26px; font-weight:900; color:#ffffff; margin:4px 0 10px 0; line-height:1.25;">
+              First We Help You Choose. Then We Map Your Factory.
+            </h3>
+            <p style="font-size:14px; color:#cbd5e1; line-height:1.6; margin:0;">
+              Most suppliers just sell you a machine and hope it works out. We start a step earlier — with the business itself — and stay with you until your factory is running and financed.
+            </p>
+          </div>
+
+          <div class="grid-2" style="gap:24px;">
+            <!-- 01 • WE ADVISE -->
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:11.5px; font-weight:800; color:#fb7185; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">01 • WE ADVISE</div>
+                <h4 style="font-size:18px; font-weight:800; color:#ffffff; margin:0 0 10px 0;">We Help You Pick the Right Business</h4>
+                <p style="font-size:13px; color:#cbd5e1; line-height:1.5; margin-bottom:14px;">
+                  We study market demand and tell you which manufacturing business is worth your money — the exact product worth making for your budget, whether it is high-turnover table salt, high-margin spa wellness products, artisanal decor lamps, or industrial bulk export.
+                </p>
+                <ul style="list-style:none; padding:0; margin:0 0 18px 0; display:flex; flex-direction:column; gap:8px; font-size:12.5px; color:#e2e8f0;">
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Realistic Profit Margins:</strong> From 35% up to 70% gross margin.</span>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Market Demand Matching:</strong> Local supermarkets vs US/EU export buyers.</span>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Tailored to Any Budget:</strong> PKR 50 Lakh starter to PKR 15 Crore export plants.</span>
+                  </li>
+                </ul>
+              </div>
+              <a href="#business-categories-section" class="btn btn-outline-light btn-sm" style="width:100%; justify-content:center; font-weight:700;">
+                Explore 4 Business Categories Below ↓
+              </a>
+            </div>
+
+            <!-- 02 • WE BUILD -->
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:11.5px; font-weight:800; color:#38bdf8; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">02 • WE BUILD</div>
+                <h4 style="font-size:18px; font-weight:800; color:#ffffff; margin:0 0 10px 0;">We Map Your Factory &amp; Bank Financing</h4>
+                <p style="font-size:13px; color:#cbd5e1; line-height:1.5; margin-bottom:14px;">
+                  Once you choose, we map the complete turnkey machinery line in verified Pakistani engineering workshops and generate your official bank underwriting dossier for the <a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" style="color:#38bdf8; text-decoration:underline;">CM Punjab Pink Salt Value Addition Financing Scheme</a> (Bank of Punjab &amp; PITB).
+                </p>
+                <ul style="list-style:none; padding:0; margin:0 0 18px 0; display:flex; flex-direction:column; gap:8px; font-size:12.5px; color:#e2e8f0;">
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Zero Bottleneck Plant Layout:</strong> Balanced washing, crushing, grading &amp; packing.</span>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Food-Grade Metallurgy:</strong> SS304/SS316 anti-corrosive construction.</span>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="color:#34d399; font-weight:900;">✓</span>
+                    <span><strong>Automated Bank Approval Score:</strong> Monthly EMI, Debt Service Coverage &amp; IRR.</span>
+                  </li>
+                </ul>
+              </div>
+              <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center; font-weight:700;" onclick="switchView('calculator')">
+                Launch Full Feasibility &amp; Loan Dossier →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
         <!-- 4 APPLICANT BUSINESS CATEGORIES (INTERACTIVE TILES) -->
         <!-- ======================================================== -->
         <div id="business-categories-section" style="margin-bottom:36px;">
@@ -459,48 +536,7 @@
           </div>
         </div>
 
-        <!-- ======================================================== -->
-        <!-- 3-STEP GUIDED ROADMAP -->
-        <!-- ======================================================== -->
-        <div style="margin-bottom:36px;">
-          <div class="epk-roadmap-grid">
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">01</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Pick Your Product &amp; Market
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Select table salt, bath spa salts, gourmet grinders, or lamps based on your available capital and sales channels.
-                </p>
-              </div>
-            </div>
 
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">02</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Map Your Turnkey Factory
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Get the complete machine layout — washing, crushing, grading &amp; automated packaging built in Pakistani workshops.
-                </p>
-              </div>
-            </div>
-
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">03</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Get Bank Loan Approval
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Simulate your debt ratio, verify DSCR coverage (&gt;1.30x), and download a bank-ready SMEDA feasibility report.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- ======================================================== -->
         <!-- 5-YEAR INVESTMENT & DEBT FEASIBILITY ENGINE (INTERACTIVE SHOWCASE) -->
@@ -524,7 +560,7 @@
             </button>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 2fr; gap:24px;">
+          <div class="calc-engine-grid">
             <!-- Controls Column -->
             <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
               <h4 style="font-size:14px; font-weight:800; color:var(--navy-900); margin:0 0 16px 0; text-transform:uppercase; letter-spacing:0.5px;">
@@ -600,7 +636,7 @@
             <!-- KPI Cards & 5-Year Cash Flow Projections -->
             <div>
               <!-- 6 Metrics Cards Grid -->
-              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:18px;">
+              <div class="engine-kpi-grid">
                 <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:var(--radius-sm);">
                   <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#9f1239;">Equity Required</div>
                   <div id="kpi-engine-equity" style="font-size:18px; font-weight:900; color:#881337; margin:3px 0;">PKR 6.0 M</div>
@@ -878,7 +914,7 @@
         <!-- ======================================================== -->
         <div class="epk-bottom-cta-banner">
           <div style="position:absolute; top:-80px; right:-80px; width:350px; height:350px; background:radial-gradient(circle, rgba(244,63,94,0.2) 0%, transparent 70%); pointer-events:none;"></div>
-          <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:32px; align-items:center; position:relative; z-index:2;">
+          <div class="epk-cta-grid">
             <div>
               <span class="badge" style="background:rgba(244,63,94,0.2); color:#fda4af; border:1px solid rgba(244,63,94,0.4); font-size:11px; font-weight:800; letter-spacing:0.08em; margin-bottom:12px; display:inline-block;">
                 INVESTMENT DESK &amp; MACHINERY ADVISORY
@@ -892,7 +928,7 @@
               </p>
               <div style="display:flex; flex-wrap:wrap; gap:12px;">
                 <button class="btn btn-primary" onclick="switchView('enquiry')">
-                  ✨ Submit Investor Enquiry / EOI →
+                  Submit Investor Enquiry / EOI →
                 </button>
                 <button class="btn btn-outline-light" onclick="switchView('calculator')">
                   Feasibility Calculator
@@ -1382,6 +1418,23 @@
           <p class="section-subtitle">Authoritative standards (Codex, ISO, PSQCA), analytical testing methods, accredited laboratory directory for Lahore &amp; Pakistan, and testing cost calculator.</p>
         </div>
 
+        <!-- Unified Standards & Compliance Framework Banner -->
+        <div class="card" style="margin-bottom:24px; padding:22px 26px; background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border:1px solid #334155; border-radius:var(--radius-md); box-shadow:0 8px 24px rgba(15,23,42,0.12);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+            <div style="max-width:800px;">
+              <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.4); font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; display:inline-block;">Unified Regulatory &amp; Compliance Funnel</span>
+              <h3 style="font-size:21px; font-weight:900; color:#ffffff; margin:0 0 6px 0;">Codex CXS 150-1985 &bull; ISO 17025:2017 &bull; PSQCA 166:2008</h3>
+              <p style="font-size:13.5px; color:#cbd5e1; margin:0; line-height:1.6;">
+                All pink salt manufactured in Punjab for domestic distribution and global export operates under a single integrated quality architecture: mandatory national licensing (<strong>PSQCA 166:2008</strong>), certified third-party laboratory verification (<strong>ISO 17025:2017</strong>), and global food-grade purity thresholds (<strong>Codex CXS 150/192/193</strong>).
+              </p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <span style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; color:#38bdf8;">Single Compliance Chain</span>
+              <span style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; color:#4ade80;">PSW HS 2501 Clear</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Standards Comparison Table -->
         <div class="standards-table-wrapper">
           <div style="padding:18px 24px; border-bottom:1px solid var(--border); background:#ffffff;">
@@ -1654,396 +1707,6 @@
         </div>
 
 
-
-        <!-- ======================================================== -->
-        <!-- 4 APPLICANT BUSINESS CATEGORIES (INTERACTIVE TILES) -->
-        <!-- ======================================================== -->
-        <div id="business-categories-section" style="margin-bottom:36px;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
-            <div>
-              <span class="section-badge" style="background:var(--rose-50); color:var(--rose-800); border:1px solid var(--rose-200);">Tailored For Every Applicant</span>
-              <h3 style="font-size:24px; font-weight:800; color:var(--navy-900); margin:6px 0 2px 0;">
-                Pick Your Salt Business
-              </h3>
-              <p style="font-size:13.5px; color:var(--text-muted); margin:0;">
-                Click any business category below to simulate its 5-year returns, machinery footprint, and loan eligibility.
-              </p>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <span style="font-size:12px; font-weight:700; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:6px 14px; border-radius:9999px;">
-                ✓ Calibrated with SMEDA Pre-Feasibility #220
-              </span>
-              <a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:700; color:#ffffff; background:#059669; border:none; padding:6px 14px; border-radius:9999px; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
-                <span>🏛️</span> CM Punjab Value Addition Financing ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="epk-category-grid">
-            <!-- 1. Small-scale packaging unit -->
-            <div class="epk-category-tile" id="tile-cat-small-packaging" onclick="selectCategoryAndSimulate('small_packaging', 7500000)">
-              <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#f1f5f9; color:#475569; padding:3px 8px; border-radius:4px;">Starter Line</span>
-                  <span style="font-size:26px;">📦</span>
-                </div>
-                <h4 style="font-size:17px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Small-Scale Packaging Unit
-                </h4>
-                <div style="font-size:13px; font-weight:800; color:#be123c; margin-bottom:8px;">
-                  PKR 50 Lakh – 1.2 Crore
-                </div>
-                <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                  <strong>Grinding, grading, packing &amp; labelling.</strong> Ideal for first-time entrepreneurs. Buy bulk raw crystals, mill to kitchen mesh, and pack into retail shaker jars &amp; pouches for grocery stores.
-                </p>
-                <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; padding:8px 10px; font-size:11.5px; margin-bottom:16px;">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                    <span style="color:#9f1239; font-weight:700;">Target Gross Margin:</span>
-                    <strong style="color:#881337;">35% – 45%</strong>
-                  </div>
-                  <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#9f1239; font-weight:700;">Payback Horizon:</span>
-                    <strong style="color:#881337;">~2.0 Years</strong>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-rose btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('small_packaging', 7500000)" style="width:100%; justify-content:center;">
-                🚀 Select &amp; Simulate (PKR 7.5M)
-              </button>
-            </div>
-
-            <!-- 2. Medium-scale manufacturing unit -->
-            <div class="epk-category-tile" id="tile-cat-medium-manufacturing" onclick="selectCategoryAndSimulate('medium_manufacturing', 25000000)">
-              <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#eff6ff; color:#1e40af; padding:3px 8px; border-radius:4px;">Commercial Plant</span>
-                  <span style="font-size:26px;">🏭</span>
-                </div>
-                <h4 style="font-size:17px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Medium-Scale Processing Plant
-                </h4>
-                <div style="font-size:13px; font-weight:800; color:#1e40af; margin-bottom:8px;">
-                  PKR 2.5 Crore – 4.5 Crore
-                </div>
-                <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                  <strong>Washing, crushing, grinding &amp; packaging.</strong> High-volume commercial line. Automated brine wash trommels, multi-mesh sifters, and form-fill-seal packaging for supermarkets and FMCG buyers.
-                </p>
-                <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:8px 10px; font-size:11.5px; margin-bottom:16px;">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                    <span style="color:#1e40af; font-weight:700;">Target Gross Margin:</span>
-                    <strong style="color:#1e3a8a;">40% – 55%</strong>
-                  </div>
-                  <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#1e40af; font-weight:700;">Payback Horizon:</span>
-                    <strong style="color:#1e3a8a;">~2.6 Years</strong>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-navy btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('medium_manufacturing', 25000000)" style="width:100%; justify-content:center;">
-                🚀 Select &amp; Simulate (PKR 25M)
-              </button>
-            </div>
-
-            <!-- 3. Value-added product manufacturing -->
-            <div class="epk-category-tile" id="tile-cat-value-added" onclick="selectCategoryAndSimulate('value_added_products', 15000000)">
-              <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#fef3c7; color:#92400e; padding:3px 8px; border-radius:4px;">Highest Margin</span>
-                  <span style="font-size:26px;">🏮</span>
-                </div>
-                <h4 style="font-size:17px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Value-Added Crafts &amp; Spa Products
-                </h4>
-                <div style="font-size:13px; font-weight:800; color:#b45309; margin-bottom:8px;">
-                  PKR 75 Lakh – 2.0 Crore
-                </div>
-                <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                  <strong>Salt lamps, cooking tiles, bath salts &amp; decor.</strong> Highest markup per kilogram. Artisanal hand-carving and wellness formulation for premium export to USA, EU, and Gulf markets.
-                </p>
-                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:8px 10px; font-size:11.5px; margin-bottom:16px;">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                    <span style="color:#92400e; font-weight:700;">Target Gross Margin:</span>
-                    <strong style="color:#78350f;">50% – 70%</strong>
-                  </div>
-                  <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#92400e; font-weight:700;">Payback Horizon:</span>
-                    <strong style="color:#78350f;">~1.8 Years</strong>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-gold btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('value_added_products', 15000000)" style="width:100%; justify-content:center;">
-                🚀 Select &amp; Simulate (PKR 15M)
-              </button>
-            </div>
-
-            <!-- 4. Export-oriented business -->
-            <div class="epk-category-tile" id="tile-cat-export-oriented" onclick="selectCategoryAndSimulate('export_oriented', 50000000)">
-              <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; background:#ecfdf5; color:#065f46; padding:3px 8px; border-radius:4px;">Global Trade</span>
-                  <span style="font-size:26px;">🚢</span>
-                </div>
-                <h4 style="font-size:17px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Export-Oriented Enterprise
-                </h4>
-                <div style="font-size:13px; font-weight:800; color:#065f46; margin-bottom:8px;">
-                  PKR 5.0 Crore – 15 Crore
-                </div>
-                <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                  <strong>Bulk supply, optical sorting &amp; private labelling.</strong> SMEDA Benchmark Turnkey Facility. SS316 food-grade plant meeting Codex CXS 150 for 20ft/40ft container direct export worldwide.
-                </p>
-                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:8px 10px; font-size:11.5px; margin-bottom:16px;">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                    <span style="color:#166534; font-weight:700;">Target Gross Margin:</span>
-                    <strong style="color:#14532d;">45% – 65%</strong>
-                  </div>
-                  <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#166534; font-weight:700;">Payback Horizon:</span>
-                    <strong style="color:#14532d;">~3.5 – 4.1 Years</strong>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); selectCategoryAndSimulate('export_oriented', 50000000)" style="width:100%; justify-content:center;">
-                🚀 Select &amp; Simulate (PKR 50M)
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- 3-STEP GUIDED ROADMAP -->
-        <!-- ======================================================== -->
-        <div style="margin-bottom:36px;">
-          <div class="epk-roadmap-grid">
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">01</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Pick Your Product &amp; Market
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Select table salt, bath spa salts, gourmet grinders, or lamps based on your available capital and sales channels.
-                </p>
-              </div>
-            </div>
-
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">02</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Map Your Turnkey Factory
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Get the complete machine layout — washing, crushing, grading &amp; automated packaging built in Pakistani workshops.
-                </p>
-              </div>
-            </div>
-
-            <div class="epk-roadmap-step">
-              <div class="epk-step-num">03</div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:var(--navy-900); margin:0 0 4px 0;">
-                  Get Bank Loan Approval
-                </h4>
-                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.5;">
-                  Simulate your debt ratio, verify DSCR coverage (&gt;1.30x), and download a bank-ready SMEDA feasibility report.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- 5-YEAR INVESTMENT & DEBT FEASIBILITY ENGINE (INTERACTIVE SHOWCASE) -->
-        <!-- ======================================================== -->
-        <div class="card" id="engine-card-showcase-calc" style="margin-bottom:32px; padding:28px; border:1.5px solid var(--rose-200); background:#ffffff; box-shadow:0 8px 24px rgba(15,23,42,0.06);">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:14px;">
-            <div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="badge" style="background:var(--rose-50); color:var(--rose-800); border:1px solid var(--rose-200); font-weight:700;">Deterministic Cash Flow Model</span>
-                <span style="font-size:12px; color:var(--text-muted);">Interactive Capital &amp; Debt Simulation</span>
-              </div>
-              <h3 style="font-size:22px; font-weight:800; color:var(--navy-900); margin:6px 0 2px 0;">
-                5-Year Investment &amp; Debt Feasibility Engine
-              </h3>
-              <p style="font-size:13px; color:var(--text-muted); margin:0;">
-                Planning range: PKR 50 Lakh to PKR 5 Crore (Washing Line toggle, Loan Amortization, DSCR)
-              </p>
-            </div>
-            <button class="btn btn-outline btn-sm" onclick="window.scrollTo({top: 1400, behavior: 'smooth'})">
-              Open Full Feasibility &amp; Appraisal Dossier →
-            </button>
-          </div>
-
-          <div style="display:grid; grid-template-columns:1fr 2fr; gap:24px;">
-            <!-- Controls Column -->
-            <div style="background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
-              <h4 style="font-size:14px; font-weight:800; color:var(--navy-900); margin:0 0 16px 0; text-transform:uppercase; letter-spacing:0.5px;">
-                Investment Parameters
-              </h4>
-
-              <!-- Quick Category Presets -->
-              <div style="margin-bottom:14px;">
-                <span style="font-size:11px; text-transform:uppercase; font-weight:800; color:var(--navy-700); display:block; margin-bottom:6px; letter-spacing:0.06em;">Quick Business Presets:</span>
-                <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                  <button type="button" class="btn btn-xs" style="background:#fff1f2; color:#be123c; border:1px solid #fecdd3; font-weight:700;" onclick="selectCategoryAndSimulate('small_packaging', 7500000)">📦 Small Packaging (7.5M)</button>
-                  <button type="button" class="btn btn-xs" style="background:#fffbeb; color:#92400e; border:1px solid #fde68a; font-weight:700;" onclick="selectCategoryAndSimulate('value_added_products', 15000000)">🏮 Lamps &amp; Spa (15M)</button>
-                  <button type="button" class="btn btn-xs" style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; font-weight:700;" onclick="selectCategoryAndSimulate('medium_manufacturing', 25000000)">🏭 Medium Plant (25M)</button>
-                  <button type="button" class="btn btn-xs" style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; font-weight:700;" onclick="selectCategoryAndSimulate('export_oriented', 50000000)">🚢 Export Plant (50M)</button>
-                </div>
-              </div>
-
-              <!-- Slider 1: Total Capital Investment -->
-              <div style="margin-bottom:18px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
-                  <span>Total Capital Investment (PKR):</span>
-                  <span id="display-capex" style="color:var(--rose-700); font-size:15px; font-weight:900;">15,000,000</span>
-                </div>
-                <input type="range" id="input-capex" min="5000000" max="50000000" step="1000000" value="15000000" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
-                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
-                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(5000000)">50 Lakh</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(25000000)">2.5 Cr</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineCapex(50000000)">5 Crore</button>
-                </div>
-              </div>
-
-              <!-- Slider 2: Debt Ratio -->
-              <div style="margin-bottom:18px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
-                  <span>Debt Ratio (% of Capex):</span>
-                  <span id="display-debt-ratio" style="color:var(--rose-700); font-size:15px; font-weight:900;">60%</span>
-                </div>
-                <input type="range" id="input-debt-ratio" min="0" max="75" step="5" value="60" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
-                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
-                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(0)">0% (All Equity)</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(50)">50%</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineDebt(75)">75% (Max)</button>
-                </div>
-              </div>
-
-              <!-- Slider 3: Bank Mark-up Rate -->
-              <div style="margin-bottom:18px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:700; color:var(--navy-800); margin-bottom:6px;">
-                  <span>Bank Mark-up Rate (% p.a.):</span>
-                  <span id="display-interest" style="color:var(--rose-700); font-size:15px; font-weight:900;">14.0%</span>
-                </div>
-                <input type="range" id="input-interest" min="5" max="25" step="0.5" value="14.0" oninput="updateInteractiveFeasibilityEngine(true)" style="width:100%; accent-color:var(--rose-600); cursor:pointer;">
-                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-top:4px;">
-                  <button type="button" class="btn-link-preset" onclick="setEngineRate(8.0)">8% (Subsidized)</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineRate(14.0)">14%</button>
-                  <button type="button" class="btn-link-preset" onclick="setEngineRate(22.0)">22%</button>
-                </div>
-                <div style="margin-top:8px; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:6px; padding:6px 10px; font-size:11px; color:#065f46; display:flex; align-items:center; justify-content:space-between; gap:6px;">
-                  <span>🏛️ <strong>Subsidized 8% Markup:</strong> Available via <strong>CM Punjab Pink Salt Value Addition Financing</strong></span>
-                  <a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" style="color:#047857; font-weight:800; text-decoration:underline; white-space:nowrap;">Apply Portal ↗</a>
-                </div>
-              </div>
-
-              <!-- Checkbox: Scientific Washing Line -->
-              <div style="padding-top:12px; border-top:1px solid var(--border);">
-                <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; color:var(--navy-900); cursor:pointer;">
-                  <input type="checkbox" id="input-washing" checked onchange="updateInteractiveFeasibilityEngine(true)" style="accent-color:var(--rose-600); width:16px; height:16px;">
-                  <span>Include Scientific Washing Line (+$12/ton Opex)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- KPI Cards & 5-Year Cash Flow Projections -->
-            <div>
-              <!-- 6 Metrics Cards Grid -->
-              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:18px;">
-                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#9f1239;">Equity Required</div>
-                  <div id="kpi-engine-equity" style="font-size:18px; font-weight:900; color:#881337; margin:3px 0;">PKR 6.0 M</div>
-                  <div id="kpi-engine-equity-sub" style="font-size:11px; color:#be123c;">40% Investor Capital</div>
-                </div>
-                <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#1e40af;">Bank Loan Amount</div>
-                  <div id="kpi-engine-loan" style="font-size:18px; font-weight:900; color:#1e3a8a; margin:3px 0;">PKR 9.0 M</div>
-                  <div style="font-size:11px; color:#2563eb;">5-Year Term Facility</div>
-                </div>
-                <div style="background:#fffbeb; border:1px solid #fde68a; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#92400e;">Annual Debt Service</div>
-                  <div id="kpi-engine-emi" style="font-size:18px; font-weight:900; color:#78350f; margin:3px 0;">PKR 2.62 M</div>
-                  <div style="font-size:11px; color:#b45309;">Principle + Interest</div>
-                </div>
-                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#166534;">5-Year Project IRR</div>
-                  <div id="kpi-engine-irr" style="font-size:18px; font-weight:900; color:#14532d; margin:3px 0;">34.8%</div>
-                  <div style="font-size:11px; color:#15803d;">Deterministic Model</div>
-                </div>
-                <div style="background:#faf5ff; border:1px solid #e9d5ff; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#6b21a8;">Payback Period</div>
-                  <div id="kpi-engine-payback" style="font-size:18px; font-weight:900; color:#581c87; margin:3px 0;">2.6 Years</div>
-                  <div style="font-size:11px; color:#7e22ce;">Breakeven Horizon</div>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:12px; border-radius:var(--radius-sm);">
-                  <div style="font-size:11px; text-transform:uppercase; font-weight:800; color:#334155;">Min DSCR Coverage</div>
-                  <div id="kpi-engine-dscr" style="font-size:18px; font-weight:900; color:#0f172a; margin:3px 0;">1.85x</div>
-                  <div style="font-size:11px; color:#475569;">Bank Approved &gt;1.30x</div>
-                </div>
-              </div>
-
-              <!-- 5-Year Cash Flow Projection Table -->
-              <div class="table-responsive" style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
-                <table class="data-table" style="margin:0; font-size:12.5px;">
-                  <thead>
-                    <tr style="background:#f1f5f9;">
-                      <th style="padding:10px 12px; text-align:left; color:var(--navy-900);">Line Item (PKR Millions)</th>
-                      <th style="padding:10px 12px; text-align:right;">Year 1</th>
-                      <th style="padding:10px 12px; text-align:right;">Year 2</th>
-                      <th style="padding:10px 12px; text-align:right;">Year 3</th>
-                      <th style="padding:10px 12px; text-align:right;">Year 4</th>
-                      <th style="padding:10px 12px; text-align:right;">Year 5</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="padding:9px 12px; font-weight:700; color:var(--navy-900);">Gross Sales Revenue</td>
-                      <td id="engine-row-rev-1" style="padding:9px 12px; text-align:right; font-weight:700;">13.1 M</td>
-                      <td id="engine-row-rev-2" style="padding:9px 12px; text-align:right; font-weight:700;">15.9 M</td>
-                      <td id="engine-row-rev-3" style="padding:9px 12px; text-align:right; font-weight:700;">18.8 M</td>
-                      <td id="engine-row-rev-4" style="padding:9px 12px; text-align:right; font-weight:700;">21.6 M</td>
-                      <td id="engine-row-rev-5" style="padding:9px 12px; text-align:right; font-weight:700;">24.4 M</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:9px 12px; color:#be123c;">Operating Cost (Opex)</td>
-                      <td id="engine-row-opx-1" style="padding:9px 12px; text-align:right; color:#be123c;">(7.9 M)</td>
-                      <td id="engine-row-opx-2" style="padding:9px 12px; text-align:right; color:#be123c;">(9.6 M)</td>
-                      <td id="engine-row-opx-3" style="padding:9px 12px; text-align:right; color:#be123c;">(11.3 M)</td>
-                      <td id="engine-row-opx-4" style="padding:9px 12px; text-align:right; color:#be123c;">(12.9 M)</td>
-                      <td id="engine-row-opx-5" style="padding:9px 12px; text-align:right; color:#be123c;">(14.6 M)</td>
-                    </tr>
-                    <tr style="background:#f8fafc; font-weight:700;">
-                      <td style="padding:9px 12px; color:var(--navy-900);">Operating Profit (EBITDA)</td>
-                      <td id="engine-row-ebt-1" style="padding:9px 12px; text-align:right; color:var(--navy-900);">5.3 M</td>
-                      <td id="engine-row-ebt-2" style="padding:9px 12px; text-align:right; color:var(--navy-900);">6.4 M</td>
-                      <td id="engine-row-ebt-3" style="padding:9px 12px; text-align:right; color:var(--navy-900);">7.5 M</td>
-                      <td id="engine-row-ebt-4" style="padding:9px 12px; text-align:right; color:var(--navy-900);">8.6 M</td>
-                      <td id="engine-row-ebt-5" style="padding:9px 12px; text-align:right; color:var(--navy-900);">9.7 M</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:9px 12px; color:#1d4ed8;">Debt Repayment (EMI)</td>
-                      <td id="engine-row-emi-1" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
-                      <td id="engine-row-emi-2" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
-                      <td id="engine-row-emi-3" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
-                      <td id="engine-row-emi-4" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
-                      <td id="engine-row-emi-5" style="padding:9px 12px; text-align:right; color:#1d4ed8;">(2.62 M)</td>
-                    </tr>
-                    <tr style="background:#f0fdf4; font-weight:800;">
-                      <td style="padding:9px 12px; color:#14532d;">Net Cash Flow to Equity</td>
-                      <td id="engine-row-net-1" style="padding:9px 12px; text-align:right; color:#14532d;">2.6 M</td>
-                      <td id="engine-row-net-2" style="padding:9px 12px; text-align:right; color:#14532d;">3.8 M</td>
-                      <td id="engine-row-net-3" style="padding:9px 12px; text-align:right; color:#14532d;">4.9 M</td>
-                      <td id="engine-row-net-4" style="padding:9px 12px; text-align:right; color:#14532d;">6.0 M</td>
-                      <td id="engine-row-net-5" style="padding:9px 12px; text-align:right; color:#14532d;">7.1 M</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- STEP 1: APPLICANT BUSINESS CATEGORIES (LOAN FACILITATION) -->
         <!-- ======================================================== -->
@@ -3321,10 +2984,9 @@
         <div class="chat-container">
           <div class="chat-header">
             <div style="display:flex; align-items:center; gap:10px;">
-              <span style="font-size:24px;">💼</span>
               <div>
-                <strong style="font-size:15px;">PinkSalt AI</strong>
-                <div style="font-size:11.5px; color:var(--rose-200);">Connected with Google Gemini 3.5 &bull; Grounded with Punjab Mines Dept, PMDC &amp; GSP Datasets</div>
+                <strong style="font-size:15px; color:#ffffff;">PinkSalt AI Advisory</strong>
+                <div style="font-size:11.5px; color:var(--rose-200);">Connected with Google Gemini &bull; Grounded with Punjab Mines Dept, PMDC &amp; GSP Datasets</div>
               </div>
             </div>
             <div style="display:flex; align-items:center; gap:8px;">
@@ -3339,10 +3001,10 @@
           </div>
           <div style="padding: 10px 24px; background: #f1f5f9; border-top: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
             <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Suggested Inquiries:</span>
-            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What are the documented reserves and natural purity of Khewra and Warcha salt mines?')">🔍 Khewra &amp; Warcha Purity</button>
-            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What export documentation and testing certificates are required under HS Code 2501.00?')">📜 Export Documentation</button>
-            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What machinery is required for a 25 TPD food-grade optical sorting plant?')">⚙️ 25 TPD Machinery Line</button>
-            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('How does the CM Punjab 0% markup pink salt financing facility work?')">🏛️ CM Punjab 0% Financing</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What are the documented reserves and natural purity of Khewra and Warcha salt mines?')">Khewra &amp; Warcha Purity</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What export documentation and testing certificates are required under HS Code 2501.00?')">Export Documentation</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('What machinery is required for a 25 TPD food-grade optical sorting plant?')">25 TPD Machinery Line</button>
+            <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; background: #ffffff;" onclick="sendChatMessage('How does the CM Punjab 0% markup pink salt financing facility work?')">CM Punjab 0% Financing</button>
           </div>
           <div class="chat-input-bar">
             <input type="text" id="ai-chat-input" class="form-control" placeholder="Ask any question about resources, regulations, machinery, economics, or exports..." onkeydown="if(event.key==='Enter') sendChatMessage()">
@@ -3355,9 +3017,9 @@
   </main>
 
   <!-- Floating PinkSalt AI Dock Button -->
-  <div class="ai-dock-btn" onclick="switchView('ai')">
-    <span style="font-size:18px;">💼</span>
-    <span>PinkSalt AI</span>
+  <div class="ai-dock-btn" onclick="switchView('ai')" title="Open PinkSalt AI Advisory">
+    <span class="pulse-dot-green" style="margin-right:4px;"></span>
+    <span>PinkSalt AI Advisory</span>
   </div>
 
   <!-- Toast Container -->
@@ -3481,7 +3143,7 @@
         <div class="footer-col">
           <h4>Standards &amp; Processing</h4>
           <ul class="footer-links">
-            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">ISO Certifications and CXS Standards</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Unified Standards: Codex CXS 150 • ISO 17025 • PSQCA 166</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Quaidabad Mineral Processing Zone (SEZ)</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Geographical Indication (GI Act 2020)</a></li>
             <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Pakistan Single Window (PSW) HS 2501.00</a></li>
@@ -3519,6 +3181,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.13"></script>
+  <script src="js/portal.js?v=20261105.15"></script>
 </body>
 </html>

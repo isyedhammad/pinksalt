@@ -2888,34 +2888,22 @@ button, input, select, textarea {
   }
 }
 
-/* Quick Navigation Shelf: Revealed on Cursor Hover Over Header */
+/* Executive Navigation Shelf: Always Visible & Effortless to Use */
 .header-hover-shelf {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  background: rgba(112, 11, 41, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  transition: max-height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              opacity 0.25s ease, 
-              padding 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  padding: 0 24px;
-  pointer-events: none;
-}
-
-.site-header:hover .header-hover-shelf {
-  max-height: 60px;
-  opacity: 1;
-  padding: 8px 24px 10px 24px;
-  pointer-events: auto;
+  display: block;
+  background: rgba(88, 10, 32, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 20px 8px 20px;
+  transition: all 0.25s ease;
 }
 
 .hover-shelf-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -2932,18 +2920,15 @@ button, input, select, textarea {
 .header-hover-tab {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 5px 15px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 9999px;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   user-select: none;
   white-space: nowrap;
@@ -2951,11 +2936,19 @@ button, input, select, textarea {
 
 .header-tab-pill:hover,
 .header-hover-tab:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.28);
   border-color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
   color: #ffffff;
+}
+
+.header-tab-pill.active,
+.header-hover-tab.active {
+  background: #ffffff !important;
+  color: #881337 !important;
+  border-color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 900px) {
@@ -3153,5 +3146,90 @@ button, input, select, textarea {
   }
   .epk-bottom-cta-banner {
     padding: 24px;
+  }
+}
+
+/* ==========================================================================
+   14. Responsive Layout & Mobile/Tablet Engine Polish
+   ========================================================================== */
+.calc-engine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 24px;
+}
+
+.engine-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.epk-cta-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Touch-optimized Table Wrappers */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.standards-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1024px) {
+  .calc-engine-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .engine-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .epk-cta-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .engine-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .smeda-metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .smeda-assump-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .engine-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .smeda-metric-grid {
+    grid-template-columns: 1fr;
   }
 }
