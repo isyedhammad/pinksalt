@@ -491,6 +491,9 @@ function switchView(viewName) {
   const activeNavs = document.querySelectorAll(`.nav-link[data-view="${viewName}"]`);
   activeNavs.forEach(el => el.classList.add("active"));
 
+  document.querySelectorAll(".header-hover-tab").forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(`.header-hover-tab[data-view="${viewName}"]`).forEach(el => el.classList.add("active"));
+
   if (viewName === "opportunities") {
     loadOpportunities();
   }
@@ -510,6 +513,12 @@ function switchView(viewName) {
   }
   if (viewName === "admin") {
     checkAdminSession();
+  }
+  if (viewName === "ai") {
+    setTimeout(() => {
+      const input = document.getElementById("ai-chat-input");
+      if (input) input.focus();
+    }, 150);
   }
 }
 
