@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.11">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.12">
 </head>
 <body>
 
@@ -42,22 +42,24 @@
     <!-- Quick Navigation Tabs (Revealed on Cursor Hover Over Header) -->
     <div class="header-hover-shelf" id="header-hover-shelf">
       <div class="container hover-shelf-container">
-        <a class="header-hover-tab" onclick="switchView('opportunities')">💼 Investment Opportunities</a>
-        <a class="header-hover-tab" onclick="switchView('processing-options')">⚙️ Processing &amp; Machinery</a>
-        <a class="header-hover-tab" onclick="switchView('calculator')">🧮 Feasibility Calculator</a>
-        <a class="header-hover-tab" onclick="switchView('enquiry')">✨ Investor Enquiry</a>
+        <a class="header-hover-tab" onclick="switchView('home')">Home</a>
+        <a class="header-hover-tab" onclick="switchView('opportunities')">Investment Opportunities</a>
+        <a class="header-hover-tab" onclick="switchView('processing-options')">Processing &amp; Machinery</a>
+        <a class="header-hover-tab" onclick="switchView('quality-testing')">Quality &amp; Laboratory Testing</a>
+        <a class="header-hover-tab" onclick="switchView('calculator')">Feasibility Calculator</a>
+        <a class="header-hover-tab" onclick="switchView('enquiry')">Investor Enquiry</a>
       </div>
     </div>
 
     <!-- Mobile Drawer Menu -->
     <div class="mobile-nav-drawer" id="mobile-drawer">
-      <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">🏠 Home</a>
-      <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">💼 Investment Opportunities</a>
-      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">⚙️ Processing &amp; Machinery</a>
-      <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">🔬 Quality &amp; Laboratory Testing</a>
-      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">🧮 Feasibility Calculator</a>
-      <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">✨ Investor Enquiry / EOI</a>
-      <button class="btn btn-outline" style="width:100%; margin-top:12px;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office 🔒</button>
+      <a class="nav-link active" data-view="home" onclick="switchView('home'); toggleMobileNav()">Home</a>
+      <a class="nav-link" data-view="opportunities" onclick="switchView('opportunities'); toggleMobileNav()">Investment Opportunities</a>
+      <a class="nav-link" data-view="processing-options" onclick="switchView('processing-options'); toggleMobileNav()">Processing &amp; Machinery</a>
+      <a class="nav-link" data-view="quality-testing" onclick="switchView('quality-testing'); toggleMobileNav()">Quality &amp; Laboratory Testing</a>
+      <a class="nav-link" data-view="calculator" onclick="switchView('calculator'); toggleMobileNav()">Feasibility Calculator</a>
+      <a class="nav-link" data-view="enquiry" onclick="switchView('enquiry'); toggleMobileNav()">Investor Enquiry / EOI</a>
+      <button class="btn btn-outline" style="width:100%; margin-top:12px;" onclick="switchView('admin'); toggleMobileNav()">Administrative Back-Office</button>
     </div>
   </header>
 
@@ -3453,23 +3455,23 @@
         <div class="footer-col">
           <h4>Portal Modules</h4>
           <ul class="footer-links">
-            <li><a href="javascript:void(0)" onclick="switchView('home')">🏠 Home</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('opportunities')">💼 Investment Opportunities</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">⚙️ Processing &amp; Machinery</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">🔬 Quality &amp; Laboratory Testing</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('calculator')">🧮 Feasibility Calculator</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('ai')">🤖 PinkSalt AI Advisory</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('home')">Home</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('opportunities')">Investment Opportunities</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Processing &amp; Machinery</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Quality &amp; Laboratory Testing</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('calculator')">Feasibility Calculator</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('ai')">PinkSalt AI Advisory</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Standards &amp; Processing</h4>
           <ul class="footer-links">
-            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">🔬 ISO Certifications and CXS Standards</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">🏭 Quaidabad Mineral Processing Zone (SEZ)</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">🏷️ Geographical Indication (GI Act 2020)</a></li>
-            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">📦 Pakistan Single Window (PSW) HS 2501.00</a></li>
-            <li><a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" style="color:#34d399; font-weight:700;">🏛️ CM Punjab Financing Scheme ↗</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">ISO Certifications and CXS Standards</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('processing-options')">Quaidabad Mineral Processing Zone (SEZ)</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Geographical Indication (GI Act 2020)</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('quality-testing')">Pakistan Single Window (PSW) HS 2501.00</a></li>
+            <li><a href="https://pinksalt.punjab.gov.pk/landing" target="_blank" rel="noopener noreferrer" style="color:#34d399; font-weight:700;">CM Punjab Financing Scheme ↗</a></li>
           </ul>
         </div>
 
@@ -3483,10 +3485,10 @@
           </div>
           <div style="display:flex; flex-direction:column; gap:8px;">
             <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center;" onclick="switchView('enquiry')">
-              ✨ Submit Investment EOI →
+              Submit Investment EOI →
             </button>
             <button class="btn btn-outline-light btn-sm" style="width:100%; justify-content:center;" onclick="switchView('admin')">
-              Administrative Back-Office 🔒
+              Administrative Back-Office
             </button>
           </div>
         </div>
@@ -3503,6 +3505,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.11"></script>
+  <script src="js/portal.js?v=20261105.12"></script>
 </body>
 </html>
