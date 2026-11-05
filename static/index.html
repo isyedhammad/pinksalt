@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/pink-salt-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/portal.css?v=20261105.12">
+  <link rel="stylesheet" href="css/portal.css?v=20261105.13">
 </head>
 <body>
 
@@ -165,8 +165,8 @@
             </div>
           </div>
           
-          <div style="position:relative; width:100%; height:360px; background:#07101e; border-radius:var(--radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
-            <svg viewBox="0 0 820 360" style="width:100%; height:100%;">
+          <div style="position:relative; width:100%; height:400px; background:#07101e; border-radius:var(--radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+            <svg viewBox="0 0 860 395" style="width:100%; height:100%;">
               <defs>
                 <linearGradient id="escarpmentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stop-color="#be123c" stop-opacity="0.8"/>
@@ -183,83 +183,97 @@
               </defs>
               
               <!-- Tactical Coordinate Grid & Telemetry -->
-              <rect width="820" height="360" fill="url(#gridPattern)" />
-              <text x="20" y="24" font-size="10" fill="#64748b" font-family="monospace">PUNJAB SALT RANGE SPATIAL GIS | LAT 32°20'N - 32°55'N | LONG 71°10'E - 73°20'E | DATUM WGS84</text>
-              <text x="630" y="24" font-size="10" fill="#f43f5e" font-family="monospace">30.0+ BILLION MT CORRIDOR</text>
+              <rect width="860" height="395" fill="url(#gridPattern)" />
+              <text x="24" y="28" font-size="10" fill="#64748b" font-family="'JetBrains Mono', Consolas, monospace" letter-spacing="0.5">PUNJAB SALT RANGE SPATIAL GIS | LAT 32°20'N - 32°55'N | LONG 71°10'E - 73°20'E | DATUM WGS84</text>
+              <rect x="660" y="14" width="180" height="22" rx="4" fill="rgba(225,29,72,0.14)" stroke="rgba(225,29,72,0.4)" stroke-width="1" />
+              <text x="750" y="29" font-size="10.5" font-weight="700" fill="#f43f5e" font-family="monospace" text-anchor="middle">30.0+ BILLION MT CORRIDOR</text>
 
               <!-- Elevation Escarpment Belt (Salt Range Strike) -->
-              <path d="M 40,190 Q 200,135 420,175 T 780,155" fill="none" stroke="rgba(225,29,72,0.18)" stroke-width="52" stroke-linecap="round" />
-              <path d="M 40,190 Q 200,135 420,175 T 780,155" fill="none" stroke="url(#escarpmentGrad)" stroke-width="16" stroke-linecap="round" />
-              <text x="350" y="160" font-size="11" fill="#fecdd3" font-weight="700" letter-spacing="1">EOCAMBRIAN SALT RANGE EVAPORITE BELT</text>
+              <path d="M 40,215 Q 220,155 440,195 T 820,175" fill="none" stroke="rgba(225,29,72,0.18)" stroke-width="50" stroke-linecap="round" />
+              <path d="M 40,215 Q 220,155 440,195 T 820,175" fill="none" stroke="url(#escarpmentGrad)" stroke-width="15" stroke-linecap="round" />
+              
+              <!-- Escarpment Belt Label Badge (Elevated in open zone) -->
+              <rect x="290" y="65" width="280" height="24" rx="4" fill="rgba(7,16,30,0.88)" stroke="rgba(244,63,94,0.35)" stroke-width="1" />
+              <text x="430" y="81" font-size="11" fill="#fecdd3" font-weight="800" letter-spacing="1.2" text-anchor="middle">EOCAMBRIAN SALT RANGE EVAPORITE BELT</text>
               
               <!-- M-2 Motorway Logistic Artery -->
-              <line x1="300" y1="20" x2="560" y2="340" stroke="#f59e0b" stroke-width="3.5" stroke-dasharray="8,6" opacity="0.9" />
-              <text x="545" y="325" font-size="11" fill="#fcd34d" font-weight="bold">M-2 Logistics Artery (To Karachi Seaports)</text>
+              <line x1="360" y1="20" x2="630" y2="390" stroke="#f59e0b" stroke-width="3.5" stroke-dasharray="8,6" opacity="0.9" />
+              <rect x="580" y="358" width="260" height="24" rx="4" fill="rgba(7,16,30,0.92)" stroke="rgba(245,158,11,0.5)" stroke-width="1" />
+              <text x="710" y="374" font-size="11" fill="#fcd34d" font-weight="700" text-anchor="middle">M-2 Logistics Artery (To Karachi Seaports)</text>
 
               <!-- Indus River Basin System -->
-              <path d="M 75,20 Q 130,140 100,340" fill="none" stroke="url(#riverGrad)" stroke-width="7" />
-              <text x="110" y="325" font-size="11" fill="#7dd3fc" font-weight="bold">Indus River Basin</text>
+              <path d="M 85,20 Q 140,170 105,385" fill="none" stroke="url(#riverGrad)" stroke-width="7" />
+              <rect x="35" y="358" width="135" height="24" rx="5" fill="rgba(7,16,30,0.88)" stroke="rgba(56,189,248,0.4)" stroke-width="1" />
+              <text x="102" y="374" font-size="11" fill="#7dd3fc" font-weight="700" text-anchor="middle">Indus River Basin</text>
 
-              <!-- Khewra Mega Deposit Node -->
-              <g style="cursor:pointer;" onclick="selectGisZone('khewra')">
-                <circle cx="620" cy="160" r="30" fill="rgba(225,29,72,0.22)">
-                  <animate attributeName="r" values="24;32;24" dur="3s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="620" cy="160" r="16" fill="#e11d48" />
-                <circle cx="620" cy="160" r="6" fill="#ffffff" />
-                <text x="645" y="155" font-size="14" font-weight="800" fill="#ffffff">Khewra (Jhelum)</text>
-                <text x="645" y="172" font-size="11" fill="#fda4af">600M+ MT • 98.8% NaCl • PMDC</text>
-              </g>
-
-              <!-- Warcha Crystal Seams Node -->
-              <g style="cursor:pointer;" onclick="selectGisZone('warcha')">
-                <circle cx="290" cy="175" r="26" fill="rgba(244,63,94,0.22)">
-                  <animate attributeName="r" values="20;28;20" dur="3s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="290" cy="175" r="14" fill="#f43f5e" />
-                <circle cx="290" cy="175" r="5" fill="#ffffff" />
-                <text x="210" y="220" font-size="14" font-weight="800" fill="#ffffff">Warcha (Khushab)</text>
-                <text x="210" y="236" font-size="11" fill="#fda4af">400M+ MT • 99.1% High Purity</text>
+              <!-- Kalabagh Deposits Node -->
+              <g style="cursor:pointer;" onclick="selectGisZone('kalabagh')">
+                <rect x="20" y="95" width="165" height="38" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(225,29,72,0.35)" stroke-width="1" />
+                <text x="30" y="113" font-size="12.5" font-weight="800" fill="#ffffff">Kalabagh (Mianwali)</text>
+                <text x="30" y="127" font-size="10.5" fill="#fda4af">250M+ MT • River Outcrops</text>
+                <circle cx="120" cy="150" r="14" fill="#be123c" />
+                <circle cx="120" cy="150" r="4.5" fill="#ffffff" />
               </g>
 
               <!-- Quaidabad Processing SEZ Node -->
               <g style="cursor:pointer;" onclick="selectGisZone('quaidabad')">
-                <rect x="270" y="115" width="28" height="28" rx="6" fill="#d97706" stroke="#fbbf24" stroke-width="2" />
-                <text x="284" y="134" font-size="14" text-anchor="middle" fill="#ffffff">🏭</text>
-                <text x="180" y="105" font-size="13" font-weight="800" fill="#fbbf24">🏭 Quaidabad SEZ Hub</text>
-                <text x="180" y="120" font-size="10.5" fill="#fde68a">35km to Warcha • 10-Yr Tax Holiday</text>
+                <rect x="155" y="68" width="190" height="38" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(251,191,36,0.5)" stroke-width="1" />
+                <text x="165" y="86" font-size="12" font-weight="800" fill="#fbbf24">🏭 Quaidabad SEZ Hub</text>
+                <text x="165" y="100" font-size="10" fill="#fde68a">35km to Warcha • 10-Yr Tax Holiday</text>
+                <rect x="245" y="115" width="28" height="28" rx="6" fill="#d97706" stroke="#fbbf24" stroke-width="2" />
+                <text x="259" y="134" font-size="14" text-anchor="middle">🏭</text>
               </g>
 
-              <!-- Bhalwal Industrial Estate Node -->
-              <g style="cursor:pointer;" onclick="selectGisZone('bhalwal')">
-                <rect x="430" y="225" width="26" height="26" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-                <text x="443" y="243" font-size="13" text-anchor="middle" fill="#ffffff">🏭</text>
-                <text x="465" y="235" font-size="13" font-weight="800" fill="#38bdf8">🏭 Bhalwal Industrial Estate</text>
-                <text x="465" y="250" font-size="10.5" fill="#bae6fd">Direct M-2 Access • 132kV Substation</text>
-              </g>
-
-              <!-- M-3 Industrial City Node -->
-              <g style="cursor:pointer;" onclick="selectGisZone('m3')">
-                <rect x="520" y="275" width="26" height="26" rx="6" fill="#059669" stroke="#34d399" stroke-width="2" />
-                <text x="533" y="293" font-size="13" text-anchor="middle" fill="#ffffff">🏭</text>
-                <text x="555" y="285" font-size="13" font-weight="800" fill="#34d399">🏭 M-3 Industrial City</text>
-                <text x="555" y="300" font-size="10.5" fill="#a7f3d0">Federal SEZ • 0% Duty • FIEDMC</text>
-              </g>
-
-              <!-- Kalabagh Deposits Node -->
-              <g style="cursor:pointer;" onclick="selectGisZone('kalabagh')">
-                <circle cx="115" cy="135" r="13" fill="#be123c" />
-                <circle cx="115" cy="135" r="4" fill="#ffffff" />
-                <text x="65" y="115" font-size="13" font-weight="800" fill="#ffffff">Kalabagh (Mianwali)</text>
-                <text x="65" y="130" font-size="11" fill="#fda4af">250M+ MT • River Outcrops</text>
+              <!-- Warcha Crystal Seams Node -->
+              <g style="cursor:pointer;" onclick="selectGisZone('warcha')">
+                <circle cx="290" cy="205" r="26" fill="rgba(244,63,94,0.22)">
+                  <animate attributeName="r" values="20;28;20" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="290" cy="205" r="14" fill="#f43f5e" />
+                <circle cx="290" cy="205" r="5" fill="#ffffff" />
+                <rect x="200" y="248" width="180" height="38" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(244,63,94,0.4)" stroke-width="1" />
+                <text x="210" y="266" font-size="12.5" font-weight="800" fill="#ffffff">Warcha (Khushab)</text>
+                <text x="210" y="280" font-size="10.5" fill="#fda4af">400M+ MT • 99.1% High Purity</text>
               </g>
 
               <!-- Chakwal Node -->
               <g style="cursor:pointer;" onclick="selectGisZone('chakwal')">
-                <circle cx="460" cy="145" r="11" fill="#94a3b8" />
-                <circle cx="460" cy="145" r="3" fill="#ffffff" />
-                <text x="465" y="130" font-size="12" font-weight="700" fill="#cbd5e1">Chakwal-Kallar Kahar</text>
-                <text x="465" y="145" font-size="10" fill="#94a3b8">150M+ MT Strike</text>
+                <rect x="385" y="118" width="150" height="34" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(148,163,184,0.3)" stroke-width="1" />
+                <text x="460" y="134" font-size="11.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Chakwal-Kallar Kahar</text>
+                <text x="460" y="146" font-size="9.5" fill="#94a3b8" text-anchor="middle">150M+ MT Strike</text>
+                <circle cx="450" cy="170" r="11" fill="#94a3b8" />
+                <circle cx="450" cy="170" r="3.5" fill="#ffffff" />
+              </g>
+
+              <!-- Bhalwal Industrial Estate Node -->
+              <g style="cursor:pointer;" onclick="selectGisZone('bhalwal')">
+                <rect x="420" y="245" width="28" height="28" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+                <text x="434" y="264" font-size="13" text-anchor="middle">🏭</text>
+                <rect x="460" y="240" width="195" height="38" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(56,189,248,0.4)" stroke-width="1" />
+                <text x="470" y="258" font-size="12" font-weight="800" fill="#38bdf8">🏭 Bhalwal Industrial Estate</text>
+                <text x="470" y="272" font-size="10" fill="#bae6fd">Direct M-2 Access • 132kV Substation</text>
+              </g>
+
+              <!-- M-3 Industrial City Node -->
+              <g style="cursor:pointer;" onclick="selectGisZone('m3')">
+                <rect x="490" y="305" width="28" height="28" rx="6" fill="#059669" stroke="#34d399" stroke-width="2" />
+                <text x="504" y="324" font-size="13" text-anchor="middle">🏭</text>
+                <rect x="530" y="300" width="190" height="38" rx="6" fill="rgba(7,16,30,0.92)" stroke="rgba(52,211,153,0.4)" stroke-width="1" />
+                <text x="540" y="318" font-size="12" font-weight="800" fill="#34d399">🏭 M-3 Industrial City</text>
+                <text x="540" y="332" font-size="10" fill="#a7f3d0">Federal SEZ • 0% Duty • FIEDMC</text>
+              </g>
+
+              <!-- Khewra Mega Deposit Node -->
+              <g style="cursor:pointer;" onclick="selectGisZone('khewra')">
+                <rect x="635" y="105" width="205" height="42" rx="6" fill="rgba(7,16,30,0.94)" stroke="rgba(225,29,72,0.55)" stroke-width="1.5" />
+                <text x="647" y="125" font-size="13.5" font-weight="800" fill="#ffffff">Khewra (Jhelum)</text>
+                <text x="647" y="140" font-size="10.5" fill="#fda4af">600M+ MT • 98.8% NaCl • PMDC</text>
+                <line x1="680" y1="147" x2="680" y2="162" stroke="#fda4af" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <circle cx="680" cy="180" r="30" fill="rgba(225,29,72,0.24)">
+                  <animate attributeName="r" values="24;32;24" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="680" cy="180" r="16" fill="#e11d48" />
+                <circle cx="680" cy="180" r="6" fill="#ffffff" />
               </g>
             </svg>
           </div>
@@ -3505,6 +3519,6 @@
     </div>
   </footer>
 
-  <script src="js/portal.js?v=20261105.12"></script>
+  <script src="js/portal.js?v=20261105.13"></script>
 </body>
 </html>
