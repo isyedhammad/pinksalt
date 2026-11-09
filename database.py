@@ -1,5 +1,5 @@
 """
-PinkSalt Intelligence & Investment Portal
+Pink Salt Investment Portal
 Database Management & Data Persistence Layer
 
 Provides SQLite schema initialization, cryptographic password hashing (PBKDF2-HMAC-SHA256),

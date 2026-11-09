@@ -1,5 +1,5 @@
 # ==============================================================================
-# Production Dockerfile for PinkSalt Intelligence & Investment Portal
+# Production Dockerfile for Pink Salt Investment Portal
 # ==============================================================================
 
 FROM python:3.9-slim

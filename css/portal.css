@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PinkSalt Intelligence & Investment Portal - World-Class Design System
+   PinkSalt Investment Portal - World-Class Design System
    Crafted in Elementor Pro / Sovereign Agency Style for International Investors
    Government of Punjab • Directorate General of Mines & Minerals
    ========================================================================== */
@@ -1258,30 +1258,32 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
 }
 
-/* Floating AI Action Dock Button */
+/* Floating AI Action Dock Button (Pink Salt Crystalline Theme) */
 .ai-dock-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(135deg, var(--salt-600) 0%, var(--salt-700) 100%);
-  color: #ffffff;
-  padding: 14px 26px;
+  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #fbbf24 100%);
+  color: #0f172a;
+  padding: 13px 26px;
   border-radius: var(--radius-full);
-  font-weight: 700;
+  font-weight: 900;
   font-size: 14.5px;
-  box-shadow: 0 12px 32px rgba(225, 29, 72, 0.4);
+  box-shadow: 0 12px 32px rgba(244, 63, 94, 0.45), 0 4px 12px rgba(251, 191, 36, 0.3);
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   z-index: 999;
-  border: 2px solid #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
   transition: all 0.28s ease;
+  letter-spacing: 0.3px;
 }
 
 .ai-dock-btn:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.5);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 42px rgba(244, 63, 94, 0.6), 0 6px 16px rgba(251, 191, 36, 0.45);
+  border-color: #ffffff;
 }
 
 /* ==========================================================================

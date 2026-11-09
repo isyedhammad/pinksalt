@@ -80,7 +80,7 @@ class TestServerHandlerDirect(unittest.TestCase):
         status, data, _ = execute_mock_request("GET", "/api/health")
         self.assertEqual(status, 200)
         self.assertEqual(data["status"], "healthy")
-        self.assertEqual(data["portal"], "PinkSalt Intelligence & Investment Portal")
+        self.assertEqual(data["portal"], "Pink Salt Investment Portal")
 
     def test_resources_endpoint(self):
         status, data, _ = execute_mock_request("GET", "/api/resources")

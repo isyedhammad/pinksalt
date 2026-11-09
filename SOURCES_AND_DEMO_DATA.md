@@ -1,4 +1,4 @@
-# PinkSalt Intelligence & Investment Portal: Sources, Demo Data & Verification Register
+# Pink Salt Investment Portal: Sources, Demo Data & Verification Register
 
 ## 1. Context & Purpose
 This platform was conceived and developed as a strategic concept proposal by an **Assistant Director in the Mines & Minerals Sector, Government of Punjab, Pakistan**, for presentation and stakeholder discussion at the **Pakistan Mineral Investment Forum**.

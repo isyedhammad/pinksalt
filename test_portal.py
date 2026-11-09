@@ -1,5 +1,5 @@
 """
-PinkSalt Intelligence & Investment Portal
+Pink Salt Investment Portal
 Comprehensive Test Suite & Quality Assurance Verification
 
 Tests database persistence, deterministic financial calculations, grounded AI RAG,

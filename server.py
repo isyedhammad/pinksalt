@@ -1,5 +1,5 @@
 """
-PinkSalt Intelligence & Investment Portal
+Pink Salt Investment Portal
 Production Server & RESTful API Gateway
 
 Multi-threaded HTTP Server in Python 3 standard library with SQLite persistence,
@@ -90,7 +90,7 @@ class PortalRequestHandler(BaseHTTPRequestHandler):
         if path == "/api/health":
             self.send_json({
                 "status": "healthy",
-                "portal": "PinkSalt Intelligence & Investment Portal",
+                "portal": "Pink Salt Investment Portal",
                 "version": "1.0.0-production",
                 "timestamp": datetime.utcnow().isoformat(),
                 "ai_assistant_mode": "Grounded Expert Engine (Active)",
@@ -591,7 +591,7 @@ def run_server(port: int = PORT):
     server_address = ("0.0.0.0", port)
     httpd = ThreadedHTTPServer(server_address, PortalRequestHandler)
     print(f"===============================================================")
-    print(f" PinkSalt Intelligence & Investment Portal (Production Server)")
+    print(f" Pink Salt Investment Portal (Production Server)")
     print(f" Hosted at: http://localhost:{port}")
     print(f" Static Directory: {STATIC_DIR}")
     print(f" Database: {os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pinksalt.db')}")

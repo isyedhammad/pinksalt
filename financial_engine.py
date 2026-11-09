@@ -1,5 +1,5 @@
 """
-PinkSalt Intelligence & Investment Portal
+Pink Salt Investment Portal
 Financial Modeling Engine
 
 Provides deterministic, auditable calculations for preliminary investment economics,

@@ -1,5 +1,5 @@
 /**
- * PinkSalt Intelligence & Investment Portal - Unified Controller
+ * PinkSalt Investment Portal - Unified Controller
  * Supports dual-mode execution:
  * 1. Serverless/Static Mode (100% Client-Side for GitHub Pages, zero backend or billing needed)
  * 2. Full-Stack Mode (via Python REST API & SQLite on server/container)
@@ -933,7 +933,7 @@ Specific Client Notes:   ${specs || 'Standard industrial configuration with spar
 - Star Engineering Works, Gujranwala
 
 ================================================================================
-Notice: Generated via Punjab Pink Salt Intelligence & Investment Portal.
+Notice: Generated via Punjab Pink Salt Investment Portal.
 ================================================================================`;
 
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
@@ -2549,7 +2549,7 @@ async function sendChatMessage(presetPrompt = null) {
     botDiv.innerHTML = `
       <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; padding:12px;">
         <strong style="color:#be123c;">⚠️ Institutional Regulatory Safeguard</strong><br>
-        <p style="margin:6px 0 0 0; color:#881337; font-size:13.5px;">I cannot confirm this from the available verified sources. The PinkSalt Intelligence &amp; Investment Portal strictly relies on documented datasets from the Punjab Mines &amp; Minerals Department, PMDC, Geological Survey of Pakistan (GSP), and Codex Alimentarius. We do not endorse speculative claims or unverified operations.</p>
+        <p style="margin:6px 0 0 0; color:#881337; font-size:13.5px;">I cannot confirm this from the available verified sources. The Pink Salt Investment Portal strictly relies on documented datasets from the Punjab Mines &amp; Minerals Department, PMDC, Geological Survey of Pakistan (GSP), and Codex Alimentarius. We do not endorse speculative claims or unverified operations.</p>
       </div>
     `;
     messagesBox.scrollTop = messagesBox.scrollHeight;

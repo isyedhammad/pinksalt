@@ -1,5 +1,5 @@
 """
-PinkSalt Intelligence & Investment Portal
+Pink Salt Investment Portal
 PinkSalt AI - Grounded Expert Assistant & RAG Retrieval Engine
 
 Provides domain-grounded retrieval, strict citation mapping, deterministic
@@ -428,7 +428,7 @@ def handle_ai_query(user_message: str, session_context: Optional[Dict[str, Any]]
             return {
                 "answer": (
                     "I cannot confirm this from the available verified sources.\n\n"
-                    "The PinkSalt Intelligence & Investment Portal only provides documented data from the "
+                    "The Pink Salt Investment Portal only provides documented data from the "
                     "Punjab Mines & Minerals Department, Pakistan Mineral Development Corporation (PMDC), "
                     "Geological Survey of Pakistan (GSP), and international food safety bodies. "
                     "We do not endorse speculative claims, therapeutic guarantees, or unverified lease allocations."
