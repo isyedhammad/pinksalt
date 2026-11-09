@@ -1,6 +1,6 @@
-# PinkSalt Intelligence & Investment Portal
+# Pink Salt Investment Portal
 
-> **A Strategic Digital Intelligence & Investor Facilitation Platform for Pakistan's Pink Salt Sector**  
+> **A Strategic Digital Facilitation & Investment Platform for Pakistan's Pink Salt Sector**  
 > Developed as a Proposed Concept for the **Pakistan Mineral Investment Forum**  
 > Authored by an **Assistant Director, Mines & Minerals Sector, Punjab, Pakistan**
 
@@ -12,7 +12,7 @@
 
 Pakistan possesses over **10 billion metric tonnes** of documented pink rock salt deposits across the ancient Eocambrian Salt Range formation in northern Punjab (stretching through Jhelum, Khushab, and Mianwali districts). Historically, significant volumes of raw salt were exported as unrefined bulk rock at depressed prices ($35–$50/tonne).
 
-The **PinkSalt Intelligence & Investment Portal** demonstrates how digital technology, deterministic financial modeling, and grounded artificial intelligence can convert mineral resource data into bankable investment concepts, foster high-value domestic processing (yielding $300–$3,500/tonne), and streamline investor facilitation.
+The **Pink Salt Investment Portal** demonstrates how digital technology, deterministic financial modeling, and grounded artificial intelligence can convert mineral resource data into bankable investment concepts, foster high-value domestic processing (yielding $300–$3,500/tonne), and streamline investor facilitation.
 
 ---
 
@@ -154,7 +154,7 @@ git init
 
 # 2. Add all files and commit
 git add .
-git commit -m "feat: complete PinkSalt Intelligence & Investment Portal for Pakistan Mineral Investment Forum"
+git commit -m "feat: complete Pink Salt Investment Portal for Pakistan Mineral Investment Forum"
 
 # 3. Rename branch to main
 git branch -M main
